@@ -1,0 +1,18 @@
+JSONObject f1 = new JSONObject(); 
+f1.put("F101", bi.F101.getText().toString());
+f1.put("F102", bi.F102.getText().toString());
+f1.put("F103", bi.F103.getText().toString());
+f1.put("F104", bi.F104.getText().toString());
+f1.put("F105", bi.F105.getText().toString());
+f1.put("F106", bi.F106.getText().toString());
+f1.put("F107", bi.F107.getText().toString());
+f1.put("F108", bi.F108.getText().toString());
+f1.put("F109", bi.F109.getText().toString());
+f1.put("F110", bi.F110.getText().toString());
+f1.put("F111", bi.F111.getText().toString());
+f1.put("F112", bi.F112.getText().toString());
+f1.put("F113", bi.F113.getText().toString());
+f1.put("F114", bi.F114.getText().toString());
+f1.put("F115", bi.F115.getText().toString());
+f1.put("F116", bi.F116.getText().toString());
+f1.put("F117", bi.F117.getText().toString());

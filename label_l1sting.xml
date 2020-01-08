@@ -1,0 +1,13 @@
+<string name="AX11">ID # mother</string>
+<string name="AX12">ID # baby</string>
+<string name="AX13">Facility Code: </string>
+<string name="AX14">Type of care available</string>
+<string name="AX14A">Comprehensive EmOC</string>
+<string name="AX14B">Basic EmOC</string>
+<string name="AX14C">First Aid</string>
+<string name="AX14D">Home delivery</string>
+<string name="AX15">District Name:</string>
+<string name="AX16">Referred</string>
+<string name="AX16A">Not referred</string>
+<string name="AX16B">Referred in from</string>
+<string name="AX16C">Referred out to: </string>
