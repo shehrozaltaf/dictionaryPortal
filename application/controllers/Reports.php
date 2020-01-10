@@ -895,6 +895,7 @@ class Reports extends CI_controller
                       exit();*/
 
                     foreach ($getSections as $keySection => $valueSection) {
+
                         $l++;
                         if (isset($valueSection->section_title) && $valueSection->section_title != '') {
                             $sectionHeading = $valueModule->variable_module . $valueSection->section_var_name . ": " . htmlentities($valueSection->section_title) . " : " . $valueSection->section_desc;
@@ -907,17 +908,39 @@ class Reports extends CI_controller
                         }
                         $myresult = array();
                         $getSectionDetails = $MSection->getSectionDetailsData($ModuleSearchData);
+
                         foreach ($getSectionDetails as $key => $value) {
-                            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
+                            /*if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
                                 $mykey = $value->idParentQuestion;
                                 $myresult[$mykey]->myrow_options[] = $value;
+                            } else {
+                                $mykey = $value->variable_name;
+                                $myresult[$mykey] = $value;
+                            }*/
+                            if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
+                                $mykey = $value->idParentQuestion;
+
+                                $expKey = explode(',', $mykey);
+                                if (isset($expKey) && count($expKey) != 0) {
+                                    if (isset($expKey[1]) && count($expKey[1]) != 0) {
+                                        $myresult[$expKey[0]]->myrow_options[$expKey[1]]->otherOptions[$value->variable_name] = $value;
+                                    } else {
+                                        $myresult[$expKey[0]]->myrow_options[$value->variable_name] = $value;
+                                    }
+                                } else {
+                                    $myresult[$mykey]->myrow_options[$value->variable_name] = $value;
+                                }
+
                             } else {
                                 $mykey = $value->variable_name;
                                 $myresult[$mykey] = $value;
                             }
                         }
 
-
+                        /*echo '<pre>';
+                        print_r($myresult);
+                        echo '</pre>';
+                        exit();*/
                         /*Make a array as $myresult, and put all the section details in it*/
                         $optionsubhtml = '<style>table tr {font-size: 13px}table tr th {font-size: 14px; font-weight: bold}
 .fright{float: right}
@@ -968,7 +991,7 @@ class Reports extends CI_controller
                                 $optsubhtml = '<td width="30%">';
 
                                 if (isset($valueSectionDetail->myrow_options) && $valueSectionDetail->myrow_options != '') {
-                                    $optsubhtml .= '<table   cellpadding="2" cellspacing="0" nobr="true" >';
+                                    $optsubhtml .= '<table    cellpadding="2" cellspacing="0" nobr="true" >';
                                     foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
                                         if ($displaylanguagel1 == 'on') {
                                             $ol1sec = $oval->label_l1;
@@ -997,6 +1020,7 @@ class Reports extends CI_controller
                                              " . $ol5sec . "  </span> </span>
                                              </td>";
                                         $optsubhtml .= '<td width="10%">' . $oval->option_value . '</td>';
+
                                         $optsubhtml .= '<td width="20%">' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
                                                 '<small>Skip: </small>' . $oval->skipQuestion : '') . '</td>';
 
@@ -1008,7 +1032,19 @@ class Reports extends CI_controller
                                              <span   class='fright'  align=\"left\">---------------" . $oval->option_value . "</span></span>";*/
 
 
+
+
+
                                         $optsubhtml .= '</tr>';
+
+                                        if (isset($oval->otherOptions) && $oval->otherOptions != '') {
+                                            $optsubhtml .= '<tr><td colspan="4"><ul    >';
+                                            foreach ($oval->otherOptions as $ok => $ov) {
+                                        $optsubhtml .= '<li><small>'.$ov->variable_name.'</small> -- '.$ov->label_l1.' -- '.$ov->option_value.' -- '.$ov->nature.'</li>';
+                                            }
+                                            $optsubhtml .= '</ul></td></tr>';
+                                        }
+
                                     }
                                     $optsubhtml .= '</table>';
                                 }
