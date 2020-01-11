@@ -948,15 +948,16 @@ class Reports extends CI_controller
                         if ($l == 1) {
                             $optionsubhtml .= $subhtml;
                         }
-                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1" nobr="true"  >
+//                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1" nobr="true"  >
+                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1"    >
                                        <tr  align="center">
                                                  <th colspan="4" >' . $sectionHeading . '</th>
                                             </tr>
                                             <tr  align="center">
-                                                <th  width="8%">Variable</th>
+                                                <th  width="7%">Variable</th>
                                                 <th width="50%">Label</th> 
-                                                <th width="30%">Options</th>
-                                                <th width="12%">Other</th>
+                                                <th width="36%">Options</th>
+                                                <th width="7%">Other</th>
                                             </tr>';
                         foreach ($myresult as $keySectionDetail => $valueSectionDetail) {
                             if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
@@ -980,7 +981,7 @@ class Reports extends CI_controller
                                     $l5sec = '<br>' . $valueSectionDetail->label_l5;
                                 }
                                 $optionsubhtml .= '<tr >
-                                       <td  width="8%"  align="center">' . $valueSectionDetail->variable_name . '</td>
+                                       <td  width="7%"  align="center">' . $valueSectionDetail->variable_name . '</td>
                                        <td width="50%">   
                                             ' . $l1sec . '
                                              ' . $l2sec . ' 
@@ -988,10 +989,10 @@ class Reports extends CI_controller
                                              ' . $l4sec . '
                                              ' . $l5sec . '  
                                         </td>';
-                                $optsubhtml = '<td width="30%">';
+                                $optsubhtml = '<td width="36%">';
 
                                 if (isset($valueSectionDetail->myrow_options) && $valueSectionDetail->myrow_options != '') {
-                                    $optsubhtml .= '<table    cellpadding="2" cellspacing="0" nobr="true" >';
+                                    $optsubhtml .= '<table    cellpadding="2" cellspacing="0"  >';
                                     foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
                                         if ($displaylanguagel1 == 'on') {
                                             $ol1sec = $oval->label_l1;
@@ -1019,10 +1020,10 @@ class Reports extends CI_controller
                                              " . $ol4sec . "
                                              " . $ol5sec . "  </span> </span>
                                              </td>";
-                                        $optsubhtml .= '<td width="10%">' . $oval->option_value . '</td>';
+                                        $optsubhtml .= '<td width="15%">' . $oval->option_value . '</td>';
 
-                                        $optsubhtml .= '<td width="20%">' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
-                                                '<small>Skip: </small>' . $oval->skipQuestion : '') . '</td>';
+                                        $optsubhtml .= '<td width="15%">' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
+                                                '<small>Skip:' . $oval->skipQuestion .' </small>' : '') . '</td>';
 
                                         /*$optsubhtml .= "<br><span><span><small>" . $oval->variable_name . ": </small> " . $ol1sec . "
                                              " . $ol2sec . " 
@@ -1038,9 +1039,9 @@ class Reports extends CI_controller
                                         $optsubhtml .= '</tr>';
 
                                         if (isset($oval->otherOptions) && $oval->otherOptions != '') {
-                                            $optsubhtml .= '<tr><td colspan="4"><ul    >';
+                                            $optsubhtml .= '<tr><td colspan="3"><ul>';
                                             foreach ($oval->otherOptions as $ok => $ov) {
-                                        $optsubhtml .= '<li><small>'.$ov->variable_name.'</small> -- '.$ov->label_l1.' -- '.$ov->option_value.' -- '.$ov->nature.'</li>';
+                                        $optsubhtml .= '<li><small>'.$ov->variable_name.'</small> -- '.$ov->label_l1.' -- '.$ov->option_value.'</li>';
                                             }
                                             $optsubhtml .= '</ul></td></tr>';
                                         }
@@ -1050,8 +1051,9 @@ class Reports extends CI_controller
                                 }
                                 $optsubhtml .= '</td>';
                                 $optionsubhtml .= $optsubhtml;
+                                /*<small>Type: </small>' . $valueSectionDetail->nature;*/
+                                $optionsubhtml .= '<td width="7%"  align="center" > ';
 
-                                $optionsubhtml .= '<td width="12%"  align="center" > <small>Type: </small>' . $valueSectionDetail->nature;
                                 /*$optionsubhtml .= '<td width="12%"  align="center" >';*/
                                 if (isset($valueSectionDetail->skipQuestion) && $valueSectionDetail->skipQuestion != '') {
                                     $optionsubhtml .= '<small>, Skip: </small>' . $valueSectionDetail->skipQuestion;

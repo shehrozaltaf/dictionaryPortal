@@ -180,6 +180,29 @@ class Section extends CI_controller
         $this->load->view('include/footer');
     }
 
+    function add_sectiondetail2()
+    {
+        $MSection = new MSection();
+        $data = array();
+        $idSection = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        $data['result'] = $MSection->getSectionDetailDataByid($idSection);
+        /* $idCRF = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+         if (!isset($idCRF) || $idCRF == '' || $idCRF == '$1' || $idCRF == 0) {
+             $MProjects = new MProjects();
+             $data['projects'] = $MProjects->getAllProjects();
+         } else {
+             $data['projects'] = '';
+         }
+         $data['slug'] = $idCRF;
+
+         $data['crf'] = $MCrf->getCrfById($idCRF); */
+
+        $this->load->view('include/header');
+        $this->load->view('include/sidebar');
+        $this->load->view('add_secdetail', $data);
+        $this->load->view('include/footer');
+    }
+
     function getSectionDetailData()
     {
         $MSection = new MSection();
@@ -223,6 +246,7 @@ class Section extends CI_controller
         $formArray['MinVal'] = (isset($_POST['min_val']) && $_POST['min_val'] != '' ? $_POST['min_val'] : '');
         $formArray['MaxVal'] = (isset($_POST['max_val']) && $_POST['max_val'] != '' ? $_POST['max_val'] : '');
         $formArray['skipQuestion'] = (isset($_POST['skipQuestion']) && $_POST['skipQuestion'] != '' ? $_POST['skipQuestion'] : '');
+        $formArray['idParentQuestion'] = (isset($_POST['parentQuestion']) && $_POST['parentQuestion'] != '' ? $_POST['parentQuestion'] : '');
         $formArray['required'] = (isset($_POST['Required']) && $_POST['Required'] != '' ? $_POST['Required'] : '');
         $formArray['readonly'] = (isset($_POST['ReadOnly']) && $_POST['ReadOnly'] != '' ? $_POST['ReadOnly'] : '');
         $formArray['label_l1'] = (isset($_POST['L1']) && $_POST['L1'] != '' ? $_POST['L1'] : '');
@@ -268,6 +292,63 @@ class Section extends CI_controller
                 $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
                 $subformArray['idParentQuestion'] = $formArray['variable_name'];
                 $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
+            }
+        }
+        if ($InsertData) {
+            $result = 1;
+        } else {
+            $result = 2;
+        }
+        echo $result;
+    }
+    function add_sectiondetail_data_option()
+    {
+        $Custom = new Custom();
+        $formArray = array();
+        $subformArray = array();
+        $formArray['idSection'] = $this->input->post('idSection');
+        $formArray['idModule'] = $this->input->post('idModule');
+        $formArray['id_crf'] = $this->input->post('id_crf');
+        $formArray['idProjects'] = $this->input->post('idProjects');
+
+        if (isset($_POST['options']) && $_POST['options'] != '') {
+            foreach ($_POST['options'] as $keys => $options) {
+                $subformArray['idProjects'] = $formArray['idProjects'];
+                $subformArray['id_crf'] = $formArray['id_crf'];
+                $subformArray['idModule'] = $formArray['idModule'];
+                $subformArray['idSection'] = $formArray['idSection'];
+                $subformArray['nature'] = (isset($options['nature']) && $options['nature'] != '' ? $options['nature'] : '');
+
+                if ($subformArray['nature'] == 'Input') {
+                    $subformArray['nature_var'] = 'E';
+                } elseif ($subformArray['nature'] == 'Title') {
+                    $subformArray['nature_var'] = 'T';
+                } elseif ($subformArray['nature'] == 'Input-Numeric') {
+                    $subformArray['nature_var'] = 'EN';
+                } elseif ($subformArray['nature'] == 'SelectBox') {
+                    $subformArray['nature_var'] = 'S';
+                } elseif ($subformArray['nature'] == 'Radio') {
+                    $subformArray['nature_var'] = 'R';
+                } elseif ($subformArray['nature'] == 'TextArea') {
+                    $subformArray['nature_var'] = 'TA';
+                } else {
+                    $subformArray['nature_var'] = '';
+                }
+
+                $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? $options['option_var'] : '');
+//                $subformArray['option_title'] = (isset($options['option_title']) && $options['option_title'] != '' ? $options['option_title'] : '');
+                $subformArray['label_l1'] = (isset($options['label_l1']) && $options['label_l1'] != '' ? $options['label_l1'] : '');
+                $subformArray['label_l2'] = (isset($options['label_l2']) && $options['label_l2'] != '' ? $options['label_l2'] : '');
+                $subformArray['label_l3'] = (isset($options['label_l3']) && $options['label_l3'] != '' ? $options['label_l3'] : '');
+                $subformArray['label_l4'] = (isset($options['label_l4']) && $options['label_l4'] != '' ? $options['label_l4'] : '');
+                $subformArray['label_l5'] = (isset($options['label_l5']) && $options['label_l5'] != '' ? $options['label_l5'] : '');
+                $subformArray['option_value'] = (isset($options['option_value']) && $options['option_value'] != '' ? $options['option_value'] : '');
+                $subformArray['MinVal'] = (isset($options['option_min_val']) && $options['option_min_val'] != '' ? $options['option_min_val'] : '');
+                $subformArray['MaxVal'] = (isset($options['option_max_val']) && $options['option_max_val'] != '' ? $options['option_max_val'] : '');
+                $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
+                $subformArray['idParentQuestion'] = (isset($options['OptionParentQuestion']) && $options['OptionParentQuestion'] != '' ? $options['OptionParentQuestion'] : '');
+
+                $InsertData=  $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
         }
         if ($InsertData) {
