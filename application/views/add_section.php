@@ -140,6 +140,14 @@
                                                         </select>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label for="section_table">Table in Database</label>
+                                                        <input type="text" id="section_table"
+                                                               placeholder="Table in Database"
+                                                               class="form-control" name="section_table">
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="row">
@@ -204,7 +212,7 @@
                                     </div>
 
                                     <div class="form-actions">
-                                        <button type="submit" class="btn btn-primary mybtn" onclick="addData()"    >
+                                        <button type="submit" class="btn btn-primary mybtn" onclick="addData()">
                                             <i class="la la-check-square-o"></i> Save
                                         </button>
                                         <button type="button" class="btn btn-danger mr-1">
@@ -367,6 +375,7 @@
         $('#idModule_name').css('border', '1px solid #babfc7');
         $('#section_var_name').css('border', '1px solid #babfc7');
         $('#section_status').css('border', '1px solid #babfc7');
+        $('#section_table').css('border', '1px solid #babfc7');
 
         var data = {};
         data['project_id'] = $('#idProjectsHidden').val();
@@ -399,10 +408,19 @@
             flag = 1;
             return false;
         }
+
         data['section_status'] = $('#section_status').val();
         if (data['section_status'] == '' || data['section_status'] == undefined) {
             $('#section_status').css('border', '1px solid red');
             toastMsg('Section Status', 'Invalid Section Status', 'error');
+            flag = 1;
+            return false;
+        }
+
+        data['section_table'] = $('#section_table').val();
+        if (data['section_table'] == '' || data['section_table'] == undefined) {
+            $('#section_table').css('border', '1px solid red');
+            toastMsg('Table Name', 'Invalid Database table name', 'error');
             flag = 1;
             return false;
         }
@@ -438,7 +456,7 @@
 
 
         if (flag == 0) {
-            $('.mybtn').attr('disabled','disabled');
+            $('.mybtn').attr('disabled', 'disabled');
             showloader();
             CallAjax('<?php echo base_url('index.php/Section/addData'); ?>', data, 'POST', function (result) {
                 hideloader();

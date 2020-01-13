@@ -1,6 +1,6 @@
 <!--<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">-->
 <!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 <!--<link rel="stylesheet" type="text/css" href="--><?php //echo base_url() ?><!--assets/css/pages/email-application.css">-->
 <!--<script src="--><?php //echo base_url() ?><!--assets/js/scripts/pages/email-application.js" type="text/javascript"></script>-->
 <div class="app-content content">
@@ -18,7 +18,7 @@
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo base_url() ?>">Home </a></li>
                             <li class="breadcrumb-item"><a
-                                    href="<?php echo base_url('index.php/section') ?>">Section</a></li>
+                                        href="<?php echo base_url('index.php/section') ?>">Section</a></li>
                             <li class="breadcrumb-item active">Add Question/Fields</li>
                         </ol>
                     </div>
@@ -200,27 +200,14 @@
                                                         </ul>
                                                     </div>
                                                 </div>
-                                                <!--<div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <div id="droppable" class="h-75 droppable">
-                                                                <label for="drophere">DROP HERE</label>
-                                                                <textarea disabled readonly
-                                                                          class="form-control text-center "
-                                                                          name="drophere"
-                                                                          id="drophere" rows="5">DROP HERE</textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-actions">
-                                        <button type="submit" class="btn btn-primary mybtn" onclick="addDetailSection()">
-                                            <i class="la la-check-square-o"></i> Save
-                                        </button>
-                                    </div>
+                                    <!-- <div class="form-actions">
+                                         <button type="submit" class="btn btn-primary " onclick="addDetailSection()">
+                                             <i class="la la-check-square-o"></i> Save
+                                         </button>
+                                     </div>-->
                                 </div>
                             </div>
                         </div>
@@ -228,12 +215,13 @@
                 </section>
             </div>
         </div>
-        <div class="sidebar-detached sidebar-right sidebar-sticky">
+        <div class="sidebar-detached sidebar-right sidebar-sticky"
+             style=" height: 1000px;  overflow-y: scroll; overflow-x: hidden">
             <div class="sidebar">
-                <div class="sidebar-content card d-none d-lg-block">
+                <div class="sidebar-content card d-block d-lg-block">
                     <div class="card-body">
                         <div class="category-title pb-1">
-                            <h6>Options</h6>
+                            <h6>Questions</h6>
                         </div>
                         <div class="sidebaroptions">
 
@@ -252,24 +240,34 @@
         <div class="toolPalette float-md-left  ">
             <h3 class="font-small-3 white  d-md-inline-block">Select Type:</h3>
             <ul class="d-md-inline-block font-medium-2  " id="sortable-1">
-                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Label">
-                    <a class="Label" rel="Label" draggable="true">Title</a>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Title">
+                    <a class="Title" rel="Title" draggable="true">Title</a>
                     <span class="primary lighten-1"> | </span>
                 </li>
-                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Input">
+                <li class=" d-md-inline-block " onclick="selectType(this)" data-type="Input">
                     <a class="Input" rel="Input" draggable="true">Input</a>
                     <span class="primary lighten-1"> | </span>
                 </li>
-                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="SelectBox">
-                    <a class="SelectBox" rel="SelectBox" draggable="true">Select Box</a>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Input-Numeric">
+                    <a class="Input-Numeric" rel="Input-Numeric" draggable="true">Input - Numeric</a>
                     <span class="primary lighten-1"> | </span>
                 </li>
+
+
                 <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Radio">
                     <a class="Radio" rel="Radio" draggable="true">Radio</a>
                     <span class="primary lighten-1"> | </span>
                 </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="RadioOption">
+                    <a class="RadioOption" rel="RadioOption" draggable="true">Radio Option</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
                 <li class=" d-md-inline-block" onclick="selectType(this)" data-type="CheckBox">
                     <a class="CheckBox" rel="CheckBox" draggable="true">Check Box</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="SelectBox">
+                    <a class="SelectBox" rel="SelectBox" draggable="true">Select Box</a>
                     <span class="primary lighten-1"> | </span>
                 </li>
                 <li class=" d-md-inline-block" onclick="selectType(this)" data-type="TextArea">
@@ -279,7 +277,15 @@
         </div>
     </div>
 </footer>
+<style>
+    .mainli {
+        margin: 7px 0px;
+    }
 
+    li.formlists {
+        border-top: 1px solid grey;
+    }
+</style>
 
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
@@ -292,12 +298,135 @@
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/repeater/jquery.repeater.min.js"
         type="text/javascript"></script>
 
+<!-- Modal -->
+<div class="modal fade text-left" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel8">Edit Question</h4>
+            </div>
+            <div class="modal-body myeditbody">
 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger editBtn" onclick="editData()">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
+
+    $(document).ready(function () {
+        getData();
+    });
+
+
+    function getData() {
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        if (data['idSection'] == '' || data['idSection'] == undefined) {
+            $('#section_title').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid ID Section', 'error');
+        } else {
+            showloader();
+            CallAjax('<?php echo base_url('index.php/Section/getSectionDetail') ?>', data, 'POST', function (res) {
+                hideloader();
+                var html = '';
+                if (res != '' && JSON.parse(res).length > 0) {
+                    var response = JSON.parse(res);
+                    var classl2 = $('#l2').val();
+                    var classl3 = $('#l3').val();
+                    var classl4 = $('#l4').val();
+                    var classl5 = $('#l5').val();
+
+                    try {
+                        $.each(response, function (i, v) {
+                            var subhtml = '';
+                            html += '<li class="list-group-item bg-blue-grey bg-lighten-4 black formlists mainli">' +
+                                '<span class="text-justify font-medium-2 variableval">' + v.variable_name + ': </span>' +
+                                '<div class="float-right">' +
+                                '<div class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</div>' +
+                                '<ul class="list-inline text-right">' +
+                                '<li class=""  onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
+                                '<li class="" onclick="deleterow(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-trash"></span></li>' +
+                                '</ul>' +
+                                '</div>' +
+                                '<span class=" "> ' + v.label_l1 + '</span><br>';
+
+                            if (v.label_l2 != '' && v.label_l2 != undefined) {
+                                html += '<span class=" ' + classl2 + ' " > ' + v.label_l2 + '</span> <br>';
+                            } else {
+                                html += '  <br>';
+                            }
+                            if (v.label_l3 != '' && v.label_l3 != undefined) {
+                                html += '<span class="' + classl3 + ' "> ' + v.label_l3 + '</span> <br>';
+                            }
+                            if (v.label_l4 != '' && v.label_l4 != undefined) {
+                                html += '<span class="' + classl4 + ' "> ' + v.label_l4 + '</span> <br>';
+                            }
+                            if (v.label_l5 != '' && v.label_l5 != undefined) {
+                                html += '<span class="' + classl5 + ' "> ' + v.label_l5 + '</span> <br>';
+                            }
+                            if (v.skipQuestion != '' && v.skipQuestion != undefined) {
+                                html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Skip Question: ' + v.skipQuestion + '</a></div> ';
+                            }
+                            if (v.required != '' && v.required != undefined) {
+                                html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Required</a></div> ';
+                            }
+                            if (v.readonly != '' && v.readonly != undefined) {
+                                html += '<div class="badge badge-secondary"><a href="javascript:void(0);">ReadOnly</a></div> ';
+                            }
+                            if (v.myrow_options != '' && v.myrow_options != undefined) {
+                                subhtml += '<ul>';
+                                $.each(v.myrow_options, function (ii, vv) {
+                                    subhtml += '<li class="formlists">' +
+                                        '<span class="text-justify font-medium-2">' + vv.variable_name + ': </span>' +
+                                        '<div class="float-right">' +
+                                        '<div class="badge badge-primary float-right font-small-3"> ' + vv.nature + '</div>' +
+                                        '<ul class="list-inline text-right">' +
+                                        '<li onclick="getEdit(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-edit"></span></li>' +
+                                        '<li onclick="deleterow(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-trash"></span></li>' +
+                                        '</ul>' +
+                                        '</div>' +
+                                        '<span class=" "> ' + vv.label_l1 + '</span><br>';
+                                    if (vv.label_l2 != '' && vv.label_l2 != undefined) {
+                                        subhtml += '<span class=" ' + classl2 + ' "> ' + vv.label_l2 + '</span> <br>';
+                                    } else {
+                                        subhtml += ' <br>';
+                                    }
+                                    if (vv.label_l3 != '' && vv.label_l3 != undefined) {
+                                        subhtml += '<span class=" ' + classl3 + ' "> ' + vv.label_l3 + '</span> <br>';
+                                    }
+                                    if (vv.label_l4 != '' && vv.label_l4 != undefined) {
+                                        subhtml += '<span class="  ' + classl4 + '"> ' + vv.label_l4 + '</span> <br>';
+                                    }
+                                    if (vv.label_l5 != '' && vv.label_l5 != undefined) {
+                                        subhtml += '<span class="  ' + classl5 + '"> ' + vv.label_l5 + '</span> <br>';
+                                    }
+                                    if (vv.skipQuestion != '' && vv.skipQuestion != undefined) {
+                                        subhtml += '<div class="badge badge-secondary"><a href="javascript:void(0);">Skip Question: ' + vv.skipQuestion + '</a></div> ';
+                                    }
+                                    subhtml += '</li>';
+                                });
+                                subhtml += '</ul>';
+                                html += subhtml;
+                            }
+                            html += '</li>';
+                        })
+                    } catch (e) {
+                    }
+                }
+                $('#sortable').html('').html(html);
+            });
+        }
+    }
+
     function selectType(obj) {
         var type = $(obj).attr('data-type');
         var module_variable = $('#module_variable').val();
         var section_variable = $('#section_variable').val();
+
         var lastvariable_name = $('#lastvariable_name').val();
         lastvariable_name = parseInt(lastvariable_name) + 1;
         $('#lastvariable_name').val(lastvariable_name);
@@ -306,6 +435,7 @@
             varname = module_variable + section_variable + 0 + lastvariable_name;
         }
         var html = '';
+        var otherhtml = '';
         var htmloptions = '';
         var totallanguages = $('#totallanguages').val();
         var l1 = $('#l1').val();
@@ -314,49 +444,43 @@
         var l4 = $('#l4').val();
         var l5 = $('#l5').val();
 
+
         html += '<div class="row form-row">';
-        html += '<div class="col-md-12">' +
-            '<div class="form-group"><label for="sec_var">Variable</label>' +
-            '<input type="text" id="sec_var" name="sec_var" class="form-control vaiablevalue  input-sm"' +
-            '  placeholder="Variable" value="' + varname + '">' +
+
+
+        htmloptions += '<hr>  <div class="col-md-12">' +
+            '<div class="mb-2">' +
+            '<div class="form-check form-check-inline"> ' +
+            '<input class="form-check-input" type="checkbox" id="Required" name="otheroptions" value="Required"> ' +
+            '<label class="form-check-label" for="Required">Required</label> ' +
+            '</div>' +
+            '<div class="form-check form-check-inline"> ' +
+            '<input class="form-check-input" type="checkbox" id="ReadOnly" name="otheroptions" value="ReadOnly"> ' +
+            '<label class="form-check-label" for="ReadOnly">ReadOnly</label> ' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+
+            '<div class="col-md-12 col">' +
+            '<div class="form-group"><label for="parentQuestion">Parent Question</label>' +
+            '<input type="text" id="parentQuestion" name="parentQuestion" class="form-control parentQuestion  input-sm"' +
+            '  placeholder="Parent Question" >' +
+            '</div>' +
+            '</div>' +
+
+            '<div class="col-md-12">' +
+            '<div class="form-group"><label for="skipQuestion">Skip Question</label>' +
+            '<input type="text" id="skipQuestion" name="skipQuestion" class="form-control skipQuestion  input-sm"' +
+            '  placeholder="Skip Question" >' +
             '</div>' +
             '</div>';
 
-        if (type == 'Input' || type == 'TextArea') {
-            for (var i = 1; i <= totallanguages; i++) {
-                html += '<div class="col-md-12">' +
-                    '<div class="form-group ">' +
-                    '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
-                    '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
-                    'data-key="' + type + '" required placeholder="Title">' +
-                    '</div>' +
-                    '</div>';
-            }
 
-        } else if (type == 'Label') {
-            for (var i = 1; i <= totallanguages; i++) {
-                html += '<div class="col-md-12">' +
-                    '<div class="form-group ">' +
-                    '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
-                    '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
-                    'data-key="Label" required placeholder="Title">' +
-                    '</div>' +
-                    '</div>';
-            }
-        } else if (type == 'SelectBox' || type == 'Radio' || type == 'CheckBox') {
-            for (var i = 1; i <= totallanguages; i++) {
-                html += '<div class="col-md-12">' +
-                    '<div class="form-group ">' +
-                    '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
-                    '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
-                    'data-key="' + type + '" required placeholder="Title">' +
-                    '</div>' +
-                    '</div>';
-            }
-            html += '<hr>' +
-                '<div class="form-group col-12 mb-2 file-repeater">' +
+        if (type == 'RadioOption') {
+
+            html += '<div class="form-group col-12 mb-2 file-repeater"><hr>' +
                 '<div data-repeater-list="repeater-group">' +
-                '<label for="options_list">Options</label>' +
+                '<label for="options_list">Responses</label>' +
                 '<button type="button" data-repeater-create class="btn primary"  >' +
                 '<i class="ft-plus"></i> Add Options</button>' +
 
@@ -368,75 +492,725 @@
                 '</span>' +
                 '<div class="form-group">' +
                 '<input type="text" id="option_var" name="option_var" class="form-control  input-sm option_var"' +
-                'data-key="OptionVar"  placeholder="Option Variable Name" value="' + varname + 'A">' +
+                'data-key="OptionVar"  placeholder="Option Variable Name" >' +
                 '</div>' +
                 '</div>';
+
+            html += '<div class="col-md-12 col">' +
+                '<div class="form-group">' +
+                '<select id="option_nature" name="option_nature" class="form-control  input-sm option_nature" > ' +
+                '<option value="0" disabled="" readonly="readonly" selected="selected">Select Type</option>' +
+                '<option value="Title">Title</option>' +
+                '<option value="Input">Input</option>' +
+                '<option value="Input-Numeric">Input-Numeric</option>' +
+                '<option value="SelectBox">SelectBox</option>' +
+                '<option value="Radio">Radio</option>' +
+                '<option value="CheckBox">CheckBox</option>' +
+                '<option value="TextArea">TextArea</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>';
+
+
             for (var z = 1; z <= totallanguages; z++) {
                 html += '<div class="col-md-12 col">' +
                     '<div class="form-group">' +
                     '<input type="text" id="option_title" name="option_title" class="form-control  input-sm option_title"' +
-                    'data-key="OptionTitle"  placeholder="Option Title L' + z + ' (' + $('#l' + z).val() + ')" >' +
+                    'data-key="OptionTitle" data-langtype="label_l' + z + '" placeholder="Option Title L' + z + ' (' + $('#l' + z).val() + ')" >' +
                     '</div>' +
                     '</div>';
             }
+
+
             html += '<div class="col-md-12 col">' +
                 '<div class="form-group"> ' +
                 '<input type="text" id="option_value" name="option_value" class="form-control  input-sm option_value"' +
                 'data-key="OptionValue"  placeholder="Option Value" >' +
                 '</div>' +
                 '</div>' +
+                '<div class="col-md-12 col">' +
+                '<div class="form-group"> ' +
+                '<input type="text" id="OptionParentQuestion" name="OptionParentQuestion" class="form-control OptionParentQuestion  input-sm"' +
+                '  placeholder="Parent Question" >' +
+                '</div>' +
+                '</div>' +
+
+                '<div class="col-md-12 col">' +
+                '<div class="form-group"> ' +
+                '<input type="text" id="OptionskipQuestion" name="OptionskipQuestion" class="form-control OptionskipQuestion  input-sm"' +
+                '  placeholder="Skip Question" >' +
+                '</div>' +
+                '</div>' +
                 '</div>' +
                 '</div>' +
                 '</div>' +
                 '<hr>';
+            html += '</div><hr>' +
+                '<div class="form-actions"> ' +
+                '<button type="submit" class="btn btn-success mybtn" onclick="addOptionType(this)"> ' +
+                '<i class="la la-check"></i> Save ' +
+                '</button> ' +
+                '</div><hr> <div class="p-5"></div>';
+
+        } else {
+
+            html += '<div class="col-md-12">' +
+                '<input type="hidden" id="question_type" name="question_type" value="' + type + '">' +
+                '<div class="form-group"><label for="sec_var">Variable</label>' +
+                '<input type="text" id="sec_var" name="sec_var" class="form-control vaiablevalue  input-sm"' +
+                '  placeholder="Variable" value="' + varname + '">' +
+                '</div>' +
+                '</div>';
+
+            if (type == 'Input' || type == 'TextArea') {
+                for (var i = 1; i <= totallanguages; i++) {
+                    html += '<div class="col-md-12">' +
+                        '<div class="form-group ">' +
+                        '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
+                        '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
+                        'data-key="' + type + '" required placeholder="Title">' +
+                        '</div>' +
+                        '</div>';
+                }
+                html += htmloptions;
+            }
+            if (type == 'Input-Numeric') {
+                for (var i = 1; i <= totallanguages; i++) {
+                    html += '<div class="col-md-12">' +
+                        '<div class="form-group ">' +
+                        '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
+                        '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
+                        'data-key="' + type + '" required placeholder="Title">' +
+                        '</div>' +
+                        '</div>';
+                }
+
+                html += '<hr><div class="col-md-6">' +
+                    '<div class="form-group"><label for="min_val">Min Length</label>' +
+                    '<input type="text" id="min_val" name="min_val" class="form-control  input-sm min_val"' +
+                    'data-key="Input"  placeholder="Min" >' +
+                    '</div>' +
+                    '</div> ' +
+                    '<div class="col-md-6">' +
+                    '<div class="form-group"><label for="max_val">Max Length</label>' +
+                    '<input type="text" id="max_val" name="max_val" class="form-control   input-sm max_val" ' +
+                    'data-key="Input"  placeholder="Max" >' +
+                    '</div>' +
+                    '</div>';
+                html += htmloptions;
+
+            } else if (type == 'Title') {
+                for (var i = 1; i <= totallanguages; i++) {
+                    html += '<div class="col-md-12">' +
+                        '<div class="form-group ">' +
+                        '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
+                        '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
+                        'data-key="Title" required placeholder="Title">' +
+                        '</div>' +
+                        '</div>';
+                }
+            } else if (type == 'SelectBox' || type == 'Radio' || type == 'CheckBox') {
+                for (var i = 1; i <= totallanguages; i++) {
+                    html += '<div class="col-md-12">' +
+                        '<div class="form-group ">' +
+                        '<label for="sec_input' + i + '">' + type + ' Title L' + i + ' (' + $('#l' + i).val() + ')</label>' +
+                        '<input type="text" id="sec_input' + i + '" name="sec_input" class="form-control sec_input input-sm  naturetype"' +
+                        'data-key="' + type + '" required placeholder="Title">' +
+                        '</div>' +
+                        '</div>';
+                }
+                html += htmloptions;
+
+
+                html += '<div class="form-group col-12 mb-2 file-repeater"><hr>' +
+                    '<div data-repeater-list="repeater-group">' +
+                    '<label for="options_list">Responses</label>' +
+                    '<button type="button" data-repeater-create class="btn primary"  >' +
+                    '<i class="ft-plus"></i> Add Options</button>' +
+
+                    '<div class="input-group mb-1 col-md-12 border border-light " id="options_list" data-repeater-item>' +
+
+                    '<div class="col-md-12 col">' +
+                    '<span class="input-group-append float-right" id="button-addon2">' +
+                    '<i class="ft-x" data-repeater-delete  ></i>' +
+                    '</span>' +
+                    '<div class="form-group">' +
+                    '<input type="text" id="option_var" name="option_var" class="form-control  input-sm option_var"' +
+                    'data-key="OptionVar"  placeholder="Option Variable Name" >' +
+                    '</div>' +
+                    '</div>';
+
+                html += '<div class="col-md-12 col">' +
+                    '<div class="form-group">' +
+                    '<select id="option_nature" name="option_nature" class="form-control  input-sm option_nature" > ' +
+                    '<option value="0" disabled="" readonly="readonly" selected="selected">Select Type</option>' +
+                    '<option value="Title">Title</option>' +
+                    '<option value="Input">Input</option>' +
+                    '<option value="Input-Numeric">Input-Numeric</option>' +
+                    '<option value="SelectBox">SelectBox</option>' +
+                    '<option value="Radio">Radio</option>' +
+                    '<option value="CheckBox">CheckBox</option>' +
+                    '<option value="TextArea">TextArea</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '</div>';
+
+
+                for (var z = 1; z <= totallanguages; z++) {
+                    html += '<div class="col-md-12 col">' +
+                        '<div class="form-group">' +
+                        '<input type="text" id="option_title" name="option_title" class="form-control  input-sm option_title"' +
+                        'data-key="OptionTitle" data-langtype="label_l' + z + '" placeholder="Option Title L' + z + ' (' + $('#l' + z).val() + ')" >' +
+                        '</div>' +
+                        '</div>';
+                }
+                html += '<div class="col-md-12 col">' +
+                    '<div class="form-group"> ' +
+                    '<input type="text" id="option_value" name="option_value" class="form-control  input-sm option_value"' +
+                    'data-key="OptionValue"  placeholder="Option Value" >' +
+                    '</div>' +
+                    '</div>' +
+
+
+                    '<div class="col-md-12 col">' +
+                    '<div class="form-group"> ' +
+                    '<input type="text" id="OptionskipQuestion" name="OptionskipQuestion" class="form-control OptionskipQuestion  input-sm"' +
+                    '  placeholder="Skip Question" >' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>' +
+                    '<hr>';
+            }
+
+            html += '</div><hr>' +
+                '<div class="form-actions"> ' +
+                '<button type="submit" class="btn btn-success mybtn" onclick="addType(this)"> ' +
+                '<i class="la la-check"></i> Save ' +
+                '</button> ' +
+                /* '<button type="button" class="btn btn-danger mr-1"> ' +
+                 '<i class="ft-x"></i> Cancel ' +
+                 '</button> ' +*/
+                '</div><hr> <div class="p-5"></div>';
+
         }
 
-        if (type != 'Label') {
+
+        /* if (type != 'Label') {
             html += '<hr><div class="col-md-6">' +
-                '<div class="form-group"><label for="min_val">Min Length</label>' +
-                '<input type="text" id="min_val" name="min_val" class="form-control  input-sm min_val"' +
-                'data-key="Input"  placeholder="Min" >' +
-                '</div>' +
-                '</div> ' +
-                '<div class="col-md-6">' +
-                '<div class="form-group"><label for="max_val">Max Length</label>' +
-                '<input type="text" id="max_val" name="max_val" class="form-control   input-sm max_val" ' +
-                'data-key="Input"  placeholder="Max" >' +
-                '</div>' +
-                '</div> ' +
-                '<div class="col-md-12">' +
-                '<div class="mb-2">' +
-                '<div class="form-check form-check-inline"> ' +
-                '<input class="form-check-input" type="checkbox" id="Required" name="otheroptions" value="Required"> ' +
-                '<label class="form-check-label" for="Required">Required</label> ' +
-                '</div>' +
-                '<div class="form-check form-check-inline"> ' +
-                '<input class="form-check-input" type="checkbox" id="ReadOnly" name="otheroptions" value="ReadOnly"> ' +
-                '<label class="form-check-label" for="ReadOnly">ReadOnly</label> ' +
-                '</div>' +
-                '</div>' +
-                '</div>';
-            html += '<div class="col-md-12">' +
-                '<div class="form-group"><label for="skipQuestion">Skip Question</label>' +
-                '<input type="text" id="skipQuestion" name="skipQuestion" class="form-control skipQuestion  input-sm"' +
-                '  placeholder="Skip Question" >' +
-                '</div>' +
-                '</div>';
-        }
-        html += '</div><hr>' +
-            '<div class="form-actions"> ' +
-            '<button type="submit" class="btn btn-success" onclick="addType(this)"> ' +
-            '<i class="la la-check"></i> Save ' +
-            '</button> ' +
-            '<button type="button" class="btn btn-danger mr-1"> ' +
-            '<i class="ft-x"></i> Cancel ' +
-            '</button> ' +
-            '</div><hr>';
+                 '<div class="form-group"><label for="min_val">Min Length</label>' +
+                 '<input type="text" id="min_val" name="min_val" class="form-control  input-sm min_val"' +
+                 'data-key="Input"  placeholder="Min" >' +
+                 '</div>' +
+                 '</div> ' +
+                 '<div class="col-md-6">' +
+                 '<div class="form-group"><label for="max_val">Max Length</label>' +
+                 '<input type="text" id="max_val" name="max_val" class="form-control   input-sm max_val" ' +
+                 'data-key="Input"  placeholder="Max" >' +
+                 '</div>' +
+                 '</div> ' +
+                 '<div class="col-md-12">' +
+                 '<div class="mb-2">' +
+                 '<div class="form-check form-check-inline"> ' +
+                 '<input class="form-check-input" type="checkbox" id="Required" name="otheroptions" value="Required"> ' +
+                 '<label class="form-check-label" for="Required">Required</label> ' +
+                 '</div>' +
+                 '<div class="form-check form-check-inline"> ' +
+                 '<input class="form-check-input" type="checkbox" id="ReadOnly" name="otheroptions" value="ReadOnly"> ' +
+                 '<label class="form-check-label" for="ReadOnly">ReadOnly</label> ' +
+                 '</div>' +
+                 '</div>' +
+                 '</div>';
+             html += '<div class="col-md-12">' +
+                 '<div class="form-group"><label for="skipQuestion">Skip Question</label>' +
+                 '<input type="text" id="skipQuestion" name="skipQuestion" class="form-control skipQuestion  input-sm"' +
+                 '  placeholder="Skip Question" >' +
+                 '</div>' +
+                 '</div>';
+        }*/
+
         $('.sidebaroptions').html(html);
-        addrow()
+        addrow();
+    }
+
+    function getEdit(obj) {
+        var data = {};
+        data['idSectionDetail'] = $(obj).attr('data-idSectionDetail');
+        if (data['idSectionDetail'] == '' || data['idSectionDetail'] == undefined) {
+            toastMsg('Error', 'Invalid ID', 'error');
+        } else {
+            showloader();
+            CallAjax('<?php echo base_url('index.php/Section/getSectionDetailById') ?>', data, 'POST', function (res) {
+                hideloader();
+                if (res != '' && JSON.parse(res).length > 0) {
+                    var response = JSON.parse(res);
+                    var html = '';
+                    try {
+                        html += '<div class="form-group">' +
+                            '<input type="hidden" id="edit_idSectionDetail" name="edit_idSectionDetail" value="' + response[0].idSectionDetail + '">' +
+                            '<label for="edit_variable">Variable:</label>' +
+                            '<input type="text" class="form-control" id="edit_variable" name="edit_variable"' +
+                            ' value="' + response[0].variable_name + '" readonly disabled>' +
+                            '</div>';
+
+                        html += '<div class="form-group">' +
+                            '<label for="edit_nature">Type:</label>' +
+                            '<select id="edit_nature" name="edit_nature" class="form-control"> ' +
+                            '<option value="0" disabled="" readonly="readonly">Select Type</option>' +
+                            '<option value="Title" ' + (response[0].nature == 'Title' ? 'selected' : '') + '>Title</option>' +
+                            '<option value="Input" ' + (response[0].nature == 'Input' ? 'selected' : '') + '>Input</option>' +
+                            '<option value="Input-Numeric" ' + (response[0].nature == 'Input-Numeric' ? 'selected' : '') + '>Input-Numeric</option>' +
+                            '<option value="SelectBox" ' + (response[0].nature == 'SelectBox' ? 'selected' : '') + '>SelectBox</option>' +
+                            '<option value="Radio" ' + (response[0].nature == 'Radio' ? 'selected' : '') + '>Radio</option>' +
+                            '<option value="CheckBox" ' + (response[0].nature == 'CheckBox' ? 'selected' : '') + '>CheckBox</option>' +
+                            '<option value="TextArea" ' + (response[0].nature == 'TextArea' ? 'selected' : '') + '>TextArea</option>' +
+                            '</select>' +
+                            '</div>';
+
+                        var l1 = $('#l1').val();
+                        var l2 = $('#l2').val();
+                        var l3 = $('#l3').val();
+                        var l4 = $('#l4').val();
+                        var l5 = $('#l5').val();
+                        if (l1 != '' && l1 != undefined) {
+                            html += '<div class="form-group">' +
+                                '<label for="edit_label_l1">Title ' + l1 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_label_l1" name="edit_label_l1"' +
+                                ' value="' + response[0].label_l1 + '">' +
+                                '</div>';
+                        }
+                        if (l2 != '' && l2 != undefined) {
+                            html += '<div class="form-group">' +
+                                '<label for="edit_label_l2">Title ' + l2 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_label_l2" name="edit_label_l2"' +
+                                ' value="' + response[0].label_l2 + '">' +
+                                '</div>';
+                        }
+                        if (l3 != '' && l3 != undefined) {
+                            html += '<div class="form-group">' +
+                                '<label for="edit_label_l3">Title ' + l3 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_label_l3" name="edit_label_l3"' +
+                                ' value="' + response[0].label_l3 + '">' +
+                                '</div>';
+                        }
+                        if (l4 != '' && l4 != undefined) {
+                            html += '<div class="form-group">' +
+                                '<label for="edit_label_l4">Title ' + l4 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_label_l4" name="edit_label_l4"' +
+                                ' value="' + response[0].label_l4 + '">' +
+                                '</div>';
+                        }
+                        if (l5 != '' && l5 != undefined) {
+                            html += '<div class="form-group">' +
+                                '<label for="edit_label_l5">Title ' + l5 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_label_l5" name="edit_label_l5"' +
+                                ' value="' + response[0].label_l5 + '">' +
+                                '</div>';
+                        }
+
+
+                        html += '<div class="form-group">' +
+                            '<label for="edit_idParentQuestion">Parent Question (variable only):</label>' +
+                            '<input type="text" class="form-control" id="edit_idParentQuestion" name="edit_idParentQuestion"' +
+                            ' value="' + (response[0].idParentQuestion != "" && response[0].idParentQuestion != 'undefined' && response[0].idParentQuestion != null ? response[0].idParentQuestion : "") + '">' +
+                            '</div>';
+
+                        html += '<div class="col-md-12">' +
+                            '<div class="mb-2">' +
+                            '<div class="form-check form-check-inline"> ' +
+                            '<input class="form-check-input" type="checkbox"  ' + (response[0].required == "Required" ? " checked " : "") +
+                            ' id="edit_Required" name="edit_otheroptions" value="Required"> ' +
+                            '<label class="form-check-label" for="edit_Required">Required</label> ' +
+                            '</div>' +
+                            '<div class="form-check form-check-inline"> ' +
+                            '<input class="form-check-input" type="checkbox" id="edit_ReadOnly"' +
+                            ' name="edit_otheroptions" value="ReadOnly" ' + (response[0].readonly == "ReadOnly" ? " checked " : "") + '> ' +
+                            '<label class="form-check-label" for="edit_ReadOnly">ReadOnly</label> ' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+
+                        html += '<div class="form-group">' +
+                            '<label for="edit_skipQuestion">Skip Question:</label>' +
+                            '<input type="text" class="form-control" id="edit_skipQuestion" name="edit_skipQuestion"' +
+                            ' value="' + response[0].skipQuestion + '">' +
+                            '</div>';
+
+                        html += '<div class="row"><div class="col-md-6">' +
+                            '<div class="form-group">' +
+                            '<label for="edit_MinVal">Min:</label>' +
+                            '<input type="text" class="form-control" id="edit_MinVal" name="edit_MinVal"' +
+                            ' value="' + response[0].MinVal + '">' +
+                            '</div>' +
+                            '</div> ' +
+                            '<div class="col-md-6">' +
+                            '<div class="form-group">' +
+                            '<label for="edit_MaxVal">Max:</label>' +
+                            '<input type="text" class="form-control" id="edit_MaxVal" name="edit_MaxVal"' +
+                            ' value="' + response[0].MaxVal + '">' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+
+
+                    } catch (e) {
+                    }
+                    $('.myeditbody').html('').html(html);
+                    $('#edit_modal').modal('show');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+
+    }
+
+    function editData() {
+        var flag = 0;
+        var data = {};
+        data['edit_idSectionDetail'] = $('#edit_idSectionDetail').val();
+        data['edit_nature'] = $('#edit_nature').val();
+        if (data['edit_nature'] == '' || data['edit_nature'] == undefined) {
+            $('#edit_nature').css('border', '1px solid red');
+            toastMsg('Type', 'Invalid Type', 'error');
+            flag = 1;
+        } else {
+            $('#edit_nature').css('border', '1px solid #babfc7');
+        }
+
+        data['edit_label_l1'] = $('#edit_label_l1').val();
+        if (data['edit_label_l1'] == '' || data['edit_label_l1'] == undefined) {
+            $('#edit_label_l1').css('border', '1px solid red');
+            toastMsg('Title', 'Invalid Title Language 1', 'error');
+            flag = 1;
+        } else {
+            $('#edit_label_l1').css('border', '1px solid #babfc7');
+        }
+        data['edit_label_l2'] = $('#edit_label_l2').val();
+        data['edit_label_l3'] = $('#edit_label_l3').val();
+        data['edit_label_l4'] = $('#edit_label_l4').val();
+        data['edit_label_l5'] = $('#edit_label_l5').val();
+        data['edit_idParentQuestion'] = $('#edit_idParentQuestion').val();
+        $('input[name=edit_otheroptions]:checked').each(function (i) {
+            data['edit_' + $(this).val()] = $(this).val();
+        });
+        data['edit_skipQuestion'] = $('#edit_skipQuestion').val();
+        data['edit_MinVal'] = $('#edit_MinVal').val();
+        data['edit_MaxVal'] = $('#edit_MaxVal').val();
+        if (flag == 0) {
+            console.log(data);
+            showloader();
+            $('.editBtn').attr('disabled', 'disabled');
+            CallAjax('<?php echo base_url('index.php/Section/editSectionDetail') ?>', data, 'POST', function (result) {
+                $('.editBtn').removeAttr('disabled', 'disabled');
+                hideloader();
+                if (result == 1) {
+                    $('#edit_modal').modal('hide');
+                    toastMsg('Success', 'Successfully Edited', 'success');
+                    getData();
+                } else if (result === 3) {
+                    toastMsg('Error', 'Invalid ID', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        } else {
+            toastMsg('Error', 'Something went wrong', 'error');
+        }
+    }
+
+    function deleterow(obj) {
+        var data = {};
+        data['idSectionDetail'] = $(obj).attr('data-idSectionDetail');
+        if (data['idSectionDetail'] == '' || data['idSectionDetail'] == undefined) {
+            toastMsg('Error', 'Invalid ID', 'error');
+        } else {
+            showloader();
+            CallAjax('<?php echo base_url('index.php/Section/deleteSectionDetail') ?>', data, 'POST', function (result) {
+                hideloader();
+                if (result == 1) {
+                    toastMsg('Success', 'Successfully Deleted', 'success');
+                    getData();
+                } else if (result === 3) {
+                    toastMsg('Error', 'Invalid ID', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
+
+    function addOptionType(obj) {
+        var flag = 0;
+        var inp = {};
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        if (data['idSection'] == '' || data['idSection'] == undefined) {
+            $('#section_title').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid ID Section', 'error');
+            flag = 1;
+        } else {
+            $('#section_title').css('border', '1px solid #babfc7');
+        }
+
+        data['idModule'] = $('#idModule').val();
+        if (data['idModule'] == '' || data['idModule'] == undefined) {
+            $('#module_name_l1').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid ID Module', 'error');
+            flag = 1;
+        } else {
+            $('#module_name_l1').css('border', '1px solid #babfc7');
+        }
+
+        data['id_crf'] = $('#id_crf').val();
+        if (data['id_crf'] == '' || data['id_crf'] == undefined) {
+            $('#crf_name').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid ID CRF', 'error');
+            flag = 1;
+        } else {
+            $('#crf_name').css('border', '1px solid #babfc7');
+        }
+
+        data['idProjects'] = $('#idProjects').val();
+
+        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+            $('#project_name').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+        } else {
+            $('#project_name').css('border', '1px solid #babfc7');
+        }
+
+
+        var options_list = [];
+        $("div[id=options_list]").each(function () {
+            var options = {};
+            if ($(this).find('.option_var').val() == '' || $(this).find('.option_var').val() == undefined) {
+                $(this).find('.option_var').css('border', '1px solid red');
+                toastMsg('Option Variable', 'Invalid Option Variable', 'error');
+                flag = 1;
+                return false;
+            } else {
+                // options.push($(this).find('.option_var').val());
+                options['option_var'] = $(this).find('.option_var').val();
+            }
+
+            if ($(this).find('.option_nature').val() == '' || $(this).find('.option_nature').val() == undefined) {
+                $(this).find('.option_nature').css('border', '1px solid red');
+                toastMsg('Option Nature', 'Invalid Option Nature', 'error');
+                flag = 1;
+                return false;
+            } else {
+                options['nature'] = $(this).find('.option_nature').val();
+            }
+
+            $($(this).find('.option_title')).each(function (y, z) {
+                if ($(this).val() == '' || $(this).val() == undefined) {
+                    $(this).css('border', '1px solid red');
+                    toastMsg('Option Title', 'Invalid Option Title', 'error');
+                    flag = 1;
+                    return false;
+                } else {
+                    // options.push($(this).val());
+                    options[$(this).attr('data-langtype')] = $(this).val();
+                }
+            });
+
+            if ($(this).find('.option_value').val() == '' || $(this).find('.option_value').val() == undefined) {
+                $(this).find('.option_value').css('border', '1px solid red');
+                toastMsg('Option Value', 'Invalid Option Value', 'error');
+                flag = 1;
+                return false;
+            } else {
+                // options.push($(this).find('.option_value').val());
+                options['option_value'] = $(this).find('.option_value').val();
+            }
+
+
+            options['option_min_val'] = $(this).find('.Optionmin_val').val();
+            options['option_max_val'] = $(this).find('.Optionmax_val').val();
+            options['OptionParentQuestion'] = $(this).find('.OptionParentQuestion').val();
+            options['option_skipQuestion'] = $(this).find('.OptionskipQuestion').val();
+
+            options_list.push(options);
+            data['options'] = options_list;
+        });
+        $('input[name=otheroptions]:checked').each(function (i) {
+            data[$(this).val()] = $(this).val();
+        });
+        if (flag == 0) {
+            $('.mybtn').attr('disabled', 'disabled');
+            showloader();
+            CallAjax('<?php echo base_url('index.php/Section/add_sectiondetail_data_option') ?>', data, 'POST', function (result) {
+                $('.mybtn').removeAttr('disabled', 'disabled');
+                hideloader();
+                if (result == 1) {
+                    toastMsg('Success', 'Successfully inserted', 'success');
+                    $('.sidebaroptions').html('');
+                    getData();
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
     }
 
     function addType(obj) {
+        var flag = 0;
+        var inp = {};
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        if (data['idSection'] == '' || data['idSection'] == undefined) {
+            $('#section_title').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid ID Section', 'error');
+            flag = 1;
+        } else {
+            $('#section_title').css('border', '1px solid #babfc7');
+        }
+
+        data['idModule'] = $('#idModule').val();
+        if (data['idModule'] == '' || data['idModule'] == undefined) {
+            $('#module_name_l1').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid ID Module', 'error');
+            flag = 1;
+        } else {
+            $('#module_name_l1').css('border', '1px solid #babfc7');
+        }
+
+        data['id_crf'] = $('#id_crf').val();
+        if (data['id_crf'] == '' || data['id_crf'] == undefined) {
+            $('#crf_name').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid ID CRF', 'error');
+            flag = 1;
+        } else {
+            $('#crf_name').css('border', '1px solid #babfc7');
+        }
+
+        data['idProjects'] = $('#idProjects').val();
+
+        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+            $('#project_name').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+        } else {
+            $('#project_name').css('border', '1px solid #babfc7');
+        }
+        data['question_type'] = $('#question_type').val();
+        $(".form-row").each(function (ii, vv) {
+            data['variable'] = $(this).find('.vaiablevalue').val();
+            if (data['variable'] == '' || data['variable'] == undefined) {
+                $(this).find('.vaiablevalue').css('border', '1px solid red');
+                toastMsg('Variable Name', 'Invalid Variable Name', 'error');
+                flag = 1;
+                return false;
+            } else {
+                $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
+            }
+
+            data['nature'] = $(this).find('.naturetype').attr('data-key');
+            if (data['nature'] == '' || data['nature'] == undefined) {
+                $(this).find('.naturetype').css('border', '1px solid red');
+                toastMsg('Invalid Type', 'Invalid Input Type', 'error');
+                flag = 1;
+                return false;
+            } else {
+                $(this).find('.naturetype').css('border', '1px solid #babfc7');
+            }
+
+            $($(this).find('.sec_input')).each(function (i, v) {
+                if ($(this).attr('required') == 'required' && $(this).val() != '' && $(this).val() != undefined) {
+                    data['L' + (i + 1)] = $(this).val();
+                    $(this).css('border', '1px solid #babfc7');
+                } else {
+                    $(this).css('border', '1px solid red');
+                    toastMsg('Input Name', 'Invalid Input Name', 'error');
+                    flag = 1;
+                    return false;
+                }
+            });
+
+            data['min_val'] = $(this).find('.min_val').val();
+            data['max_val'] = $(this).find('.max_val').val();
+            data['skipQuestion'] = $(this).find('.skipQuestion').val();
+            data['parentQuestion'] = $(this).find('.parentQuestion').val();
+        });
+
+        var options_list = [];
+        $("div[id=options_list]").each(function () {
+            var options = {};
+            if ($(this).find('.option_var').val() == '' || $(this).find('.option_var').val() == undefined) {
+                $(this).find('.option_var').css('border', '1px solid red');
+                toastMsg('Option Variable', 'Invalid Option Variable', 'error');
+                flag = 1;
+                return false;
+            } else {
+                // options.push($(this).find('.option_var').val());
+                options['option_var'] = $(this).find('.option_var').val();
+            }
+
+            if ($(this).find('.option_nature').val() == '' || $(this).find('.option_nature').val() == undefined) {
+                $(this).find('.option_nature').css('border', '1px solid red');
+                toastMsg('Option Nature', 'Invalid Option Nature', 'error');
+                flag = 1;
+                return false;
+            } else {
+                options['nature'] = $(this).find('.option_nature').val();
+            }
+
+            $($(this).find('.option_title')).each(function (y, z) {
+                if ($(this).val() == '' || $(this).val() == undefined) {
+                    $(this).css('border', '1px solid red');
+                    toastMsg('Option Title', 'Invalid Option Title', 'error');
+                    flag = 1;
+                    return false;
+                } else {
+                    // options.push($(this).val());
+                    options[$(this).attr('data-langtype')] = $(this).val();
+                }
+            });
+
+            if ($(this).find('.option_value').val() == '' || $(this).find('.option_value').val() == undefined) {
+                $(this).find('.option_value').css('border', '1px solid red');
+                toastMsg('Option Value', 'Invalid Option Value', 'error');
+                flag = 1;
+                return false;
+            } else {
+                // options.push($(this).find('.option_value').val());
+                options['option_value'] = $(this).find('.option_value').val();
+            }
+
+
+            options['option_min_val'] = $(this).find('.Optionmin_val').val();
+            options['option_max_val'] = $(this).find('.Optionmax_val').val();
+            options['option_skipQuestion'] = $(this).find('.OptionskipQuestion').val();
+
+            options_list.push(options);
+            data['options'] = options_list;
+        });
+        $('input[name=otheroptions]:checked').each(function (i) {
+            data[$(this).val()] = $(this).val();
+        });
+        console.log(data);
+        if (flag == 0) {
+            $('.mybtn').attr('disabled', 'disabled');
+            showloader();
+            CallAjax('<?php echo base_url('index.php/Section/add_sectiondetail_data') ?>', data, 'POST', function (result) {
+                $('.mybtn').removeAttr('disabled', 'disabled');
+                hideloader();
+                if (result == 1) {
+                    toastMsg('Success', 'Successfully inserted', 'success');
+                    $('.sidebaroptions').html('');
+                    getData();
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
+
+    function addType2(obj) {
         var flag = 0;
         var inp = {};
         var html = '';
@@ -479,7 +1253,7 @@
                 }
             });
             if (inp['L1'] != '' || inp['L1'] != undefined) {
-                html += ' <span class="  font-medium-1">' + inp['L1'] + '</span>';
+                html += ' <span class="font-medium-1">' + inp['L1'] + '</span>';
             }
 
             html += '<br>';
@@ -559,6 +1333,7 @@
                 ' </div>';
         });
         html += '</li>';
+        console.log(inp);
         if (flag == 0) {
             $('#sortable').append(html);
             $('.sidebaroptions').html('');
@@ -660,11 +1435,13 @@
         });
 
         if (flag == 0) {
-            $('.mybtn').attr('disabled','disabled');
+            $('.mybtn').attr('disabled', 'disabled');
             showloader();
-            CallAjax('<?php echo base_url('index.php/Section/add_sectiondetail_data') ?>', data, 'POST', function (result) {     hideloader();
+            CallAjax('<?php echo base_url('index.php/Section/add_sectiondetail_data') ?>', data, 'POST', function (result) {
+                hideloader();
                 if (result == 1) {
                     toastMsg('Success', 'Successfully inserted', 'success');
+                    $('.sidebaroptions').html('');
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');
                 }
@@ -680,7 +1457,7 @@
         $('.mysection').addClass('open');
         $('.section_add').addClass('active');
         // addrow();
-        $("#sortable").sortable();
+        // $("#sortable").sortable();
 
         /*$("#sortable-1 li").draggable({
             helper: "clone"
@@ -694,6 +1471,7 @@
     });
 
     function addrow() {
+        $('.sidebar-sticky').css('max-height', '100%');
         $(".file-repeater").repeater({
             show: function () {
                 $(this).slideDown();

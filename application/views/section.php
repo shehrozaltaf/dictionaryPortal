@@ -189,14 +189,18 @@
                     var openid = '0';
                     $.each(response, function (i, v) {
                         a++;
-                        if (a == 1) {
+                      /*  if (a == 1) {
                             expend = 'aria-expanded="true"';
                             show = 'show';
                             openid = v.idSection;
                         } else {
                             expend = 'aria-expanded="false"';
                             show = '';
-                        }
+                        }*/
+
+                        expend = 'aria-expanded="false"';
+                        show = '';
+
                         html += '<div class="card ">';
                         html += '<div class="card-header" id="headingA' + a + '">' +
                             '<h5 class="mb-0">' +

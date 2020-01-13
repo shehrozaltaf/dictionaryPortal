@@ -112,6 +112,7 @@ class Section extends CI_controller
         $this->form_validation->set_rules('idModule', 'CRF', 'required');
         $this->form_validation->set_rules('section_var_name', 'section_var_name', 'required');
         $this->form_validation->set_rules('section_status', 'section_status', 'required');
+        $this->form_validation->set_rules('section_table', 'section_table', 'required');
 
         $formArray = array();
         $formArray['idProjects'] = $this->input->post('project_id');
@@ -119,6 +120,7 @@ class Section extends CI_controller
         $formArray['idModule'] = $this->input->post('idModule');
         $formArray['section_var_name'] = $this->input->post('section_var_name');
         $formArray['section_status'] = $this->input->post('section_status');
+        $formArray['tableName'] = $this->input->post('section_table');
 
         $section_l_name = '';
         if ($this->input->post('section_name_Languages') != '' && $this->input->post('section_name_Languages') != 'undefined') {
@@ -254,6 +256,10 @@ class Section extends CI_controller
         $formArray['label_l3'] = (isset($_POST['L3']) && $_POST['L3'] != '' ? $_POST['L3'] : '');
         $formArray['label_l4'] = (isset($_POST['L4']) && $_POST['L4'] != '' ? $_POST['L4'] : '');
         $formArray['label_l5'] = (isset($_POST['L5']) && $_POST['L5'] != '' ? $_POST['L5'] : '');
+        $formArray['insertDB'] = (isset($_POST['insertDB']) && $_POST['insertDB'] != '' ? $_POST['insertDB'] : '');
+        $formArray['dbType'] = (isset($_POST['dbType']) && $_POST['dbType'] != '' ? $_POST['dbType'] : '');
+        $formArray['dbLength'] = (isset($_POST['dbLength']) && $_POST['dbLength'] != '' ? $_POST['dbLength'] : '');
+        $formArray['dbDecimal'] = (isset($_POST['dbDecimal']) && $_POST['dbDecimal'] != '' ? $_POST['dbDecimal'] : '');
         $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'Y');
         if (isset($_POST['options']) && $_POST['options'] != '') {
             foreach ($_POST['options'] as $keys => $options) {
@@ -290,6 +296,9 @@ class Section extends CI_controller
                 $subformArray['MinVal'] = (isset($options['option_min_val']) && $options['option_min_val'] != '' ? $options['option_min_val'] : '');
                 $subformArray['MaxVal'] = (isset($options['option_max_val']) && $options['option_max_val'] != '' ? $options['option_max_val'] : '');
                 $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
+                $subformArray['dbType'] = (isset($options['OptionDbType']) && $options['OptionDbType'] != '' ? $options['OptionDbType'] : '');
+                $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
+                $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
                 $subformArray['idParentQuestion'] = $formArray['variable_name'];
                 $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
@@ -346,6 +355,12 @@ class Section extends CI_controller
                 $subformArray['MinVal'] = (isset($options['option_min_val']) && $options['option_min_val'] != '' ? $options['option_min_val'] : '');
                 $subformArray['MaxVal'] = (isset($options['option_max_val']) && $options['option_max_val'] != '' ? $options['option_max_val'] : '');
                 $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
+
+                $subformArray['dbType'] = (isset($options['OptionDbType']) && $options['OptionDbType'] != '' ? $options['OptionDbType'] : '');
+                $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
+                $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
+
+
                 $subformArray['idParentQuestion'] = (isset($options['OptionParentQuestion']) && $options['OptionParentQuestion'] != '' ? $options['OptionParentQuestion'] : '');
 
                 $InsertData=  $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
@@ -487,6 +502,12 @@ class Section extends CI_controller
             $editArr['label_l3'] = (isset($_POST['edit_label_L3']) && $_POST['edit_label_L3'] != '' ? $_POST['edit_label_L3'] : '');
             $editArr['label_l4'] = (isset($_POST['edit_label_L4']) && $_POST['edit_label_L4'] != '' ? $_POST['edit_label_L4'] : '');
             $editArr['label_l5'] = (isset($_POST['edit_label_L5']) && $_POST['edit_label_L5'] != '' ? $_POST['edit_label_L5'] : '');
+
+            $editArr['option_value'] = (isset($_POST['edit_option_value']) && $_POST['edit_option_value'] != '' ? $_POST['edit_option_value'] : '');
+            $editArr['insertDB'] = (isset($_POST['edit_insertDB']) && $_POST['edit_insertDB'] != '' ? $_POST['edit_insertDB'] : '');
+            $editArr['dbType'] = (isset($_POST['edit_dbType']) && $_POST['edit_dbType'] != '' ? $_POST['edit_dbType'] : '');
+            $editArr['dbLength'] = (isset($_POST['edit_dbLength']) && $_POST['edit_dbLength'] != '' ? $_POST['edit_dbLength'] : '');
+            $editArr['dbDecimal'] = (isset($_POST['edit_dbDecimal']) && $_POST['edit_dbDecimal'] != '' ? $_POST['edit_dbDecimal'] : '');
 
             $editData = $Custom->Edit($editArr, 'idSectionDetail', $idSectionDetail, 'section_detail');
             if ($editData) {
