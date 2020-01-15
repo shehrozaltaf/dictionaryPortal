@@ -63,6 +63,7 @@ class MSection extends CI_Model
 	section_detail.label_l1,
 	section_detail.option_value,
 	section_detail.dbType,
+	section.tableName,
 	section_detail.insertDB,
 	section_detail.idParentQuestion,
 	section_detail.dbLength,

@@ -74,6 +74,7 @@ class Reports extends CI_controller
             $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
             $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
             $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Table Name');
             $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
             $rowCount = 1;
             foreach ($data as $list) {
@@ -84,16 +85,30 @@ class Reports extends CI_controller
                 $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
                 $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
                 $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->tableName);
 
                 if (isset($list->myrow_options) && $list->myrow_options != '') {
                     foreach ($list->myrow_options as $options) {
                         $rowCount++;
                         $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
                         $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
                         $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
                         $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->dbType);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+
+                        if ($list->nature == 'Radio' && $options->nature == 'Input') {
+                            $rowCount++;
+                            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name.'t');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+                        }
+
                     }
                 }
             }
