@@ -1,5 +1,32 @@
 
+<div class="modal fade text-left" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel8">Change Password</h4>
 
+                <input type="hidden" id="edit_idUser" name="edit_idUser">
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="edit_newPassword">New Password: </label>
+                    <input type="password" class="form-control edit_newPassword" id="edit_newPassword">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_newPasswordConfirm">Confrim Password: </label>
+                    <input type="password" class="form-control edit_newPasswordConfirm" id="edit_newPasswordConfirm">
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="changePassword()">Change Password
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 
@@ -160,8 +187,54 @@
 <script>
     $(document).ready(function () {
         $('#loader').hide();
+        $('#change_password').click(function () {
+            $('#changePassword').modal('show');
+        });
     });
+    function changePassword() {
+        var flag=0;
+        $('#edit_newPassword').css('border', '1px solid #babfc7');
+        $('#edit_newPasswordConfirm').css('border', '1px solid red');
 
+        var data = {};
+        data['newpassword']        = $('#edit_newPassword').val();
+        data['newpasswordconfirm'] = $('#edit_newPasswordConfirm').val();
+
+        if (data['newpassword'] == '' || data['newpassword'] == undefined){
+            $('#edit_newPassword').css('border', '1px solid red');
+            toastMsg('New Password', 'Invalid New Password', 'error');
+            flag=1;
+            return false;
+        }
+
+        if (data['newpasswordconfirm'] == '' || data['newpasswordconfirm'] == undefined || data['newpassword']!=data['newpasswordconfirm']){
+            $('#edit_newPasswordConfirm').css('border', '1px solid red');
+            toastMsg('Confirm Password', 'Invalid Confirm Password', 'error');
+            flag=1;
+            return false;
+        }
+
+        if (flag==0){
+            showloader();
+            $('.mybtn').attr('disabled', 'disabled');
+            CallAjax('<?php echo base_url('index.php/Users/changePassword'); ?>', data, 'POST', function (result) {
+                hideloader();
+                if (result == 1) {
+                    toastMsg('Success', 'Successfully inserted', 'success');
+                    $('#changePassword').modal('hide');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500)
+                } else if (result == 2) {
+                    toastMsg('New Password', 'Invalid New Password', 'error');
+                } else if (result == 3 || result==4) {
+                    toastMsg('Confirm Password', 'Invalid Confirm Password', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
 
     function logout() {
         CallAjax('<?php echo base_url('index.php/Login/getLogout')?>', {}, 'POST', function (res) {

@@ -32,10 +32,51 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav float-right">
+                    <!--<li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-item" href="javascript:void(0)" id="change_password">
+                            Change Password</a>
+                    </li>
+
 
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i class="ft-power"></i>
                             Logout</a>
+                    </li>-->
+                    <li class="dropdown dropdown-user nav-item">
+                        <a class="dropdown-toggle nav-link dropdown-user-link"
+                           href="javascript:void(0)" data-toggle="dropdown">
+                            <span class="avatar avatar-online">
+                                <img src="<?php echo base_url('assets/images/user.png') ?>" alt="avatar"><i></i>
+                            </span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="arrow_box_right">
+                                <a class="dropdown-item" href="<?php echo base_url() ?>">
+                                    <span class="avatar avatar-online">
+                                        <img src="<?php echo base_url('assets/images/user.png') ?>" alt="avatar">
+                                        <span class="user-name text-bold-700 ml-1">
+                                            <?php if (isset($_SESSION['login']['UserName']) && $_SESSION['login']['UserName'] != '') {
+                                                echo $_SESSION['login']['UserName'];
+                                            } else {
+                                                echo 'Welcome User';
+                                            } ?>
+                                        </span>
+                                    </span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)" id="change_password">
+                                    <i class="ft-user"></i>
+                                    Change Password
+                                </a>
+                                <!--<a class="dropdown-item" href="email-application.html">
+                                    <i class="ft-mail"></i>
+                                    My Inbox
+                                </a>-->
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i
+                                            class="ft-power"></i> Logout</a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -116,8 +157,14 @@
             </li>
             <li class=" nav-item mylangauge">
                 <a href="<?php echo base_url('index.php/language') ?>" class="">
-                    <i class="ft-file-text"></i>
+                    <i class="ft-volume"></i>
                     <span class="menu-title" data-i18n="">Language</span>
+                </a>
+            </li>
+            <li class=" nav-item myusers">
+                <a href="<?php echo base_url('index.php/users') ?>" class="">
+                    <i class="ft-users"></i>
+                    <span class="menu-title" data-i18n="">Users</span>
                 </a>
             </li>
             <li class=" nav-item">
