@@ -63,13 +63,13 @@
                                             <?php
                                             $SNo = 0;
                                             if (isset($user) && $user != '') {
-                                                foreach ($user as $user) {
+                                                foreach ($user as $userdata) {
                                                     $SNo++; ?>
                                                     <tr>
                                                         <td><?php echo $SNo ?></td>
-                                                        <td><?php echo $user->userName ?></td>
-                                                        <td><?php echo $user->email ?></td>
-                                                        <td data-id="<?php echo $user->idUser ?>">
+                                                        <td><?php echo $userdata->userName ?></td>
+                                                        <td><?php echo $userdata->email ?></td>
+                                                        <td data-id="<?php echo $userdata->idUser ?>">
                                                             <a href="javascript:void(0)" onclick="getEdit(this)"><i
                                                                         class="ft-edit"></i> Edit </a>|
                                                             <a href="javascript:void(0)" onclick="getDelete(this)">
@@ -112,31 +112,29 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="username">Username: </label>
+                    <label for="username">Name: </label>
                     <input type="text" class="form-control username" id="username">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="email">Email: </label>
                     <input type="text" class="form-control email" id="email">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="password">Password: </label>
                     <input type="password" class="form-control password" id="password">
                 </div>
-                
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger mybtn" data-dismiss="modal" onclick="addData()">Add
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger mybtn" onclick="addData()">Add
                 </button>
             </div>
         </div>
     </div>
 </div>
-
-
-
 
 
 <div class="modal fade text-left" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
@@ -151,32 +149,29 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <label for="edit_userName">Username: </label>
+                    <label for="edit_userName">Name: </label>
                     <input type="text" class="form-control edit_userName" id="edit_userName">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="edit_email">Email: </label>
                     <input type="text" class="form-control edit_email" id="edit_email">
                 </div>
-                
+
                 <div class="form-group">
                     <label for="edit_password">Password: </label>
                     <input type="text" class="form-control edit_password" id="edit_password">
                 </div>
-                
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="editData()">Edit
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="editData()">Edit
                 </button>
             </div>
         </div>
     </div>
 </div>
-
-
-
-
 
 
 <div class="modal fade text-left" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
@@ -192,12 +187,14 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deletePage()">Delete
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="deletePage()">Delete
                 </button>
             </div>
         </div>
     </div>
 </div>
+
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
         type="text/javascript"></script>
@@ -210,26 +207,40 @@
         $('.addbtn').click(function () {
             $('#addModal').modal('show');
         });
-		
-		
-
-
     });
 
     function addData() {
         $('#username').css('border', '1px solid #babfc7');
-		$('#email').css('border', '1px solid #babfc7');
-		$('#password').css('border', '1px solid red');
+        $('#email').css('border', '1px solid #babfc7');
+        $('#password').css('border', '1px solid #babfc7');
         var data = {};
-        data['username'] = $('#username').val();
-		data['email'] = $('#email').val();
-		data['password'] = $('#password').val();
-        if (data['username'] == '' || data['username'] == undefined && data['email'] == '' || data['email'] == undefined && data['password'] == '' || data['password'] == undefined) {
+        data['userName'] = $('#username').val();
+        data['email'] = $('#email').val();
+        data['password'] = $('#password').val();
+        var flag = 0;
+
+        if (data['userName'] == '' || data['userName'] == undefined) {
+            toastMsg('User Name', 'Invalid User Name', 'error');
             $('#username').css('border', '1px solid red');
-			$('#email').css('border', '1px solid red');
-			$('#password').css('border', '1px solid red');
-            toastMsg('User', 'Please Insert Required', 'error');
-        } else {
+            flag = 1;
+            return false;
+        }
+
+        if (data['email'] == '' || data['email'] == undefined) {
+            toastMsg('Email', 'Invalid Email', 'error');
+            $('#email').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
+
+        if (data['password'] == '' || data['password'] == undefined) {
+            toastMsg('Password', 'Invalid Password', 'error');
+            $('#password').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
+
+        if (flag == 0) {
             showloader();
             $('.mybtn').attr('disabled', 'disabled');
             CallAjax('<?php echo base_url('index.php/Users/addData'); ?>', data, 'POST', function (result) {
@@ -263,11 +274,9 @@
             return false;
         } else {
             CallAjax('<?php echo base_url('index.php/Users/deleteData')?>', data, 'POST', function (res) {
-
                 if (res == 1) {
                     toastMsg('User', 'Successfully Deleted', 'success');
                     setTimeout(function () {
-
                         $('#deleteModal').modal('hide');
                         window.location.reload();
                     }, 500);
@@ -291,8 +300,8 @@
                     try {
                         $('#edit_idUser').val(data['id']);
                         $('#edit_userName').val(a[0]['username']);
-						$('#edit_email').val(a[0]['email']);
-						$('#edit_password').val(a[0]['password']);
+                        $('#edit_email').val(a[0]['email']);
+                        $('#edit_password').val(a[0]['password']);
                     } catch (e) {
                     }
                     $('#editModal').modal('show');
@@ -305,40 +314,42 @@
 
     function editData() {
         $('#edit_userName').css('border', '1px solid #babfc7');
-		$('#edit_email').css('border', '1px solid #babfc7');
-		$('#edit_password').css('border', '1px solid #babfc7');
+        $('#edit_email').css('border', '1px solid #babfc7');
+        $('#edit_password').css('border', '1px solid #babfc7');
         var flag = 0;
         var data = {};
         data['idUser'] = $('#edit_idUser').val();
         data['userName'] = $('#edit_userName').val();
-		data['email'] = $('#edit_email').val();
-		data['password'] = $('#edit_password').val();
-		
-		if(data['idUser'] == '' || data['idUser'] == undefined){
-		 toastMsg('User', 'Invalid ID User', 'error');
-		 flag = 1;
-         return false;
-		}
-		
-		if(data['userName'] == '' || data['userName'] == undefined){
-		 toastMsg('User Name', 'Invalid User Name', 'error');
-		 flag = 1;
-         return false;
-		}
-		
-		if(data['email'] == '' || data['email'] == undefined){
-		 toastMsg('Email', 'Invalid Email', 'error');
-		 flag = 1;
-         return false;
-		}
-		
-		if(data['password'] == '' || data['password'] == undefined){
-		 toastMsg('Password', 'Invalid Password', 'error');
-		 flag = 1;
-         return false;
-		}  
-		
-		
+        data['email'] = $('#edit_email').val();
+        data['password'] = $('#edit_password').val();
+
+        if (data['idUser'] == '' || data['idUser'] == undefined) {
+            toastMsg('User', 'Invalid ID User', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['userName'] == '' || data['userName'] == undefined) {
+            toastMsg('User Name', 'Invalid User Name', 'error');
+            $('#edit_userName').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
+
+        if (data['email'] == '' || data['email'] == undefined) {
+            toastMsg('Email', 'Invalid Email', 'error');
+            $('#edit_email').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
+
+        if (data['password'] == '' || data['password'] == undefined) {
+            toastMsg('Password', 'Invalid Password', 'error');
+            $('#edit_password').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
+
         if (flag === 0) {
             CallAjax('<?php echo base_url('index.php/Users/editData')?>', data, 'POST', function (res) {
                 if (res == 1) {
@@ -351,21 +362,17 @@
                     toastMsg('Language', 'Something went wrong', 'error');
                 } else if (res == 3) {
                     toastMsg('Language', 'Invalid Language', 'error');
-                }else if (res == 4) {
-                   toastMsg('User', 'Invalid ID User', 'error');
-                }else if (res == 5) {
-                     toastMsg('User Name', 'Invalid User Name', 'error');
-                }else if (res == 6) {
+                } else if (res == 4) {
+                    toastMsg('User', 'Invalid ID User', 'error');
+                } else if (res == 5) {
+                    toastMsg('User Name', 'Invalid User Name', 'error');
+                } else if (res == 6) {
                     toastMsg('Email', 'Invalid Email', 'error');
-                }else if (res == 7) {
+                } else if (res == 7) {
                     toastMsg('Password', 'Invalid Password', 'error');
                 }
             });
         }
     }
-	
-	
-	
-	
-	
+
 </script>

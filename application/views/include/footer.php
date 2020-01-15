@@ -1,9 +1,9 @@
-
-<div class="modal fade text-left" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8" aria-hidden="true">
+<div class="modal fade text-left" id="changePasswordModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel_changePwd" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary white">
-                <h4 class="modal-title white" id="myModalLabel8">Change Password</h4>
+                <h4 class="modal-title white" id="myModalLabel_changePwd">Change Password</h4>
 
                 <input type="hidden" id="edit_idUser" name="edit_idUser">
             </div>
@@ -21,7 +21,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="changePassword()">Change Password
+                <button type="button" class="btn btn-danger" onclick="changePassword()">Change Password
                 </button>
             </div>
         </div>
@@ -29,12 +29,11 @@
 </div>
 
 
-
 <!-- BEGIN: Customizer-->
 <div class="customizer border-left-blue-grey border-left-lighten-4 d-none d-xl-block">
-    <a class="customizer-close"  class="ft-x font-medium-3"></i></a>
-    <a class="customizer-toggle bg-primary box-shadow-3" href="#"  id="customizer-toggle-setting">
-        <i  class="ft-settings font-medium-3 spinner white"></i>
+    <a class="customizer-close" class="ft-x font-medium-3"></i></a>
+    <a class="customizer-toggle bg-primary box-shadow-3" href="#" id="customizer-toggle-setting">
+        <i class="ft-settings font-medium-3 spinner white"></i>
     </a>
     <div class="customizer-content p-2">
         <h5 class="mt-1 mb-1 text-bold-500">Navbar Color Options</h5>
@@ -106,7 +105,7 @@
         <hr>
 
         <h5 class="mt-1 mb-1 text-bold-500">Sidebar menu Background</h5>
-        <div class="row sidebar-color-options ml-0" >
+        <div class="row sidebar-color-options ml-0">
             <label for="sidebar-color-option" class="card-title font-medium-2 mr-2"
                    data-menu_sidbar_mode="menu-light" data-alterkey="menu-dark">White Mode</label>
             <div class="text-center mb-1">
@@ -187,47 +186,51 @@
 <script>
     $(document).ready(function () {
         $('#loader').hide();
-        $('#change_password').click(function () {
-            $('#changePassword').modal('show');
-        });
+        /*$('#change_password').click(function () {
+            $('#changePasswordModal').modal({
+                backdrop: 'static',
+                keyboard: true
+            });
+        });*/
     });
+
     function changePassword() {
-        var flag=0;
+        var flag = 0;
         $('#edit_newPassword').css('border', '1px solid #babfc7');
         $('#edit_newPasswordConfirm').css('border', '1px solid red');
 
         var data = {};
-        data['newpassword']        = $('#edit_newPassword').val();
+        data['newpassword'] = $('#edit_newPassword').val();
         data['newpasswordconfirm'] = $('#edit_newPasswordConfirm').val();
 
-        if (data['newpassword'] == '' || data['newpassword'] == undefined){
+        if (data['newpassword'] == '' || data['newpassword'] == undefined) {
             $('#edit_newPassword').css('border', '1px solid red');
             toastMsg('New Password', 'Invalid New Password', 'error');
-            flag=1;
+            flag = 1;
             return false;
         }
 
-        if (data['newpasswordconfirm'] == '' || data['newpasswordconfirm'] == undefined || data['newpassword']!=data['newpasswordconfirm']){
+        if (data['newpasswordconfirm'] == '' || data['newpasswordconfirm'] == undefined || data['newpassword'] != data['newpasswordconfirm']) {
             $('#edit_newPasswordConfirm').css('border', '1px solid red');
             toastMsg('Confirm Password', 'Invalid Confirm Password', 'error');
-            flag=1;
+            flag = 1;
             return false;
         }
 
-        if (flag==0){
+        if (flag == 0) {
             showloader();
             $('.mybtn').attr('disabled', 'disabled');
             CallAjax('<?php echo base_url('index.php/Users/changePassword'); ?>', data, 'POST', function (result) {
                 hideloader();
                 if (result == 1) {
                     toastMsg('Success', 'Successfully inserted', 'success');
-                    $('#changePassword').modal('hide');
+                    $('#changePasswordModal').modal('hide');
                     setTimeout(function () {
                         window.location.reload();
                     }, 500)
                 } else if (result == 2) {
                     toastMsg('New Password', 'Invalid New Password', 'error');
-                } else if (result == 3 || result==4) {
+                } else if (result == 3 || result == 4) {
                     toastMsg('Confirm Password', 'Invalid Confirm Password', 'error');
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');
@@ -243,14 +246,14 @@
     }
 
 
-    function getPDF(obj){
-        var data={};
-        data['idProject']=$(obj).attr('data-idProject');
-        if(data['idProject']!='' && data['idProject']!=undefined){
-            CallAjax('<?php echo base_url('index.php/Project/getProjects') ?>',data,'POST',function (res) {
+    function getPDF(obj) {
+        var data = {};
+        data['idProject'] = $(obj).attr('data-idProject');
+        if (data['idProject'] != '' && data['idProject'] != undefined) {
+            CallAjax('<?php echo base_url('index.php/Project/getProjects') ?>', data, 'POST', function (res) {
 
             });
-        }else{
+        } else {
             alert('Invalid Project');
         }
     }

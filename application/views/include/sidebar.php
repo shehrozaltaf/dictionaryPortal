@@ -64,7 +64,8 @@
                                     </span>
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="javascript:void(0)" id="change_password">
+                                <a class="dropdown-item" href="javascript:void(0)" id="change_password"
+                                   data-toggle="modal" data-keyboard="false" data-target="#changePasswordModal">
                                     <i class="ft-user"></i>
                                     Change Password
                                 </a>
@@ -157,7 +158,7 @@
             </li>
             <li class=" nav-item mylangauge">
                 <a href="<?php echo base_url('index.php/language') ?>" class="">
-                    <i class="ft-volume"></i>
+                    <i class="ft-volume-2"></i>
                     <span class="menu-title" data-i18n="">Language</span>
                 </a>
             </li>

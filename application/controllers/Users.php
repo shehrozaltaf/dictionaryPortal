@@ -8,7 +8,7 @@ class Users extends CI_controller
         parent::__construct();
         $this->load->model('custom');
         $this->load->model('muser');
-        $this->load->library('session'); 
+        $this->load->library('session');
         $this->load->helper('string');
         if (!isset($_SESSION['login']['idUser'])) {
             redirect(base_url());
@@ -37,32 +37,32 @@ class Users extends CI_controller
     {
         $Custom = new Custom();
         $editArr = array();
-		$flag=0;
-		if(!isset($_POST['idUser']) || $_POST['idUser'] == ''){
-			$result=4;$flag=1;
-			exit();
-		}
-		
-		if(!isset($_POST['userName']) || $_POST['userName'] == ''){
-			$result=5;$flag=1;
-			exit();
-		}
-		
-		if(!isset($_POST['email']) || $_POST['email'] == ''){
-			$result=6;$flag=1;
-			exit();
-		}
-		
-		if(!isset($_POST['password']) || $_POST['password'] == ''){
-			$result=7;$flag=1;
-			exit();
-		}
-		
-        if ($flag==0) {
+        $flag = 0;
+        if (!isset($_POST['idUser']) || $_POST['idUser'] == '') {
+            $result = 4;
+            $flag = 1;
+        }
+
+        if (!isset($_POST['userName']) || $_POST['userName'] == '') {
+            $result = 5;
+            $flag = 1;
+        }
+
+        if (!isset($_POST['email']) || $_POST['email'] == '') {
+            $result = 6;
+            $flag = 1;
+        }
+
+        if (!isset($_POST['password']) || $_POST['password'] == '') {
+            $result = 7;
+            $flag = 1;
+        }
+
+        if ($flag == 0) {
             $idUser = $_POST['idUser'];
             $editArr['username'] = $_POST['userName'];
-			$editArr['email'] = $_POST['email'];
-			$editArr['password'] = $_POST['password'];
+            $editArr['email'] = $_POST['email'];
+            $editArr['password'] = $_POST['password'];
             $editArr['updateBy'] = $_SESSION['login']['idUser'];
             $editArr['updatedDateTime'] = date('Y-m-d H:m:s');
             $editData = $Custom->Edit($editArr, 'idUser', $idUser, 'users');
@@ -99,15 +99,15 @@ class Users extends CI_controller
     function addData()
     {
         ob_end_clean();
-        if (isset($_POST['username']) && $_POST['username'] != '' && isset($_POST['email']) && $_POST['email'] != '' && isset($_POST['password']) && $_POST['password'] != '') {
+        if (isset($_POST['userName']) && $_POST['userName'] != '' && isset($_POST['email']) && $_POST['email'] != '' && isset($_POST['password']) && $_POST['password'] != '') {
             $Custom = new Custom();
             $formArray = array();
-            $formArray['userName'] = ucfirst($_POST['username']);
-			$formArray['email'] = ucfirst($_POST['email']);
-			$formArray['password'] = ucfirst($_POST['password']);
+            $formArray['userName'] = ucfirst($_POST['userName']);
+            $formArray['email'] = ucfirst($_POST['email']);
+            $formArray['password'] = ucfirst($_POST['password']);
             $formArray['createdBy'] = $_SESSION['login']['idUser'];
             $formArray['createdDateTime'] = date('Y-m-d H:m:s');
-
+            $formArray['status'] = 1;
             $InsertData = $Custom->Insert($formArray, 'idUser', 'users', 'N');
             if ($InsertData) {
                 $result = 1;
@@ -120,26 +120,25 @@ class Users extends CI_controller
 
         echo $result;
     }
-	
-	
-	
-	function changePassword()
+
+
+    function changePassword()
     {
         $Custom = new Custom();
         $editArr = array();
-		$flag = 0;
-		if(!isset($_POST['newpassword']) || $_POST['newpassword'] == ''){
-			$result = 2;
-			$flag = 1;
-			exit();
-		}
-		
-		if(!isset($_POST['newpasswordconfirm']) || $_POST['newpasswordconfirm'] == '' || $_POST['newpassword']!=$_POST['newpasswordconfirm']){
-			$result=3;
-			$flag=1;
-			exit();
-		} 
-        if ($flag==0 && isset($_SESSION['login']['idUser']) && $_SESSION['login']['idUser']!='') {
+        $flag = 0;
+        if (!isset($_POST['newpassword']) || $_POST['newpassword'] == '') {
+            $result = 2;
+            $flag = 1;
+            exit();
+        }
+
+        if (!isset($_POST['newpasswordconfirm']) || $_POST['newpasswordconfirm'] == '' || $_POST['newpassword'] != $_POST['newpasswordconfirm']) {
+            $result = 3;
+            $flag = 1;
+            exit();
+        }
+        if ($flag == 0 && isset($_SESSION['login']['idUser']) && $_SESSION['login']['idUser'] != '') {
             $idUser = $_SESSION['login']['idUser'];
             $editArr['password'] = $_POST['newpassword'];
             $editData = $Custom->Edit($editArr, 'idUser', $idUser, 'users');
