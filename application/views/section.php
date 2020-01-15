@@ -105,7 +105,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="getData()">Get Data
+                <button type="button" class="btn btn-danger" onclick="getData()">Get Data
                 </button>
             </div>
         </div>
@@ -171,111 +171,143 @@
     }
 
     function getData() {
+        $('#selectidProjects').css('border', '1px solid #babfc7');
+        $('#selectIdCRF').css('border', '1px solid #babfc7');
+        $('#selectidModule').css('border', '1px solid #babfc7');
         var data = {};
         data['idProjects'] = $('#selectidProjects').val();
-        data['IdCRF'] = $('#selectIdCRF').val();
+        data['idCRF'] = $('#selectIdCRF').val();
         data['idModule'] = $('#selectidModule').val();
-        CallAjax('<?php echo base_url() . 'index.php/Section/getData' ?>', data, 'POST', function (res) {
-            if (res != '' && JSON.parse(res).length > 0) {
-                var response = JSON.parse(res);
-                try {
-                    var html = '<div id="collapse1" class="card-collapse">';
-                    html += '<div class="card collapse-icon accordion-icon-rotate left">';
-                    html += '<div class="card mb-0">';
-                    var a = 0;
-                    var expend = '';
-                    var show = '';
+        var flag = 0;
 
-                    var openid = '0';
-                    $.each(response, function (i, v) {
-                        a++;
-                      /*  if (a == 1) {
-                            expend = 'aria-expanded="true"';
-                            show = 'show';
-                            openid = v.idSection;
-                        } else {
+        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+            $('#selectidProjects').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['idCRF'] == '' || data['idCRF'] == undefined) {
+            $('#selectIdCRF').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['idModule'] == '' || data['idModule'] == undefined) {
+            $('#selectidModule').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid Module', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (flag == 0) {
+            CallAjax('<?php echo base_url() . 'index.php/Section/getData' ?>', data, 'POST', function (res) {
+                if (res != '' && JSON.parse(res).length > 0) {
+                    var response = JSON.parse(res);
+                    try {
+                        var html = '<div id="collapse1" class="card-collapse">';
+                        html += '<div class="card collapse-icon accordion-icon-rotate left">';
+                        html += '<div class="card mb-0">';
+                        var a = 0;
+                        var expend = '';
+                        var show = '';
+
+                        var openid = '0';
+                        $.each(response, function (i, v) {
+                            a++;
+                            /*  if (a == 1) {
+                                  expend = 'aria-expanded="true"';
+                                  show = 'show';
+                                  openid = v.idSection;
+                              } else {
+                                  expend = 'aria-expanded="false"';
+                                  show = '';
+                              }*/
+
                             expend = 'aria-expanded="false"';
                             show = '';
-                        }*/
 
-                        expend = 'aria-expanded="false"';
-                        show = '';
+                            html += '<div class="card ">';
+                            html += '<div class="card-header" id="headingA' + a + '">' +
+                                '<h5 class="mb-0">' +
+                                '<button class="btn btn-link collapsed" data-toggle="collapse"' +
+                                ' data-target="#collapseA' + a + '" ' + expend +
+                                ' aria-controls="collapseA' + a + '" onclick="mysection(' + v.idSection + ')" data-idSection="' + v.idSection + '"> Section ' + a +
+                                '</button>' +
+                                '</h5>' +
+                                '</div>' +
+                                ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +
+                                '<div class="card-body">' +
+                                '<div class="media-list media-bordered">' +
+                                '<div class="media">' +
+                                '<a class="media-left align-self-center" href="#">Language 1</a>' +
+                                '<div class="media-body">' +
+                                '   <h5 class="media-heading">' + v.section_title_l1 + '</h5>' + v.section_desc_l1 +
+                                '</div>' +
+                                '</div>';
+                            if (v.section_title_l2 != '' && v.section_title_l2 != undefined) {
+                                html += '<div class="media">' +
+                                    '<a class="media-left align-self-center" href="#">Language 2</a>' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading Urdu">' + v.section_title_l2 + '</h5>' + v.section_desc_l2 +
+                                    '</div>' +
+                                    '</div>'
+                            }
+                            if (v.section_title_l3 != '' && v.section_title_l3 != undefined) {
+                                html += '<div class="media">' +
+                                    '<a class="media-left align-self-center" href="#">Language 3</a>' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.section_title_l3 + '</h5>' + v.section_desc_l3 +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            if (v.section_title_l4 != '' && v.section_title_l4 != undefined) {
+                                html += '<div class="media">' +
+                                    '<a class="media-left align-self-center" href="#">Language 4</a>' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.section_title_l4 + '</h5>' + v.section_desc_l4 +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            if (v.section_title_l5 != '' && v.section_title_l5 != undefined) {
+                                html += '<div class="media">' +
+                                    'Language 5' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.section_title_l5 + '</h5>' + v.section_desc_l5 +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            html += '<div class="btn-group col-sm-12">' +
+                                '<a class="btn btn-danger white"  href="<?php echo base_url('index.php/add_sectiondetail?section=') ?>' + v.idSection + '" ' +
+                                'id="dropdownMenuButton' + v.idSection + '"  >' +
+                                'Add Section Data</a>' +
+                                '</div>' +
+                                '<div class="mytable_' + v.idSection + '"></div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
 
-                        html += '<div class="card ">';
-                        html += '<div class="card-header" id="headingA' + a + '">' +
-                            '<h5 class="mb-0">' +
-                            '<button class="btn btn-link collapsed" data-toggle="collapse"' +
-                            ' data-target="#collapseA' + a + '" ' + expend +
-                            ' aria-controls="collapseA' + a + '" onclick="mysection(' + v.idSection + ')" data-idSection="' + v.idSection + '"> Section ' + a +
-                            '</button>' +
-                            '</h5>' +
-                            '</div>' +
-                            ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +
-                            '<div class="card-body">' +
-                            '<div class="media-list media-bordered">' +
-                            '<div class="media">' +
-                            '<a class="media-left align-self-center" href="#">Language 1</a>' +
-                            '<div class="media-body">' +
-                            '   <h5 class="media-heading">' + v.section_title_l1 + '</h5>' + v.section_desc_l1 +
-                            '</div>' +
-                            '</div>';
-                        if (v.section_title_l2 != '' && v.section_title_l2 != undefined) {
-                            html += '<div class="media">' +
-                                '<a class="media-left align-self-center" href="#">Language 2</a>' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading Urdu">' + v.section_title_l2 + '</h5>' + v.section_desc_l2 +
-                                '</div>' +
-                                '</div>'
-                        }
-                        if (v.section_title_l3 != '' && v.section_title_l3 != undefined) {
-                            html += '<div class="media">' +
-                                '<a class="media-left align-self-center" href="#">Language 3</a>' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.section_title_l3 + '</h5>' + v.section_desc_l3 +
-                                '</div>' +
-                                '</div>';
-                        }
-                        if (v.section_title_l4 != '' && v.section_title_l4 != undefined) {
-                            html += '<div class="media">' +
-                                '<a class="media-left align-self-center" href="#">Language 4</a>' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.section_title_l4 + '</h5>' + v.section_desc_l4 +
-                                '</div>' +
-                                '</div>';
-                        }
-                        if (v.section_title_l5 != '' && v.section_title_l5 != undefined) {
-                            html += '<div class="media">' +
-                                'Language 5' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.section_title_l5 + '</h5>' + v.section_desc_l5 +
-                                '</div>' +
-                                '</div>';
-                        }
-                        html += '<div class="btn-group col-sm-12">' +
-                            '<a class="btn btn-danger white"  href="<?php echo base_url('index.php/add_sectiondetail?section=') ?>' + v.idSection + '" ' +
-                            'id="dropdownMenuButton' + v.idSection + '"  >' +
-                            'Add Section Data</a>' +
-                            '</div>' +
-                            '<div class="mytable_' + v.idSection + '"></div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
+                            html += '</div>';
+
+                        });
 
                         html += '</div>';
+                        html += '</div>';
+                        html += '</div>';
+                        $('#htmlCollapse').html('').html(html);
+                        mysection(openid);
+                    } catch (e) {
+                    }
+                    $('#modal_project').modal('hide');
 
-                    });
-
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    $('#htmlCollapse').html('').html(html);
-                    mysection(openid);
-                } catch (e) {
                 }
-            }
 
 
-        });
+            });
+        } else {
+            toastMsg('Error', 'Something went wrong', 'error');
+        }
     }
 
     function mysection(idSection) {

@@ -274,7 +274,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="setData()">Get Data
+                <button type="button" class="btn btn-danger" onclick="setData()">Get Data
                 </button>
             </div>
         </div>
@@ -314,7 +314,39 @@
     }
 
     function setData() {
-        var idModule = $('#selectidModule').val();
+        $('#selectidProjects').css('border', '1px solid #babfc7');
+        $('#selectIdCRF').css('border', '1px solid #babfc7');
+        $('#selectidModule').css('border', '1px solid #babfc7');
+
+        var data = {};
+        data['idProjects'] = $('#selectidProjects').val();
+        data['idCRF'] = $('#selectIdCRF').val();
+        data['idModule'] = $('#selectidModule').val();
+        var flag = 0;
+
+        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+            $('#selectidProjects').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['idCRF'] == '' || data['idCRF'] == undefined) {
+            $('#selectIdCRF').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['idModule'] == '' || data['idModule'] == undefined) {
+            $('#selectidModule').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid Module', 'error');
+            flag = 1;
+            return false;
+        }
+
+
+        var idModule = data['idModule'];
         if (idModule != '' && idModule != undefined && idModule != 0 && idModule != '$1') {
             window.location.href = '<?php echo base_url() ?>' + 'index.php/add_section?module=' + idModule;
         } else {

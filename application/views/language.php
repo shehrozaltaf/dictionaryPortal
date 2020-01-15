@@ -114,7 +114,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger mybtn" data-dismiss="modal" onclick="addData()">Add
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger mybtn" onclick="addData()">Add
                 </button>
             </div>
         </div>
@@ -138,7 +139,8 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="editData()">Edit
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="editData()">Edit
                 </button>
             </div>
         </div>
@@ -159,7 +161,8 @@
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="deletePage()">Edit
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="deletePage()">Edit
                 </button>
             </div>
         </div>

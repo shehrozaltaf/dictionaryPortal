@@ -81,7 +81,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="getData()">Get Project Data
+                <button type="button" class="btn btn-danger" onclick="getData()">Get Project Data
                 </button>
             </div>
         </div>
@@ -149,96 +149,121 @@
     }
 
     function getData() {
+        $('#selectidProjects').css('border', '1px solid #babfc7');
+        $('#selectIdCRF').css('border', '1px solid #babfc7');
         var data = {};
         data['idProjects'] = $('#selectidProjects').val();
         data['idCRF'] = $('#selectIdCRF').val();
-        CallAjax('<?php echo base_url() . 'index.php/Module/getData' ?>', data, 'POST', function (res) {
-            if (res != '' && JSON.parse(res).length > 0) {
 
-                var response = JSON.parse(res);
-                try {
-                    var html = '<div id="collapse1" class="card-collapse">';
-                    html += '<div class="card collapse-icon accordion-icon-rotate left">';
-                    html += '<div class="card mb-0">';
-                    var a = 0;
-                    var expend = '';
-                    var show = '';
+        var flag = 0;
+
+        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+            $('#selectidProjects').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['idCRF'] == '' || data['idCRF'] == undefined) {
+            $('#selectIdCRF').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (flag == 0) {
+            CallAjax('<?php echo base_url() . 'index.php/Module/getData' ?>', data, 'POST', function (res) {
+                if (res != '' && JSON.parse(res).length > 0) {
+
+                    var response = JSON.parse(res);
+                    try {
+                        var html = '<div id="collapse1" class="card-collapse">';
+                        html += '<div class="card collapse-icon accordion-icon-rotate left">';
+                        html += '<div class="card mb-0">';
+                        var a = 0;
+                        var expend = '';
+                        var show = '';
 
 
-                    $.each(response, function (i, v) {
-                        a++;
-                        if (a == 1) {
-                            expend = 'aria-expanded="true"';
-                            show = 'show';
-                        } else {
-                            expend = 'aria-expanded="false"';
-                            show = '';
-                        }
-                        html += '<div class="card ">';
-                        html += '<div class="card-header" id="headingA' + a + '">' +
-                            '<h5 class="mb-0">' +
-                            '<button class="btn btn-link collapsed" data-toggle="collapse"' +
-                            ' data-target="#collapseA' + a + '" ' + expend +
-                            ' aria-controls="collapseA' + a + '"> Module ' + a +
-                            '</button>' +
-                            '</h5>' +
-                            '</div>' +
-                            ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +
-                            '<div class="card-body">' +
-                            '<div class="media-list media-bordered">' +
-                            '<div class="media">' +
-                            '<a class="media-left align-self-center" href="#">Language 1</a>' +
-                            '<div class="media-body">' +
-                            '   <h5 class="media-heading">' + v.module_name_l1 + '</h5>' + v.module_desc_l1 +
-                            '</div>' +
-                            '</div>';
-                        if (v.module_name_l2 != '' && v.module_name_l2 != undefined) {
-                            html += '<div class="media">' +
-                                '<a class="media-left align-self-center" href="#">Language 2</a>' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.module_name_l2 + '</h5>' + v.module_desc_l2 +
+                        $.each(response, function (i, v) {
+                            a++;
+                            if (a == 1) {
+                                expend = 'aria-expanded="true"';
+                                show = 'show';
+                            } else {
+                                expend = 'aria-expanded="false"';
+                                show = '';
+                            }
+                            html += '<div class="card ">';
+                            html += '<div class="card-header" id="headingA' + a + '">' +
+                                '<h5 class="mb-0">' +
+                                '<button class="btn btn-link collapsed" data-toggle="collapse"' +
+                                ' data-target="#collapseA' + a + '" ' + expend +
+                                ' aria-controls="collapseA' + a + '"> Module ' + a +
+                                '</button>' +
+                                '</h5>' +
                                 '</div>' +
-                                '</div>'
-                        }
-                        if (v.module_name_l3 != '' && v.module_name_l3 != undefined) {
-                            html += '<div class="media">' +
-                                '<a class="media-left align-self-center" href="#">Language 3</a>' +
+                                ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +
+                                '<div class="card-body">' +
+                                '<div class="media-list media-bordered">' +
+                                '<div class="media">' +
+                                '<a class="media-left align-self-center" href="#">Language 1</a>' +
                                 '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.module_name_l3 + '</h5>' + v.module_desc_l3 +
+                                '   <h5 class="media-heading">' + v.module_name_l1 + '</h5>' + v.module_desc_l1 +
                                 '</div>' +
                                 '</div>';
-                        }
-                        if (v.module_name_l4 != '' && v.module_name_l4 != undefined) {
-                            html += '<div class="media">' +
-                                '<a class="media-left align-self-center" href="#">Language 4</a>' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.module_name_l4 + '</h5>' + v.module_desc_l4 +
+                            if (v.module_name_l2 != '' && v.module_name_l2 != undefined) {
+                                html += '<div class="media">' +
+                                    '<a class="media-left align-self-center" href="#">Language 2</a>' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.module_name_l2 + '</h5>' + v.module_desc_l2 +
+                                    '</div>' +
+                                    '</div>'
+                            }
+                            if (v.module_name_l3 != '' && v.module_name_l3 != undefined) {
+                                html += '<div class="media">' +
+                                    '<a class="media-left align-self-center" href="#">Language 3</a>' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.module_name_l3 + '</h5>' + v.module_desc_l3 +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            if (v.module_name_l4 != '' && v.module_name_l4 != undefined) {
+                                html += '<div class="media">' +
+                                    '<a class="media-left align-self-center" href="#">Language 4</a>' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.module_name_l4 + '</h5>' + v.module_desc_l4 +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            if (v.module_name_l5 != '' && v.module_name_l5 != undefined) {
+                                html += '<div class="media">' +
+                                    'Language 5' +
+                                    '<div class="media-body">' +
+                                    '   <h5 class="media-heading">' + v.module_name_l5 + '</h5>' + v.module_desc_l5 +
+                                    '</div>' +
+                                    '</div>';
+                            }
+                            html += '</div>' +
                                 '</div>' +
                                 '</div>';
-                        }
-                        if (v.module_name_l5 != '' && v.module_name_l5 != undefined) {
-                            html += '<div class="media">' +
-                                'Language 5' +
-                                '<div class="media-body">' +
-                                '   <h5 class="media-heading">' + v.module_name_l5 + '</h5>' + v.module_desc_l5 +
-                                '</div>' +
-                                '</div>';
-                        }
-                        html += '</div>' +
-                            '</div>' +
-                            '</div>';
+                            html += '</div>';
+                        });
+
                         html += '</div>';
-                    });
+                        html += '</div>';
+                        html += '</div>';
+                        $('#htmlCollapse').html('').html(html);
+                    } catch (e) {
+                    }
 
-                    html += '</div>';
-                    html += '</div>';
-                    html += '</div>';
-                    $('#htmlCollapse').html('').html(html);
-                } catch (e) {
+                    $('#modal_project').modal('hide');
                 }
-            }
+            });
+        } else {
+            toastMsg('Error', 'Something went wrong', 'error');
+        }
 
 
-        });
     }
 </script>
