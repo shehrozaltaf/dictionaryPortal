@@ -56,6 +56,33 @@ class MSection extends CI_Model
         return $query->result();
     }
 
+    function getCodeBookData($searchdata)
+    {
+        $this->db->select('crf.crf_name,
+	section_detail.variable_name,
+	section_detail.label_l1,
+	section_detail.option_value,
+	section_detail.dbType,
+	section_detail.insertDB,
+	section_detail.idParentQuestion,
+	section_detail.dbLength,
+	section_detail.nature ');
+        $this->db->from('section_detail');
+        $this->db->join('section', 'section_detail.idSection = section.idSection', 'RIGHT');
+        $this->db->join('modules', 'section.idModule = modules.idModule', 'left');
+        $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
+        $this->db->where('crf.idProjects', $searchdata['idProjects']);
+
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $this->db->where('section.idSection', $searchdata['idSection']);
+        }
+
+        $this->db->where('section_detail.nature!="Title"');
+        $this->db->where('section.isActive', 1);
+        $this->db->order_by('section_detail.variable_name', 'ASC');
+        $query = $this->db->get();
+        return $query->result();
+    }
     function getSectionDetailDataByid($idSection)
     {
         $idSectione = 0;

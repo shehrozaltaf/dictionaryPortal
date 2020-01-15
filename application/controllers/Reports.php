@@ -28,6 +28,88 @@ class Reports extends CI_controller
         $this->load->view('include/footer');
     }
 
+    function getCodeBook()
+    {
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $this->load->library('excel');
+            $idProject = $_REQUEST['project'];
+            $this->load->model('mmodule');
+            $this->load->model('msection');
+            $MSection = new MSection();
+
+            $searchData = array();
+            $searchData['idProjects'] = $idProject;
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
+
+
+            $myresult = array();
+            $result = $MSection->getCodeBookData($searchData);
+            foreach ($result as $key => $value) {
+                if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                    $mykey = strtolower($value->idParentQuestion);
+                    $myresult[strtolower($mykey)]->myrow_options[] = $value;
+                } else {
+                    $mykey = strtolower($value->variable_name);
+                    $myresult[strtolower($mykey)] = $value;
+                }
+            }
+            $data = array();
+            foreach ($myresult as $val) {
+                $data[] = $val;
+            }
+            /*echo '<pre>';
+            print_r($myresult);
+            echo '</pre>';
+            exit();*/
+//            $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
+            $fileName = 'codebook_' . $data[0]->crf_name . '.xlsx';
+            $objPHPExcel = new    PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Inst');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable Name');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Variable Label');
+            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
+            $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
+            $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+            $rowCount = 1;
+            foreach ($data as $list) {
+                $rowCount++;
+                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
+
+                if (isset($list->myrow_options) && $list->myrow_options != '') {
+                    foreach ($list->myrow_options as $options) {
+                        $rowCount++;
+                        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->dbType);
+                    }
+                }
+            }
+            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+            header('Content-Type: application/vnd.ms-excel'); //mime type
+            header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+            header('Cache-Control: max-age=0'); //no cache
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+            $objWriter->save('php://output');
+
+
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
 
     function getXml()
     {
@@ -140,7 +222,7 @@ class Reports extends CI_controller
                             android:layout_height="wrap_content" 
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
-                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name)  . 't.getText().toString() : ""}\'
+                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 't.getText().toString() : ""}\'
                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($options->nature == 'Input') {
                             $xml .= '<TextView
@@ -1266,5 +1348,6 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select project';
         }
     }
+
 
 } ?>
