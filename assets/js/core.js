@@ -21,6 +21,17 @@ function CallAjax(URL, Data, Type, CallBack, isFormData) {
     $.ajax(obj);
 }
 
+$('.toggle-password').click(function () {
+    var x = $(".myPwdInput");
+    if (x.attr('type') == 'text') {
+        x.attr('type', 'password');
+        $('.pwdIcon').removeClass('ft-eye').addClass('ft-eye-off');
+    } else {
+        x.attr('type', 'text');
+        $('.pwdIcon').removeClass('ft-eye-off').addClass('ft-eye');
+    }
+});
+
 function showModal(id) {
     var modal = UIkit.modal("#" + id);
     modal.show();
@@ -98,12 +109,14 @@ function returnMsg(divTextId, TextMsg, divTextclass, divmain) {
 
 function showloader() {
     $('#loader').show();
-    $('.content-body').css('opacity','0.5')
+    $('.content-body').css('opacity', '0.5')
 }
+
 function hideloader() {
     $('#loader').hide();
-    $('.content-body').css('opacity','1')
+    $('.content-body').css('opacity', '1')
 }
+
 function toastMsg(heading, info, msgclass) {
     if (msgclass == 'success') {
         toastr.success(info, heading, {
@@ -125,6 +138,6 @@ function toastMsg(heading, info, msgclass) {
         });
     }
 
-    $('.mybtn').removeAttr('disabled','disabled');
+    $('.mybtn').removeAttr('disabled', 'disabled');
     hideloader();
 }

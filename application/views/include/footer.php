@@ -11,12 +11,22 @@
 
                 <div class="form-group">
                     <label for="edit_newPassword">New Password: </label>
-                    <input type="password" class="form-control edit_newPassword" id="edit_newPassword">
+                    <div class="position-relative  ">
+                        <input type="password" class="form-control edit_newPassword myPwdInput" id="edit_newPassword">
+                        <div class="form-control-position toggle-password">
+                            <i class="ft-eye-off pwdIcon"></i>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="edit_newPasswordConfirm">Confrim Password: </label>
-                    <input type="password" class="form-control edit_newPasswordConfirm" id="edit_newPasswordConfirm">
+                    <div class="position-relative  ">
+                        <input type="password" class="form-control edit_newPasswordConfirm myPwdInput" id="edit_newPasswordConfirm">
+                        <div class="form-control-position toggle-password">
+                            <i class="ft-eye-off pwdIcon"></i>
+                        </div>
+                    </div>
                 </div>
 
             </div>

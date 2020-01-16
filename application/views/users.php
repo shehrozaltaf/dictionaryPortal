@@ -121,9 +121,15 @@
                     <input type="text" class="form-control email" id="email">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group ">
+
                     <label for="password">Password: </label>
-                    <input type="password" class="form-control password" id="password">
+                    <div class="position-relative  ">
+                        <input type="password" class="form-control password myPwdInput" id="password">
+                        <div class="form-control-position toggle-password">
+                            <i class="ft-eye-off pwdIcon"></i>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -160,7 +166,12 @@
 
                 <div class="form-group">
                     <label for="edit_password">Password: </label>
-                    <input type="text" class="form-control edit_password" id="edit_password">
+                    <div class="position-relative  ">
+                        <input type="password" class="form-control edit_password myPwdInput" id="edit_password">
+                        <div class="form-control-position toggle-password">
+                            <i class="ft-eye-off pwdIcon"></i>
+                        </div>
+                    </div>
                 </div>
 
             </div>

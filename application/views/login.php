@@ -15,9 +15,16 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/components.min.css">
     <link rel="stylesheet" type="text/css"
           href="<?php echo base_url(); ?>assets/css/core/colors/palette-gradient.min.css">
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendors/css/vendors.min.css">
     <style>
-        .error{
+        .error {
             border-color: #e53935;
+        }
+
+        .toggle-password {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -51,9 +58,10 @@
                                         </div>
                                     </fieldset>
                                     <fieldset class="form-group position-relative">
-                                        <input type="password" class="form-control round" id="login_password"
+                                        <input type="password" class="form-control round myPwdInput" id="login_password"
                                                placeholder="Enter Password" required>
-                                        <div class="form-control-position">
+                                        <div class="form-control-position toggle-password">
+                                            <i class="ft-eye-off pwdIcon"></i>
                                         </div>
                                     </fieldset>
                                     <div class="form-group row">
@@ -129,7 +137,7 @@
                 } else if (res == 4) {
                     $('#login_username').addClass('error');
                     returnMsg('msgText', 'Invalid User Name', 'uk-alert-danger', 'msg');
-                }  else {
+                } else {
                     $('#login_username').addClass('error');
                     $('#login_password').addClass('error');
                     returnMsg('msgText', 'Invalid Username/Password', 'uk-alert-danger', 'msg');
