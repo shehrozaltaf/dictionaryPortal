@@ -73,4 +73,68 @@ class Login extends CI_Controller
         session_destroy();
     }
 
+    function recover_password()
+    {
+        $this->load->view('recover_password');
+    }
+
+
+    public function forgetPwd_SendEmail()
+    {
+        if (isset($_POST['email']) && $_POST['email'] != '') {
+            $Mlogin = new MLogin();
+            $ForgetPass = $Mlogin->ForgetPass($_POST['email']);
+            if (isset($ForgetPass[0]) && $ForgetPass[0]->password != '' && $ForgetPass[0]->email != '') {
+                $userName = $ForgetPass[0]->username;
+                $password = $ForgetPass[0]->password;
+                $email = $ForgetPass[0]->email;
+                $this->load->library('email');
+                $Subject = "Recover Password - Dictionary Portal";
+                $body = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+                        <html xmlns="http://www.w3.org/1999/xhtml">
+                        <head>
+                            <meta http-equiv="Content-Type" content="text/html; charset=' . strtolower(config_item('charset')) . '" />
+                            <title>' . html_escape($Subject) . '</title>
+                            <style type="text/css">
+                                body {
+                                    font-family: Arial, Verdana, Helvetica, sans-serif;font-size: 16px;
+                                }
+                            </style>
+                        </head>
+                        <body>
+                        Dear ' . $userName . ',<br/><br/>
+                        <p>Your old password is: <strong>' . $password . '</strong>. You can change your password from the <a href="' . base_url() . '">portal</a>.</p>
+                        <br/>
+                        
+                        <p style=\'  background-color: yellow; font-weight: 600;\'>Note: This is an automated message, please ignore if the task is completed.</p> <br>
+                        
+                        <p>Thank you </p> 
+                        <p>Regards,</p>
+                        <p><a href="' . base_url() . '">Dictionary Portal</a></p>
+                        </body>
+                        </html>';
+                $from = 'sk_khan911@hotmail.com';
+                $to = $email;
+                $email_setting = array('mailtype' => 'html');
+                $this->email->initialize($email_setting);
+                $res = $this->email
+                    ->from($from)
+                    ->to($to)
+                    ->subject($Subject)
+                    ->message($body)
+                    ->send();
+                if ($res) {
+                    $result = 1;
+                } else {
+                    $result = 2;
+                }
+            } else {
+                $result = 3;
+            }
+        } else {
+            $result = 2;
+        }
+        echo $result;
+    }
+
 }

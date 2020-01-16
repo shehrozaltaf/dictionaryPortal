@@ -69,7 +69,7 @@
 
                                         </div>
                                         <div class="col-md-6 col-12 float-sm-left text-center text-sm-right"><a
-                                                    href="http://f48605/dictionary_portal/index.php/dashboard"
+                                                    href="<?php echo base_url('index.php/Login/recover_password')?>"
                                                     class="card-link">Forgot Password?</a></div>
                                     </div>
                                     <div id="msg" style="display: none;" class="uk-alert" data-uk-alert>

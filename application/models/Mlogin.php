@@ -28,8 +28,13 @@ class MLogin extends CI_Model
 
     function ForgetPass($email)
     {
-        $query = "SELECT * FROM user where Email='" . $email . "' ";
-        return $this->Modal->selectAll($query);
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('email', $email);
+        $this->db->where('status', 1);
+        $query = $this->db->get();
+        $res = $query->result();
+        return $res;
     }
 
     function updateUserPassword($idUser, $newPassword)
