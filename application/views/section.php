@@ -233,7 +233,8 @@
                                 '<h5 class="mb-0">' +
                                 '<button class="btn btn-link collapsed" data-toggle="collapse"' +
                                 ' data-target="#collapseA' + a + '" ' + expend +
-                                ' aria-controls="collapseA' + a + '" onclick="mysection(' + v.idSection + ')" data-idSection="' + v.idSection + '"> Section ' + a +
+                                ' aria-controls="collapseA' + a + '" onclick="mysection(' + v.idSection + ')" data-idSection="' + v.idSection + '">'
+                                + (v.section_title_l1 != '' && v.section_title_l1 != undefined ? v.section_title_l1 : 'Section ' + a) +
                                 '</button>' +
                                 '</h5>' +
                                 '</div>' +
