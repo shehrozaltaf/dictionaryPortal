@@ -256,19 +256,19 @@ class Reports extends CI_controller
                                             </tr>';
                         foreach ($myresult as $keySectionDetail => $valueSectionDetail) {
                             if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
-                                $l1sec='';
-                                $l2sec='';
-                                $l3sec='';
-                                $l4sec='';
-                                $l5sec='';
+                                $l1sec = '';
+                                $l2sec = '';
+                                $l3sec = '';
+                                $l4sec = '';
+                                $l5sec = '';
 
-                                $ol1sec='';
-                                $ol2sec='';
-                                $ol3sec='';
-                                $ol4sec='';
-                                $ol5sec='';
+                                $ol1sec = '';
+                                $ol2sec = '';
+                                $ol3sec = '';
+                                $ol4sec = '';
+                                $ol5sec = '';
                                 if ($displaylanguagel1 == 'on') {
-                                    $l1sec = $valueSectionDetail->label_l1;
+                                    $l1sec = htmlspecialchars($valueSectionDetail->label_l1);
                                 }
                                 if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
                                     $displaylanguagel2 == 'on') {
@@ -302,7 +302,7 @@ class Reports extends CI_controller
                                     $optsubhtml .= '<table    cellpadding="2" cellspacing="0"  >';
                                     foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
                                         if ($displaylanguagel1 == 'on') {
-                                            $ol1sec = $oval->label_l1;
+                                            $ol1sec = htmlspecialchars($oval->label_l1);
                                         }
                                         if (isset($oval->label_l2) && $oval->label_l2 != '' &&
                                             $displaylanguagel2 == 'on') {
@@ -464,18 +464,27 @@ class Reports extends CI_controller
                         android:text="@string/' . strtolower($value->variable_name) . '" />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
 
-                    /*if ($value->variable_name == 'HH20') {
-                        echo '<pre>';
-                        print_r($value);
-                        echo '</pre>';
-//                        exit();
-                    }*/
+                    /*  if ($value->variable_name == 'F101A') {
+                          echo '<pre>';
+                          print_r($value);
+                          echo '</pre>';
+                          exit();
+                      }*/
+
 
                     if ($value->nature == 'Radio') {
                         $xml .= '<RadioGroup
                         android:id="@+id/' . strtolower($value->variable_name) . '"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">';
+                    }
+                    if ($value->nature == 'CheckBox') {
+                        $xml .= '<LinearLayout
+                                android:id="@+id/' . strtolower($value->variable_name) . 'check"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:tag="0">';
                     }
 
                     foreach ($value->myrow_options as $options) {
@@ -506,6 +515,21 @@ class Reports extends CI_controller
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '"
                                         style="@style/radiobutton"
+                                        android:text="@string/' . strtolower($options->variable_name) . '" /> 
+                        
+                            <EditText
+                            android:id="@+id/' . strtolower($options->variable_name) . 't"
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" 
+                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                            android:tag="' . strtolower($options->variable_name) . '"
+                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 't.getText().toString() : ""}\'
+                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($value->nature == 'CheckBox' && $options->nature == 'Input') {
+                            $xml .= '<CheckBox
+                                        android:id="@+id/' . strtolower($options->variable_name) . '"
+                                        style="@style/checkbox"
                                         android:text="@string/' . strtolower($options->variable_name) . '" /> 
                         
                             <EditText
@@ -551,6 +575,11 @@ class Reports extends CI_controller
                                         android:id="@+id/' . strtolower($options->variable_name) . '"
                                         style="@style/radiobutton"
                                         android:text="@string/' . strtolower($options->variable_name) . '" />';
+                        } elseif ($options->nature == 'CheckBox') {
+                            $xml .= ' <CheckBox
+                            android:id="@+id/' . strtolower($options->variable_name) . '"
+                            style="@style/checkbox"
+                            android:text="@string/' . strtolower($options->variable_name) . '" />';
                         }
                     }
 
@@ -558,6 +587,9 @@ class Reports extends CI_controller
                         $xml .= '</RadioGroup>';
                     }
 
+                    if ($value->nature == 'CheckBox') {
+                        $xml .= '</LinearLayout>';
+                    }
                 } else {
                     if ($value->nature == 'Input-Numeric') {
                         $minVal = 0;
@@ -702,7 +734,7 @@ class Reports extends CI_controller
                         if ($list->nature == 'Radio' && $options->nature == 'Input') {
                             $rowCount++;
                             $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name.'t');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name . 't');
                             $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
                             $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
                             $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
@@ -771,7 +803,7 @@ class Reports extends CI_controller
                             } elseif ($options->nature == 'Input') {
                                 $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -785,7 +817,7 @@ class Reports extends CI_controller
                             } elseif ($options->nature == 'Input') {
                                 $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -799,7 +831,7 @@ class Reports extends CI_controller
                             } elseif ($options->nature == 'Input') {
                                 $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -810,9 +842,9 @@ class Reports extends CI_controller
                         foreach ($value->myrow_options as $options) {
                             $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
 //                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
@@ -825,11 +857,11 @@ class Reports extends CI_controller
                         foreach ($value->myrow_options as $options) {
                             $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
                             }
                         }
                     }

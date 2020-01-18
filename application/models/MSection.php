@@ -40,7 +40,6 @@ class MSection extends CI_Model
     }
 
 
-
     function getSectionDetailData($searchdata)
     {
         $idSection = 0;
@@ -84,6 +83,7 @@ class MSection extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
     function getSectionDetailDataByid($idSection)
     {
         $idSectione = 0;

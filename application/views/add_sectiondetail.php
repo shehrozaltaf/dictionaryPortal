@@ -726,15 +726,15 @@
                 }
 
                 html += '<hr><div class="col-md-6">' +
-                    '<div class="form-group"><label for="min_val">Min Length</label>' +
+                    '<div class="form-group"><label for="min_val">Min Range</label>' +
                     '<input type="text" id="min_val" name="min_val" class="form-control  input-sm min_val"' +
-                    'data-key="Input"  placeholder="Min" >' +
+                    'data-key="Input"  placeholder="Min Range" >' +
                     '</div>' +
                     '</div> ' +
                     '<div class="col-md-6">' +
-                    '<div class="form-group"><label for="max_val">Max Length</label>' +
+                    '<div class="form-group"><label for="max_val">Max Range</label>' +
                     '<input type="text" id="max_val" name="max_val" class="form-control   input-sm max_val" ' +
-                    'data-key="Input"  placeholder="Max" >' +
+                    'data-key="Input"  placeholder="Max Range" >' +
                     '</div>' +
                     '</div>';
 
@@ -958,14 +958,14 @@
 
                         html += '<div class="row"><div class="col-md-6">' +
                             '<div class="form-group">' +
-                            '<label for="edit_MinVal">Min:</label>' +
+                            '<label for="edit_MinVal">Min Range:</label>' +
                             '<input type="text" class="form-control" id="edit_MinVal" name="edit_MinVal"' +
                             ' value="' + response[0].MinVal + '">' +
                             '</div>' +
                             '</div> ' +
                             '<div class="col-md-6">' +
                             '<div class="form-group">' +
-                            '<label for="edit_MaxVal">Max:</label>' +
+                            '<label for="edit_MaxVal">Max Range:</label>' +
                             '<input type="text" class="form-control" id="edit_MaxVal" name="edit_MaxVal"' +
                             ' value="' + response[0].MaxVal + '">' +
                             '</div>' +
