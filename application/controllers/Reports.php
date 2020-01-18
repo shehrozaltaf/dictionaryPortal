@@ -28,13 +28,15 @@ class Reports extends CI_controller
         $this->load->view('include/footer');
     }
 
-    function getCodeBook()
+    function getPDF()
     {
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
-            $this->load->library('excel');
+
             $idProject = $_REQUEST['project'];
             $this->load->model('mmodule');
             $this->load->model('msection');
+            $MProjects = new MProjects();
+            $MModule = new MModule();
             $MSection = new MSection();
 
             $searchData = array();
@@ -44,87 +46,363 @@ class Reports extends CI_controller
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
 
-
-            $myresult = array();
-            $result = $MSection->getCodeBookData($searchData);
-            foreach ($result as $key => $value) {
-                if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
-                    $mykey = strtolower($value->idParentQuestion);
-                    $myresult[strtolower($mykey)]->myrow_options[] = $value;
-                } else {
-                    $mykey = strtolower($value->variable_name);
-                    $myresult[strtolower($mykey)] = $value;
-                }
+            if ($searchData['language'] === 'l1') {
+                $displaylanguagel1 = 'on';
+                $displaylanguagel2 = 'off';
+                $displaylanguagel3 = 'off';
+                $displaylanguagel4 = 'off';
+                $displaylanguagel5 = 'off';
+            } elseif ($searchData['language'] === 'l2') {
+                $displaylanguagel1 = 'off';
+                $displaylanguagel2 = 'on';
+                $displaylanguagel3 = 'off';
+                $displaylanguagel4 = 'off';
+                $displaylanguagel5 = 'off';
+            } elseif ($searchData['language'] === 'l3') {
+                $displaylanguagel1 = 'off';
+                $displaylanguagel2 = 'off';
+                $displaylanguagel3 = 'on';
+                $displaylanguagel4 = 'off';
+                $displaylanguagel5 = 'off';
+            } elseif ($searchData['language'] === 'l4') {
+                $displaylanguagel1 = 'off';
+                $displaylanguagel2 = 'off';
+                $displaylanguagel3 = 'off';
+                $displaylanguagel4 = 'on';
+                $displaylanguagel5 = 'off';
+            } elseif ($searchData['language'] === 'l5') {
+                $displaylanguagel1 = 'off';
+                $displaylanguagel2 = 'off';
+                $displaylanguagel3 = 'off';
+                $displaylanguagel4 = 'off';
+                $displaylanguagel5 = 'on';
+            } else {
+                $displaylanguagel1 = 'on';
+                $displaylanguagel2 = 'on';
+                $displaylanguagel3 = 'on';
+                $displaylanguagel4 = 'on';
+                $displaylanguagel5 = 'on';
             }
-            $data = array();
-            foreach ($myresult as $val) {
-                $data[] = $val;
+            /* echo $searchData['language'];
+             echo '<br>l1'.$displaylanguagel1;
+             echo '<br>l2'.$displaylanguagel2;
+             echo '<br>l3'.$displaylanguagel3;
+             echo '<br>l4'.$displaylanguagel4;
+             echo '<br>l5'.$displaylanguagel5;
+             exit();*/
+            /*  echo $displaylanguage;
+              echo '<pre>';
+              print_r($searchData);
+              echo '</pre>';
+              exit();*/
+
+            $l2sec = '';
+            $l3sec = '';
+            $l4sec = '';
+            $l5sec = '';
+            $GetReportData = $MProjects->getPDFData($searchData);
+
+
+            $project_name = $GetReportData[0]->project_name;
+            $short_title = strtoupper($GetReportData[0]->short_title);
+            $title = $project_name . ' (' . $short_title . ')';
+
+            $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+            $pdf->SetCreator(PDF_CREATOR);
+            $pdf->SetAuthor('Dictionary Portal');
+            $pdf->SetTitle($title);
+            $pdf->SetSubject($title);
+            $pdf->SetKeywords($title);
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetTopMargin(1);
+            $pdf->setPrintHeader(false);
+
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+            $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+            if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
+                require_once(dirname(__FILE__) . '/lang/eng.php');
             }
-            /*echo '<pre>';
-            print_r($myresult);
-            echo '</pre>';
-            exit();*/
-//            $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
-            $fileName = 'codebook_' . $data[0]->crf_name . '.xlsx';
-            $objPHPExcel = new    PHPExcel();
-            $objPHPExcel->setActiveSheetIndex(0);
-            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Inst');
-            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable Name');
-            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Variable Label');
-            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
-            $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
-            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
-            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Table Name');
-            $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-            $rowCount = 1;
-            foreach ($data as $list) {
-                $rowCount++;
-                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
-                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
-                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
-                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
-                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
-                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
-                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->tableName);
+            $pdf->setFontSubsetting(true);
+            $pdf->SetFont('freeserif', '', 12);
+            $html = '';
+            $style = "<style>
+                        h1{text-align: center; font-size: 30px;  color: #002D57;}
+                        h3{text-align: center; font-size: 22px;}
+                        h4{font-size: 18px;}
+                        small{font-size: 12px}   
+                        </style>";
 
-                if (isset($list->myrow_options) && $list->myrow_options != '') {
-                    foreach ($list->myrow_options as $options) {
-                        $rowCount++;
-                        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+            $Mainheader = '';
 
-                        if ($list->nature == 'Radio' && $options->nature == 'Input') {
-                            $rowCount++;
-                            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name.'t');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
-                            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+            foreach ($GetReportData as $projectsCrfs) {
+//                $pdf->AddPage();
+                $searchData['idCRF'] = $projectsCrfs->id_crf;
+                $crf_name = $projectsCrfs->crf_name;
+                $crf_title = $crf_name . ' (' . strtoupper($projectsCrfs->crf_title) . ')';
+                $Mainheader = "<div class='head'>
+                                    <h1 class='mainheading'>" . $title . "</h1>
+                                    <h3 class='subheading'>" . $crf_title . "</h3>
+                               </div>";
+                $pdf->AddPage();
+                $pdf->writeHTML($style . $Mainheader, true, false, true, false, 'centre');
+
+
+                $getModules = $MModule->getModulesData($searchData);
+
+                foreach ($getModules as $keyModule => $valueModule) {
+                    $l = 0;
+                    $subhtml = "<div class='moduleDiv'>";
+                    if (isset($valueModule->module_name_l1) && $valueModule->module_name_l1 != '' &&
+                        $displaylanguagel1 == 'on') {
+                        $subhtml .= "<h4>" . htmlentities($valueModule->module_name_l1) . " : <small>" . $valueModule->module_desc_l1 . "</small></h4>";
+                    }
+                    if (isset($valueModule->module_name_l2) && $valueModule->module_name_l2 != '' &&
+                        $displaylanguagel2 == 'on') {
+                        $subhtml .= "<h4>" . $valueModule->module_name_l2 . "</h4><h5>" . $valueModule->module_desc_l2 . "</h5>";
+                    }
+                    if (isset($valueModule->module_name_l3) && $valueModule->module_name_l3 != '' &&
+                        $displaylanguagel3 == 'on') {
+                        $subhtml .= "<h4>" . $valueModule->module_name_l3 . "</h4><h5>" . $valueModule->module_desc_l3 . "</h5>";
+                    }
+                    if (isset($valueModule->module_name_l4) && $valueModule->module_name_l4 = '' &&
+                            $displaylanguagel4 == 'on') {
+                        $subhtml .= "<h4>" . $valueModule->module_name_l4 . "</h4><h5>" . $valueModule->module_desc_l4 . "</h5>";
+                    }
+                    if (isset($valueModule->module_name_l5) && $valueModule->module_name_l5 != '' &&
+                        $displaylanguagel5 == 'on') {
+                        $subhtml .= "<h4>" . $valueModule->module_name_l5 . " </h4><h5>" . $valueModule->module_desc_l5 . "</h5>";
+                    }
+                    $subhtml .= "</div>";
+                    /* $pdf->AddPage();
+                     $pdf->writeHTML(  $subhtml, true, false, false, false, '');*/
+
+
+                    $ModuleSearchData = array();
+                    $ModuleSearchData['idModule'] = $valueModule->idModule;
+                    $ModuleSearchData['idSection'] = $searchData['idSection'];
+                    $getSections = $MSection->getSectionData($ModuleSearchData);
+                    /*  echo '<pre>';
+                      print_r($getModules);
+                      echo '</pre>';
+                      exit();*/
+
+                    foreach ($getSections as $keySection => $valueSection) {
+
+                        $l++;
+                        if (isset($valueSection->section_title) && $valueSection->section_title != '') {
+                            $sectionHeading = $valueModule->variable_module . $valueSection->section_var_name . ": " . htmlentities($valueSection->section_title) . " : " . $valueSection->section_desc;
+                        }
+                        /*Section Detail(Options & Questons) Start*/
+                        if (isset($searchData['idSection']) && $searchData['idSection'] != 0) {
+                            $ModuleSearchData['idSection'] = $searchData['idSection'];
+                        } else {
+                            $ModuleSearchData['idSection'] = $valueSection->idSection;
+                        }
+                        $myresult = array();
+                        $getSectionDetails = $MSection->getSectionDetailsData($ModuleSearchData);
+
+                        foreach ($getSectionDetails as $key => $value) {
+                            /*if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
+                                $mykey = $value->idParentQuestion;
+                                $myresult[$mykey]->myrow_options[] = $value;
+                            } else {
+                                $mykey = $value->variable_name;
+                                $myresult[$mykey] = $value;
+                            }*/
+                            if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
+                                $mykey = $value->idParentQuestion;
+
+                                $expKey = explode(',', $mykey);
+                                if (isset($expKey) && count($expKey) != 0) {
+                                    if (isset($expKey[1]) && count($expKey[1]) != 0) {
+                                        $myresult[$expKey[0]]->myrow_options[$expKey[1]]->otherOptions[$value->variable_name] = $value;
+                                    } else {
+                                        $myresult[$expKey[0]]->myrow_options[$value->variable_name] = $value;
+                                    }
+                                } else {
+                                    $myresult[$mykey]->myrow_options[$value->variable_name] = $value;
+                                }
+
+                            } else {
+                                $mykey = $value->variable_name;
+                                $myresult[$mykey] = $value;
+                            }
                         }
 
+                        /*echo '<pre>';
+                        print_r($myresult);
+                        echo '</pre>';
+                        exit();*/
+                        /*Make a array as $myresult, and put all the section details in it*/
+                        $optionsubhtml = '<style>table tr {font-size: 13px}table tr th {font-size: 14px; font-weight: bold}
+.fright{float: right}
+</style>';
+                        if ($l == 1) {
+                            $optionsubhtml .= $subhtml;
+                        }
+//                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1" nobr="true"  >
+                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1"    >
+                                       <tr  align="center">
+                                                 <th colspan="4" >' . $sectionHeading . '</th>
+                                            </tr>
+                                            <tr  align="center">
+                                                <th  width="7%">Variable</th>
+                                                <th width="50%">Label</th> 
+                                                <th width="36%">Options</th>
+                                                <th width="7%">Other</th>
+                                            </tr>';
+                        foreach ($myresult as $keySectionDetail => $valueSectionDetail) {
+                            if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
+                                $l1sec='';
+                                $l2sec='';
+                                $l3sec='';
+                                $l4sec='';
+                                $l5sec='';
+
+                                $ol1sec='';
+                                $ol2sec='';
+                                $ol3sec='';
+                                $ol4sec='';
+                                $ol5sec='';
+                                if ($displaylanguagel1 == 'on') {
+                                    $l1sec = $valueSectionDetail->label_l1;
+                                }
+                                if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
+                                    $displaylanguagel2 == 'on') {
+                                    $l2sec = '<br>' . $valueSectionDetail->label_l2;
+                                }
+                                if (isset($valueSectionDetail->label_l3) && $valueSectionDetail->label_l3 != '' &&
+                                    $displaylanguagel3 == 'on') {
+                                    $l3sec = '<br>' . $valueSectionDetail->label_l3;
+                                }
+                                if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
+                                    $displaylanguagel4 == 'on') {
+                                    $l4sec = '<br>' . $valueSectionDetail->label_l4;
+                                }
+                                if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
+                                    $displaylanguagel5 == 'on') {
+                                    $l5sec = '<br>' . $valueSectionDetail->label_l5;
+                                }
+                                $optionsubhtml .= '<tr >
+                                       <td  width="7%"  align="center"><strong>' . $valueSectionDetail->variable_name . '</strong><br>
+                                       <small>' . $valueSectionDetail->nature . '</small></td>
+                                       <td width="50%">   
+                                            ' . $l1sec . '
+                                             ' . $l2sec . ' 
+                                             ' . $l3sec . ' 
+                                             ' . $l4sec . '
+                                             ' . $l5sec . '  
+                                        </td>';
+                                $optsubhtml = '<td width="36%">';
+
+                                if (isset($valueSectionDetail->myrow_options) && $valueSectionDetail->myrow_options != '') {
+                                    $optsubhtml .= '<table    cellpadding="2" cellspacing="0"  >';
+                                    foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
+                                        if ($displaylanguagel1 == 'on') {
+                                            $ol1sec = $oval->label_l1;
+                                        }
+                                        if (isset($oval->label_l2) && $oval->label_l2 != '' &&
+                                            $displaylanguagel2 == 'on') {
+                                            $ol2sec = '<br>' . $oval->label_l2;
+                                        }
+                                        if (isset($oval->label_l3) && $oval->label_l3 != '' &&
+                                            $displaylanguagel3 == 'on') {
+                                            $ol3sec = '<br>' . $oval->label_l3;
+                                        }
+                                        if (isset($oval->label_l4) && $oval->label_l4 != '' &&
+                                            $displaylanguagel4 == 'on') {
+                                            $ol4sec = '<br>' . $oval->label_l4;
+                                        }
+                                        if (isset($oval->label_l5) && $oval->label_l5 != '' &&
+                                            $displaylanguagel5 == 'on') {
+                                            $ol5sec = '<br>' . $oval->label_l5;
+                                        }
+                                        $optsubhtml .= '<tr>';
+                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" . $oval->variable_name . ": </strong></small> " . $ol1sec . " 
+                                             " . $ol2sec . " 
+                                             " . $ol3sec . " 
+                                             " . $ol4sec . "
+                                             " . $ol5sec . "  </span> </span>
+                                             </td>";
+                                        $optsubhtml .= '<td width="15%">' . $oval->option_value . '</td>';
+
+                                        $optsubhtml .= '<td width="15%">' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
+                                                '<small>Skip:' . $oval->skipQuestion . ' </small>' : '') . '</td>';
+
+                                        /*$optsubhtml .= "<br><span><span><small>" . $oval->variable_name . ": </small> " . $ol1sec . "
+                                             " . $ol2sec . "
+                                             " . $ol3sec . "
+                                             " . $ol4sec . "
+                                             " . $ol5sec . "  </span>
+                                             <span   class='fright'  align=\"left\">---------------" . $oval->option_value . "</span></span>";*/
+
+
+                                        $optsubhtml .= '</tr>';
+
+                                        if (isset($oval->otherOptions) && $oval->otherOptions != '') {
+                                            $optsubhtml .= '<tr><td colspan="3"><ul>';
+                                            foreach ($oval->otherOptions as $ok => $ov) {
+                                                $optsubhtml .= '<li><small><strong>' . $ov->variable_name . '</strong></small> -- ' . $ov->label_l1 . ' -- ' . $ov->option_value . '</li>';
+                                            }
+                                            $optsubhtml .= '</ul></td></tr>';
+                                        }
+
+                                    }
+                                    $optsubhtml .= '</table>';
+                                }
+                                $optsubhtml .= '</td>';
+                                $optionsubhtml .= $optsubhtml;
+                                /*<small>Type: </small>' . $valueSectionDetail->nature;*/
+                                $optionsubhtml .= '<td width="7%"  align="center" > ';
+
+                                /*$optionsubhtml .= '<td width="12%"  align="center" >';*/
+                                if (isset($valueSectionDetail->skipQuestion) && $valueSectionDetail->skipQuestion != '') {
+                                    $optionsubhtml .= '<small> Skip: </small><strong>' . $valueSectionDetail->skipQuestion . '</strong>';
+                                }
+                                if (isset($valueSectionDetail->MinVal) && $valueSectionDetail->MinVal != '') {
+                                    $optionsubhtml .= '<small> Min: </small>' . $valueSectionDetail->MinVal;
+                                }
+                                if (isset($valueSectionDetail->MaxVal) && $valueSectionDetail->MaxVal != '') {
+                                    $optionsubhtml .= '<small>, Max: </small>' . $valueSectionDetail->MaxVal;
+                                }
+
+                                $optionsubhtml .= '</td>
+                                    </tr> ';
+                            }
+                        }
+                        $optionsubhtml .= "</table>";
+                        /*Section Detail(Options & Questons) End*/
+//                        $fontname = $pdf->addTTFfont('/Jameel_Noori_Nastaleeq.ttf', 'TrueTypeUnicode', '', 32);
+//                        $pdf->SetFont('jameel_noori_nastaleeq', '', 20, '', 'false');
+                        $pdf->AddPage();
+                        $pdf->writeHTML($optionsubhtml, true, false, false, false, '');
+
+
                     }
+
+
+//                    $pdf->writeHTML($style . $subhtml, true, false, true, false, 'LEFT');
+
                 }
+
+
             }
-            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-            header('Content-Type: application/vnd.ms-excel'); //mime type
-            header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-            header('Cache-Control: max-age=0'); //no cache
-            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-            $objWriter->save('php://output');
+            $bMargin = $pdf->getBreakMargin();
+            $auto_page_break = $pdf->getAutoPageBreak();
+            $pdf->SetAutoPageBreak(true, 0);
+            $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
+            $pdf->setPageMark();
+            ob_end_clean();
+            $pdf->Output('dictionary.pdf', 'I');
 
 
         } else {
             echo 'Invalid Project, Please select project';
         }
     }
-
 
     function getXml()
     {
@@ -351,6 +629,103 @@ class Reports extends CI_controller
         }
     }
 
+    function getCodeBook()
+    {
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $this->load->library('excel');
+            $idProject = $_REQUEST['project'];
+            $this->load->model('mmodule');
+            $this->load->model('msection');
+            $MSection = new MSection();
+
+            $searchData = array();
+            $searchData['idProjects'] = $idProject;
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
+
+
+            $myresult = array();
+            $result = $MSection->getCodeBookData($searchData);
+            foreach ($result as $key => $value) {
+                if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                    $mykey = strtolower($value->idParentQuestion);
+                    $myresult[strtolower($mykey)]->myrow_options[] = $value;
+                } else {
+                    $mykey = strtolower($value->variable_name);
+                    $myresult[strtolower($mykey)] = $value;
+                }
+            }
+            $data = array();
+            foreach ($myresult as $val) {
+                $data[] = $val;
+            }
+            /*echo '<pre>';
+            print_r($myresult);
+            echo '</pre>';
+            exit();*/
+//            $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
+            $fileName = 'codebook_' . $data[0]->crf_name . '.xlsx';
+            $objPHPExcel = new    PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Inst');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable Name');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Variable Label');
+            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
+            $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Table Name');
+            $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+            $rowCount = 1;
+            foreach ($data as $list) {
+                $rowCount++;
+                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->tableName);
+
+                if (isset($list->myrow_options) && $list->myrow_options != '') {
+                    foreach ($list->myrow_options as $options) {
+                        $rowCount++;
+                        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+
+                        if ($list->nature == 'Radio' && $options->nature == 'Input') {
+                            $rowCount++;
+                            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name.'t');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+                        }
+
+                    }
+                }
+            }
+            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+            header('Content-Type: application/vnd.ms-excel'); //mime type
+            header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+            header('Cache-Control: max-age=0'); //no cache
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+            $objWriter->save('php://output');
+
+
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
     function getSaveDraftData()
     {
         ob_end_clean();
@@ -473,160 +848,6 @@ class Reports extends CI_controller
             header('Content-Length: ' . filesize($file));
             header("Content-Type: text/plain");
             readfile($file);
-        } else {
-            echo 'Invalid Project, Please select project';
-        }
-    }
-
-    function getSaveDraftData2()
-    {
-        ob_end_clean();
-        if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
-            $this->load->model('msection');
-            $MSection = new MSection();
-            $searchData = array();
-            $searchData['idProjects'] = $_REQUEST['project'];
-            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
-            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
-            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-
-            $xml_layout_name = 'Myactivity';
-
-            $myresult = array();
-            $result = $MSection->getSectionDetailData($searchData);
-            foreach ($result as $key => $value) {
-                if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
-                    $mykey = $value->idParentQuestion;
-                    $myresult[$mykey]->myrow_options[] = $value;
-                } else {
-                    $mykey = strtolower($value->variable_name);
-                    $myresult[$mykey] = $value;
-                }
-            }
-
-            $data = array();
-            foreach ($myresult as $val) {
-                $data[] = $val;
-            }
-            /*echo '<pre>';
-            print_r($data);
-            echo '</pre>';
-            exit();*/
-            /* $result = $MSection->getSectionDetailData($searchData);*/
-            $fileData = 'JSONObject f1 = new JSONObject(); ' . "\n";
-
-            foreach ($data as $key => $value) {
-                $fileOtherData = '';
-                $filesubData = '';
-                /* if (isset($value->myrow_options) && $value->myrow_options != '') {
-                     foreach ($value->myrow_options as $options) {
-                         if ($options->nature == 'Input-Numeric') {
-                             $filesubData .= 'f1.put("' . $options->variable_name . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
-                         } elseif ($options->nature == 'Input') {
-                             $filesubData .= 'f1.put("' . $options->variable_name . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
-                         } elseif ($options->nature == 'Title') {
-                             $filesubData .= 'f1.put("' . $options->variable_name . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
-                         } elseif ($options->nature == 'Radio') {
-                             $filesubData .= 'bi.' . $options->variable_name . '.isChecked() ?"' . $options->option_value . '" : '. "\n";
-                         } elseif ($options->nature == 'CheckBox') {
-                             $filesubData .= 'f1.put("f3a05c",bi.f3a05c.isChecked() ?"3" :"0");' . "\n";
-                         }
-                     }
-                 }*/
-
-                if (isset($value->question_type) && $value->question_type != '') {
-                    $question_type = $value->question_type;
-                } else {
-                    $question_type = $value->nature;
-                }
-                if ($question_type == 'Input-Numeric') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Input') {
-                    $fileData .= 'f1.put("' . $value->variable_name . '", bi.' . $value->variable_name . '.getText().toString());' . "\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Title') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Radio') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", ' . "\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            $fileData .= 'bi.' . strtolower($value->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= ' "0"); ' . "\n";
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'CheckBox') {
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '",bi.' . strtolower($value->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                }
-            }
-
-            $file = "savedraft.java";
-            $txt = fopen($file, "w") or die("Unable to open file!");
-            fwrite($txt, $fileData);
-            fclose($txt);
-            header('Content-Description: File Transfer');
-            header('Content-Disposition: attachment; filename=' . basename($file));
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            header("Content-Type: text/plain");
-            readfile($file);
-
         } else {
             echo 'Invalid Project, Please select project';
         }
@@ -999,370 +1220,158 @@ class Reports extends CI_controller
         }
     }
 
-    function getPDF()
+    function getSaveDraftData2()
     {
-        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
-
-            $idProject = $_REQUEST['project'];
-            $this->load->model('mmodule');
+        ob_end_clean();
+        if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
             $this->load->model('msection');
-            $MProjects = new MProjects();
-            $MModule = new MModule();
             $MSection = new MSection();
-
             $searchData = array();
-            $searchData['idProjects'] = $idProject;
+            $searchData['idProjects'] = $_REQUEST['project'];
             $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
             $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-            $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
 
-            if ($searchData['language'] === 'l1') {
-                $displaylanguagel1 = 'on';
-                $displaylanguagel2 = 'off';
-                $displaylanguagel3 = 'off';
-                $displaylanguagel4 = 'off';
-                $displaylanguagel5 = 'off';
-            } elseif ($searchData['language'] === 'l2') {
-                $displaylanguagel1 = 'off';
-                $displaylanguagel2 = 'on';
-                $displaylanguagel3 = 'off';
-                $displaylanguagel4 = 'off';
-                $displaylanguagel5 = 'off';
-            } elseif ($searchData['language'] === 'l3') {
-                $displaylanguagel1 = 'off';
-                $displaylanguagel2 = 'off';
-                $displaylanguagel3 = 'on';
-                $displaylanguagel4 = 'off';
-                $displaylanguagel5 = 'off';
-            } elseif ($searchData['language'] === 'l4') {
-                $displaylanguagel1 = 'off';
-                $displaylanguagel2 = 'off';
-                $displaylanguagel3 = 'off';
-                $displaylanguagel4 = 'on';
-                $displaylanguagel5 = 'off';
-            } elseif ($searchData['language'] === 'l5') {
-                $displaylanguagel1 = 'off';
-                $displaylanguagel2 = 'off';
-                $displaylanguagel3 = 'off';
-                $displaylanguagel4 = 'off';
-                $displaylanguagel5 = 'on';
-            } else {
-                $displaylanguagel1 = 'on';
-                $displaylanguagel2 = 'on';
-                $displaylanguagel3 = 'on';
-                $displaylanguagel4 = 'on';
-                $displaylanguagel5 = 'on';
-            }
-            /* echo $searchData['language'];
-             echo '<br>l1'.$displaylanguagel1;
-             echo '<br>l2'.$displaylanguagel2;
-             echo '<br>l3'.$displaylanguagel3;
-             echo '<br>l4'.$displaylanguagel4;
-             echo '<br>l5'.$displaylanguagel5;
-             exit();*/
-            /*  echo $displaylanguage;
-              echo '<pre>';
-              print_r($searchData);
-              echo '</pre>';
-              exit();*/
+            $xml_layout_name = 'Myactivity';
 
-            $l2sec = '';
-            $l3sec = '';
-            $l4sec = '';
-            $l5sec = '';
-            $GetReportData = $MProjects->getPDFData($searchData);
-
-
-            $project_name = $GetReportData[0]->project_name;
-            $short_title = strtoupper($GetReportData[0]->short_title);
-            $title = $project_name . ' (' . $short_title . ')';
-
-            $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-
-            $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetAuthor('Dictionary Portal');
-            $pdf->SetTitle($title);
-            $pdf->SetSubject($title);
-            $pdf->SetKeywords($title);
-            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-            $pdf->SetTopMargin(1);
-            $pdf->setPrintHeader(false);
-
-            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-            $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-            if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-                require_once(dirname(__FILE__) . '/lang/eng.php');
-            }
-            $pdf->setFontSubsetting(true);
-            $pdf->SetFont('freeserif', '', 12);
-            $html = '';
-            $style = "<style>
-                        h1{text-align: center; font-size: 30px;  color: #002D57;}
-                        h3{text-align: center; font-size: 22px;}
-                        h4{font-size: 18px;}
-                        small{font-size: 12px}   
-                        </style>";
-
-            $Mainheader = '';
-
-            foreach ($GetReportData as $projectsCrfs) {
-//                $pdf->AddPage();
-                $searchData['idCRF'] = $projectsCrfs->id_crf;
-                $crf_name = $projectsCrfs->crf_name;
-                $crf_title = $crf_name . ' (' . strtoupper($projectsCrfs->crf_title) . ')';
-                $Mainheader = "<div class='head'>
-                                    <h1 class='mainheading'>" . $title . "</h1>
-                                    <h3 class='subheading'>" . $crf_title . "</h3>
-                               </div>";
-                $pdf->AddPage();
-                $pdf->writeHTML($style . $Mainheader, true, false, true, false, 'centre');
-
-
-                $getModules = $MModule->getModulesData($searchData);
-
-                foreach ($getModules as $keyModule => $valueModule) {
-                    $l = 0;
-                    $subhtml = "<div class='moduleDiv'>";
-                    if (isset($valueModule->module_name_l1) && $valueModule->module_name_l1 != '' &&
-                        $displaylanguagel1 == 'on') {
-                        $subhtml .= "<h4>" . htmlentities($valueModule->module_name_l1) . " : <small>" . $valueModule->module_desc_l1 . "</small></h4>";
-                    }
-                    if (isset($valueModule->module_name_l2) && $valueModule->module_name_l2 != '' &&
-                        $displaylanguagel2 == 'on') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l2 . "</h4><h5>" . $valueModule->module_desc_l2 . "</h5>";
-                    }
-                    if (isset($valueModule->module_name_l3) && $valueModule->module_name_l3 != '' &&
-                        $displaylanguagel3 == 'on') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l3 . "</h4><h5>" . $valueModule->module_desc_l3 . "</h5>";
-                    }
-                    if (isset($valueModule->module_name_l4) && $valueModule->module_name_l4 = '' &&
-                            $displaylanguagel4 == 'on') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l4 . "</h4><h5>" . $valueModule->module_desc_l4 . "</h5>";
-                    }
-                    if (isset($valueModule->module_name_l5) && $valueModule->module_name_l5 != '' &&
-                        $displaylanguagel5 == 'on') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l5 . " </h4><h5>" . $valueModule->module_desc_l5 . "</h5>";
-                    }
-                    $subhtml .= "</div>";
-                    /* $pdf->AddPage();
-                     $pdf->writeHTML(  $subhtml, true, false, false, false, '');*/
-
-
-                    $ModuleSearchData = array();
-                    $ModuleSearchData['idModule'] = $valueModule->idModule;
-                    $ModuleSearchData['idSection'] = $searchData['idSection'];
-                    $getSections = $MSection->getSectionData($ModuleSearchData);
-                    /*  echo '<pre>';
-                      print_r($getModules);
-                      echo '</pre>';
-                      exit();*/
-
-                    foreach ($getSections as $keySection => $valueSection) {
-
-                        $l++;
-                        if (isset($valueSection->section_title) && $valueSection->section_title != '') {
-                            $sectionHeading = $valueModule->variable_module . $valueSection->section_var_name . ": " . htmlentities($valueSection->section_title) . " : " . $valueSection->section_desc;
-                        }
-                        /*Section Detail(Options & Questons) Start*/
-                        if (isset($searchData['idSection']) && $searchData['idSection'] != 0) {
-                            $ModuleSearchData['idSection'] = $searchData['idSection'];
-                        } else {
-                            $ModuleSearchData['idSection'] = $valueSection->idSection;
-                        }
-                        $myresult = array();
-                        $getSectionDetails = $MSection->getSectionDetailsData($ModuleSearchData);
-
-                        foreach ($getSectionDetails as $key => $value) {
-                            /*if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
-                                $mykey = $value->idParentQuestion;
-                                $myresult[$mykey]->myrow_options[] = $value;
-                            } else {
-                                $mykey = $value->variable_name;
-                                $myresult[$mykey] = $value;
-                            }*/
-                            if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
-                                $mykey = $value->idParentQuestion;
-
-                                $expKey = explode(',', $mykey);
-                                if (isset($expKey) && count($expKey) != 0) {
-                                    if (isset($expKey[1]) && count($expKey[1]) != 0) {
-                                        $myresult[$expKey[0]]->myrow_options[$expKey[1]]->otherOptions[$value->variable_name] = $value;
-                                    } else {
-                                        $myresult[$expKey[0]]->myrow_options[$value->variable_name] = $value;
-                                    }
-                                } else {
-                                    $myresult[$mykey]->myrow_options[$value->variable_name] = $value;
-                                }
-
-                            } else {
-                                $mykey = $value->variable_name;
-                                $myresult[$mykey] = $value;
-                            }
-                        }
-
-                        /*echo '<pre>';
-                        print_r($myresult);
-                        echo '</pre>';
-                        exit();*/
-                        /*Make a array as $myresult, and put all the section details in it*/
-                        $optionsubhtml = '<style>table tr {font-size: 13px}table tr th {font-size: 14px; font-weight: bold}
-.fright{float: right}
-</style>';
-                        if ($l == 1) {
-                            $optionsubhtml .= $subhtml;
-                        }
-//                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1" nobr="true"  >
-                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1"    >
-                                       <tr  align="center">
-                                                 <th colspan="4" >' . $sectionHeading . '</th>
-                                            </tr>
-                                            <tr  align="center">
-                                                <th  width="7%">Variable</th>
-                                                <th width="50%">Label</th> 
-                                                <th width="36%">Options</th>
-                                                <th width="7%">Other</th>
-                                            </tr>';
-                        foreach ($myresult as $keySectionDetail => $valueSectionDetail) {
-                            if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
-                                if ($displaylanguagel1 == 'on') {
-                                    $l1sec = $valueSectionDetail->label_l1;
-                                }
-                                if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
-                                    $displaylanguagel2 == 'on') {
-                                    $l2sec = '<br>' . $valueSectionDetail->label_l2;
-                                }
-                                if (isset($valueSectionDetail->label_l3) && $valueSectionDetail->label_l3 != '' &&
-                                    $displaylanguagel3 == 'on') {
-                                    $l3sec = '<br>' . $valueSectionDetail->label_l3;
-                                }
-                                if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
-                                    $displaylanguagel4 == 'on') {
-                                    $l4sec = '<br>' . $valueSectionDetail->label_l4;
-                                }
-                                if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
-                                    $displaylanguagel5 == 'on') {
-                                    $l5sec = '<br>' . $valueSectionDetail->label_l5;
-                                }
-                                $optionsubhtml .= '<tr >
-                                       <td  width="7%"  align="center"><strong>' . $valueSectionDetail->variable_name . '</strong><br>
-                                       <small>' . $valueSectionDetail->nature . '</small></td>
-                                       <td width="50%">   
-                                            ' . $l1sec . '
-                                             ' . $l2sec . ' 
-                                             ' . $l3sec . ' 
-                                             ' . $l4sec . '
-                                             ' . $l5sec . '  
-                                        </td>';
-                                $optsubhtml = '<td width="36%">';
-
-                                if (isset($valueSectionDetail->myrow_options) && $valueSectionDetail->myrow_options != '') {
-                                    $optsubhtml .= '<table    cellpadding="2" cellspacing="0"  >';
-                                    foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
-                                        if ($displaylanguagel1 == 'on') {
-                                            $ol1sec = $oval->label_l1;
-                                        }
-                                        if (isset($oval->label_l2) && $oval->label_l2 != '' &&
-                                            $displaylanguagel2 == 'on') {
-                                            $ol2sec = '<br>' . $oval->label_l2;
-                                        }
-                                        if (isset($oval->label_l3) && $oval->label_l3 != '' &&
-                                            $displaylanguagel3 == 'on') {
-                                            $ol3sec = '<br>' . $oval->label_l3;
-                                        }
-                                        if (isset($oval->label_l4) && $oval->label_l4 != '' &&
-                                            $displaylanguagel4 == 'on') {
-                                            $ol4sec = '<br>' . $oval->label_l4;
-                                        }
-                                        if (isset($oval->label_l5) && $oval->label_l5 != '' &&
-                                            $displaylanguagel5 == 'on') {
-                                            $ol5sec = '<br>' . $oval->label_l5;
-                                        }
-                                        $optsubhtml .= '<tr>';
-                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" . $oval->variable_name . ": </strong></small> " . $ol1sec . " 
-                                             " . $ol2sec . " 
-                                             " . $ol3sec . " 
-                                             " . $ol4sec . "
-                                             " . $ol5sec . "  </span> </span>
-                                             </td>";
-                                        $optsubhtml .= '<td width="15%">' . $oval->option_value . '</td>';
-
-                                        $optsubhtml .= '<td width="15%">' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
-                                                '<small>Skip:' . $oval->skipQuestion . ' </small>' : '') . '</td>';
-
-                                        /*$optsubhtml .= "<br><span><span><small>" . $oval->variable_name . ": </small> " . $ol1sec . "
-                                             " . $ol2sec . " 
-                                             " . $ol3sec . " 
-                                             " . $ol4sec . "
-                                             " . $ol5sec . "  </span>
-                                             <span   class='fright'  align=\"left\">---------------" . $oval->option_value . "</span></span>";*/
-
-
-                                        $optsubhtml .= '</tr>';
-
-                                        if (isset($oval->otherOptions) && $oval->otherOptions != '') {
-                                            $optsubhtml .= '<tr><td colspan="3"><ul>';
-                                            foreach ($oval->otherOptions as $ok => $ov) {
-                                                $optsubhtml .= '<li><small><strong>' . $ov->variable_name . '</strong></small> -- ' . $ov->label_l1 . ' -- ' . $ov->option_value . '</li>';
-                                            }
-                                            $optsubhtml .= '</ul></td></tr>';
-                                        }
-
-                                    }
-                                    $optsubhtml .= '</table>';
-                                }
-                                $optsubhtml .= '</td>';
-                                $optionsubhtml .= $optsubhtml;
-                                /*<small>Type: </small>' . $valueSectionDetail->nature;*/
-                                $optionsubhtml .= '<td width="7%"  align="center" > ';
-
-                                /*$optionsubhtml .= '<td width="12%"  align="center" >';*/
-                                if (isset($valueSectionDetail->skipQuestion) && $valueSectionDetail->skipQuestion != '') {
-                                    $optionsubhtml .= '<small> Skip: </small><strong>' . $valueSectionDetail->skipQuestion . '</strong>';
-                                }
-                                if (isset($valueSectionDetail->MinVal) && $valueSectionDetail->MinVal != '') {
-                                    $optionsubhtml .= '<small> Min: </small>' . $valueSectionDetail->MinVal;
-                                }
-                                if (isset($valueSectionDetail->MaxVal) && $valueSectionDetail->MaxVal != '') {
-                                    $optionsubhtml .= '<small>, Max: </small>' . $valueSectionDetail->MaxVal;
-                                }
-
-                                $optionsubhtml .= '</td>
-                                    </tr> ';
-                            }
-                        }
-                        $optionsubhtml .= "</table>";
-                        /*Section Detail(Options & Questons) End*/
-//                        $fontname = $pdf->addTTFfont('/Jameel_Noori_Nastaleeq.ttf', 'TrueTypeUnicode', '', 32);
-//                        $pdf->SetFont('jameel_noori_nastaleeq', '', 20, '', 'false');
-                        $pdf->AddPage();
-                        $pdf->writeHTML($optionsubhtml, true, false, false, false, '');
-
-
-                    }
-
-
-//                    $pdf->writeHTML($style . $subhtml, true, false, true, false, 'LEFT');
-
+            $myresult = array();
+            $result = $MSection->getSectionDetailData($searchData);
+            foreach ($result as $key => $value) {
+                if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
+                    $mykey = $value->idParentQuestion;
+                    $myresult[$mykey]->myrow_options[] = $value;
+                } else {
+                    $mykey = strtolower($value->variable_name);
+                    $myresult[$mykey] = $value;
                 }
-
-
             }
-            $bMargin = $pdf->getBreakMargin();
-            $auto_page_break = $pdf->getAutoPageBreak();
-            $pdf->SetAutoPageBreak(true, 0);
-            $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
-            $pdf->setPageMark();
-            ob_end_clean();
-            $pdf->Output('dictionary.pdf', 'I');
 
+            $data = array();
+            foreach ($myresult as $val) {
+                $data[] = $val;
+            }
+            /*echo '<pre>';
+            print_r($data);
+            echo '</pre>';
+            exit();*/
+            /* $result = $MSection->getSectionDetailData($searchData);*/
+            $fileData = 'JSONObject f1 = new JSONObject(); ' . "\n";
+
+            foreach ($data as $key => $value) {
+                $fileOtherData = '';
+                $filesubData = '';
+                /* if (isset($value->myrow_options) && $value->myrow_options != '') {
+                     foreach ($value->myrow_options as $options) {
+                         if ($options->nature == 'Input-Numeric') {
+                             $filesubData .= 'f1.put("' . $options->variable_name . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+                         } elseif ($options->nature == 'Input') {
+                             $filesubData .= 'f1.put("' . $options->variable_name . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+                         } elseif ($options->nature == 'Title') {
+                             $filesubData .= 'f1.put("' . $options->variable_name . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+                         } elseif ($options->nature == 'Radio') {
+                             $filesubData .= 'bi.' . $options->variable_name . '.isChecked() ?"' . $options->option_value . '" : '. "\n";
+                         } elseif ($options->nature == 'CheckBox') {
+                             $filesubData .= 'f1.put("f3a05c",bi.f3a05c.isChecked() ?"3" :"0");' . "\n";
+                         }
+                     }
+                 }*/
+
+                if (isset($value->question_type) && $value->question_type != '') {
+                    $question_type = $value->question_type;
+                } else {
+                    $question_type = $value->nature;
+                }
+                if ($question_type == 'Input-Numeric') {
+                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Input') {
+                    $fileData .= 'f1.put("' . $value->variable_name . '", bi.' . $value->variable_name . '.getText().toString());' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Title') {
+                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Radio') {
+                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", ' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            $fileData .= 'bi.' . strtolower($value->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= ' "0"); ' . "\n";
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'CheckBox') {
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '",bi.' . strtolower($value->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+                                $fileOtherData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                }
+            }
+
+            $file = "savedraft.java";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileData);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/plain");
+            readfile($file);
 
         } else {
             echo 'Invalid Project, Please select project';
         }
     }
-
 
 } ?>
