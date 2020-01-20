@@ -113,10 +113,7 @@
 </style>
 
 <script>
-
-
     $(document).ready(function () {
-
         $('.mymodule').addClass('open');
         $('.module_view').addClass('active');
         var idCRF = $('#idCRF').val();
@@ -199,8 +196,10 @@
                                 '<h5 class="mb-0">' +
                                 '<button class="btn btn-link collapsed" data-toggle="collapse"' +
                                 ' data-target="#collapseA' + a + '" ' + expend +
-                                ' aria-controls="collapseA' + a + '"> Module ' + a +
+                                ' aria-controls="collapseA' + a + '">'
+                                + (v.module_name_l1 != '' && v.module_name_l1 != undefined ? v.module_name_l1 : 'Module ' + a) +
                                 '</button>' +
+                                '<a href="<?php echo base_url() ?>module/editModule?idModule='+v.idModule+'"><span class="la la-edit"></span></a>' +
                                 '</h5>' +
                                 '</div>' +
                                 ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +

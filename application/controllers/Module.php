@@ -55,6 +55,29 @@ class Module extends CI_controller
         $this->load->view('include/footer');
     }
 
+
+    function edit_module()
+    {
+        $MCrf = new MCrf();
+        $data = array();
+        $idCRF = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        if (!isset($idCRF) || $idCRF == '' || $idCRF == '$1' || $idCRF == 0) {
+            $MProjects = new MProjects();
+            $data['projects'] = $MProjects->getAllProjects();
+        } else {
+            $data['projects'] = '';
+        }
+        $data['slug'] = $idCRF;
+
+        $data['crf'] = $MCrf->getCrfById($idCRF);
+//        $data['all_crfs'] = $MCrf->getAllCrfs();
+
+        $this->load->view('include/header');
+        $this->load->view('include/sidebar');
+        $this->load->view('edit_module', $data);
+        $this->load->view('include/footer');
+    }
+
     function getData()
     {
         $MModule = new MModule();
