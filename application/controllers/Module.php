@@ -1,4 +1,5 @@
-<?php
+<?php ob_start();
+header('Content-type: text/html; charset=utf-8');
 
 class Module extends CI_controller
 {
@@ -35,8 +36,6 @@ class Module extends CI_controller
     {
         $MCrf = new MCrf();
         $data = array();
-
-
         $idCRF = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
         if (!isset($idCRF) || $idCRF == '' || $idCRF == '$1' || $idCRF == 0) {
             $MProjects = new MProjects();
@@ -45,10 +44,8 @@ class Module extends CI_controller
             $data['projects'] = '';
         }
         $data['slug'] = $idCRF;
-
         $data['crf'] = $MCrf->getCrfById($idCRF);
 //        $data['all_crfs'] = $MCrf->getAllCrfs();
-
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_module', $data);
@@ -56,26 +53,67 @@ class Module extends CI_controller
     }
 
 
-    function edit_module()
+    function edit_module($slug)
     {
-        $MCrf = new MCrf();
+        ob_end_clean();
         $data = array();
-        $idCRF = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
-        if (!isset($idCRF) || $idCRF == '' || $idCRF == '$1' || $idCRF == 0) {
-            $MProjects = new MProjects();
-            $data['projects'] = $MProjects->getAllProjects();
+        if (isset($slug) && $slug != '' && $slug != '$1' && $slug != 0) {
+            $data['idModule'] = $slug;
+            $MModule = new MModule();
+            $data['getData'] = $MModule->getModuleById($data['idModule']);
         } else {
-            $data['projects'] = '';
+            $data['error'] = 'Invalid Module';
         }
-        $data['slug'] = $idCRF;
-
-        $data['crf'] = $MCrf->getCrfById($idCRF);
-//        $data['all_crfs'] = $MCrf->getAllCrfs();
-
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('edit_module', $data);
         $this->load->view('include/footer');
+    }
+
+    function editData()
+    {
+        $Custom = new Custom();
+        $formArray = array();
+        if (isset($_POST['idModule']) && $_POST['idModule'] != '') {
+            $idModule = $_POST['idModule'];
+            $formArray['variable_module'] = $this->input->post('variable_module');
+            $module_l_name = '';
+            if ($this->input->post('module_name_Languages') != '' && $this->input->post('module_name_Languages') != 'undefined') {
+                $name_languagess = $this->input->post('module_name_Languages');
+                foreach ($name_languagess as $key => $value) {
+                    $formArray['module_name_l' . ((int)$key + 1)] = $value;
+                    if (((int)$key + 1) == count($name_languagess)) {
+                        $module_l_name .= $value;
+                    } else {
+                        $module_l_name .= $value . ', ';
+                    }
+                }
+            }
+            $module_l_desc = '';
+            if ($this->input->post('module_desc_Languages') != '' && $this->input->post('module_desc_Languages') != 'undefined') {
+                $desc_languagess = $this->input->post('module_desc_Languages');
+                foreach ($desc_languagess as $key => $value) {
+                    $formArray['module_desc_l' . ((int)$key + 1)] = $value;
+                    if (((int)$key + 1) == count($desc_languagess)) {
+                        $module_l_desc .= $value;
+                    } else {
+                        $module_l_desc .= $value . ', ';
+                    }
+                }
+            }
+            $formArray['module_status'] = $this->input->post('module_status');
+            $formArray['module_type'] = $this->input->post('module_type');
+            $editData = $Custom->Edit($formArray, 'idModule', $idModule, 'modules');
+            if ($editData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
+        } else {
+            $result = 3;
+        }
+
+        echo $result;
     }
 
     function getData()
@@ -169,6 +207,7 @@ class Module extends CI_controller
         }
         echo $result;
     }
+
 
 } ?>
 

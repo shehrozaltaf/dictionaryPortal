@@ -199,7 +199,7 @@
                                 ' aria-controls="collapseA' + a + '">'
                                 + (v.module_name_l1 != '' && v.module_name_l1 != undefined ? v.module_name_l1 : 'Module ' + a) +
                                 '</button>' +
-                                '<a href="<?php echo base_url() ?>module/editModule?idModule='+v.idModule+'"><span class="la la-edit"></span></a>' +
+                                '<a href="<?php echo base_url() ?>edit_module/'+v.idModule+'"><span class="la la-edit"></span></a>' +
                                 '</h5>' +
                                 '</div>' +
                                 ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +

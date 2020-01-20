@@ -223,7 +223,7 @@ class Section extends CI_controller
         $formArray['idModule'] = $this->input->post('idModule');
         $formArray['id_crf'] = $this->input->post('id_crf');
         $formArray['idProjects'] = $this->input->post('idProjects');
-        $formArray['variable_name'] = (isset($_POST['variable']) && $_POST['variable'] != '' ? $_POST['variable'] : '');
+        $formArray['variable_name'] = (isset($_POST['variable']) && $_POST['variable'] != '' ? trim($_POST['variable']) : '');
         $formArray['nature'] = (isset($_POST['nature']) && $_POST['nature'] != '' ? $_POST['nature'] : '');
 
         if ($formArray['nature'] == 'Input') {
@@ -248,7 +248,7 @@ class Section extends CI_controller
         $formArray['MinVal'] = (isset($_POST['min_val']) && $_POST['min_val'] != '' ? $_POST['min_val'] : '');
         $formArray['MaxVal'] = (isset($_POST['max_val']) && $_POST['max_val'] != '' ? $_POST['max_val'] : '');
         $formArray['skipQuestion'] = (isset($_POST['skipQuestion']) && $_POST['skipQuestion'] != '' ? $_POST['skipQuestion'] : '');
-        $formArray['idParentQuestion'] = (isset($_POST['parentQuestion']) && $_POST['parentQuestion'] != '' ? $_POST['parentQuestion'] : '');
+        $formArray['idParentQuestion'] = (isset($_POST['parentQuestion']) && $_POST['parentQuestion'] != '' ? trim($_POST['parentQuestion']) : '');
         $formArray['required'] = (isset($_POST['Required']) && $_POST['Required'] != '' ? $_POST['Required'] : '');
         $formArray['readonly'] = (isset($_POST['ReadOnly']) && $_POST['ReadOnly'] != '' ? $_POST['ReadOnly'] : '');
         $formArray['label_l1'] = (isset($_POST['L1']) && $_POST['L1'] != '' ? $_POST['L1'] : '');
@@ -285,7 +285,7 @@ class Section extends CI_controller
                     $subformArray['nature_var'] = '';
                 }
 
-                $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? $options['option_var'] : '');
+                $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? trim($options['option_var'] ): '');
 //                $subformArray['option_title'] = (isset($options['option_title']) && $options['option_title'] != '' ? $options['option_title'] : '');
                 $subformArray['label_l1'] = (isset($options['label_l1']) && $options['label_l1'] != '' ? $options['label_l1'] : '');
                 $subformArray['label_l2'] = (isset($options['label_l2']) && $options['label_l2'] != '' ? $options['label_l2'] : '');
@@ -299,7 +299,7 @@ class Section extends CI_controller
                 $subformArray['dbType'] = (isset($options['OptionDbType']) && $options['OptionDbType'] != '' ? $options['OptionDbType'] : '');
                 $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
                 $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
-                $subformArray['idParentQuestion'] = $formArray['variable_name'];
+                $subformArray['idParentQuestion'] = trim($formArray['variable_name']);
                 $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
         }
