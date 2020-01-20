@@ -367,6 +367,9 @@
                             if (v.label_l5 != '' && v.label_l5 != undefined) {
                                 html += '<span class="' + classl5 + ' "> ' + v.label_l5 + '</span> <br>';
                             }
+                            if (v.option_value != '' && v.option_value != undefined) {
+                                html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Value: ' + v.option_value + '</a></div> ';
+                            }
                             if (v.skipQuestion != '' && v.skipQuestion != undefined) {
                                 html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Skip Question: ' + v.skipQuestion + '</a></div> ';
                             }
@@ -403,6 +406,9 @@
                                     if (vv.label_l5 != '' && vv.label_l5 != undefined) {
                                         subhtml += '<span class="  ' + classl5 + '"> ' + vv.label_l5 + '</span> <br>';
                                     }
+
+                                    subhtml += '<div class="badge badge-secondary"><a href="javascript:void(0);">Value: ' + vv.option_value + '</a></div> ';
+
                                     if (vv.skipQuestion != '' && vv.skipQuestion != undefined) {
                                         subhtml += '<div class="badge badge-secondary"><a href="javascript:void(0);">Skip Question: ' + vv.skipQuestion + '</a></div> ';
                                     }

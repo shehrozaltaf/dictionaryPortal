@@ -329,7 +329,8 @@ class Reports extends CI_controller
                                              </td>";
                                         $optsubhtml .= '<td width="15%">' . $oval->option_value . '</td>';
 
-                                        $optsubhtml .= '<td width="15%">' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
+                                        $optsubhtml .= '<td width="15%">' . (isset($oval->nature) && $oval->nature ?
+                                                '<small>' . $oval->nature . ' </small>' : '') . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
                                                 '<small>Skip:' . $oval->skipQuestion . ' </small>' : '') . '</td>';
 
                                         /*$optsubhtml .= "<br><span><span><small>" . $oval->variable_name . ": </small> " . $ol1sec . "
@@ -488,7 +489,38 @@ class Reports extends CI_controller
                     }
 
                     foreach ($value->myrow_options as $options) {
-                        if ($options->nature == 'Input-Numeric') {
+
+                        if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                            $xml .= '<RadioButton
+                                        android:id="@+id/' . strtolower($options->variable_name) . '"
+                                        style="@style/radiobutton"
+                                        android:text="@string/' . strtolower($options->variable_name) . '" /> 
+                        
+                            <EditText
+                            android:id="@+id/' . strtolower($options->variable_name) . 't"
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" 
+                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                            android:tag="' . strtolower($options->variable_name) . '"
+                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 't.getText().toString() : ""}\'
+                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                            $xml .= '<CheckBox
+                                        android:id="@+id/' . strtolower($options->variable_name) . '"
+                                        style="@style/checkbox"
+                                        android:text="@string/' . strtolower($options->variable_name) . '" /> 
+                        
+                            <EditText
+                            android:id="@+id/' . strtolower($options->variable_name) . 't"
+                            style="@style/radiobutton"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" 
+                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                            android:tag="' . strtolower($options->variable_name) . '"
+                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 't.getText().toString() : ""}\'
+                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($options->nature == 'Input-Numeric') {
                             $minVal = 0;
                             $maxVal = 0;
                             if (isset($options->MaxVal) && $options->MaxVal != '') {
@@ -511,36 +543,6 @@ class Reports extends CI_controller
                                     app:maxValue="' . $maxVal . '"
                                     app:minValue="' . $minVal . '"
                                     app:type="range" />';
-                        } elseif ($value->nature == 'Radio' && $options->nature == 'Input') {
-                            $xml .= '<RadioButton
-                                        android:id="@+id/' . strtolower($options->variable_name) . '"
-                                        style="@style/radiobutton"
-                                        android:text="@string/' . strtolower($options->variable_name) . '" /> 
-                        
-                            <EditText
-                            android:id="@+id/' . strtolower($options->variable_name) . 't"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" 
-                            android:hint="@string/' . strtolower($options->variable_name) . '"
-                            android:tag="' . strtolower($options->variable_name) . '"
-                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 't.getText().toString() : ""}\'
-                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
-                        } elseif ($value->nature == 'CheckBox' && $options->nature == 'Input') {
-                            $xml .= '<CheckBox
-                                        android:id="@+id/' . strtolower($options->variable_name) . '"
-                                        style="@style/checkbox"
-                                        android:text="@string/' . strtolower($options->variable_name) . '" /> 
-                        
-                            <EditText
-                            android:id="@+id/' . strtolower($options->variable_name) . 't"
-                            style="@style/radiobutton"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" 
-                            android:hint="@string/' . strtolower($options->variable_name) . '"
-                            android:tag="' . strtolower($options->variable_name) . '"
-                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 't.getText().toString() : ""}\'
-                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($options->nature == 'Input') {
                             $xml .= '<TextView
                         style="@style/i_textview"
@@ -808,7 +810,8 @@ class Reports extends CI_controller
                         }
                     }
                     $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Input') {
+                }
+                elseif ($question_type == 'Input') {
                     $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
@@ -822,7 +825,8 @@ class Reports extends CI_controller
                         }
                     }
                     $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Title') {
+                }
+                elseif ($question_type == 'Title') {
 //                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
@@ -836,23 +840,29 @@ class Reports extends CI_controller
                         }
                     }
                     $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Radio') {
+                }
+                elseif ($question_type == 'Radio') {
                     $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", ' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
+                            if ($options->nature == 'Title') {
+                                $fileData.='';
+                            }else{
+                                $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
+                            }
+
+
                             if ($options->nature == 'Input-Numeric') {
                                 $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
                                 $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= ' "0"); ' . "\n";
                     $fileData .= $fileOtherData;
-                } elseif ($question_type == 'CheckBox') {
+                }
+                elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
@@ -861,6 +871,7 @@ class Reports extends CI_controller
                             } elseif ($options->nature == 'Input') {
                                 $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 't", bi.' . strtolower($options->variable_name) . 't.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
+
 //                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
                             }
                         }
