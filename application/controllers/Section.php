@@ -285,7 +285,7 @@ class Section extends CI_controller
                     $subformArray['nature_var'] = '';
                 }
 
-                $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? trim($options['option_var'] ): '');
+                $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? trim($options['option_var']) : '');
 //                $subformArray['option_title'] = (isset($options['option_title']) && $options['option_title'] != '' ? $options['option_title'] : '');
                 $subformArray['label_l1'] = (isset($options['label_l1']) && $options['label_l1'] != '' ? $options['label_l1'] : '');
                 $subformArray['label_l2'] = (isset($options['label_l2']) && $options['label_l2'] != '' ? $options['label_l2'] : '');
@@ -310,6 +310,7 @@ class Section extends CI_controller
         }
         echo $result;
     }
+
     function add_sectiondetail_data_option()
     {
         $Custom = new Custom();
@@ -363,7 +364,7 @@ class Section extends CI_controller
 
                 $subformArray['idParentQuestion'] = (isset($options['OptionParentQuestion']) && $options['OptionParentQuestion'] != '' ? $options['OptionParentQuestion'] : '');
 
-                $InsertData=  $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
+                $InsertData = $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
         }
         if ($InsertData) {
@@ -477,7 +478,7 @@ class Section extends CI_controller
             $editArr['nature'] = (isset($_POST['edit_nature']) && $_POST['edit_nature'] != '' ? $_POST['edit_nature'] : '');
             if ($editArr['nature'] == 'Input') {
                 $editArr['nature_var'] = 'E';
-            } elseif ($editArr['nature'] == 'Label' || $editArr['nature'] == 'Title' ) {
+            } elseif ($editArr['nature'] == 'Label' || $editArr['nature'] == 'Title') {
                 $editArr['nature_var'] = 'T';
             } elseif ($editArr['nature'] == 'Input-Numeric') {
                 $editArr['nature_var'] = 'EN';
@@ -521,6 +522,60 @@ class Section extends CI_controller
         echo $result;
     }
 
+    function cloneData()
+    {
+        $MSection = new MSection();
+        $searchArray = array();
+        $searchArray['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
+        $searchArray['idModule'] = (isset($_REQUEST['idModule']) && $_REQUEST['idModule'] != '' && $_REQUEST['idModule'] != 0 ? $_REQUEST['idModule'] : 0);
+        $searchArray['variable_name'] = (isset($_REQUEST['variable_name']) && $_REQUEST['variable_name'] != '' ? $_REQUEST['variable_name'] : 0);
+        $searchArray['newSectionVariable'] = (isset($_REQUEST['newSectionVariable']) && $_REQUEST['newSectionVariable'] != '' ? $_REQUEST['newSectionVariable'] : 0);
+        $getSectionDetails_Clone = $MSection->getSectionDetails_Clone($searchArray);
+
+        $Custom = new Custom();
+
+        foreach ($getSectionDetails_Clone as $data) {
+            $formArray = array();
+            $formArray['idSection'] = $data->idSection;
+            $formArray['idModule'] = $data->idModule;
+            $formArray['id_crf'] = $data->id_crf;
+            $formArray['idProjects'] = $data->idProjects;
+
+            if (isset($data->idParentQuestion) && $data->idParentQuestion != '') {
+                $variable_name = substr_replace($data->variable_name, $searchArray['newSectionVariable'], -5, -1);
+            } else {
+                $variable_name = $searchArray['newSectionVariable'];
+            }
+
+            $formArray['variable_name'] = $variable_name;
+            $formArray['nature'] = (isset($data->nature) && $data->nature != '' ? $data->nature : '');
+            $formArray['nature_var'] = (isset($data->nature_var) && $data->nature_var != '' ? $data->nature_var : '');
+            $formArray['question_type'] = (isset($data->question_type) && $data->question_type != '' ? $data->question_type : '');
+            $formArray['MinVal'] = (isset($data->MinVal) && $data->MinVal != '' ? $data->MinVal : '');
+            $formArray['MaxVal'] = (isset($data->MaxVal) && $data->MaxVal != '' ? $data->MaxVal : '');
+            $formArray['skipQuestion'] = (isset($data->skipQuestion) && $data->skipQuestion != '' ? $data->skipQuestion : '');
+            $formArray['idParentQuestion'] = (isset($data->idParentQuestion) && $data->idParentQuestion != '' ? str_replace($data->idParentQuestion, $searchArray['newSectionVariable'], $data->idParentQuestion) : '');
+            $formArray['required'] = (isset($data->required) && $data->required != '' ? $data->required : '');
+            $formArray['readonly'] = (isset($data->readonly) && $data->readonly != '' ? $data->readonly : '');
+            $formArray['label_l1'] = (isset($data->label_l1) && $data->label_l1 != '' ? $data->label_l1 : '');
+            $formArray['label_l2'] = (isset($data->label_l2) && $data->label_l2 != '' ? $data->label_l2 : '');
+            $formArray['label_l3'] = (isset($data->label_l3) && $data->label_l3 != '' ? $data->label_l3 : '');
+            $formArray['label_l4'] = (isset($data->label_l4) && $data->label_l4 != '' ? $data->label_l4 : '');
+            $formArray['label_l5'] = (isset($data->label_l5) && $data->label_l5 != '' ? $data->label_l5 : '');
+            $formArray['option_value'] = (isset($data->option_value) && $data->option_value != '' ? $data->option_value : '');
+            $formArray['insertDB'] = (isset($data->insertDB) && $data->insertDB != '' ? $data->insertDB : '');
+            $formArray['dbType'] = (isset($data->dbType) && $data->dbType != '' ? $data->dbType : '');
+            $formArray['dbLength'] = (isset($data->dbLength) && $data->dbLength != '' ? $data->dbLength : '');
+            $formArray['dbDecimal'] = (isset($data->dbDecimal) && $data->dbDecimal != '' ? $data->dbDecimal : '');
+            $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'N');
+        }
+        if ($InsertData) {
+            $result = 1;
+        } else {
+            $result = 2;
+        }
+        echo $result;
+    }
 } ?>
 
 

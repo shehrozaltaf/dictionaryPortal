@@ -1,15 +1,6 @@
-<!--<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">-->
-<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-<!--<link rel="stylesheet" type="text/css" href="--><?php //echo base_url() ?><!--assets/css/pages/email-application.css">-->
-<!--<script src="--><?php //echo base_url() ?><!--assets/js/scripts/pages/email-application.js" type="text/javascript"></script>-->
 <div class="app-content content">
-
     <div class="content-wrapper">
-
-
         <div class="content-wrapper-before"></div>
-
         <div class="content-header row">
             <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
                 <h3 class="content-header-title mb-0 d-inline-block">Section Data</h3>
@@ -25,7 +16,6 @@
                 </div>
             </div>
         </div>
-
         <div class="content-detached content-left">
             <div class="content-body">
                 <section id="basic-form-layouts">
@@ -65,22 +55,16 @@
                                     <div class="card-body">
                                         <div class="form">
                                             <div class="form-body">
-
                                                 <?php if (isset($getProjectSlug) && $getProjectSlug != '') {
                                                     $projectSlug = $getProjectSlug;
                                                 } else {
                                                     $projectSlug = 0;
                                                 }
-                                                /* echo '<pre>';
-                                                 print_r($result);
-                                                 echo '</pre>';*/
                                                 if (isset($result[0]) && $result[0] != '') {
                                                     $getdata = $result[0];
                                                 } else {
                                                     $getdata = '';
                                                 }
-
-
                                                 if (isset($getdata->variable_module) && $getdata->variable_module != '') {
                                                     $Module_variable = $getdata->variable_module;
                                                 } else {
@@ -203,11 +187,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-actions">
-                                         <button type="submit" class="btn btn-primary " onclick="addDetailSection()">
-                                             <i class="la la-check-square-o"></i> Save
-                                         </button>
-                                     </div>-->
                                 </div>
                             </div>
                         </div>
@@ -233,7 +212,6 @@
     </div>
 </div>
 <div style="height: 100px;"></div>
-
 <footer class="footer fixed-bottom footer-dark navbar-border navbar-shadow">
     <div class="text-sm-center mb-0 px-2">
         <div class="toolPalette float-md-left  ">
@@ -292,7 +270,6 @@
         type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/js/ui/jquery.sticky.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/pages/content-sidebar.min.js" type="text/javascript"></script>
-
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/repeater/jquery.repeater.min.js"
         type="text/javascript"></script>
@@ -314,12 +291,89 @@
         </div>
     </div>
 </div>
-<script>
 
+<!-- Clone Modal -->
+<div class="modal fade text-left" id="clone_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_clone"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel_clone">Clone Question</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="variable_name_clone">Do you want to copy variable:</label>
+                    <input type="text" class="form-control" readonly disabled="disabled" id="variable_name_clone"
+                           name="variable_name_clone">
+                </div>
+                <div class="form-group">
+                    <label for="newSectionVariable">New Question Variable:</label>
+                    <input type="text" class="form-control" id="newSectionVariable" name="newSectionVariable">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger cloneBtn" onclick="cloneData(this)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
     $(document).ready(function () {
+        $('.mysection').addClass('open');
+        $('.section_add').addClass('active');
         getData();
+
+        /*$("#sortable-1 li").draggable({
+            helper: "clone"
+        });
+        $(".droppable").droppable({
+            drop: function (event, ui) {
+                alert(1);
+            }
+        });*/
     });
 
+    function cloneModal(obj) {
+        $('#variable_name_clone').val('');
+        var variable_name_clone = $(obj).attr('data-idSectionDetail');
+        if (variable_name_clone != '' && variable_name_clone != undefined) {
+            $('#variable_name_clone').val(variable_name_clone);
+            $('#clone_modal').modal('show');
+        } else {
+            toastMsg('Error', 'Invalid ID', 'error');
+        }
+    }
+
+
+    function cloneData(obj) {
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        data['idModule'] = $('#idModule').val();
+        data['id_crf'] = $('#id_crf').val();
+        data['idProjects'] = $('#idProjects').val();
+        data['variable_name'] = $('#variable_name_clone').val();
+        data['newSectionVariable'] = $('#newSectionVariable').val();
+        if (data['variable_name'] == '' || data['variable_name'] == undefined || data['newSectionVariable'] == '' || data['newSectionVariable'] == undefined) {
+            toastMsg('Error', 'Invalid ID', 'error');
+        } else {
+            showloader();
+            $('.cloneBtn').attr('disabled', 'disabled');
+            CallAjax('<?php echo base_url('index.php/Section/cloneData') ?>', data, 'POST', function (result) {
+                $('.cloneBtn').removeAttr('disabled', 'disabled');
+                hideloader();
+                if (result == 1) {
+                    $('#clone_modal').modal('hide');
+                    toastMsg('Success', 'Successfully Cloned', 'success');
+                    getData();
+                } else if (result === 3) {
+                    toastMsg('Error', 'Invalid ID', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
 
     function getData() {
         var data = {};
@@ -338,7 +392,6 @@
                     var classl3 = $('#l3').val();
                     var classl4 = $('#l4').val();
                     var classl5 = $('#l5').val();
-
                     try {
                         $.each(response, function (i, v) {
                             var subhtml = '';
@@ -347,7 +400,8 @@
                                 '<div class="float-right">' +
                                 '<div class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</div>' +
                                 '<ul class="list-inline text-right">' +
-                                '<li class=""  onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
+                                '<li class="" onclick="cloneModal(this)" data-idSectionDetail="' + v.variable_name + '"><span class="la la-clone"></span></li>' +
+                                '<li class="" onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
                                 '<li class="" onclick="deleterow(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-trash"></span></li>' +
                                 '</ul>' +
                                 '</div>' +
@@ -467,7 +521,7 @@
 
     function showEditDbStructure() {
         var res = '';
-        var option=$('#edit_nature').val();
+        var option = $('#edit_nature').val();
         if (option != 'Radio' && option != 'Title' && option != 'SelectBox') {
             res = '<hr>' +
                 '<p>Database Structure</p>' +
@@ -978,8 +1032,6 @@
                             '</div>' +
                             '</div>' +
                             '<div class="editDbstruct"></div>';
-
-
 
 
                     } catch (e) {
@@ -1621,24 +1673,6 @@
         }
 
     }
-
-
-    $(document).ready(function () {
-        $('.mysection').addClass('open');
-        $('.section_add').addClass('active');
-        // addrow();
-        // $("#sortable").sortable();
-
-        /*$("#sortable-1 li").draggable({
-            helper: "clone"
-        });
-        $(".droppable").droppable({
-            drop: function (event, ui) {
-                alert(1);
-            }
-        });*/
-
-    });
 
     function addrow() {
         $('.subDbActive').removeClass('subDbActive');

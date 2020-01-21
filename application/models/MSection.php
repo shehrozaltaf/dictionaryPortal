@@ -151,6 +151,31 @@ class MSection extends CI_Model
         return $query->result();
     }
 
+    function getSectionDetails_Clone($searchdata)
+    {
+        $idSection = 0;
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $idSection = $searchdata['idSection'];
+        }
+
+        $idModule = 0;
+        if (isset($searchdata['idModule']) && $searchdata['idModule'] != '' && $searchdata['idModule'] != null) {
+            $idModule = $searchdata['idModule'];
+        }
+        $variable_name = 0;
+        if (isset($searchdata['variable_name']) && $searchdata['variable_name'] != '' && $searchdata['variable_name'] != null) {
+            $variable_name = $searchdata['variable_name'];
+        }
+        $this->db->select('*');
+        $this->db->from('section_detail');
+        $this->db->where('idSection', $idSection);
+        $this->db->where('idModule', $idModule);
+        $this->db->where('variable_name="' . $variable_name . '" or idParentQuestion= "' . $variable_name . '" ');
+        $this->db->where('isActive', 1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     function getExcelData($searchdata)
     {
         $idSection = 0;

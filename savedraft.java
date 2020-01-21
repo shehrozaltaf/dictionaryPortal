@@ -1,102 +1,223 @@
 JSONObject f1 = new JSONObject(); 
-f1.put("n101", 
-bi.n101a.isChecked() ?"1" : 
-bi.n101b.isChecked() ?"2" : 
-bi.n101c.isChecked() ?"3" : 
-bi.n101d.isChecked() ?"4" : 
-bi.n101e.isChecked() ?"5" : 
-bi.n101f.isChecked() ?"6" : 
-bi.n101g.isChecked() ?"7" : 
-bi.n101h.isChecked() ?"8" : 
-bi.n101i.isChecked() ?"9" : 
-bi.n101j.isChecked() ?"10" : 
-bi.n101k.isChecked() ?"11" : 
-bi.n101l.isChecked() ?"12" : 
-bi.n101m.isChecked() ?"13" : 
-bi.n101n.isChecked() ?"14" : 
+f1.put("m101", 
+bi.m101a.isChecked() ?"1" : 
+bi.m101b.isChecked() ?"2" : 
+bi.m101c.isChecked() ?"3" : 
  "0"); 
-f1.put("n102", 
-bi.n102a.isChecked() ?"1" : 
-bi.n102a_title.isChecked() ?"" : 
-bi.n102b.isChecked() ?"2" : 
-bi.n102c.isChecked() ?"3" : 
-bi.n102d.isChecked() ?"4" : 
-bi.n102e.isChecked() ?"5" : 
-bi.n102f.isChecked() ?"6" : 
-bi.n102f_title.isChecked() ?"" : 
-bi.n102g.isChecked() ?"7" : 
-bi.n102h.isChecked() ?"8" : 
-bi.n102h_title.isChecked() ?"" : 
-bi.n102i.isChecked() ?"9" : 
-bi.n102j.isChecked() ?"10" : 
-bi.n102k.isChecked() ?"11" : 
-bi.n102l.isChecked() ?"12" : 
-bi.n102m.isChecked() ?"13" : 
-bi.n102n.isChecked() ?"14" : 
+f1.put("m102", 
+bi.m102a.isChecked() ?"1" : 
+bi.m102b.isChecked() ?"2" : 
  "0"); 
-f1.put("n103", 
-bi.n103a.isChecked() ?"1" : 
-bi.n103b.isChecked() ?"2" : 
-bi.n103c.isChecked() ?"3" : 
+f1.put("m103", 
+bi.m103a.isChecked() ?"1" : 
+bi.m103b.isChecked() ?"2" : 
+bi.m103c.isChecked() ?"3" : 
+bi.m103d.isChecked() ?"4" : 
+bi.m103e.isChecked() ?"5" : 
+bi.m103f.isChecked() ?"6" : 
+bi.m103g.isChecked() ?"7" : 
+bi.m103h.isChecked() ?"8" : 
+bi.m103i.isChecked() ?"9" : 
+bi.m103j.isChecked() ?"10" : 
+bi.m103k.isChecked() ?"11" : 
+bi.m103l.isChecked() ?"12" : 
+bi.m103m.isChecked() ?"13" : 
+bi.m103n.isChecked() ?"14" : 
  "0"); 
-f1.put("n104", 
-bi.n104a.isChecked() ?"" : 
-bi.n104b.isChecked() ?"98" : 
+f1.put("m104", 
+bi.m104a.isChecked() ?"1" : 
+bi.m104b.isChecked() ?"2" : 
+bi.m104c.isChecked() ?"3" : 
+bi.m104d.isChecked() ?"4" : 
+bi.m104e.isChecked() ?"5" : 
+bi.m104f.isChecked() ?"6" : 
+bi.m104g.isChecked() ?"7" : 
+bi.m104h.isChecked() ?"8" : 
+bi.m104i.isChecked() ?"9" : 
+bi.m104j.isChecked() ?"10" : 
+bi.m104k.isChecked() ?"11" : 
+bi.m104l.isChecked() ?"12" : 
+bi.m104m.isChecked() ?"13" : 
+bi.m104n.isChecked() ?"14" : 
+bi.m104o.isChecked() ?"15" : 
  "0"); 
-f1.put("n104at", bi.n104at.getText().toString());
-f1.put("n105", 
-bi.n105a.isChecked() ?"1" : 
-bi.n105b.isChecked() ?"2" : 
-bi.n105c.isChecked() ?"3" : 
-bi.n105d.isChecked() ?"4" : 
-bi.n105e.isChecked() ?"5" : 
-bi.n105f.isChecked() ?"98" : 
+f1.put("m105", 
+bi.m105a.isChecked() ?"1" : 
+bi.m105b.isChecked() ?"2" : 
+bi.m105c.isChecked() ?"3" : 
+bi.m105d.isChecked() ?"4" : 
+bi.m105e.isChecked() ?"5" : 
+bi.m105f.isChecked() ?"6" : 
+bi.m105g.isChecked() ?"7" : 
+bi.m105h.isChecked() ?"8" : 
+bi.m105i.isChecked() ?"9" : 
+bi.m105j.isChecked() ?"Uncovered adobe" : 
+bi.m105k.isChecked() ?"11" : 
+bi.m105l.isChecked() ?"12" : 
+bi.m105m.isChecked() ?"13" : 
+bi.m105n.isChecked() ?"14" : 
+bi.m105o.isChecked() ?"15" : 
+bi.m105p.isChecked() ?"16" : 
+bi.m105q.isChecked() ?"17" : 
+bi.m105r.isChecked() ?"18" : 
+bi.m105s.isChecked() ?"19" : 
+bi.m105t.isChecked() ?"20" : 
+bi.m105u.isChecked() ?"21" : 
  "0"); 
-f1.put("n106", 
-bi.n106a.isChecked() ?"1" : 
-bi.n106b.isChecked() ?"2" : 
+f1.put("m106", bi.m106.getText().toString());
+f1.put("m107a", 
+bi.m107aa.isChecked() ?"1" : 
+bi.m107ab.isChecked() ?"2" : 
  "0"); 
-f1.put("n107", 
-bi.n107a.isChecked() ?"1" : 
-bi.n107b.isChecked() ?"2" : 
-bi.n107c.isChecked() ?"98" : 
+f1.put("m107b", 
+bi.m107ba.isChecked() ?"1" : 
+bi.m107bb.isChecked() ?"2" : 
  "0"); 
-f1.put("n108", 
-bi.n108a.isChecked() ?"1" : 
-bi.n108b.isChecked() ?"2" : 
-bi.n108c.isChecked() ?"98" : 
+f1.put("m107c", 
+bi.m107ca.isChecked() ?"1" : 
+bi.m107cb.isChecked() ?"2" : 
  "0"); 
-f1.put("n109a",bi.n109a.isChecked() ?"1" :"0");
-f1.put("n109b",bi.n109b.isChecked() ?"2" :"0");
-f1.put("n109c",bi.n109c.isChecked() ?"3" :"0");
-f1.put("n109d",bi.n109d.isChecked() ?"4" :"0");
-f1.put("n109e",bi.n109e.isChecked() ?"5" :"0");
-f1.put("n109f",bi.n109f.isChecked() ?"6" :"0");
-f1.put("n109g",bi.n109g.isChecked() ?"7" :"0");
-f1.put("n110", 
-bi.n110a.isChecked() ?"1" : 
-bi.n110b.isChecked() ?"2" : 
-bi.n110c.isChecked() ?"3" : 
-bi.n110d.isChecked() ?"4" : 
-bi.n110e.isChecked() ?"5" : 
-bi.n110f.isChecked() ?"6" : 
-bi.n110g.isChecked() ?"7" : 
-bi.n110h.isChecked() ?"8" : 
-bi.n110i.isChecked() ?"9" : 
-bi.n110j.isChecked() ?"10" : 
-bi.n110k.isChecked() ?"11" : 
+f1.put("m107e", 
+bi.m108ea.isChecked() ?"1" : 
+bi.m108eb.isChecked() ?"2" : 
  "0"); 
-f1.put("n111", 
-bi.n111a.isChecked() ?"1" : 
-bi.n111b.isChecked() ?"2" : 
-bi.n111c.isChecked() ?"98" : 
+f1.put("m107f", 
+bi.m107fa.isChecked() ?"1" : 
+bi.m107fb.isChecked() ?"2" : 
  "0"); 
-f1.put("n112", 
-bi.n112a.isChecked() ?"1" : 
-bi.n112b.isChecked() ?"2" : 
+f1.put("m107g", 
+bi.m107ga.isChecked() ?"1" : 
+bi.m107gb.isChecked() ?"2" : 
  "0"); 
-f1.put("n113", 
-bi.n113a.isChecked() ?"1" : 
-bi.n113b.isChecked() ?"2" : 
-bi.n113c.isChecked() ?"98" : 
+f1.put("m107h", 
+bi.m107ha.isChecked() ?"1" : 
+bi.m107hb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m107i", 
+bi.m107ia.isChecked() ?"1" : 
+bi.m107ib.isChecked() ?"2" : 
+ "0"); 
+f1.put("m108", 
+bi.m108a.isChecked() ?"1" : 
+bi.m108b.isChecked() ?"2" : 
+ "0"); 
+f1.put("m109", 
+bi.m109a.isChecked() ?"1" : 
+bi.m109b.isChecked() ?"2" : 
+ "0"); 
+f1.put("m110", 
+bi.m110a.isChecked() ?"1" : 
+bi.m110b.isChecked() ?"2" : 
+bi.m110c.isChecked() ?"98" : 
+ "0"); 
+f1.put("m110at", bi.m110at.getText().toString());
+f1.put("m110bt", bi.m110bt.getText().toString());
+f1.put("m111", 
+bi.m111a.isChecked() ?"1" : 
+bi.m111b.isChecked() ?"2" : 
+ "0"); 
+f1.put("m112a", bi.m112a.getText().toString());
+f1.put("m112b", bi.m112b.getText().toString());
+f1.put("m112c", bi.m112c.getText().toString());
+f1.put("m112d", bi.m112d.getText().toString());
+f1.put("m112e", bi.m112e.getText().toString());
+f1.put("m112f", bi.m112f.getText().toString());
+f1.put("m112g", bi.m112g.getText().toString());
+f1.put("m113", 
+bi.m113a.isChecked() ?"1" : 
+bi.m113b.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114a", 
+bi.m114aa.isChecked() ?"1" : 
+bi.m114ab.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114b", 
+bi.m114ba.isChecked() ?"1" : 
+bi.m114bb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114c", 
+bi.m114ca.isChecked() ?"1" : 
+bi.m114cb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114d", 
+bi.m114da.isChecked() ?"1" : 
+ "0"); 
+f1.put("m114e", 
+bi.m114ea.isChecked() ?"1" : 
+bi.m114eb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114f", 
+bi.m114fa.isChecked() ?"1" : 
+bi.m114fb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114g", 
+bi.m114ga.isChecked() ?"1" : 
+bi.m114gb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114h", 
+bi.m114ha.isChecked() ?"1" : 
+bi.m114hb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114i", 
+bi.m114ia.isChecked() ?"1" : 
+bi.m114ib.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114j", 
+bi.m114ja.isChecked() ?"1" : 
+bi.m114jb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114k", 
+bi.m114ka.isChecked() ?"1" : 
+bi.m114kb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114l", 
+bi.m114la.isChecked() ?"1" : 
+bi.m114lb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114m", 
+bi.m114ma.isChecked() ?"1" : 
+bi.m114mb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114n", 
+bi.m114na.isChecked() ?"1" : 
+bi.m114nb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114o", 
+bi.m114oa.isChecked() ?"1" : 
+bi.m114ob.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114p", 
+bi.m114pa.isChecked() ?"1" : 
+bi.m114pb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114q", 
+bi.m114qa.isChecked() ?"1" : 
+bi.m114qb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m114r", 
+bi.m114ra.isChecked() ?"1" : 
+bi.m114rb.isChecked() ?"2" : 
+ "0"); 
+f1.put("m115", 
+bi.m115a.isChecked() ?"1" : 
+bi.m115b.isChecked() ?"2" : 
+bi.m115c.isChecked() ?"3" : 
+bi.m115d.isChecked() ?"4" : 
+bi.m115e.isChecked() ?"5" : 
+bi.m115f.isChecked() ?"6" : 
+bi.m115g.isChecked() ?"7" : 
+bi.m115h.isChecked() ?"8" : 
+bi.m115i.isChecked() ?"9" : 
+bi.m115j.isChecked() ?"10" : 
+bi.m115k.isChecked() ?"11" : 
+ "0"); 
+f1.put("m116", 
+bi.m116a.isChecked() ?"1" : 
+bi.m116b.isChecked() ?"2" : 
+bi.m116c.isChecked() ?"3" : 
+bi.m116d.isChecked() ?"4" : 
+bi.m116e.isChecked() ?"5" : 
+bi.m116f.isChecked() ?"6" : 
+bi.m116g.isChecked() ?"7" : 
+bi.m116h.isChecked() ?"8" : 
  "0"); 
