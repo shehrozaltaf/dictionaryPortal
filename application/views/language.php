@@ -153,16 +153,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary white">
-                <h4 class="modal-title white" id="myModalLabel8">Edit Language</h4>
+                <h4 class="modal-title white" id="myModalLabel8">Delete Language</h4>
                 <input type="hidden" id="delete_idLanguage" name="delete_idLanguage">
             </div>
             <div class="modal-body">
-                <p>Are you sure, you want to delete this</p>
+                <p>Are you sure, you want to delete this?</p>
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" onclick="deletePage()">Edit
+                <button type="button" class="btn btn-danger" onclick="deletePage()">Delete
                 </button>
             </div>
         </div>

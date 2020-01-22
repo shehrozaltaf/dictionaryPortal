@@ -156,6 +156,14 @@
                     <span class="menu-title" data-i18n="">Reports</span>
                 </a>
             </li>
+
+            <li class=" nav-item mydocuments">
+                <a href="<?php echo base_url('index.php/documents') ?>" class="">
+                    <i class="ft-file-text"></i>
+                    <span class="menu-title" data-i18n="">Documents</span>
+                </a>
+            </li>
+
             <li class=" nav-item mylangauge">
                 <a href="<?php echo base_url('index.php/language') ?>" class="">
                     <i class="ft-volume-2"></i>

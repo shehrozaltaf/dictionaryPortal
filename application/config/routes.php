@@ -66,3 +66,8 @@ $route["section/(.*)"] = 'section/index/$1';
 $route["add_section"] = 'section/add_section';
 $route["add_sectiondetail"] = 'section/add_sectiondetail';
 $route["add_sectiondetail2"] = 'section/add_sectiondetail2';
+
+
+
+$route["documents"] = 'documents/index/$1';
+$route["documents/(.*)"] = 'documents/index/$1';

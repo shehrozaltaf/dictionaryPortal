@@ -85,7 +85,6 @@
                     </select>
                 </div>
 
-
                 <div class="form-group">
                     <label for="selectIdCRF">Select CRF: </label>
                     <select id="selectIdCRF" name="selectIdCRF" class="form-control" onchange="changeCrf()">
@@ -180,19 +179,19 @@
         data['idModule'] = $('#selectidModule').val();
         var flag = 0;
 
-        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+        /*if (data['idProjects'] == '' || data['idProjects'] == undefined) {
             $('#selectidProjects').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
             flag = 1;
             return false;
-        }
+        }*/
 
-        if (data['idCRF'] == '' || data['idCRF'] == undefined) {
+        /*if (data['idCRF'] == '' || data['idCRF'] == undefined) {
             $('#selectIdCRF').css('border', '1px solid red');
             toastMsg('CRF', 'Invalid CRF', 'error');
             flag = 1;
             return false;
-        }
+        }*/
 
         if (data['idModule'] == '' || data['idModule'] == undefined) {
             $('#selectidModule').css('border', '1px solid red');
