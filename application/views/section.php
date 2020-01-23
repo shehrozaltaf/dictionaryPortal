@@ -75,7 +75,7 @@
                 <div class="form-group">
                     <label for="selectidProjects">Select Project: </label>
                     <select id="selectidProjects" name="selectidProjects" class="form-control"
-                            onchange="changeProject()">
+                            onchange="changeProject('selectidProjects','selectIdCRF')">
                         <option value="0" disabled readonly="readonly" selected>Select Project</option>
                         <?php
                         foreach ($projects as $key => $values) {
@@ -87,7 +87,8 @@
 
                 <div class="form-group">
                     <label for="selectIdCRF">Select CRF: </label>
-                    <select id="selectIdCRF" name="selectIdCRF" class="form-control" onchange="changeCrf()">
+                    <select id="selectIdCRF" name="selectIdCRF" class="form-control"
+                            onchange="changeCrf('selectIdCRF','selectidModule')">
                         <option value="0" disabled readonly="readonly" selected>Select CRF</option>
                     </select>
                 </div>
@@ -111,6 +112,62 @@
     </div>
 </div>
 
+<!-- Clone Modal -->
+<div class="modal fade text-left" id="clone_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_clone"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel_clone">Clone Section</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" class="form-control" readonly disabled="disabled" id="idSection_clone"
+                           name="idSection_clone">
+
+                    <label for="idSectionName_clone">Do you want to copy Section:</label>
+                    <input type="text" class="form-control" readonly disabled="disabled" id="idSectionName_clone"
+                           name="idSectionName_clone">
+                </div>
+                <div class="form-group">
+                    <label for="selectidProjects_clone">Select Project: </label>
+                    <select id="selectidProjects_clone" name="selectidProjects_clone" class="form-control"
+                            onchange="changeProject('selectidProjects_clone','selectIdCRF_clone')">
+                        <option value="0" disabled readonly="readonly" selected>Select Project</option>
+                        <?php
+                        foreach ($projects as $key => $values) {
+                            echo '<option value="' . $values->idProjects . '">' . $values->project_name . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="selectIdCRF_clone">Select CRF: </label>
+                    <select id="selectIdCRF_clone" name="selectIdCRF_clone" class="form-control"
+                            onchange="changeCrf('selectIdCRF_clone','selectidModule_clone')">
+                        <option value="0" disabled readonly="readonly" selected>Select CRF</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="selectidModule_clone">Select Module: </label>
+                    <?php if (isset($projects) && $projects != '') { ?>
+                        <select id="selectidModule_clone" name="selectidModule_clone" class="form-control">
+                            <option value="0" disabled readonly="readonly" selected>Select Module</option>
+                        </select>
+                    <?php } else {
+                        echo '<input type="hidden" id="selectidModule" name="selectidModule" value="' . $idModule . '">';
+                    } ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger cloneBtn" onclick="cloneData(this)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
         type="text/javascript"></script>
@@ -118,6 +175,86 @@
 
 
 <script>
+
+    function cloneModal(obj) {
+        $('#idSection_clone').val('');
+        var idSection = $(obj).attr('data-idSection');
+
+        if (idSection != '' && idSection != undefined) {
+            $('#idSection_clone').val(idSection);
+            var sectionName = $(obj).parents('h5').find('button').text();
+            $('#idSectionName_clone').val(sectionName);
+            $('#clone_modal').modal('show');
+        } else {
+            toastMsg('Error', 'Invalid ID', 'error');
+        }
+    }
+
+
+    function cloneData(obj) {
+        var data = {};
+        data['idSection_clone'] = $('#idSection_clone').val();
+        data['selectidProjects_clone'] = $('#selectidProjects_clone').val();
+        data['selectIdCRF_clone'] = $('#selectIdCRF_clone').val();
+        data['selectidModule_clone'] = $('#selectidModule_clone').val();
+
+
+        var flag = 0;
+
+        if (data['idSection_clone'] == '' || data['idSection_clone'] == undefined) {
+            $('#idSectionName_clone').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['selectidProjects_clone'] == '' || data['selectidProjects_clone'] == undefined) {
+            $('#selectidProjects_clone').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['selectIdCRF_clone'] == '' || data['selectIdCRF_clone'] == undefined) {
+            $('#selectIdCRF_clone').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['selectidModule_clone'] == '' || data['selectidModule_clone'] == undefined) {
+            $('#selectidModule_clone').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid Module', 'error');
+            flag = 1;
+            return false;
+        }
+
+
+        if (flag == 0) {
+            showloader();
+            $('.cloneBtn').attr('disabled', 'disabled');
+            CallAjax('<?php echo base_url('index.php/Section/cloneDataSection') ?>', data, 'POST', function (result) {
+                $('.cloneBtn').removeAttr('disabled', 'disabled');
+                hideloader();
+                if (result == 1) {
+                    $('#clone_modal').modal('hide');
+                    toastMsg('Success', 'Successfully Cloned', 'success');
+                    getData();
+                } else if (result === 2) {
+                    toastMsg('Error', 'Error while inserting Section', 'error');
+                } else if (result === 6) {
+                    toastMsg('Error', 'No Data Found for section detail', 'error');
+                } else if (result === 5) {
+                    toastMsg('Error', 'No Data Found', 'error');
+                } else if (result === 3) {
+                    toastMsg('Error', 'Error while inserting Section Detail', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
+
     $(document).ready(function () {
         $('.mysection').addClass('open');
         $('.section_view').addClass('active');
@@ -129,9 +266,15 @@
         }
     });
 
-    function changeProject() {
+    function changeProject(idProjects, IdCRF) {
+        if (idProjects == '' || idProjects == undefined) {
+            idProjects = 'selectidProjects';
+        }
+        if (IdCRF == '' || IdCRF == undefined) {
+            IdCRF = 'selectIdCRF';
+        }
         var data = {};
-        data['idProjects'] = $('#selectidProjects').val();
+        data['idProjects'] = $('#' + idProjects).val();
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != '0' && data['idProjects'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Crf/getCRFByProject'  ?>', data, 'POST', function (res) {
                 var items = '<option value="0" disabled readonly="readonly" selected>Select CRF</option>';
@@ -144,14 +287,20 @@
                     } catch (e) {
                     }
                 }
-                $('#selectIdCRF').html('').html(items);
+                $('#' + IdCRF).html('').html(items);
             });
         }
     }
 
-    function changeCrf() {
+    function changeCrf(IdCRF, idModule) {
+        if (IdCRF == '' || IdCRF == undefined) {
+            IdCRF = 'selectIdCRF';
+        }
+        if (idModule == '' || idModule == undefined) {
+            idModule = 'selectidModule';
+        }
         var data = {};
-        data['idCrf'] = $('#selectIdCRF').val();
+        data['idCrf'] = $('#' + IdCRF).val();
         if (data['idCrf'] != '' && data['idCrf'] != undefined && data['idCrf'] != '0' && data['idCrf'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Module/getModuleByCrf'  ?>', data, 'POST', function (res) {
                 var items = '<option value="0" disabled readonly="readonly" selected>Select Module</option>';
@@ -164,7 +313,7 @@
                     } catch (e) {
                     }
                 }
-                $('#selectidModule').html('').html(items);
+                $('#' + idModule).html('').html(items);
             });
         }
     }
@@ -235,6 +384,10 @@
                                 ' aria-controls="collapseA' + a + '" onclick="mysection(' + v.idSection + ')" data-idSection="' + v.idSection + '">'
                                 + (v.section_title_l1 != '' && v.section_title_l1 != undefined ? v.section_title_l1 : 'Section ' + a) +
                                 '</button>' +
+                                '<a href="javascript:void(0)" onclick="cloneModal(this)" data-idSection="' + v.idSection + '"><span class="la la-clone"></span></a>' +
+                                '<a href="<?php echo base_url() ?>edit_section/' + v.idSection + '"><span class="la la-edit"></span></a>' +
+                                '<a href="<?php echo base_url() ?>edit_section/' + v.idSection + '"><span class="la la-trash"></span></a>' +
+
                                 '</h5>' +
                                 '</div>' +
                                 ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +

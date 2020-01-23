@@ -24,8 +24,9 @@
             </div>
         </div>
 
+
         <?php if (isset($data) && $data != '') { ?>
-            <div class="content-body">
+            <div class="content-body vcaMenu_redesign_item">
                 <section id="dropzone-examples">
                     <div class="row">
                         <div class="col-12">

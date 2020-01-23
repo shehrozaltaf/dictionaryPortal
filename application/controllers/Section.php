@@ -522,6 +522,88 @@ class Section extends CI_controller
         echo $result;
     }
 
+    function cloneDataSection()
+    {
+        $MSection = new MSection();
+        $searchArray = array();
+        $searchArray['idSection'] = (isset($_REQUEST['idSection_clone']) && $_REQUEST['idSection_clone'] != '' && $_REQUEST['idSection_clone'] != 0 ? $_REQUEST['idSection_clone'] : 0);
+        $getSection_Clone = $MSection->getSectionDataById($searchArray);
+        if (isset($getSection_Clone) && $getSection_Clone != '') {
+            $getSectionDetail_Clone = $MSection->getSectionDetailData($searchArray);
+            $idProjects = (isset($_REQUEST['selectidProjects_clone']) && $_REQUEST['selectidProjects_clone'] != '' && $_REQUEST['selectidProjects_clone'] != 0 ? $_REQUEST['selectidProjects_clone'] : 0);
+            $idCrf = (isset($_REQUEST['selectIdCRF_clone']) && $_REQUEST['selectIdCRF_clone'] != '' ? $_REQUEST['selectIdCRF_clone'] : 0);
+            $idModule = (isset($_REQUEST['selectidModule_clone']) && $_REQUEST['selectidModule_clone'] != '' ? $_REQUEST['selectidModule_clone'] : 0);
+            $Custom = new Custom();
+            $formArray = array();
+            foreach ($getSection_Clone as $sectionData) {
+                $formArray['idModule'] = $idModule;
+                $formArray['id_crf'] = $idCrf;
+                $formArray['idProjects'] = $idProjects;
+                $formArray['section_title'] = $sectionData->section_title;
+                $formArray['section_desc'] = $sectionData->section_desc;
+                $formArray['section_title_l1'] = $sectionData->section_title_l1;
+                $formArray['section_desc_l1'] = $sectionData->section_desc_l1;
+                $formArray['section_title_l2'] = $sectionData->section_title_l2;
+                $formArray['section_desc_l2'] = $sectionData->section_desc_l2;
+                $formArray['section_title_l3'] = $sectionData->section_title_l3;
+                $formArray['section_desc_l3'] = $sectionData->section_desc_l3;
+                $formArray['section_title_l4'] = $sectionData->section_title_l4;
+                $formArray['section_desc_l4'] = $sectionData->section_desc_l4;
+                $formArray['section_title_l5'] = $sectionData->section_title_l5;
+                $formArray['section_desc_l5'] = $sectionData->section_desc_l5;
+                $formArray['section_var_name'] = $sectionData->section_var_name;
+                $formArray['section_status'] = $sectionData->section_status;
+                $formArray['tableName'] = $sectionData->tableName;
+                $InsertSection = $Custom->Insert($formArray, 'idSection', 'section', 'Y');
+                if ($InsertSection) {
+                    if (isset($getSectionDetail_Clone) && $getSectionDetail_Clone != '') {
+                        foreach ($getSectionDetail_Clone as $data) {
+                            $formArray_Detail = array();
+                            $formArray_Detail['idSection'] = $InsertSection;
+                            $formArray_Detail['idModule'] = $idModule;
+                            $formArray_Detail['id_crf'] = $idCrf;
+                            $formArray_Detail['idProjects'] = $idProjects;
+                            $formArray_Detail['variable_name'] = $data->variable_name;
+                            $formArray_Detail['nature'] = (isset($data->nature) && $data->nature != '' ? $data->nature : '');
+                            $formArray_Detail['nature_var'] = (isset($data->nature_var) && $data->nature_var != '' ? $data->nature_var : '');
+                            $formArray_Detail['question_type'] = (isset($data->question_type) && $data->question_type != '' ? $data->question_type : '');
+                            $formArray_Detail['MinVal'] = (isset($data->MinVal) && $data->MinVal != '' ? $data->MinVal : '');
+                            $formArray_Detail['MaxVal'] = (isset($data->MaxVal) && $data->MaxVal != '' ? $data->MaxVal : '');
+                            $formArray_Detail['skipQuestion'] = (isset($data->skipQuestion) && $data->skipQuestion != '' ? $data->skipQuestion : '');
+                            $formArray_Detail['idParentQuestion'] = (isset($data->idParentQuestion) && $data->idParentQuestion != '' ? $data->idParentQuestion : '');
+                            $formArray_Detail['required'] = (isset($data->required) && $data->required != '' ? $data->required : '');
+                            $formArray_Detail['readonly'] = (isset($data->readonly) && $data->readonly != '' ? $data->readonly : '');
+                            $formArray_Detail['label_l1'] = (isset($data->label_l1) && $data->label_l1 != '' ? $data->label_l1 : '');
+                            $formArray_Detail['label_l2'] = (isset($data->label_l2) && $data->label_l2 != '' ? $data->label_l2 : '');
+                            $formArray_Detail['label_l3'] = (isset($data->label_l3) && $data->label_l3 != '' ? $data->label_l3 : '');
+                            $formArray_Detail['label_l4'] = (isset($data->label_l4) && $data->label_l4 != '' ? $data->label_l4 : '');
+                            $formArray_Detail['label_l5'] = (isset($data->label_l5) && $data->label_l5 != '' ? $data->label_l5 : '');
+                            $formArray_Detail['option_value'] = (isset($data->option_value) && $data->option_value != '' ? $data->option_value : '');
+                            $formArray_Detail['insertDB'] = (isset($data->insertDB) && $data->insertDB != '' ? $data->insertDB : '');
+                            $formArray_Detail['dbType'] = (isset($data->dbType) && $data->dbType != '' ? $data->dbType : '');
+                            $formArray_Detail['dbLength'] = (isset($data->dbLength) && $data->dbLength != '' ? $data->dbLength : '');
+                            $formArray_Detail['dbDecimal'] = (isset($data->dbDecimal) && $data->dbDecimal != '' ? $data->dbDecimal : '');
+                            $InsertData = $Custom->Insert($formArray_Detail, 'idSectionDetail', 'section_detail', 'N');
+                            if ($InsertData) {
+                                $result = 1;
+                            } else {
+                                $result = 3;
+                            }
+                        }
+                    } else {
+                        $result = 6;
+                    }
+                } else {
+                    $result = 2;
+                }
+            }
+        } else {
+            $result = 5;
+        }
+        echo $result;
+    }
+
+
     function cloneData()
     {
         $MSection = new MSection();

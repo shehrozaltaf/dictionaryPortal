@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-01-22 15:30:28
+Date: 2020-01-23 11:42:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -106,7 +106,7 @@ CREATE TABLE `modules` (
   `idProjects` int(11) NOT NULL,
   `isActive` bit(1) DEFAULT b'1',
   PRIMARY KEY (`idModule`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=51 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of modules
@@ -151,6 +151,7 @@ INSERT INTO `modules` VALUES ('46', '28', 'A', 'MODULE A : HOUSEHOLD IDENTIFICAT
 INSERT INTO `modules` VALUES ('47', '28', 'B', 'MODULE B : HOUSEHOLD DIETRY DIVERSITY AND SOURCE ASSESMENT', 'MODULE B : HOUSEHOLD DIETRY DIVERSITY AND SOURCE ASSESMENT', 'ماڈیول  بی :  گھریلو کھانوں کے عدم تحفظ ، غذائی تنوع اور ذرائع کا اندازہ:', 'ماڈیول  بی :  گھریلو کھانوں کے عدم تحفظ ، غذائی تنوع اور ذرائع کا اندازہ:', '', '', '', '', '', '', 'Completed', 'Single', '16', '');
 INSERT INTO `modules` VALUES ('48', '28', 'c', 'MODULE C : CHILD GENERAL HEALTH', 'MODULE C : CHILD GENERAL HEALTH', 'ماڈیول  سی :  بچوں کی عمومی صحت', 'ماڈیول  سی :  بچوں کی عمومی صحت', '', '', '', '', '', '', 'Completed', 'Single', '16', '');
 INSERT INTO `modules` VALUES ('49', '28', 'D', 'MODULE D : SEMI-QUANTITATIVE FOOD FREQUENCY', 'MODULE D : SEMI-QUANTITATIVE FOOD FREQUENCY', 'MODULE D : SEMI-QUANTITATIVE FOOD FREQUENCY', 'MODULE D : SEMI-QUANTITATIVE FOOD FREQUENCY', '', '', '', '', '', '', 'Completed', 'Single', '16', '');
+INSERT INTO `modules` VALUES ('51', '16', 'B', 'Test 2', 'Test 2', 'Test 2', 'Test 2', '', '', '', '', '', '', 'Ongoing', 'Single', '7', '');
 
 -- ----------------------------
 -- Table structure for `projects`

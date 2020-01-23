@@ -34,7 +34,20 @@ class MSection extends CI_Model
             $this->db->where('idSection', $searchdata['idSection']);
         }
         $this->db->where('isActive', 1);
+        $query = $this->db->get();
+        return $query->result();
+    }
 
+    function getSectionDataById($searchdata)
+    {
+        $idSection = 0;
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $idSection = $searchdata['idSection'];
+        }
+        $this->db->select('*');
+        $this->db->from('section');
+        $this->db->where('idSection', $idSection);
+        $this->db->where('isActive', 1);
         $query = $this->db->get();
         return $query->result();
     }
