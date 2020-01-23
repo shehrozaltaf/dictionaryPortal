@@ -70,6 +70,26 @@ class Module extends CI_controller
         $this->load->view('include/footer');
     }
 
+
+    function deleteModule()
+    {
+        if (isset($_POST['idDelete']) && $_POST['idDelete'] != '') {
+            $Custom = new Custom();
+            $idModule = $_POST['idDelete'];
+            $editArr = array();
+            $editArr['isActive'] = 0;
+            $editData = $Custom->Edit($editArr, 'idModule', $idModule, 'modules');
+            if ($editData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
+        } else {
+            echo 3;
+        }
+        echo $result;
+    }
+
     function editData()
     {
         $Custom = new Custom();

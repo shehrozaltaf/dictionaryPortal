@@ -88,6 +88,29 @@
     </div>
 </div>
 
+
+<!-- Delete Modal -->
+<div class="modal fade text-left" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8_delete"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel8_delete">Delete Section</h4>
+                <input type="hidden" id="idDelete" name="idDelete">
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, you want to delete this?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="deleteData()">Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
         type="text/javascript"></script>
@@ -125,6 +148,37 @@
 
     });
 
+    function getDelete(obj) {
+        var id = $(obj).attr('data-id');
+        $('#idDelete').val(id);
+        $('#deleteModal').modal('show');
+    }
+
+    function deleteData() {
+        var data = {};
+        data['idDelete'] = $('#idDelete').val();
+        if (data['idDelete'] == '' || data['idDelete'] == undefined || data['idLanguage'] == 0) {
+            toastMsg('Module', 'Something went wrong', 'error');
+            return false;
+        } else {
+            CallAjax('<?php echo base_url('index.php/Module/deleteModule')?>', data, 'POST', function (res) {
+                if (res == 1) {
+                    toastMsg('Module', 'Successfully Deleted', 'success');
+                    $('#deleteModal').modal('hide');
+                    var crf = $('#selectIdCRF').val();
+                    setTimeout(function () {
+                        // window.location.reload();
+                        window.location.href = '<?php echo base_url() ?>index.php/module/' + crf;
+                    }, 500);
+                } else if (res == 2) {
+                    toastMsg('Module', 'Something went wrong', 'error');
+                } else if (res == 3) {
+                    toastMsg('Module', 'Invalid Section', 'error');
+                }
+            });
+        }
+    }
+
     function changeProject() {
         var data = {};
         data['idProjects'] = $('#selectidProjects').val();
@@ -154,12 +208,12 @@
 
         var flag = 0;
 
-        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
-            $('#selectidProjects').css('border', '1px solid red');
-            toastMsg('Project', 'Invalid Project', 'error');
-            flag = 1;
-            return false;
-        }
+        /* if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+             $('#selectidProjects').css('border', '1px solid red');
+             toastMsg('Project', 'Invalid Project', 'error');
+             flag = 1;
+             return false;
+         }*/
 
         if (data['idCRF'] == '' || data['idCRF'] == undefined) {
             $('#selectIdCRF').css('border', '1px solid red');
@@ -199,7 +253,8 @@
                                 ' aria-controls="collapseA' + a + '">'
                                 + (v.module_name_l1 != '' && v.module_name_l1 != undefined ? v.module_name_l1 : 'Module ' + a) +
                                 '</button>' +
-                                '<a href="<?php echo base_url() ?>edit_module/'+v.idModule+'"><span class="la la-edit"></span></a>' +
+                                '<a href="<?php echo base_url() ?>edit_module/' + v.idModule + '"><span class="la la-edit"></span></a>' +
+                                '<a href="javascript:void(0)" onclick="getDelete(this)" data-id="' + v.idModule + '"><span class="la la-trash"></span></a>' +
                                 '</h5>' +
                                 '</div>' +
                                 ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +
