@@ -520,8 +520,6 @@
         var html = '';
         var optionhtml = '';
         CallAjax('<?php echo base_url() . 'index.php/Section/getSectionDetail' ?>', data, 'POST', function (res) {
-
-
             html += '<table id="my_table_dt" class="table table-striped table-bordered dataTable">' +
                 '<thead>' +
                 '<tr>' +

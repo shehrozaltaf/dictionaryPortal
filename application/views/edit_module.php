@@ -60,6 +60,7 @@
                                     $getData = $getData[0];
                                     $totallanguages = 0;
 
+
                                     if (isset($getData->l1) && $getData->l1 != '') {
                                         $totallanguages++;
                                     }
@@ -95,6 +96,8 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="id_of_crf">CRF</label>
+                                                        <input type="hidden" id="id_crf_hidden" name="id_crf_hidden"
+                                                               value="<?php echo(isset($getData->crf_name) && $getData->crf_name != '' ? $getData->id_crf : 0) ?>">
                                                         <input type="text" readonly disabled id="id_of_crf"
                                                                class="form-control"
                                                                name="id_of_crf"
@@ -219,6 +222,7 @@
         $('#module_status').css('border', '1px solid #babfc7');
         $('#module_type').css('border', '1px solid #babfc7');
         var data = {};
+        data['id_of_crf'] = $('#id_crf_hidden').val();
         data['idModule'] = $('#idModule').val();
         if (data['idModule'] == '' || data['idModule'] == undefined) {
             toastMsg('Module', 'Invalid Module', 'error');

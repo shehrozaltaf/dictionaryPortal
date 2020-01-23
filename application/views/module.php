@@ -199,6 +199,60 @@
         }
     }
 
+    function mymodule(idModule) {
+        var data = {};
+        data['idModule'] = idModule;
+        var html = '';
+        var optionhtml = '';
+        CallAjax('<?php echo base_url() . 'index.php/Section/getSectionByModule' ?>', data, 'POST', function (res) {
+            html += '<table id="my_table_dt" class="table table-striped table-bordered dataTable">' +
+                '<thead>' +
+                '<tr>' +
+                '<th width="10%">Variable</th> ' +
+                '<th width="90%">Label</th> ' +
+                '</tr>' +
+                '</thead><tbody>';
+            if (res != '' && JSON.parse(res).length > 0) {
+                var response = JSON.parse(res);
+                try {
+                    $.each(response, function (i, v) {
+                        var l2 = '';
+                        if (v.section_title_l2 != '' && v.section_title_l2 != undefined) {
+                            l2 = '<br>' + v.section_title_l2;
+                        }
+                        var l3 = '';
+                        if (v.section_title_l3 != '' && v.section_title_l3 != undefined) {
+                            l3 = '<br>' + v.section_title_l3;
+                        }
+                        var l4 = '';
+                        if (v.section_title_l4 != '' && v.section_title_l4 != undefined) {
+                            l4 = '<br>' + v.section_title_l4;
+                        }
+                        var l5 = '';
+                        if (v.section_title_l5 != '' && v.section_title_l5 != undefined) {
+                            l5 = '<br>' + v.section_title_l5;
+                        }
+                        html += '<tr>' +
+                            '<td>' + v.section_var_name + '</td>' +
+                            '<td class="Urdu">' + v.section_title_l1 + l2 + l3 + l4 + l5 + '</td>' +
+                            '</tr>';
+                    })
+                } catch (e) {
+                }
+            } else {
+                console.log(2);
+            }
+            html += '</tbody><tfoot>' +
+                '<tr>' +
+                '<th>Variable</th> ' +
+                '<th>Label</th> ' +
+                '</tr>' +
+                '</tfoot>' +
+                '</table>';
+            $('.mytable_' + idModule).html(html);
+        });
+    }
+
     function getData() {
         $('#selectidProjects').css('border', '1px solid #babfc7');
         $('#selectIdCRF').css('border', '1px solid #babfc7');
@@ -238,19 +292,21 @@
 
                         $.each(response, function (i, v) {
                             a++;
-                            if (a == 1) {
+                            /*if (a == 1) {
                                 expend = 'aria-expanded="true"';
                                 show = 'show';
                             } else {
                                 expend = 'aria-expanded="false"';
                                 show = '';
-                            }
+                            }*/
+                            expend = 'aria-expanded="false"';
+                            show = '';
                             html += '<div class="card ">';
                             html += '<div class="card-header" id="headingA' + a + '">' +
                                 '<h5 class="mb-0">' +
                                 '<button class="btn btn-link collapsed" data-toggle="collapse"' +
                                 ' data-target="#collapseA' + a + '" ' + expend +
-                                ' aria-controls="collapseA' + a + '">'
+                                ' aria-controls="collapseA' + a + '" onclick="mymodule(' + v.idModule + ')" data-idModule="' + v.idModule + '">'
                                 + (v.module_name_l1 != '' && v.module_name_l1 != undefined ? v.module_name_l1 : 'Module ' + a) +
                                 '</button>' +
                                 '<a href="<?php echo base_url() ?>edit_module/' + v.idModule + '"><span class="la la-edit"></span></a>' +
@@ -298,6 +354,15 @@
                                     '</div>' +
                                     '</div>';
                             }
+
+
+                            html += '<div class="btn-group col-sm-12">' +
+                                        '<a class="btn btn-danger white"  href="<?php echo base_url('index.php/add_section') ?>" ' +
+                                        'id="dropdownMenuButton' + v.idModule + '"  >' +
+                                        'Add Section</a>' +
+                                        '</div>' +
+                                '<div class="mytable_' + v.idModule + '"></div>' ;
+
                             html += '</div>' +
                                 '</div>' +
                                 '</div>';
