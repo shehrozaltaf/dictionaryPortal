@@ -168,6 +168,29 @@
     </div>
 </div>
 
+<!-- Delete Modal -->
+<div class="modal fade text-left" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8_delete"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel8_delete">Delete Section</h4>
+                <input type="hidden" id="idDelete" name="idDelete">
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, you want to delete this?</p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="deleteData()">Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
         type="text/javascript"></script>
@@ -189,7 +212,6 @@
             toastMsg('Error', 'Invalid ID', 'error');
         }
     }
-
 
     function cloneData(obj) {
         var data = {};
@@ -250,6 +272,35 @@
                     toastMsg('Error', 'Error while inserting Section Detail', 'error');
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
+
+    function getDelete(obj) {
+        var id = $(obj).attr('data-id');
+        $('#idDelete').val(id);
+        $('#deleteModal').modal('show');
+    }
+
+    function deleteData() {
+        var data = {};
+        data['idDelete'] = $('#idDelete').val();
+        if (data['idDelete'] == '' || data['idDelete'] == undefined || data['idLanguage'] == 0) {
+            toastMsg('Section', 'Something went wrong', 'error');
+            return false;
+        } else {
+            CallAjax('<?php echo base_url('index.php/Section/deleteSection')?>', data, 'POST', function (res) {
+                if (res == 1) {
+                    toastMsg('Section', 'Successfully Deleted', 'success');
+                    setTimeout(function () {
+                        $('#deleteModal').modal('hide');
+                        window.location.reload();
+                    }, 500);
+                } else if (res == 2) {
+                    toastMsg('Section', 'Something went wrong', 'error');
+                } else if (res == 3) {
+                    toastMsg('Section', 'Invalid Section', 'error');
                 }
             });
         }
@@ -386,7 +437,7 @@
                                 '</button>' +
                                 '<a href="javascript:void(0)" onclick="cloneModal(this)" data-idSection="' + v.idSection + '"><span class="la la-clone"></span></a>' +
                                 '<a href="<?php echo base_url() ?>edit_section/' + v.idSection + '"><span class="la la-edit"></span></a>' +
-                                '<a href="<?php echo base_url() ?>edit_section/' + v.idSection + '"><span class="la la-trash"></span></a>' +
+                                '<a href="javascript:void(0)" onclick="getDelete(this)" data-id="' + v.idSection + '"><span class="la la-trash"></span></a>' +
 
                                 '</h5>' +
                                 '</div>' +

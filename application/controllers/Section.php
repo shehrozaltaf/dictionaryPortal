@@ -439,6 +439,26 @@ class Section extends CI_controller
     }
 
 
+    function deleteSection()
+    {
+        if (isset($_POST['idDelete']) && $_POST['idDelete'] != '') {
+            $Custom = new Custom();
+            $idSection = $_POST['idDelete'];
+            $editArr = array();
+            $editArr['isActive'] = 0;
+            $editData = $Custom->Edit($editArr, 'idSection', $idSection, 'section');
+            if ($editData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
+        } else {
+            echo 3;
+        }
+        echo $result;
+    }
+
+
     function deleteSectionDetail()
     {
         if (isset($_POST['idSectionDetail']) && $_POST['idSectionDetail'] != '') {
