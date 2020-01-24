@@ -158,7 +158,6 @@ class Section extends CI_controller
         echo $result;
     }
 
-
     function add_sectiondetail()
     {
         $MSection = new MSection();
@@ -438,7 +437,6 @@ class Section extends CI_controller
         echo $result;
     }
 
-
     function deleteSection()
     {
         if (isset($_POST['idDelete']) && $_POST['idDelete'] != '') {
@@ -458,7 +456,6 @@ class Section extends CI_controller
         echo $result;
     }
 
-
     function deleteSectionDetail()
     {
         if (isset($_POST['idSectionDetail']) && $_POST['idSectionDetail'] != '') {
@@ -477,7 +474,6 @@ class Section extends CI_controller
         }
         echo $result;
     }
-
 
     function getSectionDetailById()
     {
@@ -623,7 +619,6 @@ class Section extends CI_controller
         echo $result;
     }
 
-
     function cloneData()
     {
         $MSection = new MSection();
@@ -678,6 +673,121 @@ class Section extends CI_controller
         }
         echo $result;
     }
+
+
+    /*Upload Data View*/
+    function upload_data()
+    {
+        $data = array();
+        $MProjects = new MProjects();
+        $data['projects'] = $MProjects->getAllProjects();
+        $this->load->view('include/header');
+        $this->load->view('include/sidebar');
+        $this->load->view('upload_data', $data);
+        $this->load->view('include/footer');
+    }
+
+    public function uploadExcelData()
+    {
+        $model = new MSection();
+        $config['upload_path'] = 'assets/uploads/excelsUpload';
+        $config['allowed_types'] = 'xlsx';
+        $this->load->library('upload', $config);
+        if (!$this->upload->do_upload('document_file')) {
+            /* $error = array('error' => $this->upload->display_errors());
+             print_r($error);*/
+            $data = array('0' => 'error', '1' => $this->upload->display_errors());
+        } else {
+            $Custom = new Custom();
+            $data = array('document_file' => $this->upload->data());
+            $file = 'assets/uploads/excelsUpload/' . $data['document_file']['file_name'];
+            if (file_exists($file)) {
+                //load the excel library
+                $this->load->library('excel');
+                //read file from path
+                $objPHPExcel = PHPExcel_IOFactory::load($file);
+                //get only the Cell Collection
+                $cell_collection = $objPHPExcel->getActiveSheet()->getCellCollection();
+                //extract to a PHP readable array format
+                foreach ($cell_collection as $cell) {
+                    $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
+                    $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
+                    $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
+                    //header will/should be in row 1 only. of course this can be modified to suit your need.
+                    if ($row == 1) {
+                        $header[$row][$column] = $data_value;
+                    } else {
+                        $arr_data[$row][$column] = $data_value;
+                    }
+                }
+                //send the data in an array format
+                $data['header'] = $header;
+                $data['values'] = $arr_data;
+                $r = range('A', 'Z');
+                foreach ($data['values'] as $key => $val) {
+                    if (isset($val[$r[0]])) {
+
+                        if ($val[$r[1]] == 'E') {
+                            $type = 'Input';
+                        } elseif ($val[$r[1]] == 'T') {
+                            $type = 'Title';
+                        } elseif ($val[$r[1]] == 'EN') {
+                            $type = 'Input-Numeric';
+                        } elseif ($val[$r[1]] == 'S') {
+                            $type = 'SelectBox';
+                        } elseif ($val[$r[1]] == 'R') {
+                            $type = 'Radio';
+                        } elseif ($val[$r[1]] == 'C') {
+                            $type = 'CheckBox';
+                        } elseif ($val[$r[1]] == 'TA') {
+                            $type = 'TextArea';
+                        } else {
+                            $type = '';
+                        }
+
+                        $formArray_Detail = array();
+                        $formArray_Detail['idSection'] = $_POST['idSection'];
+                        $formArray_Detail['idModule'] = $_POST['idModule'];
+                        $formArray_Detail['id_crf'] = $_POST['id_crf'];
+                        $formArray_Detail['idProjects'] = $_POST['idProjects'];
+                        $formArray_Detail['variable_name'] = (isset($val[$r[0]]) && $val[$r[0]] != '' ? $val[$r[0]] : '');
+                        $formArray_Detail['nature'] = $type;
+                        $formArray_Detail['nature_var'] = (isset($val[$r[1]]) && $val[$r[1]] != '' ? $val[$r[1]] : '');
+                        $formArray_Detail['question_type'] = (isset($val[$r[8]]) && $val[$r[8]] != '' ? $type : '');
+                        $formArray_Detail['MinVal'] = (isset($val[$r[10]]) && $val[$r[10]] != '' ? $val[$r[10]] : '');
+                        $formArray_Detail['MaxVal'] = (isset($val[$r[11]]) && $val[$r[11]] != '' ? $val[$r[11]] : '');
+                        $formArray_Detail['skipQuestion'] = (isset($val[$r[9]]) && $val[$r[9]] != '' ? $val[$r[9]] : '');
+                        $formArray_Detail['idParentQuestion'] = (isset($val[$r[8]]) && $val[$r[8]] != '' ? $val[$r[8]] : '');
+                        $formArray_Detail['required'] = (isset($val[$r[16]]) && $val[$r[16]] != '' ? $val[$r[16]] : '');
+                        $formArray_Detail['readonly'] = '';
+                        $formArray_Detail['label_l1'] = (isset($val[$r[2]]) && $val[$r[2]] != '' ? $val[$r[2]] : '');
+                        $formArray_Detail['label_l2'] = (isset($val[$r[3]]) && $val[$r[3]] != '' ? $val[$r[3]] : '');
+                        $formArray_Detail['label_l3'] = (isset($val[$r[4]]) && $val[$r[4]] != '' ? $val[$r[4]] : '');
+                        $formArray_Detail['label_l4'] = (isset($val[$r[5]]) && $val[$r[5]] != '' ? $val[$r[5]] : '');
+                        $formArray_Detail['label_l5'] = (isset($val[$r[6]]) && $val[$r[6]] != '' ? $val[$r[6]] : '');
+                        $formArray_Detail['option_value'] = (isset($val[$r[7]]) && $val[$r[7]] != '' ? $val[$r[7]] : '');
+                        $formArray_Detail['insertDB'] = (isset($val[$r[12]]) && $val[$r[12]] != '' ? $val[$r[12]] : '');
+                        $formArray_Detail['dbType'] = (isset($val[$r[13]]) && $val[$r[13]] != '' ? $val[$r[13]] : '');
+                        $formArray_Detail['dbLength'] = (isset($val[$r[14]]) && $val[$r[14]] != '' ? $val[$r[14]] : '');
+                        $formArray_Detail['dbDecimal'] = (isset($val[$r[15]]) && $val[$r[15]] != '' ? $val[$r[15]] : '');
+
+                        $InsertData = $Custom->Insert($formArray_Detail, 'idSectionDetail', 'section_detail', 'N');
+                        if ($InsertData) {
+                            $data = array('0' => 'success', '1' => 'Successfully Uploaded');
+                        } else {
+                            $data = array('0' => 'error', '1' => 'Error while inserting data');
+                        }
+                    } else {
+                        $data = array('0' => 'error', '1' => 'Invalid File');
+                    }
+                }
+            } else {
+                $data = array('0' => 'error', '1' => 'Error while uploading file');
+            }
+        }
+        echo json_encode($data);
+    }
+
 } ?>
 
 

@@ -164,6 +164,13 @@
                 </a>
             </li>
 
+            <li class=" nav-item myupload_data">
+                <a href="<?php echo base_url('index.php/upload_data') ?>" class="">
+                    <i class="ft-upload"></i>
+                    <span class="menu-title" data-i18n="">Upload Data</span>
+                </a>
+            </li>
+
             <li class=" nav-item mylangauge">
                 <a href="<?php echo base_url('index.php/language') ?>" class="">
                     <i class="ft-volume-2"></i>

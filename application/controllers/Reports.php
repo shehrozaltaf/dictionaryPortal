@@ -272,19 +272,19 @@ class Reports extends CI_controller
                                 }
                                 if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
                                     $displaylanguagel2 == 'on') {
-                                    $l2sec = '<br>' . $valueSectionDetail->label_l2;
+                                    $l2sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l2);
                                 }
                                 if (isset($valueSectionDetail->label_l3) && $valueSectionDetail->label_l3 != '' &&
                                     $displaylanguagel3 == 'on') {
-                                    $l3sec = '<br>' . $valueSectionDetail->label_l3;
+                                    $l3sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l3);
                                 }
                                 if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
                                     $displaylanguagel4 == 'on') {
-                                    $l4sec = '<br>' . $valueSectionDetail->label_l4;
+                                    $l4sec = '<br>' .htmlspecialchars( $valueSectionDetail->label_l4);
                                 }
                                 if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
                                     $displaylanguagel5 == 'on') {
-                                    $l5sec = '<br>' . $valueSectionDetail->label_l5;
+                                    $l5sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l5);
                                 }
                                 $optionsubhtml .= '<tr >
                                        <td  width="7%"  align="center"><strong>' . $valueSectionDetail->variable_name . '</strong><br>
@@ -306,19 +306,19 @@ class Reports extends CI_controller
                                         }
                                         if (isset($oval->label_l2) && $oval->label_l2 != '' &&
                                             $displaylanguagel2 == 'on') {
-                                            $ol2sec = '<br>' . $oval->label_l2;
+                                            $ol2sec = '<br>' . htmlspecialchars($oval->label_l2);
                                         }
                                         if (isset($oval->label_l3) && $oval->label_l3 != '' &&
                                             $displaylanguagel3 == 'on') {
-                                            $ol3sec = '<br>' . $oval->label_l3;
+                                            $ol3sec = '<br>' . htmlspecialchars($oval->label_l3);
                                         }
                                         if (isset($oval->label_l4) && $oval->label_l4 != '' &&
                                             $displaylanguagel4 == 'on') {
-                                            $ol4sec = '<br>' . $oval->label_l4;
+                                            $ol4sec = '<br>' . htmlspecialchars($oval->label_l4);
                                         }
                                         if (isset($oval->label_l5) && $oval->label_l5 != '' &&
                                             $displaylanguagel5 == 'on') {
-                                            $ol5sec = '<br>' . $oval->label_l5;
+                                            $ol5sec = '<br>' . htmlspecialchars($oval->label_l5);
                                         }
                                         $optsubhtml .= '<tr>';
                                         $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" . $oval->variable_name . ": </strong></small> " . $ol1sec . " 
@@ -331,7 +331,7 @@ class Reports extends CI_controller
 
                                         $optsubhtml .= '<td width="15%">' . (isset($oval->nature) && $oval->nature ?
                                                 '<small>' . $oval->nature . ' </small>' : '') . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
-                                                '<small>Skip:' . $oval->skipQuestion . ' </small>' : '') . '</td>';
+                                                '<small>Skip:' . htmlspecialchars($oval->skipQuestion) . ' </small>' : '') . '</td>';
 
                                         /*$optsubhtml .= "<br><span><span><small>" . $oval->variable_name . ": </small> " . $ol1sec . "
                                              " . $ol2sec . "
@@ -361,7 +361,7 @@ class Reports extends CI_controller
 
                                 /*$optionsubhtml .= '<td width="12%"  align="center" >';*/
                                 if (isset($valueSectionDetail->skipQuestion) && $valueSectionDetail->skipQuestion != '') {
-                                    $optionsubhtml .= '<small> Skip: </small><strong>' . $valueSectionDetail->skipQuestion . '</strong>';
+                                    $optionsubhtml .= '<small> Skip: </small><strong>' . htmlspecialchars($valueSectionDetail->skipQuestion) . '</strong>';
                                 }
                                 if (isset($valueSectionDetail->MinVal) && $valueSectionDetail->MinVal != '') {
                                     $optionsubhtml .= '<small> Min: </small>' . $valueSectionDetail->MinVal;
