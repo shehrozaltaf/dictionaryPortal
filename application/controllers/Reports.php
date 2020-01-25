@@ -791,11 +791,13 @@ class Reports extends CI_controller
             foreach ($data as $key => $value) {
                 $fileOtherData = '';
                 $filesubData = '';
-                if (isset($value->question_type) && $value->question_type != '') {
+                $question_type = $value->nature;
+                /*if (isset($value->question_type) && $value->question_type != '') {
                     $question_type = $value->question_type;
                 } else {
                     $question_type = $value->nature;
-                }
+                }*/
+
                 if ($question_type == 'Input-Numeric') {
                     $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
