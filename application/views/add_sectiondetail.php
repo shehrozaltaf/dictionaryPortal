@@ -985,7 +985,7 @@
                         html += '<div class="form-group">' +
                             '<label for="edit_option_value">Value:</label>' +
                             '<input type="text" class="form-control" id="edit_option_value" name="edit_option_value"' +
-                            ' value="' + response[0].option_value + '">' +
+                            ' value="' + (response[0].option_value!=null  && response[0].option_value != 'undefined' && response[0].option_value!=''?response[0].option_value:'') + '">' +
                             '</div>';
 
 
