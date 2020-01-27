@@ -1,3 +1,5 @@
+<!--<script src="--><?php //echo base_url() ?><!--assets/js/sortable.min.js" type="text/javascript"></script>-->
+
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
@@ -114,8 +116,6 @@
                                                     $totallanguages++;
                                                 }
                                                 ?>
-
-
                                                 <input type="hidden" id="module_variable" name="module_variable"
                                                        value="<?php echo $Module_variable ?>">
                                                 <input type="hidden" id="section_variable" name="section_variable"
@@ -291,7 +291,8 @@
         </div>
     </div>
 </div>
-
+<style>
+</style>
 <!-- Clone Modal -->
 <div class="modal fade text-left" id="clone_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_clone"
      aria-hidden="true">
@@ -317,21 +318,37 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script>
     $(document).ready(function () {
         $('.mysection').addClass('open');
         $('.section_add').addClass('active');
         getData();
-
-        /*$("#sortable-1 li").draggable({
-            helper: "clone"
+        $(function () {
+            $("#sortable").sortable({
+                forcePlaceholderSize: true,
+                opacity: 0.5,
+                placeholder: ".ui-state-highlight",
+                stop: function () {
+                    var sendData = {};
+                    var i=0;
+                    $.map($(this).find('.ui-state-highlight'), function (el) {
+                        i++;
+                        var id = $(el).attr('data-id');
+                        var sorting = $(el).index();
+                        sendData[id] = i;
+                    });
+                    console.log(sendData);
+                    showloader();
+                    CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
+                        hideloader();
+                        getData();
+                    });
+                }
+            });
+            $("#sortable").disableSelection();
         });
-        $(".droppable").droppable({
-            drop: function (event, ui) {
-                alert(1);
-            }
-        });*/
     });
 
     function cloneModal(obj) {
@@ -344,7 +361,6 @@
             toastMsg('Error', 'Invalid ID', 'error');
         }
     }
-
 
     function cloneData(obj) {
         var data = {};
@@ -383,7 +399,7 @@
             toastMsg('Section', 'Invalid ID Section', 'error');
         } else {
             showloader();
-            CallAjax('<?php echo base_url('index.php/Section/getSectionDetail') ?>', data, 'POST', function (res) {
+            CallAjax('<?php echo base_url('index.php/Section/getSectionDetail2') ?>', data, 'POST', function (res) {
                 hideloader();
                 var html = '';
                 if (res != '' && JSON.parse(res).length > 0) {
@@ -393,9 +409,12 @@
                     var classl4 = $('#l4').val();
                     var classl5 = $('#l5').val();
                     try {
-                        $.each(response, function (i, v) {
+                        $.each(response, function (i, j) {
+                            // v=j.values[0];
+                            v=j ;
                             var subhtml = '';
-                            html += '<li class="list-group-item bg-blue-grey bg-lighten-4 black formlists mainli">' +
+                            html += '<li class="list-group-item bg-blue-grey bg-lighten-4 black formlists mainli ui-state-highlight" ' +
+                                'data-id="' + v.idSectionDetail + '">' +
                                 '<span class="text-justify font-medium-2 variableval">' + v.variable_name + ': </span>' +
                                 '<div class="float-right">' +
                                 '<div class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</div>' +
@@ -433,10 +452,10 @@
                             if (v.readonly != '' && v.readonly != undefined) {
                                 html += '<div class="badge badge-secondary"><a href="javascript:void(0);">ReadOnly</a></div> ';
                             }
-                            if (v.myrow_options != '' && v.myrow_options != undefined) {
+                            if (j.myrow_options != '' && j.myrow_options != undefined) {
                                 subhtml += '<ul>';
-                                $.each(v.myrow_options, function (ii, vv) {
-                                    subhtml += '<li class="formlists">' +
+                                $.each(j.myrow_options, function (ii, vv) {
+                                    subhtml += '<li class="formlists ui-state-highlight" data-id="' + vv.idSectionDetail + '">' +
                                         '<span class="text-justify font-medium-2">' + vv.variable_name + ': </span>' +
                                         '<div class="float-right">' +
                                         '<div class="badge badge-primary float-right font-small-3"> ' + vv.nature + '</div>' +
@@ -985,7 +1004,7 @@
                         html += '<div class="form-group">' +
                             '<label for="edit_option_value">Value:</label>' +
                             '<input type="text" class="form-control" id="edit_option_value" name="edit_option_value"' +
-                            ' value="' + response[0].option_value + '">' +
+                            ' value="' + (response[0].option_value != null && response[0].option_value != 'undefined' && response[0].option_value != '' ? response[0].option_value : '') + '">' +
                             '</div>';
 
 

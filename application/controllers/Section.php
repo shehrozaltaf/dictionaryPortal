@@ -66,6 +66,31 @@ class Section extends CI_controller
         echo json_encode($data, true);
     }
 
+    function getSectionDetail2()
+    {
+        $myresult = array();
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
+        $result = $MSection->getSectionDetailData($searchData);
+        foreach ($result as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' ) {
+                $mykey = $value->idParentQuestion;
+                $myresult[$mykey]->myrow_options[] = $value;
+            } else {
+                $mykey = $value->variable_name;
+                $myresult[$mykey] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+
+        echo json_encode($data, true);
+    }
+
+
     /*function getSectionDetail()
     {
         $MSection = new MSection();
@@ -516,9 +541,9 @@ class Section extends CI_controller
             $editArr['readonly'] = (isset($_POST['edit_ReadOnly']) && $_POST['edit_ReadOnly'] != '' ? 'ReadOnly' : '');
             $editArr['label_l1'] = (isset($_POST['edit_label_l1']) && $_POST['edit_label_l1'] != '' ? $_POST['edit_label_l1'] : '');
             $editArr['label_l2'] = (isset($_POST['edit_label_l2']) && $_POST['edit_label_l2'] != '' ? $_POST['edit_label_l2'] : '');
-            $editArr['label_l3'] = (isset($_POST['edit_label_L3']) && $_POST['edit_label_L3'] != '' ? $_POST['edit_label_L3'] : '');
-            $editArr['label_l4'] = (isset($_POST['edit_label_L4']) && $_POST['edit_label_L4'] != '' ? $_POST['edit_label_L4'] : '');
-            $editArr['label_l5'] = (isset($_POST['edit_label_L5']) && $_POST['edit_label_L5'] != '' ? $_POST['edit_label_L5'] : '');
+            $editArr['label_l3'] = (isset($_POST['edit_label_l3']) && $_POST['edit_label_l3'] != '' ? $_POST['edit_label_l3'] : '');
+            $editArr['label_l4'] = (isset($_POST['edit_label_l4']) && $_POST['edit_label_l4'] != '' ? $_POST['edit_label_l4'] : '');
+            $editArr['label_l5'] = (isset($_POST['edit_label_l5']) && $_POST['edit_label_l5'] != '' ? $_POST['edit_label_l5'] : '');
 
             $editArr['option_value'] = (isset($_POST['edit_option_value']) && $_POST['edit_option_value'] != '' ? $_POST['edit_option_value'] : '');
             $editArr['insertDB'] = (isset($_POST['edit_insertDB']) && $_POST['edit_insertDB'] != '' ? $_POST['edit_insertDB'] : '');
@@ -533,7 +558,7 @@ class Section extends CI_controller
                 $result = 2;
             }
         } else {
-            echo 3;
+            $result = 3;
         }
         echo $result;
     }
@@ -671,6 +696,28 @@ class Section extends CI_controller
             $result = 1;
         } else {
             $result = 2;
+        }
+        echo $result;
+    }
+
+    /*Sorting*/
+    function sortQuestions()
+    {
+        if (isset($_POST) && $_POST != '') {
+            $Custom = new Custom();
+            foreach ($_POST as $key => $value) {
+                $idSectionDetail = $key;
+                $editArr = array();
+                $editArr['seq_no'] = (isset($value) && $value != '' ? $value : '0');
+                $editData = $Custom->Edit($editArr, 'idSectionDetail', $idSectionDetail, 'section_detail');
+                if ($editData) {
+                    $result = 1;
+                } else {
+                    $result = 2;
+                }
+            }
+        } else {
+            $result = 3;
         }
         echo $result;
     }

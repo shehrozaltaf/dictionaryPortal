@@ -63,6 +63,7 @@ class MSection extends CI_Model
         $this->db->from('section_detail');
         $this->db->where('idSection', $idSection);
         $this->db->where('isActive', 1);
+        $this->db->order_by('seq_no', 'asc');
         $this->db->order_by('variable_name', 'asc');
         $query = $this->db->get();
         return $query->result();
