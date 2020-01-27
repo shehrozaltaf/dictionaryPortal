@@ -639,7 +639,8 @@ class Section extends CI_controller
             $formArray['idProjects'] = $data->idProjects;
 
             if (isset($data->idParentQuestion) && $data->idParentQuestion != '') {
-                $variable_name = substr_replace($data->variable_name, $searchArray['newSectionVariable'], -5, -1);
+                $new_variable_name = preg_replace('/\D/', '', $searchArray['newSectionVariable']);
+                $variable_name = preg_replace('/[0-9]+/', $new_variable_name, $data->variable_name);
             } else {
                 $variable_name = $searchArray['newSectionVariable'];
             }
