@@ -234,7 +234,7 @@
                             <option value="0" disabled readonly="readonly" selected>Select Project</option>
                             <?php
                             foreach ($projects as $key => $values) {
-                                echo '<option value="' . $values->idProjects . '">' . $values->project_name . '</option>';
+                                echo '<option value="' . $values->idProjects . '">' . strtoupper($values->short_title) . ': ' . $values->project_name . '</option>';
                             }
                             ?>
                         </select>

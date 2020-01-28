@@ -1,15 +1,6 @@
-<!--<link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">-->
-<!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
-<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-<!--<link rel="stylesheet" type="text/css" href="--><?php //echo base_url() ?><!--assets/css/pages/email-application.css">-->
-<!--<script src="--><?php //echo base_url() ?><!--assets/js/scripts/pages/email-application.js" type="text/javascript"></script>-->
 <div class="app-content content">
-
     <div class="content-wrapper">
-
-
         <div class="content-wrapper-before"></div>
-
         <div class="content-header row">
             <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
                 <h3 class="content-header-title mb-0 d-inline-block">Section Data</h3>
@@ -25,7 +16,6 @@
                 </div>
             </div>
         </div>
-
         <div class="content-detached content-left">
             <div class="content-body">
                 <section id="basic-form-layouts">
@@ -65,22 +55,16 @@
                                     <div class="card-body">
                                         <div class="form">
                                             <div class="form-body">
-
                                                 <?php if (isset($getProjectSlug) && $getProjectSlug != '') {
                                                     $projectSlug = $getProjectSlug;
                                                 } else {
                                                     $projectSlug = 0;
                                                 }
-                                                /* echo '<pre>';
-                                                 print_r($result);
-                                                 echo '</pre>';*/
                                                 if (isset($result[0]) && $result[0] != '') {
                                                     $getdata = $result[0];
                                                 } else {
                                                     $getdata = '';
                                                 }
-
-
                                                 if (isset($getdata->variable_module) && $getdata->variable_module != '') {
                                                     $Module_variable = $getdata->variable_module;
                                                 } else {
@@ -203,11 +187,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="form-actions">
-                                         <button type="submit" class="btn btn-primary " onclick="addDetailSection()">
-                                             <i class="la la-check-square-o"></i> Save
-                                         </button>
-                                     </div>-->
                                 </div>
                             </div>
                         </div>
@@ -216,8 +195,8 @@
             </div>
         </div>
         <div class="sidebar-detached sidebar-right sidebar-sticky"
-             style=" height: 1000px;  overflow-y: scroll; overflow-x: hidden">
-            <div class="sidebar">
+             style=" height: 1000px;  overflow-y: scroll;">
+            <div class=" sidebar">
                 <div class="sidebar-content card d-block d-lg-block">
                     <div class="card-body">
                         <div class="category-title pb-1">
@@ -228,13 +207,11 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 <div style="height: 100px;"></div>
-
 <footer class="footer fixed-bottom footer-dark navbar-border navbar-shadow">
     <div class="text-sm-center mb-0 px-2">
         <div class="toolPalette float-md-left  ">
@@ -293,7 +270,6 @@
         type="text/javascript"></script>
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/js/ui/jquery.sticky.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/pages/content-sidebar.min.js" type="text/javascript"></script>
-
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/repeater/jquery.repeater.min.js"
         type="text/javascript"></script>
@@ -315,12 +291,89 @@
         </div>
     </div>
 </div>
-<script>
 
+<!-- Clone Modal -->
+<div class="modal fade text-left" id="clone_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_clone"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel_clone">Clone Question</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="variable_name_clone">Do you want to copy variable:</label>
+                    <input type="text" class="form-control" readonly disabled="disabled" id="variable_name_clone"
+                           name="variable_name_clone">
+                </div>
+                <div class="form-group">
+                    <label for="newSectionVariable">New Question Variable:</label>
+                    <input type="text" class="form-control" id="newSectionVariable" name="newSectionVariable">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger cloneBtn" onclick="cloneData(this)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
     $(document).ready(function () {
+        $('.mysection').addClass('open');
+        $('.section_add').addClass('active');
         getData();
+
+        /*$("#sortable-1 li").draggable({
+            helper: "clone"
+        });
+        $(".droppable").droppable({
+            drop: function (event, ui) {
+                alert(1);
+            }
+        });*/
     });
 
+    function cloneModal(obj) {
+        $('#variable_name_clone').val('');
+        var variable_name_clone = $(obj).attr('data-idSectionDetail');
+        if (variable_name_clone != '' && variable_name_clone != undefined) {
+            $('#variable_name_clone').val(variable_name_clone);
+            $('#clone_modal').modal('show');
+        } else {
+            toastMsg('Error', 'Invalid ID', 'error');
+        }
+    }
+
+
+    function cloneData(obj) {
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        data['idModule'] = $('#idModule').val();
+        data['id_crf'] = $('#id_crf').val();
+        data['idProjects'] = $('#idProjects').val();
+        data['variable_name'] = $('#variable_name_clone').val();
+        data['newSectionVariable'] = $('#newSectionVariable').val();
+        if (data['variable_name'] == '' || data['variable_name'] == undefined || data['newSectionVariable'] == '' || data['newSectionVariable'] == undefined) {
+            toastMsg('Error', 'Invalid ID', 'error');
+        } else {
+            showloader();
+            $('.cloneBtn').attr('disabled', 'disabled');
+            CallAjax('<?php echo base_url('index.php/Section/cloneData') ?>', data, 'POST', function (result) {
+                $('.cloneBtn').removeAttr('disabled', 'disabled');
+                hideloader();
+                if (result == 1) {
+                    $('#clone_modal').modal('hide');
+                    toastMsg('Success', 'Successfully Cloned', 'success');
+                    getData();
+                } else if (result === 3) {
+                    toastMsg('Error', 'Invalid ID', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        }
+    }
 
     function getData() {
         var data = {};
@@ -339,7 +392,6 @@
                     var classl3 = $('#l3').val();
                     var classl4 = $('#l4').val();
                     var classl5 = $('#l5').val();
-
                     try {
                         $.each(response, function (i, v) {
                             var subhtml = '';
@@ -348,7 +400,8 @@
                                 '<div class="float-right">' +
                                 '<div class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</div>' +
                                 '<ul class="list-inline text-right">' +
-                                '<li class=""  onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
+                                '<li class="" onclick="cloneModal(this)" data-idSectionDetail="' + v.variable_name + '"><span class="la la-clone"></span></li>' +
+                                '<li class="" onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
                                 '<li class="" onclick="deleterow(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-trash"></span></li>' +
                                 '</ul>' +
                                 '</div>' +
@@ -367,6 +420,9 @@
                             }
                             if (v.label_l5 != '' && v.label_l5 != undefined) {
                                 html += '<span class="' + classl5 + ' "> ' + v.label_l5 + '</span> <br>';
+                            }
+                            if (v.option_value != '' && v.option_value != undefined) {
+                                html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Value: ' + v.option_value + '</a></div> ';
                             }
                             if (v.skipQuestion != '' && v.skipQuestion != undefined) {
                                 html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Skip Question: ' + v.skipQuestion + '</a></div> ';
@@ -404,6 +460,9 @@
                                     if (vv.label_l5 != '' && vv.label_l5 != undefined) {
                                         subhtml += '<span class="  ' + classl5 + '"> ' + vv.label_l5 + '</span> <br>';
                                     }
+
+                                    subhtml += '<div class="badge badge-secondary"><a href="javascript:void(0);">Value: ' + vv.option_value + '</a></div> ';
+
                                     if (vv.skipQuestion != '' && vv.skipQuestion != undefined) {
                                         subhtml += '<div class="badge badge-secondary"><a href="javascript:void(0);">Skip Question: ' + vv.skipQuestion + '</a></div> ';
                                     }
@@ -419,6 +478,140 @@
                 }
                 $('#sortable').html('').html(html);
             });
+        }
+    }
+
+    function showDbStructure() {
+        return '<hr>' +
+            '<p>Database Structure</p>' +
+            '<div class="col-md-12">' +
+            '<div class="mb-2">' +
+            '<div class="form-check form-check-inline"> ' +
+            '<input class="form-check-input" onclick="toggleDbStructure()" type="checkbox" checked id="insertDB" name="insertDB" value="Y"> ' +
+            '<label class="form-check-label" for="insertDB">Insert into DB</label> ' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-md-12 col DbStructure">' +
+            '<div class="form-group"><label for="dbType">Database Type</label>' +
+            '<select id="dbType" name="dbType" class="form-control dbType" >' +
+            '<option value="varchar"  selected="selected">Varchar</option>' +
+            '<option value="int">Int</option>' +
+            '<option value="decimal">Decimal</option>' +
+            '<option value="text">Text</option>' +
+            '<option value="date">Date</option>' +
+            '<option value="time">Time</option>' +
+            '<option value="datetime">DateTime</option>' +
+            '</select>' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-md-6 col DbStructure"><label for="dbLength">Database Length</label>' +
+            '<div class="form-group">' +
+            '<input type="text" id="dbLength" name="dbLength" value="50" min="1" class="form-control dbLength  input-sm"' +
+            '  placeholder="Length" >' +
+            '</div>' +
+            '</div>' +
+            '<div class="col-md-6 col DbStructure">' +
+            '<div class="form-group"><label for="dbDecimal">Decimal</label>' +
+            '<input type="text" id="dbDecimal" name="dbDecimal" value="0" class="form-control dbDecimal  input-sm"' +
+            '  placeholder="Decimal" >' +
+            '</div>' +
+            '</div>';
+    }
+
+    function showEditDbStructure() {
+        var res = '';
+        var option = $('#edit_nature').val();
+        if (option != 'Radio' && option != 'Title' && option != 'SelectBox') {
+            res = '<hr>' +
+                '<p>Database Structure</p>' +
+                '<div class="col-md-12">' +
+                '<div class="mb-2">' +
+                '<div class="form-check form-check-inline"> ' +
+                '<input class="form-check-input" onclick="toggleDbStructure()" type="checkbox" checked id="edit_insertDB" name="edit_insertDB" value="Y"> ' +
+                '<label class="form-check-label" for="edit_insertDB">Insert into DB</label> ' +
+                '</div>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-12 col DbStructure">' +
+                '<div class="form-group"><label for="edit_dbType">Database Type</label>' +
+                '<select id="edit_dbType" name="edit_dbType" class="form-control dbType" >' +
+                '<option value="varchar"  selected="selected">Varchar</option>' +
+                '<option value="int">Int</option>' +
+                '<option value="decimal">Decimal</option>' +
+                '<option value="text">Text</option>' +
+                '<option value="date">Date</option>' +
+                '<option value="time">Time</option>' +
+                '<option value="datetime">DateTime</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-12 col DbStructure"><label for="edit_dbLength">Database Length</label>' +
+                '<div class="form-group">' +
+                '<input type="text" id="edit_dbLength" name="edit_dbLength" value="50" min="1" class="form-control edit_dbLength  input-sm"' +
+                '  placeholder="Length" >' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-12 col DbStructure">' +
+                '<div class="form-group"><label for="edit_dbDecimal">Decimal</label>' +
+                '<input type="text" id="edit_dbDecimal" name="edit_dbDecimal" value="0" class="form-control edit_dbDecimal  input-sm"' +
+                '  placeholder="Decimal" >' +
+                '</div>' +
+                '</div>';
+        }
+
+        $('.editDbstruct').html(res);
+
+    }
+
+    function addActive(obj) {
+        $('.subDbActive').removeClass('subDbActive');
+        $(obj).parents('.options_list').addClass('subDbActive');
+    }
+
+    function showOpionsDbStructure(obj) {
+        var res = '';
+        var option = $(obj).val();
+        if (option != 'Radio' && option != 'Title' && option != 'SelectBox') {
+            $('.DbOptionStructure').show();
+            res = '<hr>' +
+                // '<p class="DbOptionStructure">Database Structure</p>' +
+                '<div class="col-md-12 col DbOptionStructure">' +
+                '<div class="form-group"><label for="OptionDbType">Database Type</label>' +
+                '<select id="dbType" name="OptionDbType" class="form-control OptionDbType" >' +
+                '<option value="varchar"  selected="selected">Varchar</option>' +
+                '<option value="int">Int</option>' +
+                '<option value="decimal">Decimal</option>' +
+                '<option value="text">Text</option>' +
+                '<option value="date">Date</option>' +
+                '<option value="time">Time</option>' +
+                '<option value="datetime">DateTime</option>' +
+                '</select>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-6 col DbOptionStructure"><label for="OptionDbLength">Length</label>' +
+                '<div class="form-group">' +
+                '<input type="text" id="OptionDbLength" name="dbLength" value="50" min="1" class="form-control OptionDbLength  input-sm"' +
+                '  placeholder="Length" >' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-6 col DbOptionStructure">' +
+                '<div class="form-group"><label for="OptionDbDecimal">Decimal</label>' +
+                '<input type="text" id="OptionDbDecimal" name="dbDecimal" value="0" class="form-control OptionDbDecimal  input-sm"' +
+                '  placeholder="Decimal" >' +
+                '</div>' +
+                '</div>';
+        }
+        $('.subDbActive').find('.subDBsection').html(res);
+        $('.subDbActive').removeClass('subDbActive');
+        return res;
+    }
+
+    function toggleDbStructure() {
+        if ($('input[name=insertDB]:checked').val() == 'Y') {
+            $('.DbStructure').show();
+        } else {
+            $('.DbStructure').hide();
         }
     }
 
@@ -443,12 +636,13 @@
         var l3 = $('#l3').val();
         var l4 = $('#l4').val();
         var l5 = $('#l5').val();
-
+        var dbStructure = '';
 
         html += '<div class="row form-row">';
 
 
-        htmloptions += '<hr>  <div class="col-md-12">' +
+        htmloptions += '<hr> ' +
+            '<div class="col-md-12">' +
             '<div class="mb-2">' +
             '<div class="form-check form-check-inline"> ' +
             '<input class="form-check-input" type="checkbox" id="Required" name="otheroptions" value="Required"> ' +
@@ -572,7 +766,13 @@
                         '</div>' +
                         '</div>';
                 }
+
+                dbStructure = showDbStructure();
+                htmloptions += dbStructure;
+
                 html += htmloptions;
+
+
             }
             if (type == 'Input-Numeric') {
                 for (var i = 1; i <= totallanguages; i++) {
@@ -586,17 +786,21 @@
                 }
 
                 html += '<hr><div class="col-md-6">' +
-                    '<div class="form-group"><label for="min_val">Min Length</label>' +
+                    '<div class="form-group"><label for="min_val">Min Range</label>' +
                     '<input type="text" id="min_val" name="min_val" class="form-control  input-sm min_val"' +
-                    'data-key="Input"  placeholder="Min" >' +
+                    'data-key="Input"  placeholder="Min Range" >' +
                     '</div>' +
                     '</div> ' +
                     '<div class="col-md-6">' +
-                    '<div class="form-group"><label for="max_val">Max Length</label>' +
+                    '<div class="form-group"><label for="max_val">Max Range</label>' +
                     '<input type="text" id="max_val" name="max_val" class="form-control   input-sm max_val" ' +
-                    'data-key="Input"  placeholder="Max" >' +
+                    'data-key="Input"  placeholder="Max Range" >' +
                     '</div>' +
                     '</div>';
+
+                dbStructure = showDbStructure();
+                htmloptions += dbStructure;
+
                 html += htmloptions;
 
             } else if (type == 'Title') {
@@ -610,6 +814,7 @@
                         '</div>';
                 }
             } else if (type == 'SelectBox' || type == 'Radio' || type == 'CheckBox') {
+
                 for (var i = 1; i <= totallanguages; i++) {
                     html += '<div class="col-md-12">' +
                         '<div class="form-group ">' +
@@ -619,6 +824,10 @@
                         '</div>' +
                         '</div>';
                 }
+
+                dbStructure = showDbStructure();
+                htmloptions += dbStructure;
+
                 html += htmloptions;
 
 
@@ -628,7 +837,7 @@
                     '<button type="button" data-repeater-create class="btn primary"  >' +
                     '<i class="ft-plus"></i> Add Options</button>' +
 
-                    '<div class="input-group mb-1 col-md-12 border border-light " id="options_list" data-repeater-item>' +
+                    '<div class="input-group mb-1 col-md-12 border border-light options_list" id="options_list" data-repeater-item>' +
 
                     '<div class="col-md-12 col">' +
                     '<span class="input-group-append float-right" id="button-addon2">' +
@@ -642,14 +851,14 @@
 
                 html += '<div class="col-md-12 col">' +
                     '<div class="form-group">' +
-                    '<select id="option_nature" name="option_nature" class="form-control  input-sm option_nature" > ' +
+                    '<select id="option_nature" name="option_nature" class="form-control  input-sm option_nature" onclick="addActive(this)" onchange="showOpionsDbStructure(this)" > ' +
                     '<option value="0" disabled="" readonly="readonly" selected="selected">Select Type</option>' +
                     '<option value="Title">Title</option>' +
                     '<option value="Input">Input</option>' +
                     '<option value="Input-Numeric">Input-Numeric</option>' +
-                    '<option value="SelectBox">SelectBox</option>' +
-                    '<option value="Radio">Radio</option>' +
-                    '<option value="CheckBox">CheckBox</option>' +
+                    '<option value="SelectBox" ' + (type == 'SelectBox' ? 'selected' : '') + '>SelectBox</option>' +
+                    '<option value="Radio" ' + (type == 'Radio' ? 'selected' : '') + '>Radio</option>' +
+                    '<option value="CheckBox" ' + (type == 'CheckBox' ? 'selected' : '') + '>CheckBox</option>' +
                     '<option value="TextArea">TextArea</option>' +
                     '</select>' +
                     '</div>' +
@@ -670,67 +879,30 @@
                     'data-key="OptionValue"  placeholder="Option Value" >' +
                     '</div>' +
                     '</div>' +
-
-
                     '<div class="col-md-12 col">' +
                     '<div class="form-group"> ' +
                     '<input type="text" id="OptionskipQuestion" name="OptionskipQuestion" class="form-control OptionskipQuestion  input-sm"' +
                     '  placeholder="Skip Question" >' +
                     '</div>' +
                     '</div>' +
-                    '</div>' +
+                    '<div class="subDBsection row"></div>';
+
+                // var optionDbStructure = showOpionsDbStructure('');
+                // html += optionDbStructure;
+                html += '</div>' +
                     '</div>' +
                     '</div>' +
                     '<hr>';
             }
-
             html += '</div><hr>' +
                 '<div class="form-actions"> ' +
                 '<button type="submit" class="btn btn-success mybtn" onclick="addType(this)"> ' +
                 '<i class="la la-check"></i> Save ' +
                 '</button> ' +
-                /* '<button type="button" class="btn btn-danger mr-1"> ' +
-                 '<i class="ft-x"></i> Cancel ' +
-                 '</button> ' +*/
                 '</div><hr> <div class="p-5"></div>';
-
         }
-
-
-        /* if (type != 'Label') {
-            html += '<hr><div class="col-md-6">' +
-                 '<div class="form-group"><label for="min_val">Min Length</label>' +
-                 '<input type="text" id="min_val" name="min_val" class="form-control  input-sm min_val"' +
-                 'data-key="Input"  placeholder="Min" >' +
-                 '</div>' +
-                 '</div> ' +
-                 '<div class="col-md-6">' +
-                 '<div class="form-group"><label for="max_val">Max Length</label>' +
-                 '<input type="text" id="max_val" name="max_val" class="form-control   input-sm max_val" ' +
-                 'data-key="Input"  placeholder="Max" >' +
-                 '</div>' +
-                 '</div> ' +
-                 '<div class="col-md-12">' +
-                 '<div class="mb-2">' +
-                 '<div class="form-check form-check-inline"> ' +
-                 '<input class="form-check-input" type="checkbox" id="Required" name="otheroptions" value="Required"> ' +
-                 '<label class="form-check-label" for="Required">Required</label> ' +
-                 '</div>' +
-                 '<div class="form-check form-check-inline"> ' +
-                 '<input class="form-check-input" type="checkbox" id="ReadOnly" name="otheroptions" value="ReadOnly"> ' +
-                 '<label class="form-check-label" for="ReadOnly">ReadOnly</label> ' +
-                 '</div>' +
-                 '</div>' +
-                 '</div>';
-             html += '<div class="col-md-12">' +
-                 '<div class="form-group"><label for="skipQuestion">Skip Question</label>' +
-                 '<input type="text" id="skipQuestion" name="skipQuestion" class="form-control skipQuestion  input-sm"' +
-                 '  placeholder="Skip Question" >' +
-                 '</div>' +
-                 '</div>';
-        }*/
-
         $('.sidebaroptions').html(html);
+        $('.DbOptionStructure').hide();
         addrow();
     }
 
@@ -756,7 +928,7 @@
 
                         html += '<div class="form-group">' +
                             '<label for="edit_nature">Type:</label>' +
-                            '<select id="edit_nature" name="edit_nature" class="form-control"> ' +
+                            '<select id="edit_nature" name="edit_nature" class="form-control" onchange="showEditDbStructure()"> ' +
                             '<option value="0" disabled="" readonly="readonly">Select Type</option>' +
                             '<option value="Title" ' + (response[0].nature == 'Title' ? 'selected' : '') + '>Title</option>' +
                             '<option value="Input" ' + (response[0].nature == 'Input' ? 'selected' : '') + '>Input</option>' +
@@ -811,10 +983,11 @@
 
 
                         html += '<div class="form-group">' +
-                            '<label for="edit_idParentQuestion">Parent Question (variable only):</label>' +
-                            '<input type="text" class="form-control" id="edit_idParentQuestion" name="edit_idParentQuestion"' +
-                            ' value="' + (response[0].idParentQuestion != "" && response[0].idParentQuestion != 'undefined' && response[0].idParentQuestion != null ? response[0].idParentQuestion : "") + '">' +
+                            '<label for="edit_option_value">Value:</label>' +
+                            '<input type="text" class="form-control" id="edit_option_value" name="edit_option_value"' +
+                            ' value="' + (response[0].option_value!=null  && response[0].option_value != 'undefined' && response[0].option_value!=''?response[0].option_value:'') + '">' +
                             '</div>';
+
 
                         html += '<div class="col-md-12">' +
                             '<div class="mb-2">' +
@@ -831,6 +1004,11 @@
                             '</div>' +
                             '</div>';
 
+                        html += '<div class="form-group">' +
+                            '<label for="edit_idParentQuestion">Parent Question (variable only):</label>' +
+                            '<input type="text" class="form-control" id="edit_idParentQuestion" name="edit_idParentQuestion"' +
+                            ' value="' + (response[0].idParentQuestion != "" && response[0].idParentQuestion != 'undefined' && response[0].idParentQuestion != null ? response[0].idParentQuestion : "") + '">' +
+                            '</div>';
 
                         html += '<div class="form-group">' +
                             '<label for="edit_skipQuestion">Skip Question:</label>' +
@@ -840,24 +1018,26 @@
 
                         html += '<div class="row"><div class="col-md-6">' +
                             '<div class="form-group">' +
-                            '<label for="edit_MinVal">Min:</label>' +
+                            '<label for="edit_MinVal">Min Range:</label>' +
                             '<input type="text" class="form-control" id="edit_MinVal" name="edit_MinVal"' +
                             ' value="' + response[0].MinVal + '">' +
                             '</div>' +
                             '</div> ' +
                             '<div class="col-md-6">' +
                             '<div class="form-group">' +
-                            '<label for="edit_MaxVal">Max:</label>' +
+                            '<label for="edit_MaxVal">Max Range:</label>' +
                             '<input type="text" class="form-control" id="edit_MaxVal" name="edit_MaxVal"' +
                             ' value="' + response[0].MaxVal + '">' +
                             '</div>' +
                             '</div>' +
-                            '</div>';
+                            '</div>' +
+                            '<div class="editDbstruct"></div>';
 
 
                     } catch (e) {
                     }
                     $('.myeditbody').html('').html(html);
+                    showEditDbStructure();
                     $('#edit_modal').modal('show');
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');
@@ -899,6 +1079,11 @@
         data['edit_skipQuestion'] = $('#edit_skipQuestion').val();
         data['edit_MinVal'] = $('#edit_MinVal').val();
         data['edit_MaxVal'] = $('#edit_MaxVal').val();
+        data['edit_option_value'] = $('#edit_option_value').val();
+        data['edit_insertDB'] = $('input[name=edit_insertDB]:checked').val();
+        data['edit_dbType'] = $('#edit_dbType').val();
+        data['edit_dbLength'] = $('#edit_dbLength').val();
+        data['edit_dbDecimal'] = $('#edit_dbDecimal').val();
         if (flag == 0) {
             console.log(data);
             showloader();
@@ -1186,12 +1371,49 @@
             options['option_max_val'] = $(this).find('.Optionmax_val').val();
             options['option_skipQuestion'] = $(this).find('.OptionskipQuestion').val();
 
+            options['OptionDbType'] = $(this).find('.OptionDbType').val();
+            options['OptionDbLength'] = $(this).find('.OptionDbLength').val();
+            options['OptionDbDecimal'] = $(this).find('.OptionDbDecimal').val();
+
             options_list.push(options);
             data['options'] = options_list;
         });
         $('input[name=otheroptions]:checked').each(function (i) {
             data[$(this).val()] = $(this).val();
         });
+
+        data['insertDB'] = $('input[name=insertDB]:checked').val();
+        data['dbType'] = '';
+        data['dbLength'] = 0;
+        data['dbDecimal'] = 0;
+        if (data['insertDB'] == 'Y') {
+            data['dbType'] = $('#dbType').val();
+            if (data['dbType'] == '' || data['dbType'] == undefined) {
+                $('#dbType').css('border', '1px solid red');
+                toastMsg('Database Type', 'Invalid Database Type', 'error');
+                flag = 1;
+                return false;
+            }
+
+            data['dbLength'] = $('#dbLength').val();
+            if (data['dbLength'] == '' || data['dbLength'] == undefined || data['dbLength'] == 0) {
+                $('#dbLength').css('border', '1px solid red');
+                toastMsg('Database Length', 'Invalid Database Type', 'error');
+                flag = 1;
+                return false;
+            }
+
+            data['dbDecimal'] = $('#dbDecimal').val();
+            if (data['dbType'] == 'decimal' && data['dbDecimal'] == 0) {
+                $('#dbDecimal').css('border', '1px solid red');
+                toastMsg('Database Decimal', 'Invalid Database Type', 'error');
+                flag = 1;
+                return false;
+            }
+        } else {
+            data['insertDB'] = 'N';
+        }
+
         console.log(data);
         if (flag == 0) {
             $('.mybtn').attr('disabled', 'disabled');
@@ -1452,25 +1674,8 @@
 
     }
 
-
-    $(document).ready(function () {
-        $('.mysection').addClass('open');
-        $('.section_add').addClass('active');
-        // addrow();
-        // $("#sortable").sortable();
-
-        /*$("#sortable-1 li").draggable({
-            helper: "clone"
-        });
-        $(".droppable").droppable({
-            drop: function (event, ui) {
-                alert(1);
-            }
-        });*/
-
-    });
-
     function addrow() {
+        $('.subDbActive').removeClass('subDbActive');
         $('.sidebar-sticky').css('max-height', '100%');
         $(".file-repeater").repeater({
             show: function () {

@@ -63,17 +63,35 @@ class MSection extends CI_Model
         $this->db->from('section_detail');
         $this->db->where('idSection', $idSection);
         $this->db->where('isActive', 1);
+//        $this->db->order_by('seq_no', 'asc');
+        $this->db->order_by('variable_name', 'asc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function getSectionDetailData2($searchdata)
+    {
+        $idSection = 0;
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $idSection = $searchdata['idSection'];
+        }
+        $this->db->select('*');
+        $this->db->from('section_detail');
+        $this->db->where('idSection', $idSection);
+        $this->db->where('isActive', 1);
         $this->db->order_by('seq_no', 'asc');
         $this->db->order_by('variable_name', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
 
+
     function getCodeBookData($searchdata)
     {
         $this->db->select('crf.crf_name,
 	section_detail.variable_name,
 	section_detail.label_l1,
+	section_detail.label_l2,
 	section_detail.option_value,
 	section_detail.dbType,
 	section.tableName,

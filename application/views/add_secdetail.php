@@ -332,7 +332,7 @@
                 placeholder: ".ui-state-highlight",
                 stop: function () {
                     var sendData = {};
-                    var i=0;
+                    var i = 0;
                     $.map($(this).find('.ui-state-highlight'), function (el) {
                         i++;
                         var id = $(el).attr('data-id');
@@ -411,7 +411,7 @@
                     try {
                         $.each(response, function (i, j) {
                             // v=j.values[0];
-                            v=j ;
+                            v = j;
                             var subhtml = '';
                             html += '<li class="list-group-item bg-blue-grey bg-lighten-4 black formlists mainli ui-state-highlight" ' +
                                 'data-id="' + v.idSectionDetail + '">' +
@@ -538,7 +538,16 @@
             '</div>';
     }
 
-    function showEditDbStructure() {
+    function showEditDbStructure(insertDB = 0, type = 0, length = 0, decimal = 0) {
+        var insertDBValue = '';
+        if (insertDB != 0) {
+            insertDBValue = 'checked';
+        }
+        var lengthvalue = 50;
+        if (length != 0) {
+            lengthvalue = length;
+        }
+
         var res = '';
         var option = $('#edit_nature').val();
         if (option != 'Radio' && option != 'Title' && option != 'SelectBox') {
@@ -547,7 +556,7 @@
                 '<div class="col-md-12">' +
                 '<div class="mb-2">' +
                 '<div class="form-check form-check-inline"> ' +
-                '<input class="form-check-input" onclick="toggleDbStructure()" type="checkbox" checked id="edit_insertDB" name="edit_insertDB" value="Y"> ' +
+                '<input class="form-check-input" onclick="toggleDbStructure()" type="checkbox" ' + insertDBValue + ' id="edit_insertDB" name="edit_insertDB" value="Y"> ' +
                 '<label class="form-check-label" for="edit_insertDB">Insert into DB</label> ' +
                 '</div>' +
                 '</div>' +
@@ -555,25 +564,25 @@
                 '<div class="col-md-12 col DbStructure">' +
                 '<div class="form-group"><label for="edit_dbType">Database Type</label>' +
                 '<select id="edit_dbType" name="edit_dbType" class="form-control dbType" >' +
-                '<option value="varchar"  selected="selected">Varchar</option>' +
-                '<option value="int">Int</option>' +
-                '<option value="decimal">Decimal</option>' +
-                '<option value="text">Text</option>' +
-                '<option value="date">Date</option>' +
-                '<option value="time">Time</option>' +
-                '<option value="datetime">DateTime</option>' +
+                '<option value="varchar" ' + (type == 'varchar' ? 'selected' : '') + '  >Varchar</option>' +
+                '<option value="int" ' + (type == 'int' ? 'selected' : '') + '  >Int</option>' +
+                '<option value="decimal" ' + (type == 'decimal' ? 'selected' : '') + '  >Decimal</option>' +
+                '<option value="text" ' + (type == 'text' ? 'selected' : '') + '  >Text</option>' +
+                '<option value="date" ' + (type == 'date' ? 'selected' : '') + '  >Date</option>' +
+                '<option value="time" ' + (type == 'time' ? 'selected' : '') + '  >Time</option>' +
+                '<option value="datetime" ' + (type == 'datetime' ? 'selected' : '') + '  >DateTime</option>' +
                 '</select>' +
                 '</div>' +
                 '</div>' +
                 '<div class="col-md-12 col DbStructure"><label for="edit_dbLength">Database Length</label>' +
                 '<div class="form-group">' +
-                '<input type="text" id="edit_dbLength" name="edit_dbLength" value="50" min="1" class="form-control edit_dbLength  input-sm"' +
+                '<input type="text" id="edit_dbLength" name="edit_dbLength" value="' + lengthvalue + '" min="1" class="form-control edit_dbLength  input-sm"' +
                 '  placeholder="Length" >' +
                 '</div>' +
                 '</div>' +
                 '<div class="col-md-12 col DbStructure">' +
                 '<div class="form-group"><label for="edit_dbDecimal">Decimal</label>' +
-                '<input type="text" id="edit_dbDecimal" name="edit_dbDecimal" value="0" class="form-control edit_dbDecimal  input-sm"' +
+                '<input type="text" id="edit_dbDecimal" name="edit_dbDecimal" value="' + decimal + '" class="form-control edit_dbDecimal  input-sm"' +
                 '  placeholder="Decimal" >' +
                 '</div>' +
                 '</div>';
@@ -1056,7 +1065,7 @@
                     } catch (e) {
                     }
                     $('.myeditbody').html('').html(html);
-                    showEditDbStructure();
+                    showEditDbStructure(response[0].insertDB, response[0].dbType, response[0].dbLength, response[0].dbDecimal);
                     $('#edit_modal').modal('show');
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');

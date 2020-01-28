@@ -72,14 +72,14 @@ class Section extends CI_controller
         $MSection = new MSection();
         $searchData = array();
         $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
-        $result = $MSection->getSectionDetailData($searchData);
+        $result = $MSection->getSectionDetailData2($searchData);
         foreach ($result as $key => $value) {
             if (isset($value->idParentQuestion) && $value->idParentQuestion != '' ) {
                 $mykey = $value->idParentQuestion;
                 $myresult[$mykey]->myrow_options[] = $value;
             } else {
                 $mykey = $value->variable_name;
-                $myresult[$mykey] = $value;
+                $myresult[$mykey]->values = $value;
             }
         }
         $data = array();

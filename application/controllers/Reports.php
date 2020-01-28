@@ -205,16 +205,15 @@ class Reports extends CI_controller
                         $getSectionDetails = $MSection->getSectionDetailsData($ModuleSearchData);
 
                         foreach ($getSectionDetails as $key => $value) {
-                            /*if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
+                            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
                                 $mykey = $value->idParentQuestion;
                                 $myresult[$mykey]->myrow_options[] = $value;
                             } else {
                                 $mykey = $value->variable_name;
                                 $myresult[$mykey] = $value;
-                            }*/
-                            if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
+                            }
+                            /*if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
                                 $mykey = $value->idParentQuestion;
-
                                 $expKey = explode(',', $mykey);
                                 if (isset($expKey) && count($expKey) != 0) {
                                     if (isset($expKey[1]) && count($expKey[1]) != 0) {
@@ -225,11 +224,10 @@ class Reports extends CI_controller
                                 } else {
                                     $myresult[$mykey]->myrow_options[$value->variable_name] = $value;
                                 }
-
                             } else {
                                 $mykey = $value->variable_name;
                                 $myresult[$mykey] = $value;
-                            }
+                            }*/
                         }
 
                         /*echo '<pre>';
@@ -280,7 +278,7 @@ class Reports extends CI_controller
                                 }
                                 if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
                                     $displaylanguagel4 == 'on') {
-                                    $l4sec = '<br>' .htmlspecialchars( $valueSectionDetail->label_l4);
+                                    $l4sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l4);
                                 }
                                 if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
                                     $displaylanguagel5 == 'on') {
@@ -709,39 +707,40 @@ class Reports extends CI_controller
             $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
             $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
             $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
-            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Table Name');
+            $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Table Name');
             $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
             $rowCount = 1;
             foreach ($data as $list) {
                 $rowCount++;
+
                 $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
-                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($list->variable_name));
                 $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
                 $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
                 $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
                 $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
-                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->tableName);
+                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->nature);
 
                 if (isset($list->myrow_options) && $list->myrow_options != '') {
                     foreach ($list->myrow_options as $options) {
-                        $rowCount++;
+                       $rowCount++;
                         $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
                         $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
                         $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
                         $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
                         $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
                         $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
 
-                        if ($list->nature == 'Radio' && $options->nature == 'Input') {
+                        if (($list->nature == 'Radio' && $options->nature == 'Input') ||  $options->nature == 'CheckBox') {
                             $rowCount++;
                             $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name . 't');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($options->variable_name) . 't');
                             $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
                             $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
                             $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
                             $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->tableName);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->nature);
                         }
 
                     }
@@ -812,8 +811,7 @@ class Reports extends CI_controller
                         }
                     }
                     $fileData .= $fileOtherData;
-                }
-                elseif ($question_type == 'Input') {
+                } elseif ($question_type == 'Input') {
                     $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
@@ -827,8 +825,7 @@ class Reports extends CI_controller
                         }
                     }
                     $fileData .= $fileOtherData;
-                }
-                elseif ($question_type == 'Title') {
+                } elseif ($question_type == 'Title') {
 //                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
@@ -842,14 +839,13 @@ class Reports extends CI_controller
                         }
                     }
                     $fileData .= $fileOtherData;
-                }
-                elseif ($question_type == 'Radio') {
+                } elseif ($question_type == 'Radio') {
                     $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", ' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Title') {
-                                $fileData.='';
-                            }else{
+                                $fileData .= '';
+                            } else {
                                 $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
                             }
 
@@ -863,8 +859,7 @@ class Reports extends CI_controller
                     }
                     $fileData .= ' "0"); ' . "\n";
                     $fileData .= $fileOtherData;
-                }
-                elseif ($question_type == 'CheckBox') {
+                } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
@@ -917,7 +912,7 @@ class Reports extends CI_controller
             $result = $MSection->getSectionDetailData($searchData);
             $fileEngSting = '';
             foreach ($result as $key => $value) {
-                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . strtolower($value->variable_name) . ':/t ' . htmlspecialchars($value->$lang) . '</string>' . "\n";
             }
             $file = $lang . "sting.xml";
             $txt = fopen($file, "w") or die("Unable to open file!");
