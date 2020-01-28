@@ -719,11 +719,11 @@ class Reports extends CI_controller
                 $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
                 $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
                 $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
-                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->nature);
+                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->tableName);
 
                 if (isset($list->myrow_options) && $list->myrow_options != '') {
                     foreach ($list->myrow_options as $options) {
-                       $rowCount++;
+                        $rowCount++;
                         $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
                         $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
                         $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
@@ -732,7 +732,7 @@ class Reports extends CI_controller
                         $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
                         $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
 
-                        if (($list->nature == 'Radio' && $options->nature == 'Input') ||  $options->nature == 'CheckBox') {
+                        if (($list->nature == 'Radio' && $options->nature == 'Input') || $options->nature == 'CheckBox' || $list->nature == 'CheckBox') {
                             $rowCount++;
                             $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
                             $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($options->variable_name) . 't');
@@ -740,7 +740,7 @@ class Reports extends CI_controller
                             $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
                             $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
                             $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->nature);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
                         }
 
                     }
