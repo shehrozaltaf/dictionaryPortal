@@ -285,7 +285,7 @@ class Reports extends CI_controller
                                     $l5sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l5);
                                 }
                                 $optionsubhtml .= '<tr >
-                                       <td  width="7%"  align="center"><strong>' . $valueSectionDetail->variable_name . '</strong><br>
+                                       <td  width="7%"  align="center"><strong>' . strtolower($valueSectionDetail->variable_name) . '</strong><br>
                                        <small>' . $valueSectionDetail->nature . '</small></td>
                                        <td width="50%">   
                                             ' . $l1sec . '
@@ -319,7 +319,7 @@ class Reports extends CI_controller
                                             $ol5sec = '<br>' . htmlspecialchars($oval->label_l5);
                                         }
                                         $optsubhtml .= '<tr>';
-                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" . $oval->variable_name . ": </strong></small> " . $ol1sec . " 
+                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" .strtolower( $oval->variable_name) . ": </strong></small> " . $ol1sec . " 
                                              " . $ol2sec . " 
                                              " . $ol3sec . " 
                                              " . $ol4sec . "

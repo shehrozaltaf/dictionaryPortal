@@ -79,7 +79,7 @@ class Section extends CI_controller
                 $myresult[$mykey]->myrow_options[] = $value;
             } else {
                 $mykey = $value->variable_name;
-                $myresult[$mykey]->values = $value;
+                $myresult[$mykey] = $value;
             }
         }
         $data = array();

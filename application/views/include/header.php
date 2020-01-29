@@ -47,8 +47,13 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendors/css/extensions/toastr.css">
 
     <style>
-        .Urdu{
+        .Urdu {
             font-family: Jameel Noori Nastaleeq;
+            font-size: 16px !important;
+        }
+
+        .Sindhi {
+            font-family: MB Lateefi Regular;
             font-size: 16px !important;
         }
 
@@ -60,6 +65,10 @@
             color: #d51313;
         }
 
+        .table  {
+            color: #000000;
+        }
+
         /* Center the loader */
         #loader {
 
@@ -69,8 +78,8 @@
             width: 100px;
             height: 100px;
             animation: spin 2s linear infinite;
-
-            position: absolute;
+            /*position: absolute;*/
+            position: fixed;
             left: 50%;
             top: 50%;
             z-index: 1;

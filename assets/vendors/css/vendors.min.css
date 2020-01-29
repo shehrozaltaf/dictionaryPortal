@@ -13,6 +13,10 @@
     font-family: 'Jameel Noori Nastaleeq';
     src: url('../../fonts/Jameel_Noori_Nastaleeq.ttf');
 }
+@font-face {
+    font-family: 'MB Lateefi Regular';
+    src: url('../../fonts/MB_Lateefi_Regular.ttf');
+}
 
 /* Feather icons */
 @font-face {

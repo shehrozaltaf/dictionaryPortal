@@ -462,7 +462,7 @@
                                 html += '<div class="media">' +
                                     '<a class="media-left align-self-center" href="#">Language 3</a>' +
                                     '<div class="media-body">' +
-                                    '   <h5 class="media-heading">' + v.section_title_l3 + '</h5>' + v.section_desc_l3 +
+                                    '   <h5 class="media-heading Sindhi">' + v.section_title_l3 + '</h5>' + v.section_desc_l3 +
                                     '</div>' +
                                     '</div>';
                             }
@@ -535,11 +535,11 @@
                     $.each(response, function (i, v) {
                         var l2 = '';
                         if (v.label_l2 != '' && v.label_l2 != undefined) {
-                            l2 = '<br>' + v.label_l2;
+                            l2 = '<br class="Urdu">' + v.label_l2;
                         }
                         var l3 = '';
                         if (v.label_l3 != '' && v.label_l3 != undefined) {
-                            l3 = '<br>' + v.label_l3;
+                            l3 = '<br class="Sindhi">' + v.label_l3;
                         }
                         var l4 = '';
                         if (v.label_l4 != '' && v.label_l4 != undefined) {
@@ -551,7 +551,7 @@
                         }
                         html += '<tr>' +
                             '<td>' + v.variable_name + '</td>' +
-                            '<td class="Urdu">' + v.label_l1 + l2 + l3 + l4 + l5 + '</td>';
+                            '<td >' + v.label_l1 + l2 + l3 + l4 + l5 + '</td>';
 
 
                         /*Options Start*/

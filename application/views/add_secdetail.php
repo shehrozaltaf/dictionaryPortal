@@ -325,30 +325,6 @@
         $('.mysection').addClass('open');
         $('.section_add').addClass('active');
         getData();
-        $(function () {
-            $("#sortable").sortable({
-                forcePlaceholderSize: true,
-                opacity: 0.5,
-                placeholder: ".ui-state-highlight",
-                stop: function () {
-                    var sendData = {};
-                    var i = 0;
-                    $.map($(this).find('.ui-state-highlight'), function (el) {
-                        i++;
-                        var id = $(el).attr('data-id');
-                        var sorting = $(el).index();
-                        sendData[id] = i;
-                    });
-                    console.log(sendData);
-                    showloader();
-                    CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
-                        hideloader();
-                        getData();
-                    });
-                }
-            });
-            $("#sortable").disableSelection();
-        });
     });
 
     function cloneModal(obj) {
@@ -453,7 +429,7 @@
                                 html += '<div class="badge badge-secondary"><a href="javascript:void(0);">ReadOnly</a></div> ';
                             }
                             if (j.myrow_options != '' && j.myrow_options != undefined) {
-                                subhtml += '<ul>';
+                                subhtml += '<ul class="sortable_child">';
                                 $.each(j.myrow_options, function (ii, vv) {
                                     subhtml += '<li class="formlists ui-state-highlight" data-id="' + vv.idSectionDetail + '">' +
                                         '<span class="text-justify font-medium-2">' + vv.variable_name + ': </span>' +
@@ -496,8 +472,64 @@
                     }
                 }
                 $('#sortable').html('').html(html);
+
+
+                setTimeout(function () {
+                    sortParent();
+                    sortChildren();
+                }, 1000);
             });
         }
+    }
+
+    function sortParent() {
+        $("#sortable").sortable({
+            forcePlaceholderSize: true,
+            opacity: 0.5,
+            placeholder: ".ui-state-highlight",
+            stop: function () {
+                var sendData = {};
+                var i = 0;
+                $.map($(this).find('.ui-state-highlight'), function (el) {
+                    i++;
+                    var id = $(el).attr('data-id');
+                    var sorting = $(el).index();
+                    sendData[id] = i;
+                });
+                console.log(sendData);
+                showloader();
+                CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
+                    hideloader();
+                    getData();
+                });
+            }
+        });
+        $("#sortable").disableSelection();
+    }
+
+    function sortChildren() {
+        $(".sortable_child").sortable({
+            forcePlaceholderSize: true,
+            opacity: 0.5,
+            placeholder: ".ui-state-highlight",
+            stop: function () {
+                var sendData = {};
+                var i = 0;
+                $.map($(this).parents('#sortable').find('.ui-state-highlight'), function (el) {
+                    i++;
+                    var id = $(el).attr('data-id');
+                    var sorting = $(el).index();
+                    sendData[id] = i;
+                });
+                console.log(sendData);
+                showloader();
+                CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
+                    hideloader();
+                    getData();
+                });
+            }
+        });
+        $(".sortable_child").disableSelection();
     }
 
     function showDbStructure() {
