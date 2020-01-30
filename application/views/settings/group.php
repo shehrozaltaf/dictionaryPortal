@@ -68,6 +68,8 @@
                                                         <td><?php echo $SNo ?></td>
                                                         <td><?php echo $group->groupName ?></td>
                                                         <td data-id="<?php echo $group->idGroup ?>">
+                                                            <a href="<?php echo base_url('index.php/Settings/groupSettings/' . $group->idGroup) ?>"><i
+                                                                        class="ft-settings"></i> Settings </a>|
                                                             <a href="javascript:void(0)" onclick="getEdit(this)"><i
                                                                         class="ft-edit"></i> Edit </a>|
                                                             <a href="javascript:void(0)" onclick="getDelete(this)">
@@ -190,7 +192,6 @@
             console.log(Result);
         });
     }
-
 
 
     function addData() {

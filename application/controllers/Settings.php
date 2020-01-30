@@ -94,4 +94,73 @@ class Settings extends CI_controller
     }
 
 
+    /*Group Settings*/
+
+    function groupSettings($slug)
+    {
+        if (!$slug) {
+            redirect(base_url());
+        } else {
+            $MSettings = new MSettings();
+            $data = array();
+            $data['slug'] = $slug;
+            $data['groups'] = $MSettings->getEditGroup($slug);
+            $this->load->view('include/header', $data);
+            $this->load->view('include/sidebar');
+            $this->load->view('settings/groupSettings');
+            $this->load->view('include/footer');
+        }
+    }
+
+    public function getFormGroupData()
+    {
+        $id = $_POST['idGroup'];
+        if ($id) {
+            $MSettings = new MSettings();
+            $getData = $MSettings->selectFormGroupData($id);
+            echo json_encode($getData);
+        }
+    }
+
+    public function fgAdd()
+    {
+        $mSetting = new Msettings();
+        $last = "";
+        for ($i = 0; $i < count($_POST); $i++) {
+            if (isset($_POST[$i]["CanViewAllDetail"])) {
+                $postArray = array(
+                    'idPageGroup' => $_POST[$i]["idPageGroup"],
+                    'CanViewAllDetail' => ($_POST[$i]["CanViewAllDetail"] == "true") ? 1 : 0
+                );
+                $last = $mSetting->fgAdd($postArray);
+            } elseif (isset($_POST[$i]["CanView"])) {
+                $postArray = array(
+                    'idPageGroup' => $_POST[$i]["idPageGroup"],
+                    'CanView' => ($_POST[$i]["CanView"] == "true") ? 1 : 0
+                );
+                $last = $mSetting->fgAdd($postArray);
+            } elseif (isset($_POST[$i]["CanAdd"])) {
+                $postArray = array(
+                    'idPageGroup' => $_POST[$i]["idPageGroup"],
+                    'CanAdd' => ($_POST[$i]["CanAdd"] == "true") ? 1 : 0
+                );
+                $last = $mSetting->fgAdd($postArray);
+            } elseif (isset($_POST[$i]["CanEdit"])) {
+                $postArray = array(
+                    'idPageGroup' => $_POST[$i]["idPageGroup"],
+                    'CanEdit' => ($_POST[$i]["CanEdit"] == "true") ? 1 : 0
+                );
+                $last = $mSetting->fgAdd($postArray);
+            } elseif (isset($_POST[$i]["CanDelete"])) {
+                $postArray = array(
+                    'idPageGroup' => $_POST[$i]["idPageGroup"],
+                    'CanDelete' => ($_POST[$i]["CanDelete"] == "true") ? 1 : 0
+                );
+                $last = $mSetting->fgAdd($postArray);
+            }
+        }
+        echo $last;
+    }
+
+
 } ?>
