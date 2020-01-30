@@ -69,6 +69,7 @@ class MSection extends CI_Model
         return $query->result();
     }
 
+    /*getStings */
     function getSectionDetailData2($searchdata)
     {
         $idSection = 0;

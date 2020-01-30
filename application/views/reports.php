@@ -221,18 +221,23 @@
         }
         if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
             url += '&crf=' + data['crf_id'];
+        }else {
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
         }
         if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
             url += '&module=' + data['idModule'];
         }
         if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
             url += '&section=' + data['idSection'];
-        } else {
+        } /*else {
             $('#idSection').css('border', '1px solid red');
             toastMsg('Section', 'Invalid Section', 'error');
             flag = 1;
             return false;
-        }
+        }*/
         if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
             url += '&language=' + data['language'];
         } else {

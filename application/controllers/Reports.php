@@ -319,7 +319,7 @@ class Reports extends CI_controller
                                             $ol5sec = '<br>' . htmlspecialchars($oval->label_l5);
                                         }
                                         $optsubhtml .= '<tr>';
-                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" .strtolower( $oval->variable_name) . ": </strong></small> " . $ol1sec . " 
+                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" . strtolower($oval->variable_name) . ": </strong></small> " . $ol1sec . " 
                                              " . $ol2sec . " 
                                              " . $ol3sec . " 
                                              " . $ol4sec . "
@@ -418,7 +418,32 @@ class Reports extends CI_controller
             $xml_layout_name = 'Myactivity';
 
             $myresult = array();
-            $result = $MSection->getSectionDetailData($searchData);
+            /*$result = $MSection->getSectionDetailData($searchData);
+            foreach ($result as $key => $value) {
+                if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                    $mykey = strtolower($value->idParentQuestion);
+                    $myresult[strtolower($mykey)]->myrow_options[] = $value;
+                } else {
+                    $mykey = strtolower($value->variable_name);
+                    $myresult[strtolower($mykey)] = $value;
+                }
+            }
+
+            $data = array();
+            foreach ($myresult as $val) {
+                $data[] = $val;
+            }*/
+
+            $result = $MSection->getSectionDetailData2($searchData);
+            /*foreach ($result as $key => $value) {
+                if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
+                    $mykey = $value->idParentQuestion;
+                    $myresult[$mykey]->myrow_options[] = $value;
+                } else {
+                    $mykey = $value->variable_name;
+                    $myresult[$mykey] = $value;
+                }
+            }*/
             foreach ($result as $key => $value) {
                 if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
                     $mykey = strtolower($value->idParentQuestion);
@@ -669,15 +694,12 @@ class Reports extends CI_controller
             $this->load->model('mmodule');
             $this->load->model('msection');
             $MSection = new MSection();
-
             $searchData = array();
             $searchData['idProjects'] = $idProject;
             $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
             $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
-
-
             $myresult = array();
             $result = $MSection->getCodeBookData($searchData);
             foreach ($result as $key => $value) {
@@ -893,7 +915,7 @@ class Reports extends CI_controller
         }
     }
 
-    function getStings()
+    function getStings2()
     {
         ob_end_clean();
         if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
@@ -914,6 +936,75 @@ class Reports extends CI_controller
             foreach ($result as $key => $value) {
                 $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . strtolower($value->variable_name) . ':/t ' . htmlspecialchars($value->$lang) . '</string>' . "\n";
             }
+            $file = $lang . "sting.xml";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileEngSting);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/xml");
+            readfile($file);
+        } else {
+            echo 'Invalid Section, Please provide proper details';
+        }
+    }
+
+    function getStings()
+    {
+        ob_end_clean();
+        $flag = 0;
+        $this->load->model('msection');
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idProjects'] = $_REQUEST['project'];
+        $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        if (isset($_REQUEST['language']) && $_REQUEST['language'] != '') {
+            $lang = 'label_' . $_REQUEST['language'];
+        } else {
+            $lang = 'label_l1';
+        }
+        $fileEngSting = '';
+        if (isset($searchData['section']) && $searchData['section'] != '' && $searchData['section'] != 0) {
+            $result = $MSection->getSectionDetailData2($searchData);
+            foreach ($result as $key => $value) {
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ':\t ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+            }
+        } elseif (isset($searchData['idModule']) && $searchData['idModule'] != '' && $searchData['idModule'] != 0) {
+            $getSectionData = $MSection->getSectionData($searchData);
+            foreach ($getSectionData as $data) {
+                $searchData['idSection'] = $data->idSection;
+                $result = $MSection->getSectionDetailData2($searchData);
+                foreach ($result as $key => $value) {
+                    $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ':\t ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                }
+            }
+        } elseif (isset($searchData['idCRF']) && $searchData['idCRF'] != '' && $searchData['idCRF'] != 0) {
+            $this->load->model('mmodule');
+            $MModule = new MModule();
+            $getModByCrf = $MModule->getModByCrf($searchData['idCRF']);
+
+            foreach ($getModByCrf as $mod) {
+                $searchData['idSection'] = '';
+                $searchData['idModule'] = $mod->idModule;
+                $getSectionData = $MSection->getSectionData($searchData);
+                foreach ($getSectionData as $data) {
+                    $searchData['idSection'] = $data->idSection;
+                    $result = $MSection->getSectionDetailData2($searchData);
+                    foreach ($result as $key => $value) {
+                        $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ':\t ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                    }
+                }
+            }
+        } else {
+            $flag = 1;
+        }
+        if ($flag == 0) {
             $file = $lang . "sting.xml";
             $txt = fopen($file, "w") or die("Unable to open file!");
             fwrite($txt, $fileEngSting);
