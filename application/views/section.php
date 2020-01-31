@@ -19,7 +19,6 @@
 <!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-wrapper">
-
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
             <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
@@ -42,8 +41,6 @@
                 </div>
             </div>
         </div>
-
-
         <div class="content-body">
             <section id="collapsible">
                 <div class="row">
@@ -527,6 +524,7 @@
                 '<th>Label</th> ' +
                 '<th>Options</th> ' +
                 '<th>Others</th> ' +
+                '<th>Sort No</th> ' +
                 '</tr>' +
                 '</thead><tbody>';
             if (res != '' && JSON.parse(res).length > 0) {
@@ -593,8 +591,9 @@
                         if (v.MaxVal != '' && v.MaxVal != undefined) {
                             html += '<small>, Max</small>: ' + v.MaxVal + '';
                         }
-                        html += '</td>' +
-                            '</tr>';
+                        html += '</td>' ;
+                        html += '<td>Sort No</td>' ;
+                        html +=  '</tr>';
                     })
                 } catch (e) {
                 }
@@ -607,6 +606,7 @@
                 '<th>Label</th> ' +
                 '<th>Options</th> ' +
                 '<th>Others</th> ' +
+                '<th>Sort No</th> ' +
                 '</tr>' +
                 '</tfoot>' +
                 '</table>';

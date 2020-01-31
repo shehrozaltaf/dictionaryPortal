@@ -268,12 +268,13 @@
         type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
         type="text/javascript"></script>
+
 <script type="text/javascript" src="<?php echo base_url(); ?>assets/vendors/js/ui/jquery.sticky.js"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/pages/content-sidebar.min.js" type="text/javascript"></script>
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/repeater/jquery.repeater.min.js"
         type="text/javascript"></script>
-
+<script src="<?php echo base_url(); ?>assets/js/forceNumericOnly.js" type="text/javascript"></script>
 <!-- Modal -->
 <div class="modal fade text-left" id="edit_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
      aria-hidden="true">
@@ -318,13 +319,41 @@
         </div>
     </div>
 </div>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
 
+
+<style>
+    .myform-control {
+        height: 30px;
+        width: 50%;
+        padding: 8px;
+        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+        color: #4e5154;
+        border: 1px solid #babfc7;
+        border-radius: 1.5rem;
+        background-color: #fff;
+        background-clip: padding-box;
+    }
+
+    .myform-control-position {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        display: block;
+        height: 30px;
+        width: 20%;
+        padding: 3px;
+        text-align: center;
+    }
+</style>
 <script>
     $(document).ready(function () {
         $('.mysection').addClass('open');
         $('.section_add').addClass('active');
         getData();
+
+        $(".sortinp").ForceNumericOnly();
     });
 
     function cloneModal(obj) {
@@ -367,6 +396,76 @@
         }
     }
 
+    function saveSort(obj) {
+        var flag = 0;
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        if (data['idSection'] == '' || data['idSection'] == undefined) {
+            toastMsg('Question', 'Invalid Question', 'error');
+            flag = 1;
+        }
+        data['idModule'] = $('#idModule').val();
+        if (data['idModule'] == '' || data['idModule'] == undefined) {
+            toastMsg('Question', 'Invalid Question', 'error');
+            flag = 1;
+        }
+        data['id_crf'] = $('#id_crf').val();
+        if (data['id_crf'] == '' || data['id_crf'] == undefined) {
+            toastMsg('Question', 'Invalid Question', 'error');
+            flag = 1;
+        }
+        data['idProjects'] = $('#idProjects').val();
+        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+            toastMsg('Question', 'Invalid Question', 'error');
+            flag = 1;
+        }
+        data['variable'] = $(obj).attr('data-variable');
+        if (data['variable'] == '' || data['variable'] == undefined) {
+            toastMsg('Question', 'Invalid Question', 'error');
+            flag = 1;
+        }
+        data['isParent'] = $(obj).attr('data-isParent');
+        data['seq_no'] = $(obj).parent('.myform-control-position').parent('.has-icon-right').find('.sortinp').val();
+        if (data['seq_no'] == '' || data['seq_no'] == undefined || data['seq_no'] == 0) {
+            toastMsg('Sort No', 'Invalid Sort No', 'error');
+            flag = 1;
+        }
+
+        if (flag == 0) {
+            console.log(data);
+            showloader();
+            CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', data, 'POST', function (result) {
+                hideloader();
+                if (result == 1) {
+                    toastMsg('Success', 'Successfully Edited', 'success');
+                    $(obj).parent('.myform-control-position').parent('.has-icon-right').html('');
+                    getData();
+                } else if (result === 3) {
+                    toastMsg('Error', 'Invalid Variable', 'error');
+                } else {
+                    toastMsg('Error', 'Something went wrong', 'error');
+                }
+            });
+        } else {
+            toastMsg('Question', 'Invalid Question', 'error');
+        }
+    }
+
+
+    function openSortInput(obj) {
+        var sort = $(obj).attr('data-seq');
+        var variable = $(obj).attr('data-variable');
+        var isParent = $(obj).attr('data-isParent');
+        var html = '<li class="position-relative has-icon-right">' +
+            '<input type="text" class="myform-control round sortinp" placeholder="Sort No" value="' + sort + '" name="sortinp">' +
+            '<div class="myform-control-position">' +
+            '<i class="ft-arrow-up-right" onclick="saveSort(this)" data-variable="' + variable + '" data-isParent="' + isParent + '"></i>' +
+            '</div>' +
+            '</li>';
+        $(obj).parent('.sorting_parent').find('.inpSort').html(html);
+        $(".sortinp").ForceNumericOnly();
+    }
+
     function getData() {
         var data = {};
         data['idSection'] = $('#idSection').val();
@@ -388,12 +487,21 @@
                         $.each(response, function (i, j) {
                             // v=j.values[0];
                             v = j;
+                            var seq_no = 0;
+                            if (v.seq_no != '' && v.seq_no != undefined && v.seq_no != 'null') {
+                                seq_no = v.seq_no;
+                            }
                             var subhtml = '';
                             html += '<li class="list-group-item bg-blue-grey bg-lighten-4 black formlists mainli ui-state-highlight" ' +
                                 'data-id="' + v.idSectionDetail + '">' +
                                 '<span class="text-justify font-medium-2 variableval">' + v.variable_name + ': </span>' +
                                 '<div class="float-right">' +
-                                '<div class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</div>' +
+                                '<ul class="list-inline text-right sorting_parent">' +
+                                '<li class="inpSort"></li>' +
+                                '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
+                                'data-variable="' + v.variable_name + '" data-isParent="1" data-seq="' + seq_no + '"> ' + seq_no + '</li>' +
+                                '<li class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</li>' +
+                                '</ul>' +
                                 '<ul class="list-inline text-right">' +
                                 '<li class="" onclick="cloneModal(this)" data-idSectionDetail="' + v.variable_name + '"><span class="la la-clone"></span></li>' +
                                 '<li class="" onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
@@ -430,12 +538,23 @@
                             }
                             if (j.myrow_options != '' && j.myrow_options != undefined) {
                                 subhtml += '<ul class="sortable_child">';
+
                                 $.each(j.myrow_options, function (ii, vv) {
+                                    var child_seq_no = 0;
+                                    if (vv.child_seq_no != '' && vv.child_seq_no != undefined && vv.child_seq_no != 'null') {
+                                        child_seq_no = vv.child_seq_no;
+                                    }
                                     subhtml += '<li class="formlists ui-state-highlight" data-id="' + vv.idSectionDetail + '">' +
                                         '<span class="text-justify font-medium-2">' + vv.variable_name + ': </span>' +
                                         '<div class="float-right">' +
-                                        '<div class="badge badge-primary float-right font-small-3"> ' + vv.nature + '</div>' +
+                                        '<ul class="list-inline text-right sorting_parent">' +
+                                        '<li class="inpSort"></li>' +
+                                        '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
+                                        'data-variable="' + vv.variable_name + '"  data-isParent="0" data-seq="' + child_seq_no + '"> ' + child_seq_no + '</li>' +
+                                        '<li><span class="badge badge-primary  font-small-3"> ' + vv.nature + '</span></li>' +
+                                        '</ul>' +
                                         '<ul class="list-inline text-right">' +
+
                                         '<li onclick="getEdit(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-edit"></span></li>' +
                                         '<li onclick="deleterow(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-trash"></span></li>' +
                                         '</ul>' +
@@ -474,63 +593,63 @@
                 $('#sortable').html('').html(html);
 
 
-                setTimeout(function () {
+                /*setTimeout(function () {
                     sortParent();
                     sortChildren();
-                }, 1000);
+                }, 1000);*/
             });
         }
     }
 
-    function sortParent() {
-        $("#sortable").sortable({
-            forcePlaceholderSize: true,
-            opacity: 0.5,
-            placeholder: ".ui-state-highlight",
-            stop: function () {
-                var sendData = {};
-                var i = 0;
-                $.map($(this).find('.ui-state-highlight'), function (el) {
-                    i++;
-                    var id = $(el).attr('data-id');
-                    var sorting = $(el).index();
-                    sendData[id] = i;
-                });
-                console.log(sendData);
-                showloader();
-                CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
-                    hideloader();
-                    getData();
-                });
-            }
-        });
-        $("#sortable").disableSelection();
-    }
+    /* function sortParent() {
+         $("#sortable").sortable({
+             forcePlaceholderSize: true,
+             opacity: 0.5,
+             placeholder: ".ui-state-highlight",
+             stop: function () {
+                 var sendData = {};
+                 var i = 0;
+                 $.map($(this).find('.ui-state-highlight'), function (el) {
+                     i++;
+                     var id = $(el).attr('data-id');
+                     var sorting = $(el).index();
+                     sendData[id] = i;
+                 });
+                 console.log(sendData);
+                 showloader();
+                 CallAjax('< ?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
+                     hideloader();
+                     getData();
+                 });
+             }
+         });
+         $("#sortable").disableSelection();
+     }
 
-    function sortChildren() {
-        $(".sortable_child").sortable({
-            forcePlaceholderSize: true,
-            opacity: 0.5,
-            placeholder: ".ui-state-highlight",
-            stop: function () {
-                var sendData = {};
-                var i = 0;
-                $.map($(this).parents('#sortable').find('.ui-state-highlight'), function (el) {
-                    i++;
-                    var id = $(el).attr('data-id');
-                    var sorting = $(el).index();
-                    sendData[id] = i;
-                });
-                console.log(sendData);
-                showloader();
-                CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
-                    hideloader();
-                    getData();
-                });
-            }
-        });
-        $(".sortable_child").disableSelection();
-    }
+     function sortChildren() {
+         $(".sortable_child").sortable({
+             forcePlaceholderSize: true,
+             opacity: 0.5,
+             placeholder: ".ui-state-highlight",
+             stop: function () {
+                 var sendData = {};
+                 var i = 0;
+                 $.map($(this).parents('#sortable').find('.ui-state-highlight'), function (el) {
+                     i++;
+                     var id = $(el).attr('data-id');
+                     var sorting = $(el).index();
+                     sendData[id] = i;
+                 });
+                 console.log(sendData);
+                 showloader();
+                 CallAjax('< ?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
+                     hideloader();
+                     getData();
+                 });
+             }
+         });
+         $(".sortable_child").disableSelection();
+     }*/
 
     function showDbStructure() {
         return '<hr>' +

@@ -74,7 +74,7 @@ class Section extends CI_controller
         $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
         $result = $MSection->getSectionDetailData2($searchData);
         foreach ($result as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' ) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
                 $mykey = $value->idParentQuestion;
                 $myresult[$mykey]->myrow_options[] = $value;
             } else {
@@ -701,7 +701,44 @@ class Section extends CI_controller
     }
 
     /*Sorting*/
+
     function sortQuestions()
+    {
+        if (isset($_POST['variable']) && $_POST['variable'] != '' && $_POST['variable'] != 'undefined') {
+            $idProjects = (isset($_POST['idProjects']) && $_POST['idProjects'] != '' ? $_POST['idProjects'] : 0);;
+            $id_crf = (isset($_POST['id_crf']) && $_POST['id_crf'] != '' ? $_POST['id_crf'] : 0);;
+            $idModule = (isset($_POST['idModule']) && $_POST['idModule'] != '' ? $_POST['idModule'] : 0);;
+            $idSection = (isset($_POST['idSection']) && $_POST['idSection'] != '' ? $_POST['idSection'] : 0);;
+            $variable_name = $_POST['variable'];
+
+            $this->db->where('idProjects', $idProjects);
+            $this->db->where('id_crf', $id_crf);
+            $this->db->where('idModule', $idModule);
+            $this->db->where('idSection', $idSection);
+
+            $editArr = array();
+            if (isset($_POST['isParent']) && $_POST['isParent'] == 1) {
+                $this->db->where('(variable_name="' . $variable_name . '" or  idParentQuestion="' . $variable_name . '" )');
+                $editArr['seq_no'] = (isset($_POST['seq_no']) && $_POST['seq_no'] != '' ? $_POST['seq_no'] : '0');
+            } else {
+                $this->db->where('variable_name', $variable_name);
+                $editArr['child_seq_no'] = (isset($_POST['seq_no']) && $_POST['seq_no'] != '' ? $_POST['seq_no'] : '0');
+            }
+
+            $update = $this->db->update('section_detail', $editArr);
+            if ($update) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
+        } else {
+            $result = 3;
+        }
+        echo $result;
+    }
+
+
+    /*function sortQuestions()
     {
         if (isset($_POST) && $_POST != '') {
             $Custom = new Custom();
@@ -720,7 +757,7 @@ class Section extends CI_controller
             $result = 3;
         }
         echo $result;
-    }
+    }*/
 
 
     /*Upload Data View*/
