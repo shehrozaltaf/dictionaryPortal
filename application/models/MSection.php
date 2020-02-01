@@ -10,9 +10,9 @@ class MSection extends CI_Model
         parent::__construct();
     }
 
+    /*=====================================Sections=======================================*/
     function getAllSections()
     {
-
         $this->db->select('*');
         $this->db->from('section');
         $this->db->where('isActive', 1);
@@ -26,7 +26,6 @@ class MSection extends CI_Model
         if (isset($searchdata['idModule']) && $searchdata['idModule'] != '' && $searchdata['idModule'] != null) {
             $idModule = $searchdata['idModule'];
         }
-
         $this->db->select('*');
         $this->db->from('section');
         $this->db->where('idModule', $idModule);
@@ -52,70 +51,7 @@ class MSection extends CI_Model
         return $query->result();
     }
 
-
-    function getSectionDetailData($searchdata)
-    {
-        $idSection = 0;
-        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
-            $idSection = $searchdata['idSection'];
-        }
-        $this->db->select('*');
-        $this->db->from('section_detail');
-        $this->db->where('idSection', $idSection);
-        $this->db->where('isActive', 1);
-//        $this->db->order_by('seq_no', 'asc');
-        $this->db->order_by('variable_name', 'asc');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    /*getStings */
-    function getSectionDetailData2($searchdata)
-    {
-        $idSection = 0;
-        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
-            $idSection = $searchdata['idSection'];
-        }
-        $this->db->select('*');
-        $this->db->from('section_detail');
-        $this->db->where('idSection', $idSection);
-        $this->db->where('isActive', 1);
-        $this->db->order_by('seq_no', 'asc');
-        $this->db->order_by('variable_name', 'asc');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-
-    function getCodeBookData($searchdata)
-    {
-        $this->db->select('crf.crf_name,
-	section_detail.variable_name,
-	section_detail.label_l1,
-	section_detail.label_l2,
-	section_detail.option_value,
-	section_detail.dbType,
-	section.tableName,
-	section_detail.insertDB,
-	section_detail.idParentQuestion,
-	section_detail.dbLength,
-	section_detail.nature ');
-        $this->db->from('section_detail');
-        $this->db->join('section', 'section_detail.idSection = section.idSection', 'RIGHT');
-        $this->db->join('modules', 'section.idModule = modules.idModule', 'left');
-        $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
-        $this->db->where('crf.idProjects', $searchdata['idProjects']);
-
-        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
-            $this->db->where('section.idSection', $searchdata['idSection']);
-        }
-
-        $this->db->where('section_detail.nature!="Title"');
-        $this->db->where('section.isActive', 1);
-        $this->db->order_by('section_detail.variable_name', 'ASC');
-        $query = $this->db->get();
-        return $query->result();
-    }
+    /*=====================================Section Details=======================================*/
 
     function getSectionDetailDataByid($idSection)
     {
@@ -146,28 +82,8 @@ class MSection extends CI_Model
         $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
         $this->db->join('projects', 'crf.idProjects = projects.idProjects', 'left');
         $this->db->where('section.idSection', $idSectione);
-//        $this->db->where('section_detail.isActive', 1);
         $this->db->order_by('section_detail.variable_name', 'desc');
         $this->db->limit('1');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    function getSectionDetailsData($searchdata)
-    {
-        $idSection = 0;
-        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
-            $idSection = $searchdata['idSection'];
-        }
-        $this->db->select('*');
-        $this->db->from('section_detail');
-        $this->db->where('idSection', $idSection);
-        $this->db->where('isActive', 1);
-        $this->db->order_by('seq_no', 'asc');
-        $this->db->order_by('variable_name', 'asc');
-
-//        $this->db->order_by('section_detail.variable_name', 'ASC');
-        //$this->db->order_by("	BIN(variable_name) ASC, variable_name ASC");
         $query = $this->db->get();
         return $query->result();
     }
@@ -211,7 +127,9 @@ class MSection extends CI_Model
         return $query->result();
     }
 
-    function getExcelData($searchdata)
+    /*=====================================Reports=======================================*/
+    /*getStings || getXml || getPDF || getSaveDraftData ||getExcel*/
+    function getSectionDetailData($searchdata)
     {
         $idSection = 0;
         if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
@@ -221,34 +139,40 @@ class MSection extends CI_Model
         $this->db->from('section_detail');
         $this->db->where('idSection', $idSection);
         $this->db->where('isActive', 1);
-        $this->db->order_by('section_detail.variable_name', 'ASC');
+        $this->db->order_by('seq_no', 'asc');
+        $this->db->order_by('child_seq_no', 'asc');
+        $this->db->order_by('variable_name', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
 
-    function getCntTotalSection($searchdata)
+    /*getCodeBook*/
+    function getCodeBookData($searchdata)
     {
-        $idproject = 0;
-        if (isset($searchdata['start']) && $searchdata['start'] != '' && $searchdata['start'] != null) {
-            $start = $searchdata['start'];
+        $this->db->select('crf.crf_name,
+	section_detail.variable_name,
+	section_detail.label_l1,
+	section_detail.label_l2,
+	section_detail.option_value,
+	section_detail.dbType,
+	section.tableName,
+	section_detail.insertDB,
+	section_detail.idParentQuestion,
+	section_detail.dbLength,
+	section_detail.nature ');
+        $this->db->from('section_detail');
+        $this->db->join('section', 'section_detail.idSection = section.idSection', 'RIGHT');
+        $this->db->join('modules', 'section.idModule = modules.idModule', 'left');
+        $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
+        $this->db->where('crf.idProjects', $searchdata['idProjects']);
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $this->db->where('section.idSection', $searchdata['idSection']);
         }
-        if (isset($searchdata['length']) && $searchdata['length'] != '' && $searchdata['length'] != null) {
-            $length = $searchdata['length'];
-        }
-        if (isset($searchdata['idProject']) && $searchdata['idProject'] != '' && $searchdata['idProject'] != null) {
-            $idproject = $searchdata['idProject'];
-        }
-
-        if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
-            $search = $searchdata['search'];
-            /* $this->db->where('i2_hb1ac.WHOWID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.SAMPLEID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.HBA1C_Res', 'like', '%' . $search . '%');*/
-        }
-        $this->db->select('count(id_section) as cnttotal');
-        $this->db->from('section');
-        $this->db->where('idProject', $idproject);
-        $this->db->where('isActive', 1);
+        $this->db->where('section_detail.nature!="Title"');
+        $this->db->where('section.isActive', 1);
+        $this->db->order_by('section_detail.seq_no', 'asc');
+        $this->db->order_by('section_detail.child_seq_no', 'asc');
+        $this->db->order_by('section_detail.variable_name', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }

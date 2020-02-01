@@ -41,64 +41,34 @@ class Section extends CI_controller
         echo json_encode($result, true);
     }
 
+    function questionArr($dataarr)
+    {
+        $myresult = array();
+        foreach ($dataarr as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                $mykey = strtolower($value->idParentQuestion);
+                $myresult[strtolower($mykey)]->myrow_options[] = $value;
+            } else {
+                $mykey = strtolower($value->variable_name);
+                $myresult[strtolower($mykey)] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+        return $data;
+    }
+
     function getSectionDetail()
     {
-        $myresult = array();
         $MSection = new MSection();
         $searchData = array();
         $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
         $result = $MSection->getSectionDetailData($searchData);
-        foreach ($result as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists($value->idParentQuestion, $myresult)) {
-                $mykey = $value->idParentQuestion;
-                $myresult[$mykey]->myrow_options[] = $value;
-            } else {
-                $mykey = $value->variable_name;
-                $myresult[$mykey] = $value;
-            }
-        }
-
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-
+        $data = $this->questionArr($result);
         echo json_encode($data, true);
     }
-
-    function getSectionDetail2()
-    {
-        $myresult = array();
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
-        $result = $MSection->getSectionDetailData2($searchData);
-        foreach ($result as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '') {
-                $mykey = $value->idParentQuestion;
-                $myresult[$mykey]->myrow_options[] = $value;
-            } else {
-                $mykey = $value->variable_name;
-                $myresult[$mykey] = $value;
-            }
-        }
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-
-        echo json_encode($data, true);
-    }
-
-
-    /*function getSectionDetail()
-    {
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
-        $result = $MSection->getSectionDetailData($searchData);
-        echo json_encode($result, true);
-    }*/
 
     function add_section()
     {
@@ -189,16 +159,6 @@ class Section extends CI_controller
         $data = array();
         $idSection = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
         $data['result'] = $MSection->getSectionDetailDataByid($idSection);
-        /* $idCRF = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
-         if (!isset($idCRF) || $idCRF == '' || $idCRF == '$1' || $idCRF == 0) {
-             $MProjects = new MProjects();
-             $data['projects'] = $MProjects->getAllProjects();
-         } else {
-             $data['projects'] = '';
-         }
-         $data['slug'] = $idCRF;
-
-         $data['crf'] = $MCrf->getCrfById($idCRF); */
 
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
@@ -212,17 +172,6 @@ class Section extends CI_controller
         $data = array();
         $idSection = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
         $data['result'] = $MSection->getSectionDetailDataByid($idSection);
-        /* $idCRF = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
-         if (!isset($idCRF) || $idCRF == '' || $idCRF == '$1' || $idCRF == 0) {
-             $MProjects = new MProjects();
-             $data['projects'] = $MProjects->getAllProjects();
-         } else {
-             $data['projects'] = '';
-         }
-         $data['slug'] = $idCRF;
-
-         $data['crf'] = $MCrf->getCrfById($idCRF); */
-
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_secdetail', $data);

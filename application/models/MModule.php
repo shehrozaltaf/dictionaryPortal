@@ -12,7 +12,6 @@ class MModule extends CI_Model
 
     function getAllModules()
     {
-
         $this->db->select('*');
         $this->db->from('modules');
         $this->db->where('isActive', 1);
@@ -26,8 +25,6 @@ class MModule extends CI_Model
         if (isset($searchdata['idCRF']) && $searchdata['idCRF'] != '' && $searchdata['idCRF'] != null) {
             $idCrf = $searchdata['idCRF'];
         }
-
-
         $this->db->select('*');
         $this->db->from('modules');
         $this->db->where('id_crf', $idCrf);
@@ -77,34 +74,15 @@ class MModule extends CI_Model
         return $query->result();
     }
 
-    function getModByCrf($idCrf)
-    {
-        $this->db->select('*');
-        $this->db->from('modules');
-        $this->db->where('isActive', 1);
-        $this->db->where('id_crf', $idCrf);
-        $query = $this->db->get();
-        return $query->result();
-    }
-
     function getCntTotalModule($searchdata)
     {
         $idProjects = 0;
-        if (isset($searchdata['start']) && $searchdata['start'] != '' && $searchdata['start'] != null) {
-            $start = $searchdata['start'];
-        }
-        if (isset($searchdata['length']) && $searchdata['length'] != '' && $searchdata['length'] != null) {
-            $length = $searchdata['length'];
-        }
         if (isset($searchdata['idProjects']) && $searchdata['idProjects'] != '' && $searchdata['idProjects'] != null) {
             $idProjects = $searchdata['idProjects'];
         }
 
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            /* $this->db->where('i2_hb1ac.WHOWID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.SAMPLEID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.HBA1C_Res', 'like', '%' . $search . '%');*/
         }
         $this->db->select('count(id_Module) as cnttotal');
         $this->db->from('Module');

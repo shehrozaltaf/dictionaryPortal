@@ -149,9 +149,6 @@ class Crf extends CI_controller
             $myarr['module_desc_l4'] = $value->module_desc_l4;
             $myarr['module_name_l5'] = $value->module_name_l5;
             $myarr['module_desc_l5'] = $value->module_desc_l5;
-
-
-            /*  $myarr['crf_languages'] = $value->crf_languages;*/
             $table_data[$value->crf_name]['module'][] = $myarr;
         }
         foreach ($table_data as $k => $v) {
@@ -212,9 +209,3 @@ class Crf extends CI_controller
 }
 
 ?>
-
-
-
-
-
-                                  

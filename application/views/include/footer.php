@@ -37,8 +37,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- BEGIN: Customizer-->
 <div class="customizer border-left-blue-grey border-left-lighten-4 d-none d-xl-block">
     <a class="customizer-close" class="ft-x font-medium-3"></i></a>
@@ -77,9 +75,7 @@
                      title="blue"></div>
             </div>
         </div>
-
         <hr>
-
         <h5 class="my-1 text-bold-500">Layout Options</h5>
         <div class="row">
             <div class="col-12">
@@ -111,9 +107,7 @@
                 </div>
             </div>
         </div>
-
         <hr>
-
         <h5 class="mt-1 mb-1 text-bold-500">Sidebar menu Background</h5>
         <div class="row sidebar-color-options ml-0">
             <label for="sidebar-color-option" class="card-title font-medium-2 mr-2"
@@ -125,16 +119,12 @@
             <label for="sidebar-color-option" class="card-title font-medium-2 ml-2"
                    data-menu_sidbar_mode="menu-dark" data-alterkey="menu-light">Dark Mode</label>
         </div>
-
         <hr>
-
         <label for="collapsed-sidebar" class="font-medium-2">Menu Collapse</label>
         <div class="float-right">
             <input type="checkbox" id="collapsed-sidebar" class="switchery" data-size="xs"/>
         </div>
-
         <hr>
-
         <!--Sidebar Background Image Starts-->
         <h5 class="mt-1 mb-1 text-bold-500">Sidebar Background Image</h5>
         <div class="cz-bg-image row">
@@ -159,7 +149,6 @@
             </div>
         </div>
         <!--Sidebar Background Image Ends-->
-
         <!--Sidebar BG Image Toggle Starts-->
         <div class="sidebar-image-visibility">
             <div class="row ml-0">
@@ -171,44 +160,31 @@
             </div>
         </div>
         <!--Sidebar BG Image Toggle Ends-->
-
     </div>
 </div>
 <!-- End: Customizer-->
-
 <script src="<?php echo base_url(); ?>assets/js/core.js" type="text/javascript"></script>
 <!-- BEGIN: Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/toggle/switchery.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/switch.min.js" type="text/javascript"></script>
 <!-- BEGIN Vendor JS-->
-
 <!-- BEGIN: Theme JS-->
 <script src="<?php echo base_url(); ?>assets/js/core/app-menu.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/core/app.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/customizer.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/vendors/js/jquery.sharrre.js" type="text/javascript"></script>
 <!-- END: Theme JS-->
-
-
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/extensions/toastr.min.js" type="text/javascript"></script>
 <!-- END: Page Vendor JS-->
 <script>
     $(document).ready(function () {
         $('#loader').hide();
-        /*$('#change_password').click(function () {
-            $('#changePasswordModal').modal({
-                backdrop: 'static',
-                keyboard: true
-            });
-        });*/
     });
-
     function changePassword() {
         var flag = 0;
         $('#edit_newPassword').css('border', '1px solid #babfc7');
         $('#edit_newPasswordConfirm').css('border', '1px solid red');
-
         var data = {};
         data['newpassword'] = $('#edit_newPassword').val();
         data['newpasswordconfirm'] = $('#edit_newPasswordConfirm').val();
@@ -219,14 +195,12 @@
             flag = 1;
             return false;
         }
-
         if (data['newpasswordconfirm'] == '' || data['newpasswordconfirm'] == undefined || data['newpassword'] != data['newpasswordconfirm']) {
             $('#edit_newPasswordConfirm').css('border', '1px solid red');
             toastMsg('Confirm Password', 'Invalid Confirm Password', 'error');
             flag = 1;
             return false;
         }
-
         if (flag == 0) {
             showloader();
             $('.mybtn').attr('disabled', 'disabled');
@@ -255,7 +229,6 @@
         });
     }
 
-
     function getPDF(obj) {
         var data = {};
         data['idProject'] = $(obj).attr('data-idProject');
@@ -273,7 +246,6 @@
         if (b != '' && b != undefined) {
             $('body').attr('data-color', b);
         }
-
         var menu_sidbar_mode = localStorage.getItem("menu_sidbar_mode");
         if (menu_sidbar_mode != '' && menu_sidbar_mode != undefined) {
             $('.main-menu').removeClass('menu-dark').removeClass('menu-light').addClass(menu_sidbar_mode);

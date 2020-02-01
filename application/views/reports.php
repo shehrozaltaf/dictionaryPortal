@@ -3,7 +3,7 @@
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
             <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
-                <h3 class="content-header-title mb-0 d-inline-block">Add Section</h3>
+                <h3 class="content-header-title mb-0 d-inline-block">Get Reports</h3>
                 <div class="breadcrumbs-top d-inline-block">
                     <div class="breadcrumb-wrapper mr-1">
                         <ol class="breadcrumb">
@@ -50,7 +50,6 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-
                                     <div class="form">
                                         <div class="form-body">
                                             <h4 class="form-section">
@@ -119,7 +118,6 @@
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group languages">
-
                                                     </div>
                                                 </div>
                                             </div>
@@ -130,10 +128,6 @@
                                         <button type="button" class="btn bg-gradient-x-blue-green white"
                                                 onclick="getPDFData()">
                                             <i class="la la-file-pdf-o"></i> Get PDF
-                                        </button>
-                                        <button type="button" class="btn bg-gradient-x-blue-cyan white"
-                                                onclick="getExcelData()">
-                                            <i class="la la-file-excel-o"></i> Get Excel
                                         </button>
                                         <button type="button" class="btn bg-gradient-x-purple-blue white"
                                                 onclick="getXmlData()">
@@ -147,14 +141,15 @@
                                                 onclick="getSaveDraftData()">
                                             <i class="la la-file-o"></i> Get Save Draft
                                         </button>
-
                                         <button type="button" class="btn bg-gradient-x-red-pink    white"
                                                 onclick="getCodeBook()">
                                             <i class="la la-file-o"></i> Get Code Book
                                         </button>
-
+                                        <button type="button" class="btn bg-gradient-x-blue-cyan white"
+                                                onclick="getExcelData()">
+                                            <i class="la la-file-excel-o"></i> Get Excel
+                                        </button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -164,12 +159,10 @@
         </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function () {
         $('.myreport').addClass('active');
     });
-
     function getCodeBook() {
         $('#idProject').css('border', '1px solid #babfc7');
         $('#crf_id').css('border', '1px solid #babfc7');
@@ -447,13 +440,13 @@
                                 html_Lang += '<option value="l2">' + v.l2 + '</option>';
                             }
                             if (v.l3 != '' && v.l3 != undefined) {
-                                html_Lang += '<option value="l1">' + v.l3 + '</option>';
+                                html_Lang += '<option value="l3">' + v.l3 + '</option>';
                             }
                             if (v.l4 != '' && v.l4 != undefined) {
-                                html_Lang += '<option value="l1">' + v.l4 + '</option>';
+                                html_Lang += '<option value="l4">' + v.l4 + '</option>';
                             }
                             if (v.l5 != '' && v.l5 != undefined) {
-                                html_Lang += '<option value="l1">' + v.l5 + '</option>';
+                                html_Lang += '<option value="l5">' + v.l5 + '</option>';
                             }
 
                         })

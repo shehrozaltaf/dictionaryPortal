@@ -2,7 +2,6 @@
 
 class Dashboard extends CI_controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -12,7 +11,6 @@ class Dashboard extends CI_controller
             redirect(base_url());
         }
     }
-
 
     function index()
     {
@@ -77,7 +75,6 @@ class Dashboard extends CI_controller
         }
         echo $Menu;
     }
-
 
 }
 

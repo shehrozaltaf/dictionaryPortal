@@ -15,14 +15,12 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/components.min.css">
     <link rel="stylesheet" type="text/css"
           href="<?php echo base_url(); ?>assets/css/core/colors/palette-gradient.min.css">
-
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendors/css/vendors.min.css">
     <style>
         .error {
             border-color: #e53935;
         }
-
         .toggle-password {
             cursor: pointer;
         }

@@ -16,14 +16,13 @@ class MCrf extends CI_Model
     {
 
         $this->db->select('crf.id_crf,
-crf.idProjects,
-crf.crf_name,
-crf.crf_title,
-crf.languages,
-crf.startdate,
-crf.enddate,
-crf.isActive,
-crf.no_of_modules');
+                    crf.idProjects,
+                    crf.crf_name,
+                    crf.crf_title,
+                    crf.languages,
+                    crf.startdate,
+                    crf.enddate,
+                    crf.no_of_modules');
         $this->db->from('crf');
         $this->db->where('isActive', 1);
         $query = $this->db->get();
@@ -32,7 +31,6 @@ crf.no_of_modules');
 
     function getCrfById($idCrf)
     {
-
         $this->db->select('crf.id_crf,
 crf.idProjects,
 crf.crf_name,
@@ -114,9 +112,6 @@ crf.l5');
 
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            /* $this->db->where('i2_hb1ac.WHOWID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.SAMPLEID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.HBA1C_Res', 'like', '%' . $search . '%');*/
         }
         if (isset($searchdata['orderby']) && $searchdata['orderby'] != '' && $searchdata['orderby'] != null) {
             $this->db->order_By($searchdata['orderby'], $searchdata['ordersort']);
@@ -156,21 +151,12 @@ crf.l5');
     function getCntTotalCrf($searchdata)
     {
         $idProjects = 0;
-        if (isset($searchdata['start']) && $searchdata['start'] != '' && $searchdata['start'] != null) {
-            $start = $searchdata['start'];
-        }
-        if (isset($searchdata['length']) && $searchdata['length'] != '' && $searchdata['length'] != null) {
-            $length = $searchdata['length'];
-        }
         if (isset($searchdata['idProjects']) && $searchdata['idProjects'] != '' && $searchdata['idProjects'] != null) {
             $idProjects = $searchdata['idProjects'];
         }
 
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            /* $this->db->where('i2_hb1ac.WHOWID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.SAMPLEID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.HBA1C_Res', 'like', '%' . $search . '%');*/
         }
         $this->db->select('count(id_crf) as cnttotal');
         $this->db->from('crf');

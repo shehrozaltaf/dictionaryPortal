@@ -149,8 +149,9 @@ class Module extends CI_controller
     function getModuleByCrf()
     {
         $MModule = new MModule();
-        $idCrf = (isset($_REQUEST['idCrf']) && $_REQUEST['idCrf'] != '' && $_REQUEST['idCrf'] != 0 ? $_REQUEST['idCrf'] : 0);
-        $data = $MModule->getModByCrf($idCrf);
+        $searchdata = array();
+        $searchdata['idCRF'] = (isset($_REQUEST['idCrf']) && $_REQUEST['idCrf'] != '' && $_REQUEST['idCrf'] != 0 ? $_REQUEST['idCrf'] : 0);
+        $data = $MModule->getModulesData($searchdata);
         echo json_encode($data, true);
     }
 
@@ -162,16 +163,6 @@ class Module extends CI_controller
         $this->form_validation->set_rules('project_id', 'Project', 'required');
         $this->form_validation->set_rules('variable_module', 'variable_module', 'required');
         $this->form_validation->set_rules('module_name_Languages', 'Language Name', 'required');
-        /* $this->form_validation->set_rules('module_name_L1', 'Module Name L1', 'required');
-         $this->form_validation->set_rules('module_desc_L1', 'Module Description L1', 'required');
-         $this->form_validation->set_rules('module_name_L2', 'Module Name L2', 'required');
-         $this->form_validation->set_rules('module_desc_L2', 'Module Description L2', 'required');
-         $this->form_validation->set_rules('module_name_L3', 'Module Name L3', 'required');
-         $this->form_validation->set_rules('module_desc_L3', 'Module Description L3', 'required');
-         $this->form_validation->set_rules('module_name_L4', 'Module Name L4', 'required');
-         $this->form_validation->set_rules('module_desc_L4', 'Module Description L4', 'required');
-         $this->form_validation->set_rules('module_name_L5', 'Module Name L5', 'required');
-         $this->form_validation->set_rules('module_desc_L5', 'Module Description L5', 'required');*/
         $this->form_validation->set_rules('module_status', 'Module Status', 'required');
         $this->form_validation->set_rules('module_type', 'Module Type', 'required');
 
@@ -205,17 +196,6 @@ class Module extends CI_controller
                 }
             }
         }
-
-        /*$formArray['module_name_l1'] = $this->input->post('module_name_L1');
-        $formArray['module_desc_l1'] = $this->input->post('module_desc_L1');
-        $formArray['module_name_l2'] = $this->input->post('module_name_L2');
-        $formArray['module_desc_l2'] = $this->input->post('module_desc_L2');
-        $formArray['module_name_l3'] = $this->input->post('module_name_L3');
-        $formArray['module_desc_l3'] = $this->input->post('module_desc_L3');
-        $formArray['module_name_l4'] = $this->input->post('module_name_L4');
-        $formArray['module_desc_l4'] = $this->input->post('module_desc_L4');
-        $formArray['module_name_l5'] = $this->input->post('module_name_L5');
-        $formArray['module_desc_l5'] = $this->input->post('module_desc_L5');*/
         $formArray['module_status'] = $this->input->post('module_status');
         $formArray['module_type'] = $this->input->post('module_type');
 
@@ -228,10 +208,4 @@ class Module extends CI_controller
         echo $result;
     }
 
-
 } ?>
-
-
-
-
-

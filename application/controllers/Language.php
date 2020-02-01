@@ -98,10 +98,4 @@ class Language extends CI_controller
         echo $result;
     }
 
-
 } ?>
-
-
-
-
-

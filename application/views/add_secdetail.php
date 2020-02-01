@@ -254,16 +254,6 @@
         </div>
     </div>
 </footer>
-<style>
-    .mainli {
-        margin: 7px 0px;
-    }
-
-    li.formlists {
-        border-top: 1px solid grey;
-    }
-</style>
-
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
@@ -292,8 +282,6 @@
         </div>
     </div>
 </div>
-<style>
-</style>
 <!-- Clone Modal -->
 <div class="modal fade text-left" id="clone_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_clone"
      aria-hidden="true">
@@ -319,34 +307,6 @@
         </div>
     </div>
 </div>
-<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-
-
-<style>
-    .myform-control {
-        height: 30px;
-        width: 50%;
-        padding: 8px;
-        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
-        color: #4e5154;
-        border: 1px solid #babfc7;
-        border-radius: 1.5rem;
-        background-color: #fff;
-        background-clip: padding-box;
-    }
-
-    .myform-control-position {
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        right: 0;
-        display: block;
-        height: 30px;
-        width: 20%;
-        padding: 3px;
-        text-align: center;
-    }
-</style>
 <script>
     $(document).ready(function () {
         $('.mysection').addClass('open');
@@ -1680,12 +1640,8 @@
                     '<input type="hidden" class="skipQuestion" value="' + inp['skipQuestion'] + '">' +
                     '</div> ';
             }
-
-
         });
-
-
-        var options_list = new Array();
+        var options_list = [];
         $("div[id=options_list]").each(function () {
             html += '<div class="options_list_hidden" style="display: none">';
             var options = [];

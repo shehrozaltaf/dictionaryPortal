@@ -25,7 +25,6 @@ class MLogin extends CI_Model
         return $res;
     }
 
-
     function ForgetPass($email)
     {
         $this->db->select('*');

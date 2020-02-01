@@ -1,21 +1,3 @@
-<style>
-    td.details-control {
-        background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
-        cursor: pointer;
-    }
-
-    tr.details td.details-control {
-        background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
-    }
-
-    #myinnertable td {
-        border: 1px solid;
-    }
-
-    .btn-link {
-        color: #d51313;
-    }
-</style>
 <!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-wrapper">

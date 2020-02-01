@@ -1,0 +1,18 @@
+<string name="hh01">hh01:\t Cluster number</string>
+<string name="hh02">hh02:\t Province</string>
+<string name="hh03">hh03:\t District code</string>
+<string name="hh04">hh04:\t Tehsil code</string>
+<string name="hh05">hh05:\t UC code</string>
+<string name="hh06">hh06:\t Name of the village/Town</string>
+<string name="hh07">hh07:\t Type of structure?</string>
+<string name="hh07a">Residential</string>
+<string name="hh07b">Non-Residential</string>
+<string name="hh07c">Temporarily Stop Listing</string>
+<string name="hh07d">Line Listing Complete (No more structure)</string>
+<string name="hh08">hh08:\t Name of Household Head</string>
+<string name="hh09">hh09:\t Total number of family members</string>
+<string name="hh10">hh10:\t Is there any married women living in the household whose is aged between 15 to 49 year and
+having children under-5 years of age?
+</string>
+<string name="hh10a">Yes</string>
+<string name="hh10b">No</string>

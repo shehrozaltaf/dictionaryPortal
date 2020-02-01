@@ -16,7 +16,8 @@
                 </div>
             </div>
         </div>
-        <div class="content-body"><!-- Basic form layout section start -->
+        <div class="content-body">
+            <!-- Basic form layout section start -->
             <section id="basic-form-layouts">
                 <div class="row match-height">
                     <div class="col-md-12">
@@ -52,12 +53,10 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-
                                     <div class="form">
                                         <div class="form-body">
                                             <h4 class="form-section">
                                                 <i class="ft-flag"></i>Add Project</h4>
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -66,8 +65,6 @@
                                                                placeholder="Project Name" name="projectName">
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="shortTitle">Short Title</label>
@@ -76,7 +73,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -88,8 +84,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="enddate">Expected End Date</label>
@@ -102,8 +96,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -113,8 +105,6 @@
                                                                placeholder="No Of CRF" name="num_of_crf">
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="languages">Languages (comma seperated)</label>
@@ -124,8 +114,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -135,8 +123,6 @@
                                                                placeholder="No Of Sites" name="num_of_site">
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="email">Supervisor Email</label>
@@ -146,35 +132,13 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
-                                            <!--<div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <label for="projectinput5">Id Of User</label>
-                                                        <select id="id_user" name="priority" class="form-control"
-                                                                data-toggle="tooltip" data-trigger="hover">
-                                                            data-placement="top"
-                                                            data-title="Priority">
-                                                            <option value="low">Low</option>
-                                                            <option value="medium">Medium</option>
-                                                            <option value="high">High</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>-->
-
-
                                         </div>
                                     </div>
-
                                     <div class="form-actions">
                                         <button type="button" class="btn btn-primary mybtn" onclick="addData()">
                                             <i class="la la-check-square-o"></i> Save
                                         </button>
-
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -187,22 +151,13 @@
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
-<!--<script src="<?php /*echo base_url(); */ ?>assets/vendors/js/forms/extended/maxlength/bootstrap-maxlength.js"
-        type="text/javascript"></script>
-<script src="<?php /*echo base_url(); */ ?>assets/vendors/js/forms/extended/card/jquery.card.js"
-        type="text/javascript"></script>-->
-<!-- END: Page Vendor JS-->
-
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
         type="text/javascript"></script>
-
 <script>
     $(document).ready(function () {
         $('.myproject').addClass('open');
         $('.myproject_add').addClass('active');
     });
-
-
     function addData() {
         var flag = 0;
         $('#projectName').css('border', '1px solid #babfc7');
@@ -214,7 +169,6 @@
         $('#num_of_site').css('border', '1px solid #babfc7');
         $('#email').css('border', '1px solid #babfc7');
         var data = {};
-
         data['projectName'] = $('#projectName').val();
         if (data['projectName'] == '' || data['projectName'] == undefined) {
             $('#projectName').css('border', '1px solid red');
@@ -222,7 +176,6 @@
             flag = 1;
             return false;
         }
-
         data['shortTitle'] = $('#shortTitle').val();
         if (data['shortTitle'] == '' || data['shortTitle'] == undefined) {
             $('#shortTitle').css('border', '1px solid red');
@@ -230,32 +183,9 @@
             flag = 1;
             return false;
         }
-
         data['startdate'] = $('#startdate').val();
-        /* if (data['startdate'] == '' || data['startdate'] == undefined) {
-             $('#startdate').css('border', '1px solid red');
-             toastMsg('Start Date', 'Invalid Start Date', 'error');
-             flag = 1;
-             return false;
-         }*/
-
-
         data['enddate'] = $('#enddate').val();
-        /* if (data['enddate'] == '' || data['enddate'] == undefined) {
-             $('#enddate').css('border', '1px solid red');
-             toastMsg('End Date', 'Invalid End Date', 'error');
-             flag = 1;
-             return false;
-         }
- */
         data['num_of_crf'] = $('#num_of_crf').val();
-        /* if (data['num_of_crf'] == '' || data['num_of_crf'] == undefined) {
-             $('#num_of_crf').css('border', '1px solid red')
-             flag = 1;
-             return false;
-         }*/
-
-
         data['languages'] = $('#languages').val();
         if (data['languages'] == '' || data['languages'] == undefined) {
             $('#languages').css('border', '1px solid red');
@@ -263,14 +193,7 @@
             flag = 1;
             return false;
         }
-
         data['num_of_site'] = $('#num_of_site').val();
-        /* if (data['num_of_site'] == '' || data['num_of_site'] == undefined) {
-             $('#num_of_site').css('border', '1px solid red')
-             flag = 1;
-             return false;
-         }*/
-
         data['email'] = $('#email').val();
         if (data['email'] == '' || data['email'] == undefined) {
             $('#email').css('border', '1px solid red');
@@ -278,7 +201,6 @@
             flag = 1;
             return false;
         }
-
         if (flag == 0) {
             $('.mybtn').attr('disabled','disabled');
             showloader();
@@ -293,17 +215,6 @@
                     toastMsg('Error', 'Something went wrong', 'error');
                 }
             });
-            /*$.ajax({
-                url: ' ',
-                method: "POST",
-                data: data,
-                success: function (result) {
-                    alert(result);
-                }
-            })*/
         }
     }
 </script>
-
-
-

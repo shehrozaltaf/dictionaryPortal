@@ -23,8 +23,6 @@
                 </div>
             </div>
         </div>
-
-
         <?php if (isset($data) && $data != '') { ?>
             <div class="content-body vcaMenu_redesign_item">
                 <section id="dropzone-examples">
@@ -82,7 +80,6 @@
                         </div>
                     </div>
                 </section>
-
                 <section id="ordering">
                     <div class="row">
                         <div class="col-12">
@@ -153,12 +150,10 @@
                     </div>
                 </section>
             </div>
-
         <?php } ?>
     </div>
 </div>
 <!-- END: Content-->
-
 <!-- Modal -->
 <div class="modal fade text-left" id="modal_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
      aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -218,7 +213,6 @@
         } else {
             $('#modal_project').modal('show');
         }
-
         $('#document_file').change(function () {
             $('#document_label').text(this.files[0].name);
         });
@@ -257,7 +251,6 @@
                 } else if (res == 3) {
                     toastMsg('Language', 'Invalid Language', 'error');
                 }
-
             });
         }
     }
@@ -287,7 +280,6 @@
             flag = 1;
             return false;
         }
-
         if (flag == 0) {
             showloader();
             $('.mybtn').attr('disabled', 'disabled');
@@ -308,5 +300,4 @@
             }, true);
         }
     }
-
 </script>

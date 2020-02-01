@@ -24,10 +24,8 @@ class MSettings extends CI_Model
         return $query->result();
     }
 
-
     function selectAllForm()
     {
-
         $this->db->select('*');
         $this->db->from('pages');
         $this->db->where('isActive', 1);
@@ -37,7 +35,6 @@ class MSettings extends CI_Model
 
     function selectFormGroupData($idGroup)
     {
-
         $this->db->select('pagegroup.idPages,
 	pagegroup.CanAdd,
 	pagegroup.CanEdit,
@@ -63,7 +60,6 @@ class MSettings extends CI_Model
         return $query->result();
     }
 
-
     function fgAdd($Data)
     {
         $this->db->where('idPageGroup', $Data["idPageGroup"]);
@@ -74,7 +70,6 @@ class MSettings extends CI_Model
             return FALSE;
         }
     }
-
 
     public function getUserRights($idGroup, $CanView = '', $FormName = '')
     {
@@ -108,6 +103,5 @@ class MSettings extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
-
 
 }

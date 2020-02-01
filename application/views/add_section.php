@@ -17,7 +17,6 @@
                                 $idModule = 0;
                             }
                             $totallanguages = 0;
-
                             if (isset($module[0]->l1) && $module[0]->l1 != '') {
                                 $totallanguages++;
                             }
@@ -33,7 +32,6 @@
                             if (isset($module[0]->l5) && $module[0]->l5 != '') {
                                 $totallanguages++;
                             } ?>
-
                         </ol>
                     </div>
                 </div>
@@ -75,7 +73,6 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-
                                     <div class="form">
                                         <div class="form-body">
                                             <h4 class="form-section">
@@ -116,7 +113,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="row">
                                                 <div class="col-md-4">
                                                     <div class="form-group">
@@ -149,7 +145,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="row">
                                                 <div class="form-group col-12 mb-2 file-repeater">
                                                     <?php for ($i = 1; $i <= $totallanguages; $i++) {
@@ -174,43 +169,8 @@
                                                     <?php } ?>
                                                 </div>
                                             </div>
-
-                                            <!--<div class="row">
-                                                <div class="form-group col-12 mb-2 file-repeater">
-                                                    <div data-repeater-list="repeater-group">
-                                                        <label for="list_of_languagess">Languages</label>
-                                                        <button type="button" data-repeater-create class="btn primary">
-                                                            <i class="ft-plus"></i> Add
-                                                        </button>
-                                                        <div data-repeater-list="car">
-                                                            <div class="input-group mb-1" data-repeater-item>
-                                                                <div class="form-group mb-1 col-sm-5 col-md-5">
-                                                                    <textarea class="form-control row_lang" rows="3"
-                                                                              id="section_name_L"
-                                                                              placeholder="Section Name"
-                                                                              name="section_name_L"></textarea>
-                                                                </div>
-                                                                <div class="form-group mb-1 col-sm-5 col-md-5">
-                                                                    <textarea class="form-control" rows="3"
-                                                                              id="section_desc_L"
-                                                                              placeholder="Section Descrition"
-                                                                              name="section_desc_L"></textarea>
-                                                                </div>
-                                                                <div class="form-group col-sm-2 col-md-2 text-center mt-2">
-                                                                    <button type="button" class="btn btn-danger"
-                                                                            data-repeater-delete>
-                                                                        <i class="ft-x"></i></button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>-->
-
-
                                         </div>
                                     </div>
-
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-primary mybtn" onclick="addData()">
                                             <i class="la la-check-square-o"></i> Save
@@ -219,7 +179,6 @@
                                             <i class="ft-x"></i> Cancel
                                         </button>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
@@ -229,8 +188,6 @@
         </div>
     </div>
 </div>
-
-
 <!-- Modal -->
 <div class="modal fade text-left" id="modal_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
      aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -240,28 +197,22 @@
                 <h4 class="modal-title white" id="myModalLabel8">Select Project, CRF & Module</h4>
             </div>
             <div class="modal-body">
-
                 <div class="form-group">
                     <label for="selectidProjects">Select Project: </label>
                     <select id="selectidProjects" name="selectidProjects" class="form-control"
                             onchange="changeProject()">
                         <option value="0" disabled readonly="readonly" selected>Select Project</option>
-                        <?php
-                        foreach ($projects as $key => $values) {
+                        <?php foreach ($projects as $key => $values) {
                             echo '<option value="' . $values->idProjects . '">' . $values->project_name . '</option>';
-                        }
-                        ?>
+                        } ?>
                     </select>
                 </div>
-
-
                 <div class="form-group">
                     <label for="selectIdCRF">Select CRF: </label>
                     <select id="selectIdCRF" name="selectIdCRF" class="form-control" onchange="changeCrf()">
                         <option value="0" disabled readonly="readonly" selected>Select CRF</option>
                     </select>
                 </div>
-
                 <div class="form-group">
                     <label for="selectidModule">Select Module: </label>
                     <?php if (isset($projects) && $projects != '') { ?>
@@ -280,8 +231,6 @@
         </div>
     </div>
 </div>
-
-
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/repeater/jquery.repeater.min.js"
         type="text/javascript"></script>
 <script>
@@ -297,7 +246,6 @@
             $('#modal_project').modal({backdrop: 'static', keyboard: false});
         }
     });
-
     function addrow() {
         if ($('.file-repeater').find('.row_lang').length < 5) {
             $(".file-repeater").repeater({
@@ -312,12 +260,10 @@
         }
 
     }
-
     function setData() {
         $('#selectidProjects').css('border', '1px solid #babfc7');
         $('#selectIdCRF').css('border', '1px solid #babfc7');
         $('#selectidModule').css('border', '1px solid #babfc7');
-
         var data = {};
         data['idProjects'] = $('#selectidProjects').val();
         data['idCRF'] = $('#selectIdCRF').val();
@@ -330,22 +276,18 @@
             flag = 1;
             return false;
         }
-
         if (data['idCRF'] == '' || data['idCRF'] == undefined) {
             $('#selectIdCRF').css('border', '1px solid red');
             toastMsg('CRF', 'Invalid CRF', 'error');
             flag = 1;
             return false;
         }
-
         if (data['idModule'] == '' || data['idModule'] == undefined) {
             $('#selectidModule').css('border', '1px solid red');
             toastMsg('Module', 'Invalid Module', 'error');
             flag = 1;
             return false;
         }
-
-
         var idModule = data['idModule'];
         if (idModule != '' && idModule != undefined && idModule != 0 && idModule != '$1') {
             window.location.href = '<?php echo base_url() ?>' + 'index.php/add_section?module=' + idModule;
@@ -399,7 +341,6 @@
     }
 
     function addData() {
-
         var flag = 0;
         $('#project_id').css('border', '1px solid #babfc7');
         $('#id_of_crf').css('border', '1px solid #babfc7');
@@ -407,7 +348,6 @@
         $('#section_var_name').css('border', '1px solid #babfc7');
         $('#section_status').css('border', '1px solid #babfc7');
         $('#section_table').css('border', '1px solid #babfc7');
-
         var data = {};
         data['project_id'] = $('#idProjectsHidden').val();
         if (data['project_id'] == '' || data['project_id'] == undefined) {
@@ -416,7 +356,6 @@
             flag = 1;
             return false;
         }
-
         data['id_of_crf'] = $('#id_crf').val();
         if (data['id_of_crf'] == '' || data['id_of_crf'] == undefined) {
             $('#id_of_crf').css('border', '1px solid red');
@@ -431,7 +370,6 @@
             flag = 1;
             return false;
         }
-
         data['section_var_name'] = $('#section_var_name').val();
         if (data['section_var_name'] == '' || data['section_var_name'] == undefined) {
             $('#section_var_name').css('border', '1px solid red');
@@ -439,7 +377,6 @@
             flag = 1;
             return false;
         }
-
         data['section_status'] = $('#section_status').val();
         if (data['section_status'] == '' || data['section_status'] == undefined) {
             $('#section_status').css('border', '1px solid red');
@@ -447,7 +384,6 @@
             flag = 1;
             return false;
         }
-
         data['section_table'] = $('#section_table').val();
         if (data['section_table'] == '' || data['section_table'] == undefined) {
             $('#section_table').css('border', '1px solid red');
@@ -455,8 +391,7 @@
             flag = 1;
             return false;
         }
-
-        var list_of_name = new Array();
+        var list_of_name = [];
         $("textarea[id=section_name_L]").each(function () {
             if ($(this).val() == '' || $(this).val() == undefined) {
                 $(this).css('border', '1px solid red');
@@ -469,23 +404,11 @@
             }
         });
         data['section_name_Languages'] = list_of_name;
-
-        var list_of_desc = new Array();
+        var list_of_desc = [];
         $("textarea[id=section_desc_L]").each(function () {
             list_of_desc.push($(this).val());
-            /*if ($(this).val() == '' || $(this).val() == undefined) {
-                $(this).css('border', '1px solid red');
-                toastMsg('Description', 'Invalid Description', 'error');
-                flag = 1;
-                return false;
-            } else {
-                $(this).css('border', '1px solid #babfc7');
-                list_of_desc.push($(this).val());
-            }*/
         });
         data['section_desc_Languages'] = list_of_desc;
-
-
         if (flag == 0) {
             $('.mybtn').attr('disabled', 'disabled');
             showloader();

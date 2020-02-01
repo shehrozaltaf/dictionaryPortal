@@ -15,7 +15,8 @@
                 </div>
             </div>
         </div>
-        <div class="content-body"><!-- Basic form layout section start -->
+        <div class="content-body">
+            <!-- Basic form layout section start -->
             <section id="basic-form-layouts">
                 <div class="row match-height">
                     <div class="col-md-12">
@@ -51,7 +52,6 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body">
-
                                     <div class="form">
                                         <div class="form-body">
                                             <h4 class="form-section">
@@ -62,8 +62,6 @@
                                                 $projectSlug = 0;
                                             } ?>
                                             <div class="row">
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="crf_name">CRF Name</label>
@@ -71,7 +69,6 @@
                                                                placeholder="CRF Name" name="crf_name">
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="crf_title">CRF Title</label>
@@ -80,10 +77,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="id_of_pro">Project</label>
@@ -112,10 +106,7 @@
                                                                value="1">
                                                     </div>
                                                 </div>
-
                                             </div>
-
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -124,12 +115,9 @@
                                                             <input type="text" id="startdate"
                                                                    class="form-control date-inputmask"
                                                                    name="startdate">
-
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="timesheetinput3">End Date</label>
@@ -137,13 +125,10 @@
                                                             <input type="text" id="enddate"
                                                                    class="form-control date-inputmask"
                                                                    name="enddate">
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
                                                 <div class="form-group col-12 mb-2 file-repeater">
                                                     <div data-repeater-list="repeater-group">
@@ -164,92 +149,31 @@
                                                             </span>
                                                         </div>
                                                     </div>
-
                                                 </div>
-
-
-                                                <!--<div class="repeater-default">
-                                                    <div data-repeater-list="car">
-                                                        <div data-repeater-item>
-                                                            <form class="form row">
-                                                                <div class="form-group mb-1 col-sm-10 col-md-10">
-                                                                    <label for="list_of_languagess">Languages</label>
-                                                                    <br>
-                                                                    <input type="Text" class="form-control"
-                                                                           name="list_of_languagess"
-                                                                           id="list_of_languagess"
-                                                                           placeholder="Languages">
-                                                                </div>
-                                                                <div class="form-group col-sm-12 col-md-2 text-center mt-2">
-                                                                    <button type="button" class="btn btn-danger"
-                                                                            data-repeater-delete>
-                                                                        <i class="ft-x"></i></button>
-                                                                </div>
-                                                            </form>
-                                                            <hr>
-                                                        </div>
-                                                    </div>
-                                                      <div class="form-group overflow-hidden">
-                                                          <div class="col-12">
-                                                              <button data-repeater-create class="btn btn-primary">
-                                                                  <i class="ft-plus"></i> Add
-                                                              </button>
-                                                          </div>
-                                                      </div>-->
-
-
-                                                <!--<div class="form-group">
-                                                    <label for="list_of_languagess">List Of Languages</label>
-                                                    <input type="text" id="list_of_languagess" class="form-control"
-                                                           placeholder="List Of Languages"
-                                                           name="list_of_languagess">
-                                                </div>-->
                                             </div>
-
-
                                         </div>
-
-
                                     </div>
                                 </div>
-
-
                                 <div class="form-actions">
                                     <button type="submit" class="btn btn-primary mybtn" onclick="addData()">
                                         <i class="la la-check-square-o"></i> Save
                                     </button>
-
                                 </div>
-
-
                             </div>
-
-
                         </div>
                     </div>
                 </div>
+            </section>
         </div>
-        </section>
     </div>
-
-
-    <!-- // Basic form layout section end -->
 </div>
-</div>
-
-
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
         type="text/javascript"></script>
-
-
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/repeater/jquery.repeater.min.js"
         type="text/javascript"></script>
-<!--<script src="--><?php //echo base_url(); ?><!--assets/js/scripts/forms/form-repeater.min.js" type="text/javascript"></script>-->
-<!-- END: Page Vendor JS-->
-
 <script>
     $(document).ready(function () {
         $('.mycrf').addClass('open');
@@ -270,9 +194,7 @@
         } else {
             toastMsg('5 Maximum Languages', 'You can add maximum 5 languages', 'warning');
         }
-
     }
-
 
     function addData() {
         var flag = 0;
@@ -284,8 +206,6 @@
         $('#enddate').css('border', '1px solid #babfc7');
         $('#list_of_languagess').css('border', '1px solid #babfc7');
         var data = {};
-
-
         data['crf_name'] = $('#crf_name').val();
         if (data['crf_name'] == '' || data['crf_name'] == undefined) {
             $('#crf_name').css('border', '1px solid red');
@@ -293,7 +213,6 @@
             flag = 1;
             return false;
         }
-
         data['crf_title'] = $('#crf_title').val();
         if (data['crf_title'] == '' || data['crf_title'] == undefined) {
             $('#crf_title').css('border', '1px solid red');
@@ -301,7 +220,6 @@
             flag = 1;
             return false;
         }
-
         data['id_of_pro'] = $('#id_of_pro').val();
         if (data['id_of_pro'] == '' || data['id_of_pro'] == undefined) {
             $('#id_of_pro').css('border', '1px solid red');
@@ -309,7 +227,6 @@
             flag = 1;
             return false;
         }
-
         data['num_of_modules'] = $('#num_of_modules').val();
         if (data['num_of_modules'] == '' || data['num_of_modules'] == undefined) {
             $('#num_of_modules').css('border', '1px solid red');
@@ -317,26 +234,9 @@
             flag = 1;
             return false;
         }
-
         data['startdate'] = $('#startdate').val();
-        /* if (data['startdate'] == '' || data['startdate'] == undefined) {
-             $('#startdate').css('border', '1px solid red');
-             toastMsg('Start Date', 'Invalid Start Date', 'error');
-             flag = 1;
-             return false;
-         }*/
-
-
         data['enddate'] = $('#enddate').val();
-        /*if (data['enddate'] == '' || data['enddate'] == undefined) {
-            $('#enddate').css('border', '1px solid red');
-            toastMsg('End Date', 'Invalid End Date', 'error');
-            flag = 1;
-            return false;
-        }*/
-
-
-        var list_of_languagess = new Array();
+        var list_of_languagess = [];
         $("input[id=list_of_languagess]").each(function () {
             if ($(this).val() == '' || $(this).val() == undefined) {
                 $(this).css('border', '1px solid red');
@@ -354,12 +254,11 @@
             flag = 1;
             return false;
         }
-
-
         if (flag == 0) {
-            $('.mybtn').attr('disabled','disabled');
+            $('.mybtn').attr('disabled', 'disabled');
             showloader();
-            CallAjax('<?php echo base_url('index.php/Crf/addData'); ?>', data, 'POST', function (result) {     hideloader();
+            CallAjax('<?php echo base_url('index.php/Crf/addData'); ?>', data, 'POST', function (result) {
+                hideloader();
                 if (result == 1) {
                     toastMsg('Success', 'Successfully inserted', 'success');
                     setTimeout(function () {
@@ -369,15 +268,6 @@
                     toastMsg('Error', 'Something went wrong', 'error');
                 }
             });
-
-            /*  $.ajax({
-                  url: ' ',
-                method: "POST",
-                data: data,
-                success: function (result) {
-                    alert(result);
-                }
-            })*/
         }
     }
 </script>

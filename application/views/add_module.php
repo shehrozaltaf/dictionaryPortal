@@ -22,7 +22,8 @@
                 </div>
             </div>
         </div>
-        <div class="content-body"><!-- Basic form layout section start -->
+        <div class="content-body">
+            <!-- Basic form layout section start -->
             <section id="basic-form-layouts">
                 <div class="row match-height">
                     <div class="col-md-12">
@@ -376,10 +377,8 @@
                 </div>
             </section>
         </div>
-        <!-- // Basic form layout section end -->
     </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade text-left" id="modal_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
      aria-hidden="true" data-backdrop="static" data-keyboard="false">
@@ -389,7 +388,6 @@
                 <h4 class="modal-title white" id="myModalLabel8">Select Project & CRF</h4>
             </div>
             <div class="modal-body">
-
                 <div class="form-group">
                     <label for="selectidProjects">Select Project: </label>
                     <select id="selectidProjects" name="selectidProjects" class="form-control"
@@ -402,8 +400,6 @@
                         ?>
                     </select>
                 </div>
-
-
                 <div class="form-group">
                     <label for="selectIdCRF">Select CRF: </label>
 
@@ -486,27 +482,13 @@
         }
     }
 
-
     function addData() {
         var flag = 0;
         $('#project_id').css('border', '1px solid #babfc7');
         $('#id_of_crf').css('border', '1px solid #babfc7');
-
-        /*   $('#module_name_L1').css('border', '1px solid #babfc7');
-           $('#module_desc_L1').css('border', '1px solid #babfc7');
-           $('#module_name_L2').css('border', '1px solid #babfc7');
-           $('#module_desc_L2').css('border', '1px solid #babfc7');
-           $('#module_name_L3').css('border', '1px solid #babfc7');
-           $('#module_desc_L3').css('border', '1px solid #babfc7');
-           $('#module_name_L4').css('border', '1px solid #babfc7');
-           $('#module_desc_L4').css('border', '1px solid #babfc7');
-           $('#module_name_L5').css('border', '1px solid #babfc7');
-           $('#module_desc_L5').css('border', '1px solid #babfc7');*/
         $('#module_status').css('border', '1px solid #babfc7');
         $('#module_type').css('border', '1px solid #babfc7');
-
         var data = {};
-
         data['project_id'] = $('#idProjectsHidden').val();
         if (data['project_id'] == '' || data['project_id'] == undefined) {
             $('#project_id').css('border', '1px solid red');
@@ -514,7 +496,6 @@
             flag = 1;
             return false;
         }
-
         data['id_of_crf'] = $('#idCRF').val();
         if (data['id_of_crf'] == '' || data['id_of_crf'] == undefined) {
             $('#id_of_crf').css('border', '1px solid red');
@@ -522,7 +503,6 @@
             flag = 1;
             return false;
         }
-
         data['variable_module'] = $('#variable_module').val();
         if (data['variable_module'] == '' || data['variable_module'] == undefined) {
             $('#variable_module').css('border', '1px solid red');
@@ -530,9 +510,7 @@
             flag = 1;
             return false;
         }
-
-
-        var list_of_name = new Array();
+        var list_of_name = [];
         $("textarea[id=module_name_L]").each(function () {
             if ($(this).val() == '' || $(this).val() == undefined) {
                 $(this).css('border', '1px solid red');
@@ -545,8 +523,7 @@
             }
         });
         data['module_name_Languages'] = list_of_name;
-
-        var list_of_desc = new Array();
+        var list_of_desc = [];
         $("textarea[id=module_desc_L]").each(function () {
             if ($(this).val() == '' || $(this).val() == undefined) {
                 $(this).css('border', '1px solid red');
@@ -559,94 +536,6 @@
             }
         });
         data['module_desc_Languages'] = list_of_desc;
-        /*  data['module_name_L1'] = $('#module_name_L1').val();
-          if (data['module_name_L1'] == '' || data['module_name_L1'] == undefined) {
-              $('#module_name_L1').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_desc_L1'] = $('#module_desc_L1').val();
-          if (data['module_desc_L1'] == '' || data['module_desc_L1'] == undefined) {
-              $('#module_desc_L1').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-          data['module_name_L2'] = $('#module_name_L2').val();
-          if (data['module_name_L2'] == '' || data['module_name_L2'] == undefined) {
-              $('#module_name_L2').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_desc_L2'] = $('#module_desc_L2').val();
-          if (data['module_desc_L2'] == '' || data['module_desc_L2'] == undefined) {
-              $('#module_desc_L2').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-          data['module_name_L3'] = $('#module_name_L3').val();
-          if (data['module_name_L3'] == '' || data['module_name_L3'] == undefined) {
-              $('#module_name_L3').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_desc_L3'] = $('#module_desc_L3').val();
-          if (data['module_desc_L3'] == '' || data['module_desc_L3'] == undefined) {
-              $('#module_desc_L3').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_name_L4'] = $('#module_name_L4').val();
-          if (data['module_name_L4'] == '' || data['module_name_L4'] == undefined) {
-              $('#module_name_L4').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_desc_L4'] = $('#module_desc_L4').val();
-          if (data['module_desc_L4'] == '' || data['module_desc_L4'] == undefined) {
-              $('#module_desc_L4').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_name_L5'] = $('#module_name_L5').val();
-          if (data['module_name_L5'] == '' || data['module_name_L5'] == undefined) {
-              $('#module_name_L5').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }
-
-
-          data['module_desc_L5'] = $('#module_desc_L5').val();
-          if (data['module_desc_L5'] == '' || data['module_desc_L5'] == undefined) {
-              $('#module_desc_L5').css('border', '1px solid red');
-              toastMsg('Short Title', 'Invalid Project Short Title', 'error');
-              flag = 1;
-              return false;
-          }*/
-
-
         data['module_status'] = $('#module_status').val();
         if (data['module_status'] == '' || data['module_status'] == undefined) {
             $('#module_status').css('border', '1px solid red');
@@ -654,7 +543,6 @@
             flag = 1;
             return false;
         }
-
         data['module_type'] = $('#module_type').val();
         if (data['module_type'] == '' || data['module_type'] == undefined) {
             $('#module_type').css('border', '1px solid red');
@@ -662,8 +550,6 @@
             flag = 1;
             return false;
         }
-
-
         if (flag == 0) {
             $('.mybtn').attr('disabled', 'disabled');
             showloader();
@@ -678,14 +564,6 @@
                     toastMsg('Error', 'Something went wrong', 'error');
                 }
             });
-            /* $.ajax({
-                 url: ' ',
-                method: "POST",
-                data: data,
-                success: function (result) {
-                    alert(result);
-                }
-            })*/
         }
     }
 </script>

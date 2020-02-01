@@ -115,26 +115,6 @@
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
         type="text/javascript"></script>
 <!-- END: Page Vendor JS-->
-
-<style>
-    td.details-control {
-        background: url('https://datatables.net/examples/resources/details_open.png') no-repeat center center;
-        cursor: pointer;
-    }
-
-    tr.details td.details-control {
-        background: url('https://datatables.net/examples/resources/details_close.png') no-repeat center center;
-    }
-
-    #myinnertable td {
-        border: 1px solid;
-    }
-
-    .btn-link {
-        color: #d51313;
-    }
-</style>
-
 <script>
     $(document).ready(function () {
         $('.mymodule').addClass('open');

@@ -4,9 +4,9 @@
 
 class MProjects extends CI_Model
 {
+
     function getAllProjects()
     {
-
         $this->db->select('projects.project_name,
 	projects.short_title,
 	projects.idProjects');
@@ -27,12 +27,8 @@ class MProjects extends CI_Model
         if (isset($searchdata['length']) && $searchdata['length'] != '' && $searchdata['length'] != null) {
             $length = $searchdata['length'];
         }
-
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            /* $this->db->where('i2_hb1ac.WHOWID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.SAMPLEID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.HBA1C_Res', 'like', '%' . $search . '%');*/
         }
         if (isset($searchdata['orderby']) && $searchdata['orderby'] != '' && $searchdata['orderby'] != null) {
             $this->db->order_By($searchdata['orderby'], $searchdata['ordersort']);
@@ -70,9 +66,6 @@ class MProjects extends CI_Model
 
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            /* $this->db->where('i2_hb1ac.WHOWID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.SAMPLEID', 'like', '%' . $search . '%');
-             $this->db->orWhere('i2_hb1ac.HBA1C_Res', 'like', '%' . $search . '%');*/
         }
         $this->db->select('count(idProjects) as cnttotal');
         $this->db->from('projects');
@@ -84,32 +77,6 @@ class MProjects extends CI_Model
     function getPDFData($searchdata)
     {
         $idProjects = 1;
-        /*SELECT
-projects.project_name,
-projects.short_title,
-projects.startdate,
-projects.enddate,
-projects.no_of_crf,
-projects.languages,
-projects.no_of_sites,
-projects.email_of_person,
-projects.idProjects,
-crf.id_crf,
-crf.crf_name,
-crf.crf_title,
-crf.languages AS crf_languages,
-modules.idModule,
-modules.id_crf,
-modules.variable_module
-FROM
-projects
-LEFT JOIN crf ON projects.idProjects = crf.idProjects
-INNER JOIN modules ON crf.id_crf = modules.id_crf
-WHERE
-	`crf`.`id_crf` = '11'
-    AND `projects`.`idProjects` = '6'
-    AND `projects`.`isActive` = 1*/
-
         $this->db->select('projects.project_name,
 	projects.short_title,
 	projects.startdate,
@@ -131,10 +98,8 @@ WHERE
         if (isset($searchdata['idCRF']) && $searchdata['idCRF'] != '' && $searchdata['idCRF'] != null) {
             $this->db->where('crf.id_crf', $searchdata['idCRF']);
         }
-
         $this->db->where('projects.idProjects', $idProjects);
         $this->db->where('projects.isActive', 1);
-
         $query = $this->db->get();
         return $query->result();
     }

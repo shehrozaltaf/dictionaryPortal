@@ -121,7 +121,6 @@ class Users extends CI_controller
         echo $result;
     }
 
-
     function changePassword()
     {
         $Custom = new Custom();
@@ -152,11 +151,4 @@ class Users extends CI_controller
         }
         echo $result;
     }
-
-
 } ?>
-
-
-
-
-

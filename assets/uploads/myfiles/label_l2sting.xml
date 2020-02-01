@@ -1,0 +1,18 @@
+<string name="hh01">hh01:\t کلسٹر نمبر</string>
+<string name="hh02">hh02:\t صوبہ</string>
+<string name="hh03">hh03:\t ڈشٹرکٹ کوڈ</string>
+<string name="hh04">hh04:\t تحصیلکوڈ</string>
+<string name="hh05">hh05:\t یوسی کوڈ</string>
+<string name="hh06">hh06:\t گاؤں / محلے کا نام</string>
+<string name="hh07">hh07:\t تعمیراتی ساخت</string>
+<string name="hh07a">رہائشی</string>
+<string name="hh07b">غیررہائشی</string>
+<string name="hh07c">عارظی طور پر لسٹنگ بند کریں</string>
+<string name="hh07d">لائین لسٹنگ مکمل(مزید عمارت نہیں)</string>
+<string name="hh08">hh08:\t گھر کے سربراہ کا نام</string>
+<string name="hh09">hh09:\t گھر کے کُل افراد کی تعداد</string>
+<string name="hh10">hh10:\t کیا اس گھر میں کوئی شادی شدہ خواتین رہ رہی ہیں جن کی عمر 15 سے 49 سال کے درمیان ہے اور 5 سال
+سے کم عمر کے بچے ہیں؟
+</string>
+<string name="hh10a">ہاں</string>
+<string name="hh10b">نہیں</string>

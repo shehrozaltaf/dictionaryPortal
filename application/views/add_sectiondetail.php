@@ -254,16 +254,6 @@
         </div>
     </div>
 </footer>
-<style>
-    .mainli {
-        margin: 7px 0px;
-    }
-
-    li.formlists {
-        border-top: 1px solid grey;
-    }
-</style>
-
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
@@ -292,8 +282,6 @@
         </div>
     </div>
 </div>
-<style>
-</style>
 <!-- Clone Modal -->
 <div class="modal fade text-left" id="clone_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel_clone"
      aria-hidden="true">
@@ -319,34 +307,6 @@
         </div>
     </div>
 </div>
-<!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>-->
-
-
-<style>
-    .myform-control {
-        height: 30px;
-        width: 50%;
-        padding: 8px;
-        transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
-        color: #4e5154;
-        border: 1px solid #babfc7;
-        border-radius: 1.5rem;
-        background-color: #fff;
-        background-clip: padding-box;
-    }
-
-    .myform-control-position {
-        position: absolute;
-        z-index: 2;
-        top: 0;
-        right: 0;
-        display: block;
-        height: 30px;
-        width: 20%;
-        padding: 3px;
-        text-align: center;
-    }
-</style>
 <script>
     $(document).ready(function () {
         $('.mysection').addClass('open');
@@ -474,7 +434,7 @@
             toastMsg('Section', 'Invalid ID Section', 'error');
         } else {
             showloader();
-            CallAjax('<?php echo base_url('index.php/Section/getSectionDetail2') ?>', data, 'POST', function (res) {
+            CallAjax('<?php echo base_url('index.php/Section/getSectionDetail') ?>', data, 'POST', function (res) {
                 hideloader();
                 var html = '';
                 if (res != '' && JSON.parse(res).length > 0) {
@@ -591,65 +551,9 @@
                     }
                 }
                 $('#sortable').html('').html(html);
-
-
-                /*setTimeout(function () {
-                    sortParent();
-                    sortChildren();
-                }, 1000);*/
             });
         }
     }
-
-    /* function sortParent() {
-         $("#sortable").sortable({
-             forcePlaceholderSize: true,
-             opacity: 0.5,
-             placeholder: ".ui-state-highlight",
-             stop: function () {
-                 var sendData = {};
-                 var i = 0;
-                 $.map($(this).find('.ui-state-highlight'), function (el) {
-                     i++;
-                     var id = $(el).attr('data-id');
-                     var sorting = $(el).index();
-                     sendData[id] = i;
-                 });
-                 console.log(sendData);
-                 showloader();
-                 CallAjax('< ?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
-                     hideloader();
-                     getData();
-                 });
-             }
-         });
-         $("#sortable").disableSelection();
-     }
-
-     function sortChildren() {
-         $(".sortable_child").sortable({
-             forcePlaceholderSize: true,
-             opacity: 0.5,
-             placeholder: ".ui-state-highlight",
-             stop: function () {
-                 var sendData = {};
-                 var i = 0;
-                 $.map($(this).parents('#sortable').find('.ui-state-highlight'), function (el) {
-                     i++;
-                     var id = $(el).attr('data-id');
-                     var sorting = $(el).index();
-                     sendData[id] = i;
-                 });
-                 console.log(sendData);
-                 showloader();
-                 CallAjax('< ?php echo base_url('index.php/Section/sortQuestions') ?>', sendData, 'POST', function (result) {
-                     hideloader();
-                     getData();
-                 });
-             }
-         });
-         $(".sortable_child").disableSelection();
-     }*/
 
     function showDbStructure() {
         return '<hr>' +
@@ -1065,9 +969,6 @@
                     '</div>' +
                     '</div>' +
                     '<div class="subDBsection row"></div>';
-
-                // var optionDbStructure = showOpionsDbStructure('');
-                // html += optionDbStructure;
                 html += '</div>' +
                     '</div>' +
                     '</div>' +
@@ -1211,8 +1112,6 @@
                             '</div>' +
                             '</div>' +
                             '<div class="editDbstruct"></div>';
-
-
                     } catch (e) {
                     }
                     $('.myeditbody').html('').html(html);
@@ -1238,7 +1137,6 @@
         } else {
             $('#edit_nature').css('border', '1px solid #babfc7');
         }
-
         data['edit_label_l1'] = $('#edit_label_l1').val();
         if (data['edit_label_l1'] == '' || data['edit_label_l1'] == undefined) {
             $('#edit_label_l1').css('border', '1px solid red');
@@ -1318,7 +1216,6 @@
         } else {
             $('#section_title').css('border', '1px solid #babfc7');
         }
-
         data['idModule'] = $('#idModule').val();
         if (data['idModule'] == '' || data['idModule'] == undefined) {
             $('#module_name_l1').css('border', '1px solid red');
@@ -1327,7 +1224,6 @@
         } else {
             $('#module_name_l1').css('border', '1px solid #babfc7');
         }
-
         data['id_crf'] = $('#id_crf').val();
         if (data['id_crf'] == '' || data['id_crf'] == undefined) {
             $('#crf_name').css('border', '1px solid red');
@@ -1336,9 +1232,7 @@
         } else {
             $('#crf_name').css('border', '1px solid #babfc7');
         }
-
         data['idProjects'] = $('#idProjects').val();
-
         if (data['idProjects'] == '' || data['idProjects'] == undefined) {
             $('#project_name').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
@@ -1346,8 +1240,6 @@
         } else {
             $('#project_name').css('border', '1px solid #babfc7');
         }
-
-
         var options_list = [];
         $("div[id=options_list]").each(function () {
             var options = {};
@@ -1357,10 +1249,8 @@
                 flag = 1;
                 return false;
             } else {
-                // options.push($(this).find('.option_var').val());
                 options['option_var'] = $(this).find('.option_var').val();
             }
-
             if ($(this).find('.option_nature').val() == '' || $(this).find('.option_nature').val() == undefined) {
                 $(this).find('.option_nature').css('border', '1px solid red');
                 toastMsg('Option Nature', 'Invalid Option Nature', 'error');
@@ -1369,7 +1259,6 @@
             } else {
                 options['nature'] = $(this).find('.option_nature').val();
             }
-
             $($(this).find('.option_title')).each(function (y, z) {
                 if ($(this).val() == '' || $(this).val() == undefined) {
                     $(this).css('border', '1px solid red');
@@ -1377,27 +1266,21 @@
                     flag = 1;
                     return false;
                 } else {
-                    // options.push($(this).val());
                     options[$(this).attr('data-langtype')] = $(this).val();
                 }
             });
-
             if ($(this).find('.option_value').val() == '' || $(this).find('.option_value').val() == undefined) {
                 $(this).find('.option_value').css('border', '1px solid red');
                 toastMsg('Option Value', 'Invalid Option Value', 'error');
                 flag = 1;
                 return false;
             } else {
-                // options.push($(this).find('.option_value').val());
                 options['option_value'] = $(this).find('.option_value').val();
             }
-
-
             options['option_min_val'] = $(this).find('.Optionmin_val').val();
             options['option_max_val'] = $(this).find('.Optionmax_val').val();
             options['OptionParentQuestion'] = $(this).find('.OptionParentQuestion').val();
             options['option_skipQuestion'] = $(this).find('.OptionskipQuestion').val();
-
             options_list.push(options);
             data['options'] = options_list;
         });
@@ -1433,7 +1316,6 @@
         } else {
             $('#section_title').css('border', '1px solid #babfc7');
         }
-
         data['idModule'] = $('#idModule').val();
         if (data['idModule'] == '' || data['idModule'] == undefined) {
             $('#module_name_l1').css('border', '1px solid red');
@@ -1442,7 +1324,6 @@
         } else {
             $('#module_name_l1').css('border', '1px solid #babfc7');
         }
-
         data['id_crf'] = $('#id_crf').val();
         if (data['id_crf'] == '' || data['id_crf'] == undefined) {
             $('#crf_name').css('border', '1px solid red');
@@ -1451,9 +1332,7 @@
         } else {
             $('#crf_name').css('border', '1px solid #babfc7');
         }
-
         data['idProjects'] = $('#idProjects').val();
-
         if (data['idProjects'] == '' || data['idProjects'] == undefined) {
             $('#project_name').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
@@ -1472,7 +1351,6 @@
             } else {
                 $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
             }
-
             data['nature'] = $(this).find('.naturetype').attr('data-key');
             if (data['nature'] == '' || data['nature'] == undefined) {
                 $(this).find('.naturetype').css('border', '1px solid red');
@@ -1482,7 +1360,6 @@
             } else {
                 $(this).find('.naturetype').css('border', '1px solid #babfc7');
             }
-
             $($(this).find('.sec_input')).each(function (i, v) {
                 if ($(this).attr('required') == 'required' && $(this).val() != '' && $(this).val() != undefined) {
                     data['L' + (i + 1)] = $(this).val();
@@ -1494,13 +1371,11 @@
                     return false;
                 }
             });
-
             data['min_val'] = $(this).find('.min_val').val();
             data['max_val'] = $(this).find('.max_val').val();
             data['skipQuestion'] = $(this).find('.skipQuestion').val();
             data['parentQuestion'] = $(this).find('.parentQuestion').val();
         });
-
         var options_list = [];
         $("div[id=options_list]").each(function () {
             var options = {};
@@ -1510,10 +1385,8 @@
                 flag = 1;
                 return false;
             } else {
-                // options.push($(this).find('.option_var').val());
                 options['option_var'] = $(this).find('.option_var').val();
             }
-
             if ($(this).find('.option_nature').val() == '' || $(this).find('.option_nature').val() == undefined) {
                 $(this).find('.option_nature').css('border', '1px solid red');
                 toastMsg('Option Nature', 'Invalid Option Nature', 'error');
@@ -1522,7 +1395,6 @@
             } else {
                 options['nature'] = $(this).find('.option_nature').val();
             }
-
             $($(this).find('.option_title')).each(function (y, z) {
                 if ($(this).val() == '' || $(this).val() == undefined) {
                     $(this).css('border', '1px solid red');
@@ -1530,37 +1402,29 @@
                     flag = 1;
                     return false;
                 } else {
-                    // options.push($(this).val());
                     options[$(this).attr('data-langtype')] = $(this).val();
                 }
             });
-
             if ($(this).find('.option_value').val() == '' || $(this).find('.option_value').val() == undefined) {
                 $(this).find('.option_value').css('border', '1px solid red');
                 toastMsg('Option Value', 'Invalid Option Value', 'error');
                 flag = 1;
                 return false;
             } else {
-                // options.push($(this).find('.option_value').val());
                 options['option_value'] = $(this).find('.option_value').val();
             }
-
-
             options['option_min_val'] = $(this).find('.Optionmin_val').val();
             options['option_max_val'] = $(this).find('.Optionmax_val').val();
             options['option_skipQuestion'] = $(this).find('.OptionskipQuestion').val();
-
             options['OptionDbType'] = $(this).find('.OptionDbType').val();
             options['OptionDbLength'] = $(this).find('.OptionDbLength').val();
             options['OptionDbDecimal'] = $(this).find('.OptionDbDecimal').val();
-
             options_list.push(options);
             data['options'] = options_list;
         });
         $('input[name=otheroptions]:checked').each(function (i) {
             data[$(this).val()] = $(this).val();
         });
-
         data['insertDB'] = $('input[name=insertDB]:checked').val();
         data['dbType'] = '';
         data['dbLength'] = 0;
@@ -1573,7 +1437,6 @@
                 flag = 1;
                 return false;
             }
-
             data['dbLength'] = $('#dbLength').val();
             if (data['dbLength'] == '' || data['dbLength'] == undefined || data['dbLength'] == 0) {
                 $('#dbLength').css('border', '1px solid red');
@@ -1581,7 +1444,6 @@
                 flag = 1;
                 return false;
             }
-
             data['dbDecimal'] = $('#dbDecimal').val();
             if (data['dbType'] == 'decimal' && data['dbDecimal'] == 0) {
                 $('#dbDecimal').css('border', '1px solid red');
@@ -1592,8 +1454,6 @@
         } else {
             data['insertDB'] = 'N';
         }
-
-        console.log(data);
         if (flag == 0) {
             $('.mybtn').attr('disabled', 'disabled');
             showloader();
@@ -1611,136 +1471,6 @@
         }
     }
 
-    function addType2(obj) {
-        var flag = 0;
-        var inp = {};
-        var html = '';
-        html += '<li class="list-group-item bg-teal bg-accent-3 black formlists">';
-
-        $(".form-row").each(function (ii, vv) {
-            inp['variable'] = $(this).find('.vaiablevalue').val();
-            if (inp['variable'] == '' || inp['variable'] == undefined) {
-                $(this).find('.vaiablevalue').css('border', '1px solid red');
-                toastMsg('Variable Name', 'Invalid Variable Name', 'error');
-                flag = 1;
-                return false;
-            } else {
-                html += '<span class="text-justify font-medium-2 variableval">' + inp['variable'] + '</span>';
-                $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
-            }
-
-            inp['nature'] = $(this).find('.naturetype').attr('data-key');
-            if (inp['nature'] == '' || inp['nature'] == undefined) {
-                $(this).find('.naturetype').css('border', '1px solid red');
-                toastMsg('Invalid Type', 'Invalid Input Type', 'error');
-                flag = 1;
-                return false;
-            } else {
-                html += '<span class="badge badge-info float-right font-small-3 natureval">' + inp['nature'] + '</span>';
-                $(this).find('.naturetype').css('border', '1px solid #babfc7');
-            }
-
-            $($(this).find('.sec_input')).each(function (i, v) {
-                if ($(this).attr('required') == 'required' && $(this).val() != '' && $(this).val() != undefined) {
-                    inp['L' + (i + 1)] = $(this).val();
-                    html += '<input type="hidden" class="hiddenvalues_inputs" name="hiddenLanguage_L' + (i + 1) + '" id="hiddenLanguage_L' + (i + 1) + '"' +
-                        ' value="' + inp['L' + (i + 1)] + '"> ';
-                    $(this).css('border', '1px solid #babfc7');
-                } else {
-                    $(this).css('border', '1px solid red');
-                    toastMsg('Input Name', 'Invalid Input Name', 'error');
-                    flag = 1;
-                    return false;
-                }
-            });
-            if (inp['L1'] != '' || inp['L1'] != undefined) {
-                html += ' <span class="font-medium-1">' + inp['L1'] + '</span>';
-            }
-
-            html += '<br>';
-            inp['min_val'] = $(this).find('.min_val').val();
-            if (inp['min_val'] != '' && inp['min_val'] != undefined) {
-                html += '<div class="badge badge-secondary"><' +
-                    'a href="javascript:void(0);">Min: ' + inp['min_val'] + '</a>' +
-                    '<input type="hidden" class="min_val" value="' + inp['min_val'] + '">' +
-                    '</div> ';
-            }
-
-            inp['max_val'] = $(this).find('.max_val').val();
-            if (inp['max_val'] != '' && inp['max_val'] != undefined) {
-                html += '<div class="badge badge-secondary"><' +
-                    'a href="javascript:void(0);">Max: ' + inp['max_val'] + '</a>' +
-                    '<input type="hidden" class="max_val" value="' + inp['max_val'] + '">' +
-                    '</div> ';
-            }
-
-            inp['skipQuestion'] = $(this).find('.skipQuestion').val();
-            if (inp['skipQuestion'] != '' && inp['skipQuestion'] != undefined) {
-                html += '<div class="badge badge-secondary"><' +
-                    'a href="javascript:void(0);">Skip Question: ' + inp['skipQuestion'] + '</a>' +
-                    '<input type="hidden" class="skipQuestion" value="' + inp['skipQuestion'] + '">' +
-                    '</div> ';
-            }
-
-
-        });
-
-
-        var options_list = new Array();
-        $("div[id=options_list]").each(function () {
-            html += '<div class="options_list_hidden" style="display: none">';
-            var options = [];
-            if ($(this).find('.option_var').val() == '' || $(this).find('.option_var').val() == undefined) {
-                $(this).find('.option_var').css('border', '1px solid red');
-                toastMsg('Option Variable', 'Invalid Option Variable', 'error');
-                flag = 1;
-                return false;
-            } else {
-                options.push($(this).find('.option_var').val());
-                html += '<input type="hidden" class="option_var" value="' + $(this).find('.option_var').val() + '">';
-            }
-
-            $($(this).find('.option_title')).each(function (y, z) {
-                if ($(this).val() == '' || $(this).val() == undefined) {
-                    $(this).css('border', '1px solid red');
-                    toastMsg('Option Title', 'Invalid Option Title', 'error');
-                    flag = 1;
-                    return false;
-                } else {
-                    options.push($(this).val());
-                    html += '<input type="hidden" class="option_title" value="' + $(this).val() + '">';
-                }
-            });
-
-            if ($(this).find('.option_value').val() == '' || $(this).find('.option_value').val() == undefined) {
-                $(this).find('.option_value').css('border', '1px solid red');
-                toastMsg('Option Value', 'Invalid Option Value', 'error');
-                flag = 1;
-                return false;
-            } else {
-                options.push($(this).find('.option_value').val());
-                html += '<input type="hidden" class="option_value" value="' + $(this).find('.option_value').val() + '">';
-            }
-            html += '</div>';
-            options_list.push(options);
-        });
-
-
-        $('input[name=otheroptions]:checked').each(function (i) {
-            inp[$(this).val()] = $(this).val();
-            html += ' <div class="badge badge-secondary">' +
-                '<a href="javascript:void(0);">' + inp[$(this).val()] + '</a>' +
-                '<input type="hidden" class="' + inp[$(this).val()] + '" value="' + inp[$(this).val()] + '">' +
-                ' </div>';
-        });
-        html += '</li>';
-        console.log(inp);
-        if (flag == 0) {
-            $('#sortable').append(html);
-            $('.sidebaroptions').html('');
-        }
-    }
-
     function addDetailSection() {
         var flag = 0;
         var data = {};
@@ -1752,7 +1482,6 @@
         } else {
             $('#section_title').css('border', '1px solid #babfc7');
         }
-
         data['idModule'] = $('#idModule').val();
         if (data['idModule'] == '' || data['idModule'] == undefined) {
             $('#module_name_l1').css('border', '1px solid red');
@@ -1761,7 +1490,6 @@
         } else {
             $('#module_name_l1').css('border', '1px solid #babfc7');
         }
-
         data['id_crf'] = $('#id_crf').val();
         if (data['id_crf'] == '' || data['id_crf'] == undefined) {
             $('#crf_name').css('border', '1px solid red');
@@ -1770,7 +1498,6 @@
         } else {
             $('#crf_name').css('border', '1px solid #babfc7');
         }
-
         data['idProjects'] = $('#idProjects').val();
         if (data['idProjects'] == '' || data['idProjects'] == undefined) {
             $('#project_name').css('border', '1px solid red');
@@ -1791,11 +1518,9 @@
             } else {
                 $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
             }
-
             inp['min_val'] = $(this).find('.min_val').val();
             inp['max_val'] = $(this).find('.max_val').val();
             inp['skipQuestion'] = $(this).find('.skipQuestion').val();
-
             var option_l = [];
             $($(this).find('.options_list_hidden')).each(function (i, v) {
                 var options = {};
@@ -1807,7 +1532,6 @@
                 option_l.push(options);
             });
             inp['options'] = option_l;
-
             inp['readonly'] = $(this).find('.ReadOnly').val();
             inp['required'] = $(this).find('.Required').val();
             inp['nature'] = $(this).find('.natureval').html();
@@ -1819,8 +1543,6 @@
             } else {
                 $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
             }
-
-
             $($(this).find('.hiddenvalues_inputs')).each(function (i, v) {
                 if ($(this).val() != '' && $(this).val() != undefined) {
                     inp['L' + (i + 1)] = $(this).val();
@@ -1834,7 +1556,6 @@
             types.push(inp);
             data['data'] = types;
         });
-
         if (flag == 0) {
             $('.mybtn').attr('disabled', 'disabled');
             showloader();
@@ -1850,7 +1571,6 @@
         } else {
             toastMsg('Error', 'Something went wrong', 'error');
         }
-
     }
 
     function addrow() {
@@ -1864,6 +1584,4 @@
             }
         })
     }
-
-
 </script>

@@ -54,11 +54,6 @@ class Project extends CI_controller
         $data = $MProjects->getProjects($searchData);
         $table_data = array();
         $result_table_data = array();
-        /* <a href="' . base_url('index.php/crf/' . $value->idProjects) . '"><i class="font-medium-5 info ft-eye"></i></a>
-  <a href="#"><i class="font-medium-5  success-lighten-1 ft-edit"></i></a>
-  <a href="#"><i class="font-medium-5 blue-grey ft-plus-circle"></i></a>
-  <a href="' . base_url('index.php/Project/getPDF/' . $value->idProjects) . '"  target="_blank" data-idProjects="' . $value->idProjects . '"><i class="font-medium-5 blue-grey ft-plus-square"></i></a> */
-
         foreach ($data as $key => $value) {
             $table_data[$value->project_name]['project_name'] = $value->project_name;
             $table_data[$value->project_name]['short_title'] = $value->short_title;
@@ -156,94 +151,11 @@ class Project extends CI_controller
         header('Cache-Control: max-age=0'); //no cache
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
-
-
-        /*$this->load->model('msection');
-        if (isset($slug) && $slug != '') {
-            $MSection = new MSection();
-            $searchData = array();
-            $searchData['idSection'] = $slug;
-            $GetReportData = $MSection->getExcelData($searchData);
-
-            $delimiter = ",";
-            ob_start();
-            //create a file pointer
-            $f = fopen('php://memory', 'w');
-            //set column headers
-            $fields = array('Variable', 'Variable App', 'type', 'Option Title', 'Option Values', 'Skip On xml', 'Tag No', 'Min Range', 'Max Range',
-                'Language 1', 'Language 2', 'Language 3', 'Language 4', 'Language 5');
-            fputcsv($f, $fields, $delimiter);
-            //output each row of the data, format line as csv and write to file pointer
-            if ($GetReportData) {
-                foreach ($GetReportData as $row) {
-                    $lineData = array(
-                        $row->variable_name,
-                        $row->variable_name,
-                        $row->nature,
-                        $row->option_title,
-                        $row->option_value,
-                        $row->skipQuestion,
-                        $row->skipQuestion,
-                        $row->MinVal,
-                        $row->MaxVal,
-                        $row->label_l1,
-                        $row->label_l2,
-                        $row->label_l3,
-                        $row->label_l4,
-                        $row->label_l5);
-                    fputcsv($f, $lineData, $delimiter);
-                }
-            }
-
-            //move back to beginning of file
-            fseek($f, 0);
-            //set headers to download file rather than displayed
-            $filename = "dictionary_" . date('Y-m-d') . ".csv";
-            ob_end_clean();
-
-//			header("Content-Disposition: attachment; filename=' . $filename . ' ");
-            header("Cache-Control: cache, must-revalidate");
-            header("Pragma: public");
-            header('Content-Type: text/csv,  charset=UTF-8; encoding=UTF-8');
-
-
-//			header('Content-type: text/csv; charset=utf-8');
-            header('Content-Disposition: attachment; filename="' . $filename . '";');
-            fpassthru($f);
-
-        } else {
-            echo 2;
-        }*/
     }
 
     function getPDF($slug)
     {
         header('Content-type: text/html; charset=utf-8');
-        /*  $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-          $pdf->SetCreator(PDF_CREATOR);
-          $pdf->SetAuthor('Nicola Asuni');
-          $pdf->SetTitle('TCPDF Example 008');
-          $pdf->SetSubject('TCPDF Tutorial');
-          $pdf->SetKeywords('TCPDF, PDF, example, test, guide');
-          $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-          $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-          $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-          $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-          $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-          if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-              require_once(dirname(__FILE__) . '/lang/eng.php');
-              $pdf->setLanguageArray($l);
-          }
-          $pdf->setFontSubsetting(true);
-          $pdf->SetFont('freeserif', '', 12);
-          $pdf->AddPage();
-          $utf8text = file_get_contents(base_url() . '/utf8test.txt', false);
-          $pdf->Write(5, $utf8text, '', 0, '', false, 0, false, false, 0);
-          ob_end_clean();
-          $pdf->Output('example_008.pdf', 'I');
-          exit();*/
-
-
         $this->load->model('mmodule');
         $this->load->model('msection');
         if (isset($slug) && $slug != '') {

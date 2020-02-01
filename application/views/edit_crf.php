@@ -63,8 +63,6 @@
                                                 $projectSlug = 0;
                                             } ?>
                                             <div class="row">
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="crf_name">CRF Name</label>
@@ -73,7 +71,6 @@
                                                                placeholder="CRF Name" name="crf_name" value="<?php echo $crf->crf_name;?>>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="crf_title">CRF Title</label>
@@ -82,10 +79,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="id_of_pro">Project</label>
@@ -112,10 +106,7 @@
                                                                placeholder="Number Of Modules" name="num_of_modules" value="1">
                                                     </div>
                                                 </div>
-
                                             </div>
-
-
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <div class="form-group">
@@ -123,27 +114,20 @@
                                                         <div class="position-relative has-icon-left">
                                                             <input type="text" id="startdate" class="form-control date-inputmask"
                                                                    name="startdate">
-
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="timesheetinput3">End Date</label>
                                                         <div class="position-relative has-icon-left">
                                                             <input type="text" id="enddate" class="form-control date-inputmask"
                                                                    name="enddate">
-
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-
                                             <div class="row">
-
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="list_of_languagess">List Of Languages</label>
@@ -152,14 +136,9 @@
                                                                name="list_of_languagess">
                                                     </div>
                                                 </div>
-
-
                                             </div>
-
-
                                         </div>
                                     </div>
-
                                     <div class="form-actions">
                                         <button type="submit" class="btn btn-primary" onclick="editData()">
                                             <i class="la la-check-square-o"></i> Save
@@ -167,35 +146,25 @@
                                         <button type="button" class="btn btn-danger mr-1">
                                             <i class="ft-x"></i> Cancel
                                         </button>
-
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
         </div>
-
-
-        <!-- // Basic form layout section end -->
     </div>
 </div>
-
-
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
         type="text/javascript"></script>
-
 <script>
     $(document).ready(function () {
         $('.mycrf').addClass('open');
         $('.crf_add').addClass('active');
     });
-
 
     function addData() {
         var flag = 0;
@@ -207,8 +176,6 @@
         $('#enddate').css('border', '1px solid #babfc7');
         $('#num_of_modules').css('border', '1px solid #babfc7');
         var data = {};
-
-
         data['crf_name'] = $('#crf_name').val();
         if (data['crf_name'] == '' || data['crf_name'] == undefined) {
             $('#crf_name').css('border', '1px solid red');
@@ -216,7 +183,6 @@
             flag = 1;
             return false;
         }
-
         data['crf_title'] = $('#crf_title').val();
         if (data['crf_title'] == '' || data['crf_title'] == undefined) {
             $('#crf_title').css('border', '1px solid red');
@@ -224,7 +190,6 @@
             flag = 1;
             return false;
         }
-
         data['id_of_pro'] = $('#id_of_pro').val();
         if (data['id_of_pro'] == '' || data['id_of_pro'] == undefined) {
             $('#id_of_pro').css('border', '1px solid red');
@@ -232,7 +197,6 @@
             flag = 1;
             return false;
         }
-
         data['num_of_modules'] = $('#num_of_modules').val();
         if (data['num_of_modules'] == '' || data['num_of_modules'] == undefined) {
             $('#num_of_modules').css('border', '1px solid red');
@@ -240,25 +204,8 @@
             flag = 1;
             return false;
         }
-
         data['startdate'] = $('#startdate').val();
-       /* if (data['startdate'] == '' || data['startdate'] == undefined) {
-            $('#startdate').css('border', '1px solid red');
-            toastMsg('Start Date', 'Invalid Start Date', 'error');
-            flag = 1;
-            return false;
-        }*/
-
-
         data['enddate'] = $('#enddate').val();
-        /*if (data['enddate'] == '' || data['enddate'] == undefined) {
-            $('#enddate').css('border', '1px solid red');
-            toastMsg('End Date', 'Invalid End Date', 'error');
-            flag = 1;
-            return false;
-        }*/
-
-
         data['list_of_languagess'] = $('#list_of_languagess').val();
         if (data['list_of_languagess'] == '' || data['list_of_languagess'] == undefined) {
             $('#list_of_languagess').css('border', '1px solid red');
@@ -272,21 +219,12 @@
                 if (result == 1) {
                     toastMsg('Success', 'Successfully inserted', 'success');
                     setTimeout(function () {
-                        //window.location.href = "<?php echo base_url('index.php/crf'); ?>";
+                        window.location.href = "<?php echo base_url('index.php/crf'); ?>";
                     }, 1000);
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');
                 }
             });
-
-            /*  $.ajax({
-                  url: ' ',
-                method: "POST",
-                data: data,
-                success: function (result) {
-                    alert(result);
-                }
-            })*/
         }
     }
 </script>

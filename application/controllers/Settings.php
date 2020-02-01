@@ -162,5 +162,4 @@ class Settings extends CI_controller
         echo $last;
     }
 
-
 } ?>

@@ -11,7 +11,6 @@
                     <li class="dropdown nav-item mega-dropdown d-none d-md-block">
 
                     </li>
-
                     <li class="nav-item dropdown navbar-search"><a class="nav-link dropdown-toggle hide"
                                                                    data-toggle="dropdown" href="#"><i
                                     class="ficon ft-search"></i></a>
@@ -32,16 +31,6 @@
                     </li>
                 </ul>
                 <ul class="nav navbar-nav float-right">
-                    <!--<li class="dropdown dropdown-user nav-item">
-                        <a class="dropdown-item" href="javascript:void(0)" id="change_password">
-                            Change Password</a>
-                    </li>
-
-
-                    <li class="dropdown dropdown-user nav-item">
-                        <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i class="ft-power"></i>
-                            Logout</a>
-                    </li>-->
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link"
                            href="javascript:void(0)" data-toggle="dropdown">
@@ -69,10 +58,6 @@
                                     <i class="ft-user"></i>
                                     Change Password
                                 </a>
-                                <!--<a class="dropdown-item" href="email-application.html">
-                                    <i class="ft-mail"></i>
-                                    My Inbox
-                                </a>-->
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i
                                             class="ft-power"></i> Logout</a>
@@ -84,7 +69,6 @@
         </div>
     </div>
 </nav>
-
 <!--Main Sidebar Menu-->
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true"
      data-img="<?php echo base_url(); ?>assets/images/backgrounds/04.jpg">
@@ -207,4 +191,3 @@
 
 </div>
 <!--Main Sidebar Menu-->
-

@@ -33,7 +33,6 @@ class Documents extends CI_controller
         $this->load->view('include/footer');
     }
 
-
     function addDocument()
     {
         ob_end_clean();
@@ -98,8 +97,3 @@ class Documents extends CI_controller
         echo $result;
     }
 } ?>
-
-
-
-
-
