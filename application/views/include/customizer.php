@@ -36,9 +36,7 @@
                      title="blue"></div>
             </div>
         </div>
-
         <hr>
-
         <h5 class="my-1 text-bold-500">Layout Options</h5>
         <div class="row">
             <div class="col-12">
@@ -70,9 +68,7 @@
                 </div>
             </div>
         </div>
-
         <hr>
-
         <h5 class="mt-1 mb-1 text-bold-500">Sidebar menu Background</h5>
         <div class="row sidebar-color-options ml-0" >
             <label for="sidebar-color-option" class="card-title font-medium-2 mr-2"
@@ -84,16 +80,12 @@
             <label for="sidebar-color-option" class="card-title font-medium-2 ml-2"
                    data-menu_sidbar_mode="menu-dark" data-alterkey="menu-light">Dark Mode</label>
         </div>
-
         <hr>
-
         <label for="collapsed-sidebar" class="font-medium-2">Menu Collapse</label>
         <div class="float-right">
             <input type="checkbox" id="collapsed-sidebar" class="switchery" data-size="xs"/>
         </div>
-
         <hr>
-
         <!--Sidebar Background Image Starts-->
         <h5 class="mt-1 mb-1 text-bold-500">Sidebar Background Image</h5>
         <div class="cz-bg-image row">
@@ -118,7 +110,6 @@
             </div>
         </div>
         <!--Sidebar Background Image Ends-->
-
         <!--Sidebar BG Image Toggle Starts-->
         <div class="sidebar-image-visibility">
             <div class="row ml-0">
@@ -130,7 +121,6 @@
             </div>
         </div>
         <!--Sidebar BG Image Toggle Ends-->
-
     </div>
 </div>
 <!-- End: Customizer-->
