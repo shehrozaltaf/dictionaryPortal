@@ -128,13 +128,13 @@ function toastMsg(heading, info, msgclass) {
         toastr.error(info, heading, {
             showMethod: "slideDown",
             hideMethod: "slideUp",
-            timeOut: 1500
+            timeOut: 2000
         })
     } else {
         toastr.info(info, heading, {
             showMethod: "slideDown",
             hideMethod: "slideUp",
-            timeOut: 1500
+            timeOut: 2000
         });
     }
 

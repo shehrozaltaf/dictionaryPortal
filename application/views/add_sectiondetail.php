@@ -411,7 +411,6 @@
         }
     }
 
-
     function openSortInput(obj) {
         var sort = $(obj).attr('data-seq');
         var variable = $(obj).attr('data-variable');
@@ -1460,116 +1459,27 @@
             CallAjax('<?php echo base_url('index.php/Section/add_sectiondetail_data') ?>', data, 'POST', function (result) {
                 $('.mybtn').removeAttr('disabled', 'disabled');
                 hideloader();
-                if (result == 1) {
-                    toastMsg('Success', 'Successfully inserted', 'success');
-                    $('.sidebaroptions').html('');
-                    getData();
-                } else {
-                    toastMsg('Error', 'Something went wrong', 'error');
+                var response = JSON.parse(result);
+                try {
+                    var closeFlag = 0;
+                    $.each(response, function (i, v) {
+                        if (v[0] == 'success') {
+                            toastMsg('Success', 'Successfully inserted', 'success');
+                            getData();
+                        } else if (v[0] == 'error') {
+                            toastMsg('Error', v[1], 'error');
+                            close = 1;
+                        } else {
+                            toastMsg(v[0], v[1], v[0]);
+                            closeFlag = 1;
+                        }
+                    });
+                    if (closeFlag == 0) {
+                        $('.sidebaroptions').html('');
+                    }
+                } catch (e) {
                 }
             });
-        }
-    }
-
-    function addDetailSection() {
-        var flag = 0;
-        var data = {};
-        data['idSection'] = $('#idSection').val();
-        if (data['idSection'] == '' || data['idSection'] == undefined) {
-            $('#section_title').css('border', '1px solid red');
-            toastMsg('Section', 'Invalid ID Section', 'error');
-            flag = 1;
-        } else {
-            $('#section_title').css('border', '1px solid #babfc7');
-        }
-        data['idModule'] = $('#idModule').val();
-        if (data['idModule'] == '' || data['idModule'] == undefined) {
-            $('#module_name_l1').css('border', '1px solid red');
-            toastMsg('Module', 'Invalid ID Module', 'error');
-            flag = 1;
-        } else {
-            $('#module_name_l1').css('border', '1px solid #babfc7');
-        }
-        data['id_crf'] = $('#id_crf').val();
-        if (data['id_crf'] == '' || data['id_crf'] == undefined) {
-            $('#crf_name').css('border', '1px solid red');
-            toastMsg('CRF', 'Invalid ID CRF', 'error');
-            flag = 1;
-        } else {
-            $('#crf_name').css('border', '1px solid #babfc7');
-        }
-        data['idProjects'] = $('#idProjects').val();
-        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
-            $('#project_name').css('border', '1px solid red');
-            toastMsg('Project', 'Invalid Project', 'error');
-            flag = 1;
-        } else {
-            $('#project_name').css('border', '1px solid #babfc7');
-        }
-        types = [];
-        $(".formlists").each(function (ii, vv) {
-            inp = {};
-            inp['variable'] = $(this).find('.variableval').html();
-            if (inp['variable'] == '' || inp['variable'] == undefined) {
-                $(this).find('.vaiablevalue').css('border', '1px solid red');
-                toastMsg('Variable Name', 'Invalid Variable Name', 'error');
-                flag = 1;
-                return false;
-            } else {
-                $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
-            }
-            inp['min_val'] = $(this).find('.min_val').val();
-            inp['max_val'] = $(this).find('.max_val').val();
-            inp['skipQuestion'] = $(this).find('.skipQuestion').val();
-            var option_l = [];
-            $($(this).find('.options_list_hidden')).each(function (i, v) {
-                var options = {};
-                options['option_var'] = $(this).find('.option_var').val();
-                $($(this).find('.option_title')).each(function (y, z) {
-                    options['option_title_' + y] = $(this).val();
-                });
-                options['option_value'] = $(this).find('.option_value').val();
-                option_l.push(options);
-            });
-            inp['options'] = option_l;
-            inp['readonly'] = $(this).find('.ReadOnly').val();
-            inp['required'] = $(this).find('.Required').val();
-            inp['nature'] = $(this).find('.natureval').html();
-            if (inp['nature'] == '' || inp['nature'] == undefined) {
-                $(this).find('.vaiablevalue').css('border', '1px solid red');
-                toastMsg('Invalid Type', 'Invalid Input Type', 'error');
-                flag = 1;
-                return false;
-            } else {
-                $(this).find('.vaiablevalue').css('border', '1px solid #babfc7');
-            }
-            $($(this).find('.hiddenvalues_inputs')).each(function (i, v) {
-                if ($(this).val() != '' && $(this).val() != undefined) {
-                    inp['L' + (i + 1)] = $(this).val();
-                    $(this).css('border', '1px solid #babfc7');
-                } else {
-                    $(this).css('border', '1px solid red');
-                    toastMsg('Input Name', 'Invalid Input Name', 'error');
-                    flag = 1;
-                }
-            });
-            types.push(inp);
-            data['data'] = types;
-        });
-        if (flag == 0) {
-            $('.mybtn').attr('disabled', 'disabled');
-            showloader();
-            CallAjax('<?php echo base_url('index.php/Section/add_sectiondetail_data') ?>', data, 'POST', function (result) {
-                hideloader();
-                if (result == 1) {
-                    toastMsg('Success', 'Successfully inserted', 'success');
-                    $('.sidebaroptions').html('');
-                } else {
-                    toastMsg('Error', 'Something went wrong', 'error');
-                }
-            });
-        } else {
-            toastMsg('Error', 'Something went wrong', 'error');
         }
     }
 

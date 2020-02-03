@@ -189,6 +189,7 @@ class Section extends CI_controller
 
     function add_sectiondetail_data()
     {
+
         $Custom = new Custom();
         $formArray = array();
         $subformArray = array();
@@ -198,7 +199,6 @@ class Section extends CI_controller
         $formArray['idProjects'] = $this->input->post('idProjects');
         $formArray['variable_name'] = (isset($_POST['variable']) && $_POST['variable'] != '' ? trim($_POST['variable']) : '');
         $formArray['nature'] = (isset($_POST['nature']) && $_POST['nature'] != '' ? $_POST['nature'] : '');
-
         if ($formArray['nature'] == 'Input') {
             $formArray['nature_var'] = 'E';
         } elseif ($formArray['nature'] == 'Title') {
@@ -216,7 +216,6 @@ class Section extends CI_controller
         } else {
             $formArray['nature_var'] = '';
         }
-
         $formArray['question_type'] = (isset($_POST['question_type']) && $_POST['question_type'] != '' ? $_POST['question_type'] : '');
         $formArray['MinVal'] = (isset($_POST['min_val']) && $_POST['min_val'] != '' ? $_POST['min_val'] : '');
         $formArray['MaxVal'] = (isset($_POST['max_val']) && $_POST['max_val'] != '' ? $_POST['max_val'] : '');
@@ -233,55 +232,82 @@ class Section extends CI_controller
         $formArray['dbType'] = (isset($_POST['dbType']) && $_POST['dbType'] != '' ? $_POST['dbType'] : '');
         $formArray['dbLength'] = (isset($_POST['dbLength']) && $_POST['dbLength'] != '' ? $_POST['dbLength'] : '');
         $formArray['dbDecimal'] = (isset($_POST['dbDecimal']) && $_POST['dbDecimal'] != '' ? $_POST['dbDecimal'] : '');
-        $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'Y');
-        if (isset($_POST['options']) && $_POST['options'] != '') {
-            foreach ($_POST['options'] as $keys => $options) {
-                $subformArray['idProjects'] = $formArray['idProjects'];
-                $subformArray['id_crf'] = $formArray['id_crf'];
-                $subformArray['idModule'] = $formArray['idModule'];
-                $subformArray['idSection'] = $formArray['idSection'];
-                $subformArray['nature'] = (isset($options['nature']) && $options['nature'] != '' ? $options['nature'] : '');
+        $formArray['child_seq_no'] = 0;
+        $MSection = new MSection();
 
-                if ($subformArray['nature'] == 'Input') {
-                    $subformArray['nature_var'] = 'E';
-                } elseif ($subformArray['nature'] == 'Title') {
-                    $subformArray['nature_var'] = 'T';
-                } elseif ($subformArray['nature'] == 'Input-Numeric') {
-                    $subformArray['nature_var'] = 'EN';
-                } elseif ($subformArray['nature'] == 'SelectBox') {
-                    $subformArray['nature_var'] = 'S';
-                } elseif ($subformArray['nature'] == 'Radio') {
-                    $subformArray['nature_var'] = 'R';
-                } elseif ($subformArray['nature'] == 'TextArea') {
-                    $subformArray['nature_var'] = 'TA';
-                } else {
-                    $subformArray['nature_var'] = '';
+        $maxVarArray = array();
+        $maxVarArray['idSection'] = $formArray['idSection'];
+        $maxVarArray['idModule'] = $formArray['idModule'];
+        $maxVariable = $MSection->checkVariable_maxVariable($maxVarArray);
+        if (isset($maxVariable[0]->maxVariable) && $maxVariable[0]->maxVariable != '') {
+            $formArray['seq_no'] = $maxVariable[0]->maxVariable + 1;
+        } else {
+            $formArray['seq_no'] = 0;
+        }
+
+        $checkVariable = $MSection->checkVariable_maxVariable($formArray);
+        if (isset($checkVariable[0]->variable_name) && $checkVariable[0]->variable_name != '') {
+            $result[] = array('0' => 'error', '1' => 'Duplicate question variable: ' . $formArray['variable_name']);
+        } else {
+            $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'Y');
+            if ($InsertData) {
+                $result[] = array('0' => 'success', '1' => 'Successfully inserted: ' . $formArray['variable_name']);
+                if (isset($_POST['options']) && $_POST['options'] != '') {
+                    foreach ($_POST['options'] as $keys => $options) {
+                        $subformArray['idProjects'] = $formArray['idProjects'];
+                        $subformArray['id_crf'] = $formArray['id_crf'];
+                        $subformArray['idModule'] = $formArray['idModule'];
+                        $subformArray['idSection'] = $formArray['idSection'];
+                        $subformArray['nature'] = (isset($options['nature']) && $options['nature'] != '' ? $options['nature'] : '');
+                        if ($subformArray['nature'] == 'Input') {
+                            $subformArray['nature_var'] = 'E';
+                        } elseif ($subformArray['nature'] == 'Title') {
+                            $subformArray['nature_var'] = 'T';
+                        } elseif ($subformArray['nature'] == 'Input-Numeric') {
+                            $subformArray['nature_var'] = 'EN';
+                        } elseif ($subformArray['nature'] == 'SelectBox') {
+                            $subformArray['nature_var'] = 'S';
+                        } elseif ($subformArray['nature'] == 'Radio') {
+                            $subformArray['nature_var'] = 'R';
+                        } elseif ($subformArray['nature'] == 'TextArea') {
+                            $subformArray['nature_var'] = 'TA';
+                        } else {
+                            $subformArray['nature_var'] = '';
+                        }
+                        $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? trim($options['option_var']) : '');
+                        $subformArray['label_l1'] = (isset($options['label_l1']) && $options['label_l1'] != '' ? $options['label_l1'] : '');
+                        $subformArray['label_l2'] = (isset($options['label_l2']) && $options['label_l2'] != '' ? $options['label_l2'] : '');
+                        $subformArray['label_l3'] = (isset($options['label_l3']) && $options['label_l3'] != '' ? $options['label_l3'] : '');
+                        $subformArray['label_l4'] = (isset($options['label_l4']) && $options['label_l4'] != '' ? $options['label_l4'] : '');
+                        $subformArray['label_l5'] = (isset($options['label_l5']) && $options['label_l5'] != '' ? $options['label_l5'] : '');
+                        $subformArray['option_value'] = (isset($options['option_value']) && $options['option_value'] != '' ? $options['option_value'] : '');
+                        $subformArray['MinVal'] = (isset($options['option_min_val']) && $options['option_min_val'] != '' ? $options['option_min_val'] : '');
+                        $subformArray['MaxVal'] = (isset($options['option_max_val']) && $options['option_max_val'] != '' ? $options['option_max_val'] : '');
+                        $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
+                        $subformArray['dbType'] = (isset($options['OptionDbType']) && $options['OptionDbType'] != '' ? $options['OptionDbType'] : '');
+                        $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
+                        $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
+                        $subformArray['idParentQuestion'] = trim($formArray['variable_name']);
+                        $subformArray['seq_no'] = $formArray['seq_no'];
+                        $subformArray['child_seq_no'] = $keys + 1;
+                        $checkChildVariable = $MSection->checkVariable_maxVariable($subformArray);
+                        if (isset($checkChildVariable[0]->variable_name) && $checkChildVariable[0]->variable_name != '') {
+                            $result[] = array('0' => 'error', '1' => 'Duplicate options variable: ' . $subformArray['variable_name']);
+                        } else {
+                            $InsertChildData = $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
+                            if ($InsertChildData) {
+                                $result[] = array('0' => 'success', '1' => 'Option inserted successfully: ' . $subformArray['variable_name']);
+                            } else {
+                                $result[] = array('0' => 'error', '1' => 'Error while inserting option variable: ' . $subformArray['variable_name']);
+                            }
+                        }
+                    }
                 }
-
-                $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? trim($options['option_var']) : '');
-//                $subformArray['option_title'] = (isset($options['option_title']) && $options['option_title'] != '' ? $options['option_title'] : '');
-                $subformArray['label_l1'] = (isset($options['label_l1']) && $options['label_l1'] != '' ? $options['label_l1'] : '');
-                $subformArray['label_l2'] = (isset($options['label_l2']) && $options['label_l2'] != '' ? $options['label_l2'] : '');
-                $subformArray['label_l3'] = (isset($options['label_l3']) && $options['label_l3'] != '' ? $options['label_l3'] : '');
-                $subformArray['label_l4'] = (isset($options['label_l4']) && $options['label_l4'] != '' ? $options['label_l4'] : '');
-                $subformArray['label_l5'] = (isset($options['label_l5']) && $options['label_l5'] != '' ? $options['label_l5'] : '');
-                $subformArray['option_value'] = (isset($options['option_value']) && $options['option_value'] != '' ? $options['option_value'] : '');
-                $subformArray['MinVal'] = (isset($options['option_min_val']) && $options['option_min_val'] != '' ? $options['option_min_val'] : '');
-                $subformArray['MaxVal'] = (isset($options['option_max_val']) && $options['option_max_val'] != '' ? $options['option_max_val'] : '');
-                $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
-                $subformArray['dbType'] = (isset($options['OptionDbType']) && $options['OptionDbType'] != '' ? $options['OptionDbType'] : '');
-                $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
-                $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
-                $subformArray['idParentQuestion'] = trim($formArray['variable_name']);
-                $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
+            } else {
+                $result[] = array('0' => 'error', '1' => 'Error while inserting question variable: ' . $formArray['variable_name']);
             }
         }
-        if ($InsertData) {
-            $result = 1;
-        } else {
-            $result = 2;
-        }
-        echo $result;
+        echo json_encode($result);
     }
 
     function add_sectiondetail_data_option()
