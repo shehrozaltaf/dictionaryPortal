@@ -11,6 +11,7 @@ class Reports extends CI_controller
         $this->load->library('session');
         $this->load->library('tcpdf');
         $this->load->helper('string');
+        $this->load->model('msection');
         if (!isset($_SESSION['login']['idUser'])) {
             redirect(base_url());
         }
@@ -521,7 +522,6 @@ class Reports extends CI_controller
     {
         ob_end_clean();
         $flag = 0;
-        $this->load->model('msection');
         $MSection = new MSection();
         $searchData = array();
         $searchData['idProjects'] = $_REQUEST['project'];
@@ -842,5 +842,35 @@ class Reports extends CI_controller
         header('Cache-Control: max-age=0'); //no cache
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
+    }
+
+    function getTableQuery()
+    {
+        ob_end_clean();
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        $getTableName = $MSection->getSectionDataById($searchData);
+        if (isset($getTableName[0]->tableName) && $getTableName[0]->tableName != '') {
+            $tableName = $getTableName[0]->tableName;
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            $queryPrint = "CREATE TABLE " . $tableName . " (  \n";
+            foreach ($data as $list) {
+                $queryPrint .= strtolower($list->variable_name) . " " . (isset($list->dbType) && $list->dbType != '' ? $list->dbType : 'varchar') . "(" . (isset($list->dbType) && $list->dbType != '' ? $list->dbLength : '255') . "), " . "\n";
+                if (isset($list->myrow_options) && $list->myrow_options != '') {
+                    foreach ($list->myrow_options as $options) {
+                        if (($list->nature == 'Radio' && $options->nature == 'Input') || $options->nature == 'CheckBox' || $list->nature == 'CheckBox') {
+                            $queryPrint .= strtolower($options->variable_name) . " " . (isset($options->dbType) && $options->dbType != '' ? $options->dbType : 'varchar') . "(" . (isset($options->dbType) && $options->dbType != '' ? $options->dbLength : '255') . "), " . "\n";
+                        }
+                    }
+                }
+            }
+            $queryPrint .= "  );";
+            echo $queryPrint;
+        } else {
+            echo 'Invalid Table Name';
+        }
+
     }
 } ?>

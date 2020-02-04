@@ -146,9 +146,13 @@
                                             <i class="la la-file-o"></i> Get Code Book
                                         </button>
                                         <button type="button" class="btn bg-gradient-x-blue-cyan white"
+                                                onclick="getTableQuery()">
+                                            <i class="la la-file-excel-o"></i> Get Database Query
+                                        </button>
+                                        <!--<button type="button" class="btn bg-gradient-x-blue-cyan white"
                                                 onclick="getExcelData()">
                                             <i class="la la-file-excel-o"></i> Get Excel
-                                        </button>
+                                        </button>-->
                                     </div>
                                 </div>
                             </div>
@@ -163,6 +167,21 @@
     $(document).ready(function () {
         $('.myreport').addClass('active');
     });
+
+    function getTableQuery() {
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        var url = '<?php echo base_url('index.php/Reports/getTableQuery?') ?>';
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+            window.open(url, '_blank');
+        } else {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+        }
+    }
+
     function getCodeBook() {
         $('#idProject').css('border', '1px solid #babfc7');
         $('#crf_id').css('border', '1px solid #babfc7');

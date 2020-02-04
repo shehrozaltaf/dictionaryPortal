@@ -120,8 +120,6 @@ class MSection extends CI_Model
         return $query->result();
     }
 
-
-
     function getSectionDetails_Clone($searchdata)
     {
         $idSection = 0;
@@ -148,7 +146,7 @@ class MSection extends CI_Model
     }
 
     /*=====================================Reports=======================================*/
-    /*getStings || getXml || getPDF || getSaveDraftData ||getExcel*/
+    /*getStings || getXml || getPDF || getSaveDraftData ||getExcel || getTableQuery*/
     function getSectionDetailData($searchdata)
     {
         $idSection = 0;
