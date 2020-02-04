@@ -599,6 +599,8 @@ class Section extends CI_controller
                             $formArray_Detail['dbType'] = (isset($data->dbType) && $data->dbType != '' ? $data->dbType : '');
                             $formArray_Detail['dbLength'] = (isset($data->dbLength) && $data->dbLength != '' ? $data->dbLength : '');
                             $formArray_Detail['dbDecimal'] = (isset($data->dbDecimal) && $data->dbDecimal != '' ? $data->dbDecimal : '');
+                            $formArray_Detail['seq_no'] = (isset($data->seq_no) && $data->seq_no != '' ? $data->seq_no : '');
+                            $formArray_Detail['child_seq_no'] = (isset($data->child_seq_no) && $data->child_seq_no != '' ? $data->child_seq_no : '');
                             $InsertData = $Custom->Insert($formArray_Detail, 'idSectionDetail', 'section_detail', 'N');
                             if ($InsertData) {
                                 $result = 1;
@@ -665,6 +667,8 @@ class Section extends CI_controller
             $formArray['dbType'] = (isset($data->dbType) && $data->dbType != '' ? $data->dbType : '');
             $formArray['dbLength'] = (isset($data->dbLength) && $data->dbLength != '' ? $data->dbLength : '');
             $formArray['dbDecimal'] = (isset($data->dbDecimal) && $data->dbDecimal != '' ? $data->dbDecimal : '');
+            $formArray['seq_no'] = (isset($data->seq_no) && $data->seq_no != '' ? $data->seq_no : '');
+            $formArray['child_seq_no'] = (isset($data->child_seq_no) && $data->child_seq_no != '' ? $data->child_seq_no : '');
             $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'N');
         }
         if ($InsertData) {
@@ -786,7 +790,6 @@ class Section extends CI_controller
                 $r = range('A', 'Z');
                 foreach ($data['values'] as $key => $val) {
                     if (isset($val[$r[0]])) {
-
                         if ($val[$r[1]] == 'E') {
                             $type = 'Input';
                         } elseif ($val[$r[1]] == 'T') {
@@ -804,7 +807,6 @@ class Section extends CI_controller
                         } else {
                             $type = '';
                         }
-
                         $formArray_Detail = array();
                         $formArray_Detail['idSection'] = $_POST['idSection'];
                         $formArray_Detail['idModule'] = $_POST['idModule'];
@@ -830,7 +832,8 @@ class Section extends CI_controller
                         $formArray_Detail['dbType'] = (isset($val[$r[13]]) && $val[$r[13]] != '' ? $val[$r[13]] : '');
                         $formArray_Detail['dbLength'] = (isset($val[$r[14]]) && $val[$r[14]] != '' ? $val[$r[14]] : '');
                         $formArray_Detail['dbDecimal'] = (isset($val[$r[15]]) && $val[$r[15]] != '' ? $val[$r[15]] : '');
-
+                        $formArray_Detail['seq_no'] = (isset($val[$r[17]]) && $val[$r[17]] != '' ? $val[$r[17]] : $key);
+                        $formArray_Detail['child_seq_no'] = (isset($val[$r[18]]) && $val[$r[18]] != '' ? $val[$r[18]] : 0);
                         $InsertData = $Custom->Insert($formArray_Detail, 'idSectionDetail', 'section_detail', 'N');
                         if ($InsertData) {
                             $data = array('0' => 'success', '1' => 'Successfully Uploaded');

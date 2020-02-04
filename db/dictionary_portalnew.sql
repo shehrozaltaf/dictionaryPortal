@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2020-02-04 10:21:33
+Date: 2020-02-04 11:47:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -514,7 +514,7 @@ INSERT INTO `section` VALUES ('90', '48', 'SLEEP', 'SLEEP', 'SLEEP', 'SLEEP', '�
 INSERT INTO `section` VALUES ('91', '49', 'BEVERAGES', 'BEVERAGES', 'BEVERAGES', 'BEVERAGES', 'مشروبات', 'مشروبات', null, null, null, null, null, null, 'D1', 'Completed', 'food', '28', '16', '');
 INSERT INTO `section` VALUES ('93', '49', 'DAIRY', 'DAIRY', 'DAIRY', 'DAIRY', 'دودھ اوراس سے بنی اشیاء', 'دودھ اوراس سے بنی اشیاء', null, null, null, null, null, null, 'D2', 'Completed', 'food', '28', '16', '');
 INSERT INTO `section` VALUES ('94', '49', 'FAST FOOD/JUNK FOOD/SNACKS ', 'FAST FOOD/JUNK FOOD/SNACKS ', 'FAST FOOD/JUNK FOOD/SNACKS ', 'FAST FOOD/JUNK FOOD/SNACKS ', 'فاسٹ فوڈ/جنک فوڈ/سنیکس', 'فاسٹ فوڈ/جنک فوڈ/سنیکس', null, null, null, null, null, null, 'D3', 'Completed', 'food', '28', '16', '');
-INSERT INTO `section` VALUES ('95', '49', 'MEATS & ALTERNATIVES', 'MEATS & ALTERNATIVES', 'MEATS & ALTERNATIVES', 'MEATS & ALTERNATIVES', 'گوشت اور متبادل', 'گوشت اور متبادل', null, null, null, null, null, null, 'D4', 'Completed', 'foof', '28', '16', '');
+INSERT INTO `section` VALUES ('95', '49', 'MEATS & ALTERNATIVES', 'MEATS & ALTERNATIVES', 'MEATS & ALTERNATIVES', 'MEATS & ALTERNATIVES', 'گوشت اور متبادل', 'گوشت اور متبادل', null, null, null, null, null, null, 'D4', 'Completed', 'food', '28', '16', '');
 INSERT INTO `section` VALUES ('96', '49', 'GRAINS', 'GRAINS', 'GRAINS', 'GRAINS', 'اناج', 'اناج', null, null, null, null, null, null, 'D6', 'Completed', 'food', '28', '16', '');
 INSERT INTO `section` VALUES ('97', '49', 'FRUITS & VEGETABLES', 'FRUITS & VEGETABLES', 'FRUITS & VEGETABLES', 'FRUITS & VEGETABLES', 'پھل اورسبزیاں', 'پھل اورسبزیاں', null, null, null, null, null, null, 'D7', 'Completed', 'food', '28', '16', '');
 INSERT INTO `section` VALUES ('98', '49', ' OTHER', ' OTHER', ' OTHER', ' OTHER', 'دیگر', 'دیگر', null, null, null, null, null, null, 'D8', 'Completed', 'food', '28', '16', '');
@@ -8615,7 +8615,7 @@ CREATE TABLE `users` (
   `updatedDateTime` datetime DEFAULT NULL,
   `idGroup` int(11) DEFAULT NULL,
   PRIMARY KEY (`idUser`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Records of users
@@ -8641,3 +8641,4 @@ INSERT INTO `users` VALUES ('19', 'Shehroz', '123456', 'shehroz.altaf92@gmail.co
 INSERT INTO `users` VALUES ('20', 'Muhammad Akram', '123456', 'akram.parvez9590@yahoo.com', '', '2', '2020-01-18 07:01:18', '2', '2020-01-18 07:01:42', '3');
 INSERT INTO `users` VALUES ('21', 'Javed Khan', '123456', 'Javed.khan@aku.edu', '', '2', '2020-01-22 07:01:05', null, null, '4');
 INSERT INTO `users` VALUES ('22', 'Imran Sahito', '123456', 'Imran.sahito@aku.edu', '', '2', '2020-01-28 10:01:49', null, null, '3');
+INSERT INTO `users` VALUES ('23', 'Rasool Bux', '123456', 'Rasool.bux@aku.edu', '', '2', '2020-02-04 06:02:24', null, null, null);
