@@ -112,6 +112,7 @@ crf.l5');
 
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
+            $this->db->where("(crf.crf_name like '%" . $search . "%' OR  crf.crf_title like '%" . $search . "%')");
         }
         if (isset($searchdata['orderby']) && $searchdata['orderby'] != '' && $searchdata['orderby'] != null) {
             $this->db->order_By($searchdata['orderby'], $searchdata['ordersort']);
@@ -157,6 +158,7 @@ crf.l5');
 
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
+            $this->db->where("(crf.crf_name like '%" . $search . "%' OR  crf.crf_title like '%" . $search . "%')");
         }
         $this->db->select('count(id_crf) as cnttotal');
         $this->db->from('crf');

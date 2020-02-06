@@ -29,7 +29,7 @@ class MProjects extends CI_Model
         }
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            $this->db->where('(projects.project_name like "%' . $search . '%" OR  projects.short_title like "%' . $search . '%")');
+            $this->db->where("(projects.project_name like '%" . $search . "%' OR  projects.short_title like '%" . $search . "%')");
         }
         if (isset($searchdata['orderby']) && $searchdata['orderby'] != '' && $searchdata['orderby'] != null) {
             $this->db->order_By($searchdata['orderby'], $searchdata['ordersort']);
@@ -60,7 +60,7 @@ class MProjects extends CI_Model
     {
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
-            $this->db->where('(projects.project_name like "%' . $search . '%" OR  projects.short_title like "%' . $search . '%")');
+            $this->db->where("(projects.project_name like '%" . $search . "%' OR  projects.short_title like '%" . $search . "%')");
         }
         $this->db->select('count(idProjects) as cnttotal');
         $this->db->from('projects');
