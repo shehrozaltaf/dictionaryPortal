@@ -92,6 +92,7 @@ class Crf extends CI_controller
         $data = $MCRF->getCrfByPro($idProjects);
         echo json_encode($data, true);
     }
+
     function getCrfLanguages()
     {
         $MCRF = new MCRF();
@@ -99,7 +100,6 @@ class Crf extends CI_controller
         $data = $MCRF->getCrfLang($idCrf);
         echo json_encode($data, true);
     }
-
 
     function getCRFs()
     {
@@ -129,7 +129,7 @@ class Crf extends CI_controller
 								Actions
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
-								<a class="dropdown-item" href="#">Edit CRF</a>
+								<a class="dropdown-item" href="' . base_url('index.php/edit_crf/' . $value->id_crf) . '">Edit CRF</a>
 								<a class="dropdown-item" href="' . base_url('index.php/module/' . $value->id_crf) . '">View Modules</a>
 								<a class="dropdown-item" href="' . base_url('index.php/add_module?crf=' . $value->id_crf) . '">Add Module</a> 
 							</div>
@@ -166,40 +166,82 @@ class Crf extends CI_controller
         echo json_encode($result, true);
     }
 
-    function edit_crf()
+    function edit_crf($slug)
     {
-        if (isset($_GET['project']) && $_GET['project'] != '') {
-            $idProject = $_GET['project'];
-        } else {
-            $idProject = '';
-        }
+        $MCRF = new MCRF();
         $data = array();
-        $Mproject = new MProjects();
-        $data['getProjectData'] = $Mproject->getEditProject($idProject);
+        $data['getData'] = '';
+        if (isset($slug) && $slug != '') {
+            $data['getData'] = $MCRF->getCrfLang($slug);
+        }
+        $MProjects = new MProjects();
+        $data['projects'] = $MProjects->getAllProjects();
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('edit_crf', $data);
         $this->load->view('include/footer');
     }
 
-    function edit()
+    function editData()
     {
         $Custom = new Custom();
         $editArr = array();
-        $id_crf = $this->input->post('id_crf');
-        $idproject = $this->input->post('idproject');
-        $editArr['crf_name'] = $this->input->post('crf_name');
-        $editArr['crf_title'] = $this->input->post('crf_title');
-        $editArr['languages'] = $this->input->post('list_of_languagess');
-        $editArr['no_of_modules'] = $this->input->post('num_of_modules');
-        $editArr['startdate'] = $this->input->post('startdate');
-        $editArr['enddate'] = $this->input->post('enddate');
-        $editData = $Custom->Edit($editArr, 'idProjects', $idproject, 'projects');
-        if ($editData) {
-            $result = 1;
+        if (isset($_POST['id_crf']) && $_POST['id_crf'] != '') {
+            $id_crf = $_POST['id_crf'];
+            if (isset($_POST['crf_name']) && $_POST['crf_name'] != '') {
+                $editArr['crf_name'] = $_POST['crf_name'];
+            }
+            if (isset($_POST['id_of_pro']) && $_POST['id_of_pro'] != '') {
+                $editArr['idProjects'] = $_POST['id_of_pro'];
+            }
+            if (isset($_POST['crf_title']) && $_POST['crf_title'] != '') {
+                $editArr['crf_title'] = $_POST['crf_title'];
+            }
+            if (isset($_POST['num_of_modules']) && $_POST['num_of_modules'] != '') {
+                $editArr['no_of_modules'] = $_POST['num_of_modules'];
+            }
+            if (isset($_POST['startdate']) && $_POST['startdate'] != '') {
+                $editArr['startdate'] = date('Y-m-d', strtotime($_POST['startdate']));
+            }
+            if (isset($_POST['enddate']) && $_POST['enddate'] != '') {
+                $editArr['enddate'] = date('Y-m-d', strtotime($_POST['enddate']));
+            }
+            if (isset($_POST['crf_name']) && $_POST['crf_name'] != '') {
+                $editArr['crf_name'] = $_POST['crf_name'];
+            }
+            if (isset($_POST['crf_name']) && $_POST['crf_name'] != '') {
+                $editArr['crf_name'] = $_POST['crf_name'];
+            }
+            $languages = '';
+            $editArr['l1'] = '';
+            $editArr['l2'] = '';
+            $editArr['l3'] = '';
+            $editArr['l4'] = '';
+            $editArr['l5'] = '';
+            if ($this->input->post('list_of_languagess') != '' && $this->input->post('list_of_languagess') != 'undefined') {
+                $list_of_languagess = $this->input->post('list_of_languagess');
+                foreach ($list_of_languagess as $key => $value) {
+                    $editArr['l' . ((int)$key + 1)] = $value;
+                    if (((int)$key + 1) == count($list_of_languagess)) {
+                        $languages .= $value;
+                    } else {
+                        $languages .= $value . ', ';
+                    }
+                }
+            }
+            if (isset($languages) && $languages != '') {
+                $editArr['languages'] = $languages;
+            }
+            $editData = $Custom->Edit($editArr, 'id_crf', $id_crf, 'crf');
+            if ($editData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
         } else {
-            $result = 2;
+            $result = 3;
         }
+
         echo $result;
     }
 }

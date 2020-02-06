@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route["crf"] = 'crf/index/$1';
 $route["crf/(.*)"] = 'crf/index/$1';
 $route["add_crf"] = 'crf/add_crf';
+$route["edit_crf/(.*)"] = 'crf/edit_crf/$1';
 
 $route["module"] = 'module/index/$1';
 $route["module/(.*)"] = 'module/index/$1';
