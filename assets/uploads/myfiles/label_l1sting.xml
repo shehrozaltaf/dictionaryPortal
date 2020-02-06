@@ -1,18 +1,15 @@
-<string name="hh01">hh01:\t Cluster number</string>
-<string name="hh02">hh02:\t Province</string>
-<string name="hh03">hh03:\t District code</string>
-<string name="hh04">hh04:\t Tehsil code</string>
-<string name="hh05">hh05:\t UC code</string>
-<string name="hh06">hh06:\t Name of the village/Town</string>
-<string name="hh07">hh07:\t Type of structure?</string>
-<string name="hh07a">Residential</string>
-<string name="hh07b">Non-Residential</string>
-<string name="hh07c">Temporarily Stop Listing</string>
-<string name="hh07d">Line Listing Complete (No more structure)</string>
-<string name="hh08">hh08:\t Name of Household Head</string>
-<string name="hh09">hh09:\t Total number of family members</string>
-<string name="hh10">hh10:\t Is there any married women living in the household whose is aged between 15 to 49 year and
-having children under-5 years of age?
+<string name="hf1_title">hf1_title:\t This form must be appended to the QUESTIONNAIRE FOR CHILDREN 12-23months age for
+    each child.
 </string>
-<string name="hh10a">Yes</string>
-<string name="hh10b">No</string>
+<string name="hf1">hf1:\t Cluster Number</string>
+<string name="hf2">hf2:\t Household Number</string>
+<string name="hf3">hf3:\t Child's Name</string>
+<string name="childid">childid:\t Child's ID</string>
+<string name="hf4">hf4:\t Father's Name</string>
+<string name="hf5">hf5:\t Name of field staff recording at facility</string>
+<string name="hf5a">hf5a:\t Code of field staff recording at facility</string>
+<string name="hf6">hf6:\t Interviewer’s Name</string>
+<string name="hf6a">hf6a:\t Interviewer’s Code</string>
+<string name="hf7">hf7:\t Date of Health Facility Visit</string>
+<string name="hf8">hf8:\t Record the Time</string>
+<string name="hf10">hf10:\t Write the name of health facility</string>

@@ -12,7 +12,7 @@ class MProjects extends CI_Model
 	projects.idProjects');
         $this->db->from('projects');
         $this->db->where('projects.isActive', 1);
-		$this->db->order_By('idProjects', 'DESC');
+        $this->db->order_By('idProjects', 'DESC');
         $query = $this->db->get();
         return $query->result();
     }
@@ -29,12 +29,13 @@ class MProjects extends CI_Model
         }
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
+            $this->db->where('(projects.project_name like "%' . $search . '%" OR  projects.short_title like "%' . $search . '%")');
         }
         if (isset($searchdata['orderby']) && $searchdata['orderby'] != '' && $searchdata['orderby'] != null) {
             $this->db->order_By($searchdata['orderby'], $searchdata['ordersort']);
-        }else{
-			$this->db->order_By('idProjects', 'DESC');
-		}
+        } else {
+            $this->db->order_By('idProjects', 'DESC');
+        }
         $this->db->select('projects.project_name,
 	projects.short_title,
 	projects.startdate,
@@ -57,15 +58,9 @@ class MProjects extends CI_Model
 
     function getCntTotalProjects($searchdata)
     {
-        if (isset($searchdata['start']) && $searchdata['start'] != '' && $searchdata['start'] != null) {
-            $start = $searchdata['start'];
-        }
-        if (isset($searchdata['length']) && $searchdata['length'] != '' && $searchdata['length'] != null) {
-            $length = $searchdata['length'];
-        }
-
         if (isset($searchdata['search']) && $searchdata['search'] != '' && $searchdata['search'] != null) {
             $search = $searchdata['search'];
+            $this->db->where('(projects.project_name like "%' . $search . '%" OR  projects.short_title like "%' . $search . '%")');
         }
         $this->db->select('count(idProjects) as cnttotal');
         $this->db->from('projects');
@@ -104,7 +99,8 @@ class MProjects extends CI_Model
         return $query->result();
     }
 
-    function getEditProject($idProject){
+    function getEditProject($idProject)
+    {
         $this->db->select('*');
         $this->db->from('projects');
         $this->db->where('projects.idProjects', $idProject);
