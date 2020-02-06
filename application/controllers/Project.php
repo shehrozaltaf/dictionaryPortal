@@ -71,9 +71,7 @@ class Project extends CI_controller
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
 								<a class="dropdown-item" href="' . base_url('index.php/project/edit_project?project=' . $value->idProjects) . '">Edit Project</a>
 								<a class="dropdown-item" href="' . base_url('index.php/crf/' . $value->idProjects) . '">View CRFs</a>
-								<a class="dropdown-item" href="' . base_url('index.php/add_crf?project=' . $value->idProjects) . '">Add CRF</a>
-								<a class="dropdown-item" href="' . base_url('index.php/Project/getPDF/' . $value->idProjects) . '"  target="_blank" data-idProjects="' . $value->idProjects . '">Export PDF</a>
-								<a class="dropdown-item" href="javascript:void(0)" onclick="getExcelModal()" data-idProjects="' . $value->idProjects . '">Export Excel</a>
+								<a class="dropdown-item" href="' . base_url('index.php/add_crf?project=' . $value->idProjects) . '">Add CRF</a> 
 							</div>
 						</div>';
             $myarr = array();

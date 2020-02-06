@@ -30,7 +30,6 @@ class Crf extends CI_controller
         $this->load->view('include/footer');
     }
 
-
     function add_crf()
     {
         $MProjects = new MProjects();
@@ -40,7 +39,6 @@ class Crf extends CI_controller
         } else {
             $data['getProjectSlug'] = 0;
         }
-
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_crf', $data);
@@ -57,7 +55,6 @@ class Crf extends CI_controller
         $this->form_validation->set_rules('startdate', 'Start Date', 'required');
         $this->form_validation->set_rules('enddate', 'End Date', 'required');
         $this->form_validation->set_rules('num_of_modules', 'Number Of Modules', 'required');
-
         $formArray = array();
         $formArray['crf_name'] = $this->input->post('crf_name');
         $formArray['crf_title'] = $this->input->post('crf_title');
@@ -75,8 +72,8 @@ class Crf extends CI_controller
             }
         }
         $formArray['languages'] = $languages;
-        $formArray['startdate'] = date('y-m-d', strtotime($this->input->post('startdate')));
-        $formArray['enddate'] = date('y-m-d', strtotime($this->input->post('enddate')));
+        $formArray['startdate'] = (isset($_POST['startdate']) && $_POST['startdate'] != '' ? date('Y-m-d', strtotime($this->input->post('startdate'))) : date('Y-m-d'));
+        $formArray['enddate'] = (isset($_POST['enddate']) && $_POST['enddate'] != '' ? date('Y-m-d', strtotime($this->input->post('enddate'))) : date('Y-m-d'));
         $formArray['no_of_modules'] = $this->input->post('num_of_modules');
 
         $InsertData = $Custom->Insert($formArray, 'id_crf', 'crf', 'L');
@@ -120,7 +117,6 @@ class Crf extends CI_controller
         $table_data = array();
         $result_table_data = array();
         foreach ($data as $key => $value) {
-
             $table_data[$value->crf_name]['crf_name'] = $value->crf_name;
             $table_data[$value->crf_name]['crf_title'] = $value->crf_title;
             $table_data[$value->crf_name]['languages'] = $value->languages;
@@ -190,7 +186,7 @@ class Crf extends CI_controller
     {
         $Custom = new Custom();
         $editArr = array();
-        $idproject = $this->input->post('id_crf');
+        $id_crf = $this->input->post('id_crf');
         $idproject = $this->input->post('idproject');
         $editArr['crf_name'] = $this->input->post('crf_name');
         $editArr['crf_title'] = $this->input->post('crf_title');
