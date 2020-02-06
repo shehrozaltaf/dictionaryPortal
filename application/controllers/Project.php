@@ -100,277 +100,6 @@ class Project extends CI_controller
         echo json_encode($result, true);
     }
 
-    function getExcel($slug)
-    {
-        ob_end_clean();
-        $this->load->model('msection');
-        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
-        $this->load->library('excel');
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = $slug;
-        $listInfo = $MSection->getExcelData($searchData);
-        $objPHPExcel = new    PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable App');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Type');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Option Title');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Option Values');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Skip On xml');
-        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Tag No');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Min Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Max Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Language 1');
-        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Language 2');
-        $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Language 3');
-        $objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Language 4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('N1', 'Language 5');
-        $objPHPExcel->getActiveSheet()->getStyle("A1:N1")->getFont()->setBold(true);
-        $rowCount = 2;
-        foreach ($listInfo as $list) {
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->nature);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_title);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->option_value);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->MinVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->MaxVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->label_l1);
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->label_l2);
-            $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $list->label_l3);
-            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $list->label_l4);
-            $objPHPExcel->getActiveSheet()->SetCellValue('N' . $rowCount, $list->label_l5);
-            $rowCount++;
-        }
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-        header('Cache-Control: max-age=0'); //no cache
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('php://output');
-    }
-
-    function getPDF($slug)
-    {
-        header('Content-type: text/html; charset=utf-8');
-        $this->load->model('mmodule');
-        $this->load->model('msection');
-        if (isset($slug) && $slug != '') {
-            $searchData = array();
-            $searchData['idProjects'] = $slug;
-
-            $MProjects = new MProjects();
-            $MModule = new MModule();
-            $MSection = new MSection();
-            $GetReportData = $MProjects->getPDFData($searchData);
-
-
-            $searchData['idCRF'] = $GetReportData[0]->id_crf;
-            $html = '';
-            if ($GetReportData) {
-                $project_name = $GetReportData[0]->project_name;
-                $short_title = strtoupper($GetReportData[0]->short_title);
-                $title = $project_name . ' (' . $short_title . ')';
-
-                $crf_name = $GetReportData[0]->crf_name;
-                $crf_title = strtoupper($GetReportData[0]->crf_title);
-                $crf_title = $crf_name . ' (' . $crf_title . ')';
-
-                $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-                $pdf->SetCreator(PDF_CREATOR);
-                $pdf->SetAuthor('Dictionary Portal');
-                $pdf->SetTitle($title);
-                $pdf->SetSubject($title);
-                $pdf->SetKeywords($title . ',' . $crf_title);
-                $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-                $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-                $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
-                $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-                $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-                if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-                    require_once(dirname(__FILE__) . '/lang/eng.php');
-//                    $pdf->setLanguageArray($l);
-                }
-                $pdf->setFontSubsetting(true);
-                $pdf->SetFont('freeserif', '', 12);
-
-                $pdf->AddPage();
-
-
-                $style = "<style>
-                        h1{text-align: center; font-size: 30px;  color: #002D57;}
-                        h3{text-align: center; font-size: 22px;}
-                        h4{font-size: 18px;}
-                        small{font-size: 14px}
-                        table { border:1px solid black; }
-                        table tr th{ border:1px solid black;text-align: center; font-weight: bold; background-color: #0277bd; color: #ffffff;   }
-                        table tr td{ border:1px solid black; }
-                        .createdby{text-align: right;}
-                        </style>";
-                $Mainheader = "<div class='head'>
-                                    <h1 class='mainheading'>" . $title . "</h1>
-                                    <h3 class='subheading'>" . $crf_title . "</h3>
-                               </div>";
-                $pdf->writeHTML($style . $Mainheader, true, false, true, false, 'centre');
-                $pdf->AddPage();
-
-
-                $getModules = $MModule->getModulesData($searchData);
-                /* echo '<pre>';
-                 print_r($getModules);
-                 echo '</pre>';
-                 exit() ;*/
-                foreach ($getModules as $keyModule => $valueModule) {
-
-                    $subhtml = "<div class='moduleDiv'>";
-                    if (isset($valueModule->module_name_l1) && $valueModule->module_name_l1 != '') {
-                        $subhtml .= "<h4>" . htmlentities($valueModule->module_name_l1) . " : <small>" . $valueModule->module_desc_l1 . "</small></h4>";
-                    }
-                    if (isset($valueModule->module_name_l2) && $valueModule->module_name_l2 != '') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l2 . "</h4><h5>" . $valueModule->module_desc_l2 . "</h5>";
-                    }
-                    if (isset($valueModule->module_name_l3) && $valueModule->module_name_l3 != '') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l3 . "</h4><h5>" . $valueModule->module_desc_l3 . "</h5>";
-                    }
-                    if (isset($valueModule->module_name_l4) && $valueModule->module_name_l4 = '') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l4 . "</h4><h5>" . $valueModule->module_desc_l4 . "</h5>";
-                    }
-                    if (isset($valueModule->module_name_l5) && $valueModule->module_name_l5 != '') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l5 . " </h4><h5>" . $valueModule->module_desc_l5 . "</h5>";
-                    }
-                    $subhtml .= "</div>";
-
-                    $ModuleSearchData = array();
-                    $ModuleSearchData['idModule'] = $valueModule->idModule;
-                    $getSections = $MSection->getSectionData($ModuleSearchData);
-
-
-                    foreach ($getSections as $keySection => $valueSection) {
-                        $subhtml .= "<div class='sectionDiv'>";
-                        if (isset($valueSection->section_title) && $valueSection->section_title != '') {
-                            $subhtml .= "<h4>" . htmlentities($valueSection->section_title) . " : <small>" . $valueSection->section_desc . " (" . $valueSection->var_name . ")</small></h4>";
-                        }
-                        $subhtml .= "</div>";
-
-                        $ModuleSearchData['idSection'] = $valueSection->idSection;
-                        $getSectionDetails = $MSection->getSectionDetailsData($ModuleSearchData);
-
-                        $subhtml .= "<div class='sectionDetailDiv'><table>
-                                        <thead>
-                                            <tr>
-                                                <th>Variable</th>
-                                                <th width='10'>Label</th>
-                                                <th>Nature</th>
-                                                <th>Option Title</th>
-                                                <th>Option Value</th>
-                                            </tr>   
-                                        </thead>
-                                        <tbody> ";
-
-
-                        foreach ($getSectionDetails as $keySectionDetail => $valueSectionDetail) {
-                            if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
-                                $subhtml .= "<tr>
-                                    <td>" . $valueSectionDetail->variable_name . "</td>
-                                    <td width='10'>
-                                        " . $valueSectionDetail->label_l1 . "<br>
-                                         " . $valueSectionDetail->label_l2 . "<br>
-                                         " . $valueSectionDetail->label_l3 . "<br>
-                                         " . $valueSectionDetail->label_l4 . "<br>
-                                         " . $valueSectionDetail->label_l5 . "
-                                    </td>
-                                     <td> " . $valueSectionDetail->nature . "</td>
-                                    <td> " . $valueSectionDetail->option_title . "</td>
-                                    <td> " . $valueSectionDetail->option_value . "</td>
-                                   
-                                    </tr> ";
-                            }
-
-
-                        }
-                        $subhtml .= "</tbody></table></div>";
-
-                    }
-                    $pdf->writeHTML($style . $subhtml, true, false, true, false, '');
-                    $pdf->AddPage();
-                }
-
-
-                $endheader = "<div class='head'>
-                                    <h1 class='mainheading'>The END</h1> 
-                               </div>";
-                $pdf->writeHTML($style . $endheader, true, false, true, false, 'centre');
-
-                $bMargin = $pdf->getBreakMargin();
-                $auto_page_break = $pdf->getAutoPageBreak();
-                $pdf->SetAutoPageBreak(true, 0);
-                $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
-                $pdf->setPageMark();
-                ob_end_clean();
-                $pdf->Output('dictionary.pdf', 'I');
-//                $this->CreatePDF($html);
-            }
-        } else {
-            echo 'Invalid Project';
-            exit();
-        }
-
-
-    }
-
-    public function CreatePDF($HTMLData)
-    {
-        $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-        $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetAuthor('PRO-DMU');
-
-        // set header and footer fonts
-        $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
-        // set default monospaced font
-        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-        // set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-        $pdf->SetHeaderMargin(0);
-        $pdf->SetFooterMargin(0);
-        // remove default footer
-        $pdf->setPrintFooter(false);
-        // set auto page breaks
-        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-        // set image scale factor
-        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-        // set some language-dependent strings (optional)
-        if (@file_exists(dirname(__FILE__) . '/lang/eng.php')) {
-            require_once(dirname(__FILE__) . '/lang/eng.php');
-            //            $pdf->setLanguageArray($l);
-        }
-        // set font
-        $pdf->SetFont('times', '', 11);
-        // --- example with background set on page ---
-        // remove default header
-        $pdf->setPrintHeader(false);
-        // add a page
-        $pdf->AddPage();
-        // get the current page break margin
-        $bMargin = $pdf->getBreakMargin();
-        // get current auto-page-break mode
-        $auto_page_break = $pdf->getAutoPageBreak();
-        // disable auto-page-break
-        $pdf->SetAutoPageBreak(false, 0);
-
-        // restore auto-page-break status
-        $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
-        // set the starting point for the page content
-        $pdf->setPageMark();
-        $pdf->writeHTML($HTMLData, true, false, true, false, '');
-        ob_end_clean();
-        $pdf->Output('dictionary.pdf', 'I');
-
-    }
-
-
     function addData()
     {
         ob_end_clean();
@@ -383,26 +112,22 @@ class Project extends CI_controller
         $this->form_validation->set_rules('languages', 'languages', 'required');
         $this->form_validation->set_rules('num_of_site', 'Number Of Sites', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
-
         $formArray = array();
         $formArray['project_name'] = ucfirst($this->input->post('projectName'));
         $formArray['short_title'] = $this->input->post('shortTitle');
-        $formArray['startdate'] = date('y-m-d', strtotime($this->input->post('startdate')));
-        $formArray['enddate'] = date('y-m-d', strtotime($this->input->post('enddate')));
+        $formArray['startdate'] = (isset($_POST['startdate']) && $_POST['startdate'] != '' ? date('Y-m-d', strtotime($this->input->post('startdate'))) : date('Y-m-d'));
+        $formArray['enddate'] = (isset($_POST['enddate']) && $_POST['enddate'] != '' ? date('Y-m-d', strtotime($this->input->post('enddate'))) : date('Y-m-d'));
         $formArray['no_of_crf'] = $this->input->post('num_of_crf');
         $formArray['languages'] = $this->input->post('languages');
         $formArray['no_of_sites'] = $this->input->post('num_of_site');
         $formArray['email_of_person'] = $this->input->post('email');
         $formArray['createdBy'] = $_SESSION['login']['idUser'];
-
         $InsertData = $Custom->Insert($formArray, 'idProjects', 'projects', 'N');
         if ($InsertData) {
             $result = 1;
         } else {
             $result = 2;
         }
-
-
         echo $result;
     }
 
@@ -446,8 +171,3 @@ class Project extends CI_controller
     }
 
 } ?>
-
-
-
-
-
