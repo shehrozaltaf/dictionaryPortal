@@ -195,7 +195,7 @@ class Module extends CI_controller
         }
         $formArray['module_status'] = $this->input->post('module_status');
         $formArray['module_type'] = $this->input->post('module_type');
-
+        $formArray['isActive'] = 1;
         $InsertData = $Custom->Insert($formArray, 'idModule', 'modules', 'M');
         if ($InsertData) {
             $result = 1;

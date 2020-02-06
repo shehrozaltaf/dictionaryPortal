@@ -116,7 +116,7 @@ class Section extends CI_controller
         $formArray['section_var_name'] = $this->input->post('section_var_name');
         $formArray['section_status'] = $this->input->post('section_status');
         $formArray['tableName'] = $this->input->post('section_table');
-
+        $formArray['isActive'] = 1;
         $section_l_name = '';
         if ($this->input->post('section_name_Languages') != '' && $this->input->post('section_name_Languages') != 'undefined') {
             $name_languagess = $this->input->post('section_name_Languages');
@@ -189,7 +189,6 @@ class Section extends CI_controller
 
     function add_sectiondetail_data()
     {
-
         $Custom = new Custom();
         $formArray = array();
         $subformArray = array();
@@ -233,6 +232,7 @@ class Section extends CI_controller
         $formArray['dbLength'] = (isset($_POST['dbLength']) && $_POST['dbLength'] != '' ? $_POST['dbLength'] : '');
         $formArray['dbDecimal'] = (isset($_POST['dbDecimal']) && $_POST['dbDecimal'] != '' ? $_POST['dbDecimal'] : '');
         $formArray['child_seq_no'] = 0;
+        $formArray['isActive'] = 1;
         $MSection = new MSection();
 
         $maxVarArray = array();

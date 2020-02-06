@@ -61,7 +61,7 @@
                         <option value="0" disabled readonly="readonly" selected>Select Project</option>
                         <?php
                         foreach ($projects as $key => $values) {
-                            echo '<option value="' . $values->idProjects . '">'  . strtoupper($values->short_title) . ': '. $values->project_name . '</option>';
+                            echo '<option value="' . $values->idProjects . '">' . strtoupper($values->short_title) . ': ' . $values->project_name . '</option>';
                         }
                         ?>
                     </select>
@@ -239,23 +239,13 @@
         var data = {};
         data['idProjects'] = $('#selectidProjects').val();
         data['idCRF'] = $('#selectIdCRF').val();
-
         var flag = 0;
-
-        /* if (data['idProjects'] == '' || data['idProjects'] == undefined) {
-             $('#selectidProjects').css('border', '1px solid red');
-             toastMsg('Project', 'Invalid Project', 'error');
-             flag = 1;
-             return false;
-         }*/
-
         if (data['idCRF'] == '' || data['idCRF'] == undefined) {
             $('#selectIdCRF').css('border', '1px solid red');
             toastMsg('CRF', 'Invalid CRF', 'error');
             flag = 1;
             return false;
         }
-
         if (flag == 0) {
             CallAjax('<?php echo base_url() . 'index.php/Module/getData' ?>', data, 'POST', function (res) {
                 if (res != '' && JSON.parse(res).length > 0) {
@@ -337,11 +327,11 @@
 
 
                             html += '<div class="btn-group col-sm-12">' +
-                                        '<a class="btn btn-danger white"  href="<?php echo base_url('index.php/add_section') ?>" ' +
-                                        'id="dropdownMenuButton' + v.idModule + '"  >' +
-                                        'Add Section</a>' +
-                                        '</div>' +
-                                '<div class="mytable_' + v.idModule + '"></div>' ;
+                                '<a class="btn btn-danger white"  href="<?php echo base_url('index.php/add_section') ?>" ' +
+                                'id="dropdownMenuButton' + v.idModule + '"  >' +
+                                'Add Section</a>' +
+                                '</div>' +
+                                '<div class="mytable_' + v.idModule + '"></div>';
 
                             html += '</div>' +
                                 '</div>' +
@@ -357,12 +347,12 @@
                     }
 
                     $('#modal_project').modal('hide');
+                } else {
+                    toastMsg('Warning', 'No Modules found for this CRF. Please add module.', 'warning');
                 }
             });
         } else {
             toastMsg('Error', 'Something went wrong', 'error');
         }
-
-
     }
 </script>
