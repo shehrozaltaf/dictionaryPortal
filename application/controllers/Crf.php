@@ -130,6 +130,7 @@ class Crf extends CI_controller
 							</button>
 							<div class="dropdown-menu" aria-labelledby="dropdownMenuButton7">
 								<a class="dropdown-item" href="' . base_url('index.php/edit_crf/' . $value->id_crf) . '">Edit CRF</a>
+								<a class="dropdown-item" href="javascript:void(0)" onclick="getDelete(this)" data-id="' . $value->id_crf . '">Delete CRF</a>
 								<a class="dropdown-item" href="' . base_url('index.php/module/' . $value->id_crf) . '">View Modules</a>
 								<a class="dropdown-item" href="' . base_url('index.php/add_module?crf=' . $value->id_crf) . '">Add Module</a> 
 							</div>
@@ -242,6 +243,25 @@ class Crf extends CI_controller
             $result = 3;
         }
 
+        echo $result;
+    }
+
+    function deleteData()
+    {
+        if (isset($_POST['idDelete']) && $_POST['idDelete'] != '') {
+            $Custom = new Custom();
+            $id_crf = $_POST['idDelete'];
+            $editArr = array();
+            $editArr['isActive'] = 0;
+            $editData = $Custom->Edit($editArr, 'id_crf', $id_crf, 'crf');
+            if ($editData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
+        } else {
+            echo 3;
+        }
         echo $result;
     }
 }

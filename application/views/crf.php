@@ -85,7 +85,7 @@
 <!-- END: Content-->
 <!-- Modal -->
 <div class="modal fade text-left" id="modal_project" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8"
-     aria-hidden="true"  data-backdrop="static" data-keyboard="false">
+     aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary white">
@@ -115,6 +115,30 @@
         </div>
     </div>
 </div>
+
+
+<!-- Delete Modal -->
+<div class="modal fade text-left" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8_delete"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel8_delete">Delete CRF</h4>
+                <input type="hidden" id="idDelete" name="idDelete">
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, you want to delete this?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" onclick="deleteData()">Delete
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
         type="text/javascript"></script>
@@ -130,6 +154,36 @@
             $('#modal_project').modal('show');
         }
     });
+
+    function getDelete(obj) {
+        var id = $(obj).attr('data-id');
+        $('#idDelete').val(id);
+        $('#deleteModal').modal('show');
+    }
+
+    function deleteData() {
+        var data = {};
+        data['idDelete'] = $('#idDelete').val();
+        if (data['idDelete'] == '' || data['idDelete'] == undefined || data['idLanguage'] == 0) {
+            toastMsg('CRF', 'Something went wrong', 'error');
+            return false;
+        } else {
+            CallAjax('<?php echo base_url('index.php/CRF/deleteData')?>', data, 'POST', function (res) {
+                if (res == 1) {
+                    toastMsg('CRF', 'Successfully Deleted', 'success');
+                    $('#deleteModal').modal('hide');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
+                } else if (res == 2) {
+                    toastMsg('CRF', 'Something went wrong', 'error');
+                } else if (res == 3) {
+                    toastMsg('CRF', 'Invalid Section', 'error');
+                }
+            });
+        }
+    }
+
     function format(d) {
         var html = '<div id="collapse1" class="card-collapse">';
         html += '<div class="card collapse-icon accordion-icon-rotate left">';
@@ -237,7 +291,7 @@
                 {"data": "no_of_modules"},
                 {"data": "startdate"},
                 {"data": "enddate"},
-                {"data": "action" }
+                {"data": "action"}
             ],
             order: [
                 [1, 'desc']

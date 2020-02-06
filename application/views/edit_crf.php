@@ -270,14 +270,13 @@
         }
         if (flag == 0) {
             $('.mybtn').attr('disabled', 'disabled');
-            console.log(data);
             showloader();
             CallAjax('<?php echo base_url('index.php/Crf/editData'); ?>', data, 'POST', function (result) {
                 hideloader();
                 if (result == 1) {
                     toastMsg('Success', 'Successfully Edited', 'success');
                     setTimeout(function () {
-                        //window.location.href = "< ?php //echo base_url('index.php/crf/'); ?>//" + data['id_of_pro'];
+                        window.location.href = "<?php echo base_url('index.php/crf/'); ?>" + data['id_of_pro'];
                     }, 1000);
                 } else if (result == 3) {
                     toastMsg('Error', 'Invalid CRF ID', 'error');
@@ -285,7 +284,6 @@
                     toastMsg('Error', 'Something went wrong', 'error');
                 }
             });
-            ''
         }
     }
 </script>

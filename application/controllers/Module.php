@@ -52,7 +52,6 @@ class Module extends CI_controller
         $this->load->view('include/footer');
     }
 
-
     function edit_module($slug)
     {
         ob_end_clean();
@@ -69,7 +68,6 @@ class Module extends CI_controller
         $this->load->view('edit_module', $data);
         $this->load->view('include/footer');
     }
-
 
     function deleteModule()
     {
@@ -154,7 +152,6 @@ class Module extends CI_controller
         $data = $MModule->getModulesData($searchdata);
         echo json_encode($data, true);
     }
-
 
     function addData()
     {
