@@ -279,7 +279,7 @@
                                 ' aria-controls="collapseA' + a + '" onclick="mymodule(' + v.idModule + ')" data-idModule="' + v.idModule + '">'
                                 + (v.module_name_l1 != '' && v.module_name_l1 != undefined ? v.module_name_l1 : 'Module ' + a) +
                                 '</button>' +
-                                '<a href="<?php echo base_url() ?>edit_module/' + v.idModule + '"><span class="la la-edit"></span></a>' +
+                                '<a href="<?php echo base_url() ?>index.php/edit_module/' + v.idModule + '"><span class="la la-edit"></span></a>' +
                                 '<a href="javascript:void(0)" onclick="getDelete(this)" data-id="' + v.idModule + '"><span class="la la-trash"></span></a>' +
                                 '</h5>' +
                                 '</div>' +

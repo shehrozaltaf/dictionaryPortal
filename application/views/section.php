@@ -415,7 +415,7 @@
                                 + (v.section_title_l1 != '' && v.section_title_l1 != undefined ? v.section_title_l1 : 'Section ' + a) +
                                 '</button>' +
                                 '<a href="javascript:void(0)" onclick="cloneModal(this)" data-idSection="' + v.idSection + '"><span class="la la-clone"></span></a>' +
-                                '<a href="<?php echo base_url() ?>edit_section/' + v.idSection + '"><span class="la la-edit"></span></a>' +
+                                '<a href="<?php echo base_url() ?>index.php/edit_section/' + v.idSection + '"><span class="la la-edit"></span></a>' +
                                 '<a href="javascript:void(0)" onclick="getDelete(this)" data-id="' + v.idSection + '"><span class="la la-trash"></span></a>' +
 
                                 '</h5>' +
@@ -484,9 +484,9 @@
                     }
                     $('#modal_project').modal('hide');
 
+                } else {
+                    toastMsg('Warning', 'No Section found for this Module. Please add Section.', 'warning');
                 }
-
-
             });
         } else {
             toastMsg('Error', 'Something went wrong', 'error');
