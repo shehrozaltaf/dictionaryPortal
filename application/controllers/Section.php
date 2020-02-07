@@ -375,66 +375,66 @@ class Section extends CI_controller
         echo $result;
     }
 
-    function add_sectiondetail_data2()
-    {
-        $Custom = new Custom();
-        $formArray = array();
-        $subformArray = array();
-        $formArray['idSection'] = $this->input->post('idSection');
-        $formArray['idModule'] = $this->input->post('idModule');
-        $formArray['id_crf'] = $this->input->post('id_crf');
-        $formArray['idProjects'] = $this->input->post('idProjects');
-        foreach ($_POST['data'] as $key => $value) {
-            $formArray['variable_name'] = $value['variable'];
-            $formArray['nature'] = $value['nature'];
-            $formArray['seq_no'] = (int)$key + 1;
-            $formArray['MinVal'] = (isset($value['min_val']) && $value['min_val'] != '' ? $value['min_val'] : '');
-            $formArray['MaxVal'] = (isset($value['max_val']) && $value['max_val'] != '' ? $value['max_val'] : '');
-            $formArray['skipQuestion'] = (isset($value['skipQuestion']) && $value['skipQuestion'] != '' ? $value['skipQuestion'] : '');
-            $formArray['required'] = (isset($value['required']) && $value['required'] != '' ? $value['required'] : '');
-            $formArray['readonly'] = (isset($value['readonly']) && $value['readonly'] != '' ? $value['readonly'] : '');
-            $formArray['label_l1'] = (isset($value['L1']) && $value['L1'] != '' ? $value['L1'] : '');
-            $formArray['label_l2'] = (isset($value['L2']) && $value['L2'] != '' ? $value['L2'] : '');
-            $formArray['label_l3'] = (isset($value['L3']) && $value['L3'] != '' ? $value['L3'] : '');
-            $formArray['label_l4'] = (isset($value['L4']) && $value['L4'] != '' ? $value['L4'] : '');
-            $formArray['label_l5'] = (isset($value['L5']) && $value['L5'] != '' ? $value['L5'] : '');
+    /*  function add_sectiondetail_data2()
+      {
+          $Custom = new Custom();
+          $formArray = array();
+          $subformArray = array();
+          $formArray['idSection'] = $this->input->post('idSection');
+          $formArray['idModule'] = $this->input->post('idModule');
+          $formArray['id_crf'] = $this->input->post('id_crf');
+          $formArray['idProjects'] = $this->input->post('idProjects');
+          foreach ($_POST['data'] as $key => $value) {
+              $formArray['variable_name'] = $value['variable'];
+              $formArray['nature'] = $value['nature'];
+              $formArray['seq_no'] = (int)$key + 1;
+              $formArray['MinVal'] = (isset($value['min_val']) && $value['min_val'] != '' ? $value['min_val'] : '');
+              $formArray['MaxVal'] = (isset($value['max_val']) && $value['max_val'] != '' ? $value['max_val'] : '');
+              $formArray['skipQuestion'] = (isset($value['skipQuestion']) && $value['skipQuestion'] != '' ? $value['skipQuestion'] : '');
+              $formArray['required'] = (isset($value['required']) && $value['required'] != '' ? $value['required'] : '');
+              $formArray['readonly'] = (isset($value['readonly']) && $value['readonly'] != '' ? $value['readonly'] : '');
+              $formArray['label_l1'] = (isset($value['L1']) && $value['L1'] != '' ? $value['L1'] : '');
+              $formArray['label_l2'] = (isset($value['L2']) && $value['L2'] != '' ? $value['L2'] : '');
+              $formArray['label_l3'] = (isset($value['L3']) && $value['L3'] != '' ? $value['L3'] : '');
+              $formArray['label_l4'] = (isset($value['L4']) && $value['L4'] != '' ? $value['L4'] : '');
+              $formArray['label_l5'] = (isset($value['L5']) && $value['L5'] != '' ? $value['L5'] : '');
 
-            $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'Y');
-            if (isset($value['options']) && $value['options'] != '') {
-                foreach ($value['options'] as $keys => $options) {
-                    if ($value['nature'] == 'SelectBox') {
-                        $subformArray['nature'] = 'Options';
-                    } elseif ($value['nature'] == 'Radio') {
-                        $subformArray['nature'] = 'RadioOptions';
-                    } elseif ($value['nature'] == 'Checkbox') {
-                        $subformArray['nature'] = 'COption';
-                    }
-                    $subformArray['idProjects'] = $formArray['idProjects'];
-                    $subformArray['id_crf'] = $formArray['id_crf'];
-                    $subformArray['idModule'] = $formArray['idModule'];
-                    $subformArray['idSection'] = $formArray['idSection'];
-                    $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? $options['option_var'] : '');
-                    $subformArray['option_title'] = (isset($options['option_title']) && $options['option_title'] != '' ? $options['option_title'] : '');
-                    $subformArray['label_l1'] = (isset($options['option_title_0']) && $options['option_title_0'] != '' ? $options['option_title_0'] : '');
-                    $subformArray['label_l2'] = (isset($options['option_title_1']) && $options['option_title_1'] != '' ? $options['option_title_1'] : '');
-                    $subformArray['label_l3'] = (isset($options['option_title_2']) && $options['option_title_2'] != '' ? $options['option_title_2'] : '');
-                    $subformArray['label_l4'] = (isset($options['option_title_3']) && $options['option_title_3'] != '' ? $options['option_title_3'] : '');
-                    $subformArray['label_l5'] = (isset($options['option_title_4']) && $options['option_title_4'] != '' ? $options['option_title_4'] : '');
-                    $subformArray['option_value'] = (isset($options['option_value']) && $options['option_value'] != '' ? $options['option_value'] : '');
-                    $subformArray['idParentQuestion'] = $formArray['variable_name'];
-                    $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
-                }
-            }
+              $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'Y');
+              if (isset($value['options']) && $value['options'] != '') {
+                  foreach ($value['options'] as $keys => $options) {
+                      if ($value['nature'] == 'SelectBox') {
+                          $subformArray['nature'] = 'Options';
+                      } elseif ($value['nature'] == 'Radio') {
+                          $subformArray['nature'] = 'RadioOptions';
+                      } elseif ($value['nature'] == 'Checkbox') {
+                          $subformArray['nature'] = 'COption';
+                      }
+                      $subformArray['idProjects'] = $formArray['idProjects'];
+                      $subformArray['id_crf'] = $formArray['id_crf'];
+                      $subformArray['idModule'] = $formArray['idModule'];
+                      $subformArray['idSection'] = $formArray['idSection'];
+                      $subformArray['variable_name'] = (isset($options['option_var']) && $options['option_var'] != '' ? $options['option_var'] : '');
+                      $subformArray['option_title'] = (isset($options['option_title']) && $options['option_title'] != '' ? $options['option_title'] : '');
+                      $subformArray['label_l1'] = (isset($options['option_title_0']) && $options['option_title_0'] != '' ? $options['option_title_0'] : '');
+                      $subformArray['label_l2'] = (isset($options['option_title_1']) && $options['option_title_1'] != '' ? $options['option_title_1'] : '');
+                      $subformArray['label_l3'] = (isset($options['option_title_2']) && $options['option_title_2'] != '' ? $options['option_title_2'] : '');
+                      $subformArray['label_l4'] = (isset($options['option_title_3']) && $options['option_title_3'] != '' ? $options['option_title_3'] : '');
+                      $subformArray['label_l5'] = (isset($options['option_title_4']) && $options['option_title_4'] != '' ? $options['option_title_4'] : '');
+                      $subformArray['option_value'] = (isset($options['option_value']) && $options['option_value'] != '' ? $options['option_value'] : '');
+                      $subformArray['idParentQuestion'] = $formArray['variable_name'];
+                      $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
+                  }
+              }
 
 
-            if ($InsertData) {
-                $result = 1;
-            } else {
-                $result = 2;
-            }
-        }
-        echo $result;
-    }
+              if ($InsertData) {
+                  $result = 1;
+              } else {
+                  $result = 2;
+              }
+          }
+          echo $result;
+      }*/
 
     function deleteSection()
     {
@@ -489,7 +489,6 @@ class Section extends CI_controller
             $Custom = new Custom();
             $idSectionDetail = $_POST['edit_idSectionDetail'];
             $editArr = array();
-
             $editArr['nature'] = (isset($_POST['edit_nature']) && $_POST['edit_nature'] != '' ? $_POST['edit_nature'] : '');
             if ($editArr['nature'] == 'Input') {
                 $editArr['nature_var'] = 'E';
@@ -506,7 +505,6 @@ class Section extends CI_controller
             } else {
                 $editArr['nature_var'] = '';
             }
-
             $editArr['MinVal'] = (isset($_POST['edit_MinVal']) && $_POST['edit_MinVal'] != '' ? $_POST['edit_MinVal'] : '');
             $editArr['MaxVal'] = (isset($_POST['edit_MaxVal']) && $_POST['edit_MaxVal'] != '' ? $_POST['edit_MaxVal'] : '');
             $editArr['skipQuestion'] = (isset($_POST['edit_skipQuestion']) && $_POST['edit_skipQuestion'] != '' ? $_POST['edit_skipQuestion'] : '');
@@ -518,7 +516,6 @@ class Section extends CI_controller
             $editArr['label_l3'] = (isset($_POST['edit_label_l3']) && $_POST['edit_label_l3'] != '' ? $_POST['edit_label_l3'] : '');
             $editArr['label_l4'] = (isset($_POST['edit_label_l4']) && $_POST['edit_label_l4'] != '' ? $_POST['edit_label_l4'] : '');
             $editArr['label_l5'] = (isset($_POST['edit_label_l5']) && $_POST['edit_label_l5'] != '' ? $_POST['edit_label_l5'] : '');
-
             $editArr['option_value'] = (isset($_POST['edit_option_value']) && $_POST['edit_option_value'] != '' ? $_POST['edit_option_value'] : '');
             $editArr['insertDB'] = (isset($_POST['edit_insertDB']) && $_POST['edit_insertDB'] != '' ? $_POST['edit_insertDB'] : '');
             $editArr['dbType'] = (isset($_POST['edit_dbType']) && $_POST['edit_dbType'] != '' ? $_POST['edit_dbType'] : '');
