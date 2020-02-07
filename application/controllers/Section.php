@@ -290,6 +290,7 @@ class Section extends CI_controller
                         $subformArray['idParentQuestion'] = trim($formArray['variable_name']);
                         $subformArray['seq_no'] = $formArray['seq_no'];
                         $subformArray['child_seq_no'] = $keys + 1;
+                        $subformArray['isActive'] = 1;
                         $checkChildVariable = $MSection->checkVariable_maxVariable($subformArray);
                         if (isset($checkChildVariable[0]->variable_name) && $checkChildVariable[0]->variable_name != '') {
                             $result[] = array('0' => 'error', '1' => 'Duplicate options variable: ' . $subformArray['variable_name']);

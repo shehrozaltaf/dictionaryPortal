@@ -77,7 +77,7 @@ class MSection extends CI_Model
 	projects.idProjects,
 	projects.project_name');
         $this->db->from('section_detail');
-        $this->db->join('section', 'section_detail.idSection = CONVERT(VARCHAR(20), "section"."idSection")', 'RIGHT');
+        $this->db->join('section', 'section_detail.idSection = section.idSection', 'RIGHT');
         $this->db->join('modules', 'section.idModule = modules.idModule', 'left');
         $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
         $this->db->join('projects', 'crf.idProjects = projects.idProjects', 'left');
@@ -180,7 +180,7 @@ class MSection extends CI_Model
 	section_detail.dbLength,
 	section_detail.nature ');
         $this->db->from('section_detail');
-        $this->db->join('section', 'section_detail.idSection =CONVERT(VARCHAR(20), "section"."idSection")', 'RIGHT');
+        $this->db->join('section', 'section_detail.idSection =section.idSection', 'RIGHT');
         $this->db->join('modules', 'section.idModule = modules.idModule', 'left');
         $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
         $this->db->where('crf.idProjects', $searchdata['idProjects']);
