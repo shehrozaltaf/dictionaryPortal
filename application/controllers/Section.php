@@ -242,7 +242,7 @@ class Section extends CI_controller
         if (isset($maxVariable[0]->maxVariable) && $maxVariable[0]->maxVariable != '') {
             $formArray['seq_no'] = $maxVariable[0]->maxVariable + 1;
         } else {
-            $formArray['seq_no'] = 0;
+            $formArray['seq_no'] = 1;
         }
 
         $checkVariable = $MSection->checkVariable_maxVariable($formArray);
@@ -383,12 +383,10 @@ class Section extends CI_controller
         $formArray['idModule'] = $this->input->post('idModule');
         $formArray['id_crf'] = $this->input->post('id_crf');
         $formArray['idProjects'] = $this->input->post('idProjects');
-
-
         foreach ($_POST['data'] as $key => $value) {
             $formArray['variable_name'] = $value['variable'];
             $formArray['nature'] = $value['nature'];
-            $formArray['seq_no'] = $key;
+            $formArray['seq_no'] = (int)$key + 1;
             $formArray['MinVal'] = (isset($value['min_val']) && $value['min_val'] != '' ? $value['min_val'] : '');
             $formArray['MaxVal'] = (isset($value['max_val']) && $value['max_val'] != '' ? $value['max_val'] : '');
             $formArray['skipQuestion'] = (isset($value['skipQuestion']) && $value['skipQuestion'] != '' ? $value['skipQuestion'] : '');
