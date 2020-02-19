@@ -725,15 +725,24 @@ class Reports extends CI_controller
             $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Table Name');
             $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
             $rowCount = 1;
+
             foreach ($data as $list) {
                 $rowCount++;
+                if (isset($list->option_value) && $list->option_value != '' && $list->option_value != null) {
+                    $op = $list->option_value;
+                    $li = $list->label_l1;
+                } else {
+                    $op = '';
+                    $li = '';
+                }
                 $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
                 $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($list->variable_name));
                 $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
-                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
-                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $op);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $li);
                 $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
                 $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->tableName);
+
                 if (isset($list->myrow_options) && $list->myrow_options != '') {
                     foreach ($list->myrow_options as $options) {
                         $rowCount++;
