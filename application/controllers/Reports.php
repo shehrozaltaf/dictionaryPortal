@@ -528,7 +528,7 @@ class Reports extends CI_controller
         $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
         $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
         $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-        if (isset($_REQUEST['language']) && $_REQUEST['language'] != '') {
+        if (isset($_REQUEST['language']) && $_REQUEST['language'] != '' && $_REQUEST['language'] != '0') {
             $lang = 'label_' . $_REQUEST['language'];
         } else {
             $lang = 'label_l1';

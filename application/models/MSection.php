@@ -189,9 +189,10 @@ class MSection extends CI_Model
         }
         $this->db->where('section_detail.nature!="Title"');
         $this->db->where('section.isActive', 1);
+        $this->db->where('section_detail.isActive', 1);
+        $this->db->order_by('section_detail.variable_name', 'ASC');
         $this->db->order_by('section_detail.seq_no', 'asc');
         $this->db->order_by('section_detail.child_seq_no', 'asc');
-        $this->db->order_by('section_detail.variable_name', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }

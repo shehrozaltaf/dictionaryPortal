@@ -62,8 +62,7 @@
                                                             <select id="idProject" name="idProject"
                                                                     onchange="changeProject()"
                                                                     class="form-control">
-                                                                <option value="0" disabled
-                                                                        readonly="readonly" selected>
+                                                                <option value="0" selected>
                                                                     Select Project
                                                                 </option>
                                                                 <?php foreach ($projects as $key => $values) {
@@ -80,8 +79,7 @@
                                                         <label for="crf_id">CRF</label>
                                                         <select id="crf_id" name="crf_id" class="form-control"
                                                                 onchange="changeCrf()">
-                                                            <option value="0" disabled
-                                                                    readonly="readonly" selected>
+                                                            <option value="0" selected>
                                                                 Select CRF
                                                             </option>
                                                         </select>
@@ -94,8 +92,7 @@
                                                         <label for="idModule">Module</label>
                                                         <select id="idModule" name="idModule" class="form-control"
                                                                 onchange="changeModule() ">
-                                                            <option value="0" disabled
-                                                                    readonly="readonly" selected>
+                                                            <option value="0" selected>
                                                                 Select Module
                                                             </option>
                                                         </select>
@@ -107,8 +104,7 @@
                                                     <div class="form-group">
                                                         <label for="idSection">Section</label>
                                                         <select id="idSection" name="idSection" class="form-control">
-                                                            <option value="0" disabled
-                                                                    readonly="readonly" selected>
+                                                            <option value="0" selected>
                                                                 Select Section
                                                             </option>
                                                         </select>
@@ -135,7 +131,7 @@
                                         </button>
                                         <button type="button" class="btn bg-gradient-x-orange-yellow   white"
                                                 onclick="getStingsData()">
-                                            <i class="la la-file-o"></i> Get Stings
+                                            <i class="la la-file-o"></i> Get Strings
                                         </button>
                                         <button type="button" class="btn bg-gradient-x-red-pink    white"
                                                 onclick="getSaveDraftData()">
@@ -412,7 +408,7 @@
         data['idProjects'] = $('#idProject').val();
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != '0' && data['idProjects'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Crf/getCRFByProject'  ?>', data, 'POST', function (res) {
-                var items = '<option value="0" disabled readonly="readonly" selected>Select CRF</option>';
+                var items = '<option value="0"   selected>Select CRF</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -424,6 +420,8 @@
                 }
                 $('#crf_id').html('').html(items);
             });
+        } else {
+            $('#crf_id').html('');
         }
     }
 
@@ -432,7 +430,7 @@
         data['idCrf'] = $('#crf_id').val();
         if (data['idCrf'] != '' && data['idCrf'] != undefined && data['idCrf'] != '0' && data['idCrf'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Module/getModuleByCrf'  ?>', data, 'POST', function (res) {
-                var items = '<option value="0" disabled readonly="readonly" selected>Select Module</option>';
+                var items = '<option value="0"  selected>Select Module</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -447,7 +445,7 @@
             var html_Lang = '<label for="language">Language</label>' +
                 '<select id="language" name="language" class="form-control">';
             CallAjax('<?php echo base_url() . 'index.php/CRF/getCrfLanguages'  ?>', data, 'POST', function (res) {
-                html_Lang += '<option value="0" disabled readonly="readonly" selected>Select Module</option>';
+                html_Lang += '<option value="0"  selected>Select Module</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -476,6 +474,9 @@
                 html_Lang += '</select>';
                 $('.languages').html('').html(html_Lang);
             });
+        } else {
+            $('#idModule').html('');
+            $('.languages').html('');
         }
     }
 
@@ -484,7 +485,7 @@
         data['idModule'] = $('#idModule').val();
         if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != '0' && data['idModule'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Section/getSectionByModule'  ?>', data, 'POST', function (res) {
-                var items = '<option value="0" disabled readonly="readonly" selected>Select Section</option>';
+                var items = '<option value="0"   selected>Select Section</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -496,6 +497,8 @@
                 }
                 $('#idSection').html('').html(items);
             });
+        } else {
+            $('#idSection').html('');
         }
     }
 
