@@ -340,6 +340,7 @@ class Reports extends CI_controller
     <ScrollView style="@style/i_scrollview"     android:fadeScrollbars="false"  android:fillViewport="true"  
     android:scrollbarSize="10dip" tools:context=".ui.' . $xml_layout_name . '">
    <LinearLayout android:id="@+id/GrpName" android:layout_width="match_parent"  android:layout_height="wrap_content"android:orientation="vertical">';
+
             foreach ($data as $key => $value) {
                 $xml .= "\n\n" . ' <!-- ' . strtolower($value->variable_name) . '  ' . $value->nature . '   -->' . "\n";
                 $xml .= '<androidx.cardview.widget.CardView
@@ -368,7 +369,6 @@ class Reports extends CI_controller
                                 android:tag="0">';
                     }
                     foreach ($value->myrow_options as $options) {
-
                         if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '"
@@ -411,11 +411,8 @@ class Reports extends CI_controller
                         android:text="@string/' . strtolower($options->variable_name) . '" />
                             <com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/' . strtolower($options->variable_name) . '"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" 
                                     android:hint="@string/' . strtolower($options->variable_name) . '"
-                                    style="@style/EditTextAlphaNumeric"
-                                    android:inputType="number"
+                                    style="@style/EditTextNum" 
                                     app:mask="##"
                                     app:maxValue="' . $maxVal . '"
                                     app:minValue="' . $minVal . '"

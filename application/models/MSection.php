@@ -16,6 +16,7 @@ class MSection extends CI_Model
         $this->db->select('*');
         $this->db->from('section');
         $this->db->where('isActive', 1);
+        $this->db->order_by('section.sort_no', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
@@ -33,6 +34,7 @@ class MSection extends CI_Model
             $this->db->where('idSection', $searchdata['idSection']);
         }
         $this->db->where('isActive', 1);
+        $this->db->order_by('section.sort_no', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
@@ -47,6 +49,7 @@ class MSection extends CI_Model
         $this->db->from('section');
         $this->db->where('idSection', $idSection);
         $this->db->where('isActive', 1);
+        $this->db->order_by('section.sort_no', 'asc');
         $query = $this->db->get();
         return $query->result();
     }
@@ -83,6 +86,7 @@ class MSection extends CI_Model
         $this->db->join('projects', 'crf.idProjects = projects.idProjects', 'left');
         $this->db->where('section.idSection', $idSectione);
         $this->db->order_by('section_detail.variable_name', 'desc');
+
         $this->db->limit('1');
         $query = $this->db->get();
         return $query->result();

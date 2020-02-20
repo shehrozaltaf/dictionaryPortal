@@ -356,14 +356,10 @@ class Section extends CI_controller
                 $subformArray['MinVal'] = (isset($options['option_min_val']) && $options['option_min_val'] != '' ? $options['option_min_val'] : '');
                 $subformArray['MaxVal'] = (isset($options['option_max_val']) && $options['option_max_val'] != '' ? $options['option_max_val'] : '');
                 $subformArray['skipQuestion'] = (isset($options['option_skipQuestion']) && $options['option_skipQuestion'] != '' ? $options['option_skipQuestion'] : '');
-
                 $subformArray['dbType'] = (isset($options['OptionDbType']) && $options['OptionDbType'] != '' ? $options['OptionDbType'] : '');
                 $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
                 $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
-
-
                 $subformArray['idParentQuestion'] = (isset($options['OptionParentQuestion']) && $options['OptionParentQuestion'] != '' ? $options['OptionParentQuestion'] : '');
-
                 $InsertData = $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
         }
@@ -712,7 +708,6 @@ class Section extends CI_controller
         echo $result;
     }
 
-
     /*function sortQuestions()
     {
         if (isset($_POST) && $_POST != '') {
@@ -733,7 +728,6 @@ class Section extends CI_controller
         }
         echo $result;
     }*/
-
 
     /*Upload Data View*/
     function upload_data()
@@ -847,9 +841,53 @@ class Section extends CI_controller
         echo json_encode($data);
     }
 
+    /*Missing Variable*/
+
+    function missinglabel()
+    {
+        $data = array();
+        $data['slug'] = (isset($_REQUEST['project']) && $_REQUEST['project'] != '' ? $_REQUEST['project'] : '');
+        if (!isset($slug) || $slug == '' || $slug == '$1') {
+            $MProjects = new MProjects();
+            $data['projects'] = $MProjects->getAllProjects();
+        } else {
+            $data['projects'] = '';
+        }
+        $this->load->view('include/header');
+        $this->load->view('include/sidebar');
+        $this->load->view('missinglabel', $data);
+        $this->load->view('include/footer');
+    }
+
+    function getMissingLabelData()
+    {
+        $this->load->model('mcrf');
+        $MCRF = new MCrf();
+        $idProjects = 14;
+        $idCRF = 26;
+        $getCRFByProject = $MCRF->getCrfLang($idCRF);
+        $thead = '<tr>
+                <th>Variable Name</th>
+                <th>Type</th>';
+        for ($i = 1; $i <= 5; $i++) {
+            $l = 'l' . $i;
+            if (isset($getCRFByProject[0]->$l) && $getCRFByProject[0]->$l != '') {
+                $thead .= '<th>' . $getCRFByProject[0]->$l . '</th>';
+            }
+        }
+        $thead .= '</tr>';
+        echo $thead;
+        /* var tableHead = '<tr>' +
+         '<th class="pname">Variable Name</th>' +
+         '<th>Type</th>' +
+         '<th>English</th>' +
+         '<th>Value</th>' +
+         '<th>Action</th>' +
+         '</tr>';*/
+        echo '<pre>';
+        print_r($getCRFByProject);
+        echo '</pre>';
+
+    }
+
 } ?>
-
-
-
-
-

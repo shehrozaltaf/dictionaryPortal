@@ -139,6 +139,10 @@
                     <li class="section_add"><a class="menu-item "
                                                href="<?php echo base_url('/index.php/add_section') ?>">Add Section</a>
                     </li>
+                    <li class="mysection_missinglabel">
+                        <a class="menu-item " href="<?php echo base_url('/index.php/missinglabel') ?>">Missing
+                            Variables</a>
+                    </li>
                 </ul>
             </li>
             <li class=" nav-item myreport">
