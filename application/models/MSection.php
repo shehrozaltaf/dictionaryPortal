@@ -200,4 +200,41 @@ class MSection extends CI_Model
         $query = $this->db->get();
         return $query->result();
     }
+
+    /*getMissingLabels*/
+    function getMissingLabels($searchdata)
+    {
+        $this->db->select('section_detail.variable_name,
+section_detail.idSectionDetail,
+section_detail.label_l1,
+section_detail.label_l2,
+section_detail.label_l3,
+section_detail.label_l4,
+section_detail.label_l5');
+        $this->db->from('section_detail');
+        if (isset($searchdata['idProjects']) && $searchdata['idProjects'] != '' && $searchdata['idProjects'] != null) {
+            $this->db->where('section_detail.idProjects', $searchdata['idProjects']);
+        }
+        if (isset($searchdata['idCRF']) && $searchdata['idCRF'] != '' && $searchdata['idCRF'] != null) {
+            $this->db->where('section_detail.id_crf', $searchdata['idCRF']);
+        }
+        $whereLabel = '';
+        $whereLabel .= " label_l1 is null || label_l1='' ";
+        if (isset($searchdata['label_l2']) && $searchdata['label_l2'] != '' && $searchdata['label_l2'] != null) {
+            $whereLabel .= " || label_l2 is null || label_l2='' ";
+        }
+        if (isset($searchdata['label_l3']) && $searchdata['label_l3'] != '' && $searchdata['label_l3'] != null) {
+            $whereLabel .= " || label_l3 is null || label_l3='' ";
+        }
+        if (isset($searchdata['label_l4']) && $searchdata['label_l4'] != '' && $searchdata['label_l4'] != null) {
+            $whereLabel .= " || label_l4 is null || label_l4='' ";
+        }
+        if (isset($searchdata['label_l5']) && $searchdata['label_l5'] != '' && $searchdata['label_l5'] != null) {
+            $whereLabel .= " || label_l5 is null || label_l5='' ";
+        }
+        $this->db->where('section_detail.isActive', 1);
+        $this->db->where($whereLabel);
+        $query = $this->db->get();
+        return $query->result();
+    }
 }

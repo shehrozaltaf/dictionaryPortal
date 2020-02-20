@@ -861,32 +861,113 @@ class Section extends CI_controller
 
     function getMissingLabelData()
     {
+
         $this->load->model('mcrf');
-        $MCRF = new MCrf();
-        $idProjects = 14;
-        $idCRF = 26;
-        $getCRFByProject = $MCRF->getCrfLang($idCRF);
-        $thead = '<tr>
-                <th>Variable Name</th>
-                <th>Type</th>';
-        for ($i = 1; $i <= 5; $i++) {
-            $l = 'l' . $i;
-            if (isset($getCRFByProject[0]->$l) && $getCRFByProject[0]->$l != '') {
-                $thead .= '<th>' . $getCRFByProject[0]->$l . '</th>';
+        $idProjects = $_REQUEST['Projects'];
+        $idCRF = $_REQUEST['crf'];
+        $MCrf = new MCrf();
+        $getCrfLang = $MCrf->getCrfLang($idCRF);
+        $thead = '<thead><th>Variable</th>';
+        $l1 = 'N';
+        $l2 = 'N';
+        $l3 = 'N';
+        $l4 = 'N';
+        $l5 = 'N';
+        $searchData = array();
+        foreach ($getCrfLang as $crf) {
+            if (isset($crf->l1) && $crf->l1 != '') {
+                $l1 = 'Y';
+                $searchData['label_l1'] = 'Y';
+                $thead .= '<th>' . $crf->l1 . '</th>';
+            }
+            if (isset($crf->l2) && $crf->l2 != '') {
+                $l2 = 'Y';
+                $searchData['label_l2'] = 'Y';
+                $thead .= '<th>' . $crf->l2 . '</th>';
+            }
+            if (isset($crf->l3) && $crf->l3 != '') {
+                $l3 = 'Y';
+                $searchData['label_l3'] = 'Y';
+                $thead .= '<th>' . $crf->l3 . '</th>';
+            }
+            if (isset($crf->l4) && $crf->l4 != '') {
+                $l4 = 'Y';
+                $searchData['label_l4'] = 'Y';
+                $thead .= '<th>' . $crf->l4 . '</th>';
+            }
+            if (isset($crf->l5) && $crf->l5 != '') {
+                $l5 = 'Y';
+                $searchData['label_l5'] = 'Y';
+                $thead .= '<th>' . $crf->l5 . '</th>';
             }
         }
-        $thead .= '</tr>';
-        echo $thead;
-        /* var tableHead = '<tr>' +
-         '<th class="pname">Variable Name</th>' +
-         '<th>Type</th>' +
-         '<th>English</th>' +
-         '<th>Value</th>' +
-         '<th>Action</th>' +
-         '</tr>';*/
-        echo '<pre>';
-        print_r($getCRFByProject);
-        echo '</pre>';
+        $thead .= '</thead>';
+        $MSection = new MSection();
+
+        $searchData['idProjects'] = $idProjects;
+        $searchData['idCRF'] = $idCRF;
+        $data = $MSection->getMissingLabels($searchData);
+        $tbody = '';
+        foreach ($data as $key => $values) {
+            $tbody .= '<tr>
+                       <td>' . $values->variable_name . '</td>';
+            if ($l1 == 'Y') {
+                $tbody .= '<td>' . $values->label_l1 . '</td>';
+            }
+            if ($l2 == 'Y') {
+                $tbody .= '<td>' . $values->label_l2 . '</td>';
+            }
+            if ($l3 == 'Y') {
+                $tbody .= '<td>' . $values->label_l3 . '</td>';
+            }
+            if ($l4 == 'Y') {
+                $tbody .= '<td>' . $values->label_l4 . '</td>';
+            }
+            if ($l5 == 'Y') {
+                $tbody .= '<td>' . $values->label_l5 . '</td>';
+            }
+            $tbody .= ' </tr>';
+        }
+        $table = $thead . $tbody;
+        echo $table;
+
+    }
+
+    function getMissingLabelData2()
+    {
+        $this->load->model('mcrf');
+        $MSection = new MSection();
+        $idProjects = 14;
+        $idCRF = 26;
+        $orderindex = (isset($_REQUEST['order'][0]['column']) ? $_REQUEST['order'][0]['column'] : '');
+        $orderby = (isset($_REQUEST['columns'][$orderindex]['name']) ? $_REQUEST['columns'][$orderindex]['name'] : '');
+        $searchData = array();
+        $searchData['start'] = (isset($_REQUEST['start']) && $_REQUEST['start'] != '' && $_REQUEST['start'] != 0 ? $_REQUEST['start'] : 0);
+        $searchData['length'] = (isset($_REQUEST['length']) && $_REQUEST['length'] != '' ? $_REQUEST['length'] : 25);
+        $searchData['search'] = (isset($_REQUEST['search']['value']) && $_REQUEST['search']['value'] != '' ? $_REQUEST['search']['value'] : '');
+        $searchData['orderby'] = (isset($orderby) && $orderby != '' ? $orderby : 'idProjects');
+        $searchData['ordersort'] = (isset($_REQUEST['order'][0]['dir']) && $_REQUEST['order'][0]['dir'] != '' ? $_REQUEST['order'][0]['dir'] : 'desc');
+        $searchData['idProjects'] = $idProjects;
+        $searchData['idCRF'] = $idCRF;
+        $data = $MSection->getMissingLabels($searchData);
+
+
+        $result["draw"] = (isset($_REQUEST['draw']) && $_REQUEST['draw'] != '' ? $_REQUEST['draw'] : 0);
+        $totalsearchData = array();
+        $totalsearchData['start'] = 0;
+        $totalsearchData['length'] = 100000;
+        $totalsearchData['search'] = (isset($_REQUEST['search']['value']) && $_REQUEST['search']['value'] != '' ? $_REQUEST['search']['value'] : '');
+        $totalsearchData = array();
+        $totalsearchData['start'] = 0;
+        $totalsearchData['length'] = 100000;
+        $totalsearchData['search'] = (isset($_REQUEST['search']['value']) && $_REQUEST['search']['value'] != '' ? $_REQUEST['search']['value'] : '');
+        $totalsearchData['idProjects'] = $idProjects;
+        $totalsearchData['idCRF'] = $idCRF;
+        $totalrecords = $MSection->getMissingLabels($totalsearchData);
+        $result["recordsTotal"] = count($totalrecords);
+        $result["recordsFiltered"] = count($totalrecords);
+        $result["data"] = $data;
+        echo json_encode($result, true);
 
     }
 

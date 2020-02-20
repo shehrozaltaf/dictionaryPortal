@@ -37,9 +37,6 @@
                                     <div class="table-responsive">
                                         <table id="my_table_pro"
                                                class="table table-striped table-bordered show-child-rows">
-                                            <thead></thead>
-                                            <tbody></tbody>
-                                            <tfoot></tfoot>
                                         </table>
                                     </div>
                                 </div>
@@ -81,8 +78,7 @@
 
                 <div class="form-group">
                     <label for="selectIdCRF_clone">Select CRF: </label>
-                    <select id="selectIdCRF_clone" name="selectIdCRF_clone" class="form-control"
-                            onchange="selectCRF(this)">
+                    <select id="selectIdCRF_clone" name="selectIdCRF_clone" class="form-control">
                         <option value="0" disabled readonly="readonly" selected>Select CRF</option>
                     </select>
                 </div>
@@ -136,22 +132,33 @@
     }
 
     function selectCRF(obj) {
-        alert(1);
+        var a = $(obj).children("option:selected");
         var html = "<tr>" +
-            "<th>Variable Name</th>";
+            "<th width='10%'>Variable Name</th>";
         for (var i = 1; i <= 5; i++) {
-            console.log($(obj).attr('data-l' + i));
-            var l = $(obj).attr('data-l' + i);
-            if (l != undefined && l != '') {
-                html += "<th>" + l + "</th>";
+            console.log($(a).attr('data-l' + i));
+            var l = $(a).attr('data-l' + i);
+            if (l != undefined && l != '' && l != null && l != 'null') {
+                html += "<th width='20%'>" + l + "</th>";
             }
         }
         html += "</tr>";
-        $('#my_table_pro').find('thead').html(html);
-        $('#my_table_pro').find('tfoot').html(html);
+        // $('#my_table_pro').find('thead').html(html);
+        // $('#my_table_pro').find('tfoot').html(html);
     }
 
     function getData() {
+        var data = {};
+        data['Projects'] = $('#selectidProjects_clone').val();
+        data['crf'] = $('#selectIdCRF_clone').val();
+        CallAjax("<?php echo base_url() . 'index.php/Section/getMissingLabelData' ?>", data, "POST", function (res) {
+            $('#my_table_pro').html(res).DataTable();
+            $('#modal_project').modal('hide');
+        });
+
+    }
+
+    function getData2() {
         var data = {};
         data['Projects'] = 14;
         data['crf'] = 26;
@@ -164,28 +171,15 @@
             iDisplayLength: 25,
             dom: 'Bfrtip',
             ajax: {
-                "url": "<?php echo base_url() . 'index.php/Project/getProjects' ?>",
+                "url": "<?php echo base_url() . 'index.php/Section/getMissingLabelData' ?>",
                 "method": "GET",
                 "data": data,
-
             },
             columns: [
-                {
-                    "width": "3%",
-                    "class": "details-control",
-                    "orderable": false,
-                    "data": null,
-                    "defaultContent": ""
-                },
-                {"data": "project_name", "class": "pname"},
-                {"data": "short_title"},
-                {"data": "languages"},
-                {"data": "no_of_crf"},
-                {"data": "no_of_sites"},
-                {"data": "startdate"},
-                {"data": "enddate"},
-                {"data": "email_of_person"},
-                {"data": "action"},
+                {"data": "variable_name", "class": "pname"},
+                {"data": "label_l1"},
+                {"data": "label_l2", "class": "Urdu"},
+                {"data": "label_l3", "class": "Sindhi"}
             ],
             order: [
                 [0, 'desc']
