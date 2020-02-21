@@ -145,10 +145,10 @@
                                                 onclick="getTableQuery()">
                                             <i class="la la-file-excel-o"></i> Get Database Query
                                         </button>
-                                        <!--<button type="button" class="btn bg-gradient-x-blue-cyan white"
+                                        <button type="button" class="btn bg-gradient-x-blue-cyan white"
                                                 onclick="getExcelData()">
                                             <i class="la la-file-excel-o"></i> Get Excel
-                                        </button>-->
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -339,25 +339,25 @@
         $('#idSection').css('border', '1px solid #babfc7');
         var data = {};
         data['idProjects'] = $('#idProject').val();
-        if (data['idProjects'] == '' || data['idProjects'] == undefined) {
+        if (data['idProjects'] == '' || data['idProjects'] == undefined || data['idProjects'] == 0) {
             $('#idProject').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
             return false;
         }
         data['crf_id'] = $('#crf_id').val();
-        if (data['crf_id'] == '' || data['crf_id'] == undefined) {
+        if (data['crf_id'] == '' || data['crf_id'] == undefined || data['crf_id'] == 0) {
             $('#crf_id').css('border', '1px solid red');
             toastMsg('CRF', 'Invalid CRF', 'error');
             return false;
         }
         data['idModule'] = $('#idModule').val();
-        if (data['idModule'] == '' || data['idModule'] == undefined) {
+        if (data['idModule'] == '' || data['idModule'] == undefined || data['idModule'] == 0) {
             $('#idModule').css('border', '1px solid red');
             toastMsg('Module', 'Invalid Module', 'error');
             return false;
         }
         data['idSection'] = $('#idSection').val();
-        if (data['idSection'] == '' || data['idSection'] == undefined) {
+        if (data['idSection'] == '' || data['idSection'] == undefined || data['idSection'] == 0) {
             $('#idSection').css('border', '1px solid red');
             toastMsg('Section', 'Invalid Section', 'error');
             return false;

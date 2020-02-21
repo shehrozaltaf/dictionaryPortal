@@ -106,9 +106,27 @@ class MSection extends CI_Model
         return $query->result();
     }
 
-    function checkVariable_maxVariable($searchdata)
+    function maxVariable($searchdata)
     {
         $this->db->select('variable_name, MAX(seq_no) as maxVariable');
+        $this->db->from('section_detail');
+        $this->db->where('isActive', 1);
+        if (isset($searchdata['idModule']) && $searchdata['idModule'] != '' && $searchdata['idModule'] != null) {
+            $this->db->where('idModule', $searchdata['idModule']);
+        }
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $this->db->where('idSection', $searchdata['idSection']);
+        }
+        if (isset($searchdata['variable_name']) && $searchdata['variable_name'] != '' && $searchdata['variable_name'] != null) {
+            $this->db->where('variable_name', $searchdata['variable_name']);
+        }
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function checkVariable_maxVariable($searchdata)
+    {
+        $this->db->select('variable_name');
         $this->db->from('section_detail');
         $this->db->where('isActive', 1);
         if (isset($searchdata['idModule']) && $searchdata['idModule'] != '' && $searchdata['idModule'] != null) {

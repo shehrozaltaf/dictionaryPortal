@@ -103,7 +103,7 @@ class Reports extends CI_controller
             $project_name = $GetReportData[0]->project_name;
             $short_title = strtoupper($GetReportData[0]->short_title);
             $title = $project_name . ' (' . $short_title . ')';
-            $pdf = new TCPDF('L', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+            $pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
             $pdf->SetCreator(PDF_CREATOR);
             $pdf->SetAuthor('Dictionary Portal');
             $pdf->SetTitle($title);
@@ -130,7 +130,7 @@ class Reports extends CI_controller
             foreach ($GetReportData as $projectsCrfs) {
                 $searchData['idCRF'] = $projectsCrfs->id_crf;
                 $crf_name = $projectsCrfs->crf_name;
-                $crf_title = $crf_name . ' (' . strtoupper($projectsCrfs->crf_title) . ')';
+                $crf_title = $crf_name . (isset($projectsCrfs->crf_title) && $projectsCrfs->crf_title != '' ? ' (' . strtoupper($projectsCrfs->crf_title) . ')' : '');
                 $Mainheader = "<div class='head'>
                                     <h1 class='mainheading'>" . $title . "</h1>
                                     <h3 class='subheading'>" . $crf_title . "</h3>
@@ -147,7 +147,8 @@ class Reports extends CI_controller
                     }
                     if (isset($valueModule->module_name_l2) && $valueModule->module_name_l2 != '' &&
                         $displaylanguagel2 == 'on') {
-                        $subhtml .= "<h4>" . $valueModule->module_name_l2 . "</h4><h5>" . $valueModule->module_desc_l2 . "</h5>";
+                        $subhtml .= "<h4>" . $valueModule->module_name_l2 . "</h4>" .
+                            (isset($valueModule->module_desc_l2) && $valueModule->module_desc_l2 != '' ? '<h5>' . $valueModule->module_desc_l2 . '</h5>' : '');
                     }
                     if (isset($valueModule->module_name_l3) && $valueModule->module_name_l3 != '' &&
                         $displaylanguagel3 == 'on') {
@@ -186,13 +187,13 @@ class Reports extends CI_controller
                         if ($l == 1) {
                             $optionsubhtml .= $subhtml;
                         }
-                        $optionsubhtml .= '<table border="1" cellpadding="2" cellspacing="1"    >
+                        $optionsubhtml .= '<table border="1" cellpadding="1" cellspacing="0"    >
                                        <tr  align="center">
                                                  <th colspan="4" >' . $sectionHeading . '</th>
                                             </tr>
                                             <tr  align="center">
-                                                <th  width="7%">Variable</th>
-                                                <th width="50%">Label</th> 
+                                                <th width="12%">Variable</th>
+                                                <th width="45%">Label</th> 
                                                 <th width="36%">Options</th>
                                                 <th width="7%">Other</th>
                                             </tr>';
@@ -213,24 +214,24 @@ class Reports extends CI_controller
                                 }
                                 if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
                                     $displaylanguagel2 == 'on') {
-                                    $l2sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l2);
+                                    $l2sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l2);
                                 }
                                 if (isset($valueSectionDetail->label_l3) && $valueSectionDetail->label_l3 != '' &&
                                     $displaylanguagel3 == 'on') {
-                                    $l3sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l3);
+                                    $l3sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l3);
                                 }
                                 if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
                                     $displaylanguagel4 == 'on') {
-                                    $l4sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l4);
+                                    $l4sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l4);
                                 }
                                 if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
                                     $displaylanguagel5 == 'on') {
-                                    $l5sec = '<br>' . htmlspecialchars($valueSectionDetail->label_l5);
+                                    $l5sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l5);
                                 }
                                 $optionsubhtml .= '<tr >
-                                       <td  width="7%"  align="center"><strong>' . strtolower($valueSectionDetail->variable_name) . '</strong><br>
+                                       <td  width="12%"  align="center"><strong>' . strtolower($valueSectionDetail->variable_name) . '</strong><br>
                                        <small>' . $valueSectionDetail->nature . '</small></td>
-                                       <td width="50%">   
+                                       <td width="45%">   
                                             ' . $l1sec . '
                                              ' . $l2sec . ' 
                                              ' . $l3sec . ' 
@@ -783,6 +784,73 @@ class Reports extends CI_controller
         $MSection = new MSection();
         $searchData = array();
         $searchData['idSection'] = $slug;
+        $searchData = array();
+        $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
+        $result = $MSection->getSectionDetailData($searchData);
+        $data = $this->questionArr($result);
+        $objPHPExcel = new    PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Language 1');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Language 2');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Language 3');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Language 4');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Language 5');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Values');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Type');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Skip');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Min Range');
+        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Max Range');
+        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+        $rowCount = 1;
+        foreach ($data as $list) {
+            $rowCount++;
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->label_l1);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l2);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->label_l3);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->label_l4);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->label_l5);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->option_value);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->nature);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->skipQuestion);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->MinVal);
+            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->MaxVal);
+            if (isset($list->myrow_options) && $list->myrow_options != '') {
+                foreach ($list->myrow_options as $options) {
+                    $rowCount++;
+                    $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->label_l1);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l2);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->label_l3);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l4);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->label_l5);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->option_value);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->nature);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->skipQuestion);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->MinVal);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->MaxVal);
+
+                }
+            }
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
+    }
+
+    /*function getIrfanExcel($slug)
+    {
+        ob_end_clean();
+        $this->load->model('msection');
+        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
+        $this->load->library('excel');
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idSection'] = $slug;
         $myresult = array();
         $searchData = array();
         $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
@@ -848,7 +916,7 @@ class Reports extends CI_controller
         header('Cache-Control: max-age=0'); //no cache
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
-    }
+    }*/
 
     function getTableQuery()
     {

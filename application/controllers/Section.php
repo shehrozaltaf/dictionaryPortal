@@ -238,7 +238,8 @@ class Section extends CI_controller
         $maxVarArray = array();
         $maxVarArray['idSection'] = $formArray['idSection'];
         $maxVarArray['idModule'] = $formArray['idModule'];
-        $maxVariable = $MSection->checkVariable_maxVariable($maxVarArray);
+        $maxVariable = $MSection->maxVariable($maxVarArray);
+
         if (isset($maxVariable[0]->maxVariable) && $maxVariable[0]->maxVariable != '') {
             $formArray['seq_no'] = $maxVariable[0]->maxVariable + 1;
         } else {
@@ -246,6 +247,7 @@ class Section extends CI_controller
         }
 
         $checkVariable = $MSection->checkVariable_maxVariable($formArray);
+
         if (isset($checkVariable[0]->variable_name) && $checkVariable[0]->variable_name != '') {
             $result[] = array('0' => 'error', '1' => 'Duplicate question variable: ' . $formArray['variable_name']);
         } else {
