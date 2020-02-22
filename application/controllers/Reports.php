@@ -170,7 +170,7 @@ class Reports extends CI_controller
                     foreach ($getSections as $keySection => $valueSection) {
                         $l++;
                         if (isset($valueSection->section_title) && $valueSection->section_title != '') {
-                            $sectionHeading = $valueModule->variable_module . $valueSection->section_var_name . ": " . htmlentities($valueSection->section_title) . " : " . $valueSection->section_desc;
+                            $sectionHeading = $valueSection->section_var_name . ": " . htmlentities($valueSection->section_title) . " : " . $valueSection->section_desc;
                         }
                         if (isset($searchData['idSection']) && $searchData['idSection'] != 0) {
                             $ModuleSearchData['idSection'] = $searchData['idSection'];
