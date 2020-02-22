@@ -236,7 +236,7 @@ section_detail.label_l5');
         if (isset($searchdata['idCRF']) && $searchdata['idCRF'] != '' && $searchdata['idCRF'] != null) {
             $this->db->where('section_detail.id_crf', $searchdata['idCRF']);
         }
-        $whereLabel = '';
+        $whereLabel = '(';
         $whereLabel .= " label_l1 is null || label_l1='' ";
         if (isset($searchdata['label_l2']) && $searchdata['label_l2'] != '' && $searchdata['label_l2'] != null) {
             $whereLabel .= " || label_l2 is null || label_l2='' ";
@@ -250,6 +250,7 @@ section_detail.label_l5');
         if (isset($searchdata['label_l5']) && $searchdata['label_l5'] != '' && $searchdata['label_l5'] != null) {
             $whereLabel .= " || label_l5 is null || label_l5='' ";
         }
+        $whereLabel .= ')';
         $this->db->where('section_detail.isActive', 1);
         $this->db->where($whereLabel);
         $query = $this->db->get();
