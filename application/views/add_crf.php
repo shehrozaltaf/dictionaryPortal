@@ -14,9 +14,11 @@
                     </div>
                 </div>
             </div>
+			
         </div>
+		
         <div class="content-body">
-            <!-- Basic form layout section start -->
+            <!-- Basic form layout section start pushssdas -->
             <section id="basic-form-layouts">
                 <div class="row match-height">
                     <div class="col-md-12">
