@@ -175,9 +175,6 @@
                                         <button type="submit" class="btn btn-primary mybtn" onclick="addData()">
                                             <i class="la la-check-square-o"></i> Save
                                         </button>
-                                        <button type="button" class="btn btn-danger mr-1">
-                                            <i class="ft-x"></i> Cancel
-                                        </button>
                                     </div>
                                 </div>
                             </div>

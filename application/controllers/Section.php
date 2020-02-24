@@ -373,6 +373,76 @@ class Section extends CI_controller
         echo $result;
     }
 
+    /*Edit Section*/
+    function edit_section($slug)
+    {
+        ob_end_clean();
+        $data = array();
+        if (isset($slug) && $slug != '' && $slug != '$1' && $slug != 0) {
+            $data['idSection'] = $slug;
+            $MSection = new MSection();
+            $searchdata = array();
+            $searchdata['idSection'] = $data['idSection'];
+            $data['getData'] = $MSection->getSectionDataById($searchdata);
+        } else {
+            $data['error'] = 'Invalid Section';
+        }
+        $this->load->view('include/header');
+        $this->load->view('include/sidebar');
+        $this->load->view('edit_section', $data);
+        $this->load->view('include/footer');
+    }
+
+    function editData()
+    {
+        $Custom = new Custom();
+        $this->form_validation->set_rules('section_var_name', 'section_var_name', 'required');
+        $this->form_validation->set_rules('section_status', 'section_status', 'required');
+        $this->form_validation->set_rules('section_table', 'section_table', 'required');
+        if (isset($_POST['idSection']) && $_POST['idSection'] != '') {
+            $idSection = $_POST['idSection'];
+            $formArray = array();
+            $formArray['section_var_name'] = $this->input->post('section_var_name');
+            $formArray['section_status'] = $this->input->post('section_status');
+            $formArray['tableName'] = $this->input->post('section_table');
+            $section_l_name = '';
+            if ($this->input->post('section_name_Languages') != '' && $this->input->post('section_name_Languages') != 'undefined') {
+                $name_languagess = $this->input->post('section_name_Languages');
+                $formArray['section_title'] = $name_languagess[0];
+                foreach ($name_languagess as $key => $value) {
+                    $formArray['section_title_l' . ((int)$key + 1)] = $value;
+                    if (((int)$key + 1) == count($name_languagess)) {
+                        $section_l_name .= $value;
+                    } else {
+                        $section_l_name .= $value . ', ';
+                    }
+                }
+            }
+            $section_l_desc = '';
+            if ($this->input->post('section_desc_Languages') != '' && $this->input->post('section_desc_Languages') != 'undefined') {
+                $desc_languagess = $this->input->post('section_desc_Languages');
+                $formArray['section_desc'] = $desc_languagess[0];
+                foreach ($desc_languagess as $key => $value) {
+                    $formArray['section_desc_l' . ((int)$key + 1)] = $value;
+                    if (((int)$key + 1) == count($desc_languagess)) {
+                        $section_l_desc .= $value;
+                    } else {
+                        $section_l_desc .= $value . ', ';
+                    }
+                }
+            }
+            $editData = $Custom->Edit($formArray, 'idSection', $idSection, 'section');
+            if ($editData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
+        } else {
+            $result = 3;
+        }
+        echo $result;
+    }
+
     /*  function add_sectiondetail_data2()
       {
           $Custom = new Custom();

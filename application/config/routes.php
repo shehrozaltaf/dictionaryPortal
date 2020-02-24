@@ -62,9 +62,11 @@ $route["module/(.*)"] = 'module/index/$1';
 $route["add_module"] = 'module/add_module';
 $route["edit_module/(.*)"] = 'module/edit_module/$1';
 
+
 $route["section"] = 'section/index/$1';
 $route["section/(.*)"] = 'section/index/$1';
 $route["add_section"] = 'section/add_section';
+$route["edit_section/(.*)"] = 'section/edit_section/$1';
 $route["add_sectiondetail"] = 'section/add_sectiondetail';
 $route["add_sectiondetail2"] = 'section/add_sectiondetail2';
 $route["upload_data"] = 'section/upload_data';
