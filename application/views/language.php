@@ -1,7 +1,6 @@
 <!-- BEGIN: Content-->
 <div class="app-content content">
     <div class="content-wrapper">
-
         <div class="content-wrapper-before"></div>
         <div class="content-header row">
             <div class="content-header-left col-md-8 col-12 mb-2 breadcrumb-new">
@@ -20,10 +19,8 @@
             <div class="content-header-right col-md-4 col-12 d-block d-md-none"><a
                         class="btn btn-warning btn-min-width float-md-right box-shadow-4 mr-1 mb-1"
                         href="<?php echo base_url() ?>"><i class="ft-mail"></i> Language</a>
-
             </div>
         </div>
-
         <div class="content-body">
             <section id="ordering">
                 <div class="row">

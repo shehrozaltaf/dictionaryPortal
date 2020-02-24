@@ -7,8 +7,9 @@
                 <div class="breadcrumbs-top d-inline-block">
                     <div class="breadcrumb-wrapper mr-1">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Home </a></li>
-                            <li class="breadcrumb-item "><a href="#">Projects</a></li>
+                            <li class="breadcrumb-item"><a href="<?php echo base_url() ?>">Home </a></li>
+                            <li class="breadcrumb-item "><a
+                                        href="<?php echo base_url('index.php/project') ?>">Projects</a></li>
                             <li class="breadcrumb-item active">Edit Projects</li>
                         </ol>
                     </div>
