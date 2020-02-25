@@ -271,6 +271,8 @@ class Section extends CI_controller
                             $subformArray['nature_var'] = 'S';
                         } elseif ($subformArray['nature'] == 'Radio') {
                             $subformArray['nature_var'] = 'R';
+                        } elseif ($subformArray['nature'] == 'CheckBox') {
+                            $subformArray['nature_var'] = 'C';
                         } elseif ($subformArray['nature'] == 'TextArea') {
                             $subformArray['nature_var'] = 'TA';
                         } else {
@@ -339,6 +341,8 @@ class Section extends CI_controller
                     $subformArray['nature_var'] = 'EN';
                 } elseif ($subformArray['nature'] == 'SelectBox') {
                     $subformArray['nature_var'] = 'S';
+                } elseif ($subformArray['nature'] == 'CheckBox') {
+                    $subformArray['nature_var'] = 'C';
                 } elseif ($subformArray['nature'] == 'Radio') {
                     $subformArray['nature_var'] = 'R';
                 } elseif ($subformArray['nature'] == 'TextArea') {
@@ -564,6 +568,8 @@ class Section extends CI_controller
                 $editArr['nature_var'] = 'T';
             } elseif ($editArr['nature'] == 'Input-Numeric') {
                 $editArr['nature_var'] = 'EN';
+            } elseif ($editArr['nature'] == 'CheckBox') {
+                $editArr['nature_var'] = 'C';
             } elseif ($editArr['nature'] == 'SelectBox') {
                 $editArr['nature_var'] = 'S';
             } elseif ($editArr['nature'] == 'Radio') {

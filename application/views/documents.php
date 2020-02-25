@@ -19,7 +19,6 @@
                     } else {
                         $idProject = 0;
                     } ?>
-
                 </div>
             </div>
         </div>
@@ -86,7 +85,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Documents </h4>
-
                                     <a class="heading-elements-toggle"><i
                                                 class="la la-ellipsis-v font-medium-3"></i></a>
                                     <div class="heading-elements">
@@ -177,8 +175,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" onclick="changeProject()">Get Data
-                </button>
+                <button type="button" class="btn btn-danger" onclick="changeProject()">Get Data</button>
             </div>
         </div>
     </div>
