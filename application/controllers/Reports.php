@@ -161,7 +161,7 @@ class Reports extends CI_controller
                     if (isset($valueModule->module_name_l5) && $valueModule->module_name_l5 != '' &&
                         $displaylanguagel5 == 'on') {
                         $subhtml .= "<h4>" . $valueModule->module_name_l5 . " </h4><h5>" . $valueModule->module_desc_l5 . "</h5>";
-                    }
+                    } 
                     $subhtml .= "</div>";
                     $ModuleSearchData = array();
                     $ModuleSearchData['idModule'] = $valueModule->idModule;
