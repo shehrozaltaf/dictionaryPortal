@@ -144,7 +144,7 @@ class Section extends CI_controller
                 }
             }
         }
-        $InsertData = $Custom->Insert($formArray, 'idSection', 'section', 'M');
+        $InsertData = $Custom->Insert($formArray, 'idSections', 'section', 'M');
         if ($InsertData) {
             $result = 1;
         } else {

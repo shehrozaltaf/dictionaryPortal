@@ -19,7 +19,7 @@
             </div>
             <div class="content-header-right col-md-4 col-12 d-block d-md-none"><a
                         class="btn btn-warning btn-min-width float-md-right box-shadow-4 mr-1 mb-1"
-                        href="chat-application.html"><i class="ft-mail"></i> Email</a></div>
+                        href="<?php echo base_url() ?>"><i class="ft-mail"></i> Projects</a></div>
         </div>
 
         <div class="content-body">
@@ -35,7 +35,6 @@
                                         <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
                                         <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
                                         <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
-                                        <!--                                        <li><a data-action="close"><i class="ft-x"></i></a></li>-->
                                         <li><a data-action="dt_colVis_buttons"><i class="ft-x"></i></a></li>
                                     </ul>
                                 </div>

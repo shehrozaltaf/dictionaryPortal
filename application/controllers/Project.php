@@ -102,29 +102,31 @@ class Project extends CI_controller
     {
         ob_end_clean();
         $Custom = new Custom();
+        $this->load->library('form_validation');
         $this->form_validation->set_rules('projectName', 'projectName', 'required');
         $this->form_validation->set_rules('shortTitle', 'shortTitle', 'required');
-        $this->form_validation->set_rules('startdate', 'startdate', 'required');
-        $this->form_validation->set_rules('enddate', 'enddate', 'required');
-        $this->form_validation->set_rules('num_of_crf', 'Number Of CRF', 'required');
-        $this->form_validation->set_rules('languages', 'languages', 'required');
-        $this->form_validation->set_rules('num_of_site', 'Number Of Sites', 'required');
         $this->form_validation->set_rules('email', 'email', 'required');
-        $formArray = array();
-        $formArray['project_name'] = ucfirst($this->input->post('projectName'));
-        $formArray['short_title'] = $this->input->post('shortTitle');
-        $formArray['startdate'] = (isset($_POST['startdate']) && $_POST['startdate'] != '' ? date('Y-m-d', strtotime($this->input->post('startdate'))) : date('Y-m-d'));
-        $formArray['enddate'] = (isset($_POST['enddate']) && $_POST['enddate'] != '' ? date('Y-m-d', strtotime($this->input->post('enddate'))) : date('Y-m-d'));
-        $formArray['no_of_crf'] = $this->input->post('num_of_crf');
-        $formArray['languages'] = $this->input->post('languages');
-        $formArray['no_of_sites'] = $this->input->post('num_of_site');
-        $formArray['email_of_person'] = $this->input->post('email');
-        $formArray['createdBy'] = $_SESSION['login']['idUser'];
-        $InsertData = $Custom->Insert($formArray, 'idProjects', 'projects', 'N');
-        if ($InsertData) {
-            $result = 1;
+        if ($this->form_validation->run() == FALSE) {
+            $result = 3;
         } else {
-            $result = 2;
+            $formArray = array();
+            $formArray['project_name'] = ucfirst($this->input->post('projectName'));
+            $formArray['short_title'] = $this->input->post('shortTitle');
+            $formArray['startdate'] = (isset($_POST['startdate']) && $_POST['startdate'] != '' ? date('Y-m-d', strtotime($this->input->post('startdate'))) : date('Y-m-d'));
+            $formArray['enddate'] = (isset($_POST['enddate']) && $_POST['enddate'] != '' ? date('Y-m-d', strtotime($this->input->post('enddate'))) : date('Y-m-d'));
+            $formArray['no_of_crf'] = $this->input->post('num_of_crf');
+            $formArray['languages'] = $this->input->post('languages');
+            $formArray['no_of_sites'] = $this->input->post('num_of_site');
+            $formArray['email_of_person'] = $this->input->post('email');
+            $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+            $formArray['createdBy'] = $_SESSION['login']['idUser'];
+            $formArray['isActive'] = 1;
+            $InsertData = $Custom->Insert($formArray, 'idProjects', 'projects', 'N');
+            if ($InsertData) {
+                $result = 1;
+            } else {
+                $result = 2;
+            }
         }
         echo $result;
     }
