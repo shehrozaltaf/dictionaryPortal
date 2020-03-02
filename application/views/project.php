@@ -260,7 +260,7 @@
             dom: 'Bfrtip',
             ajax: {
                 "url": "<?php echo base_url() . 'index.php/Project/getProjects' ?>",
-                "method": "GET",
+                "method": "POST",
                 "data": data
             },
             columns: [
