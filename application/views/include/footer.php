@@ -130,22 +130,23 @@
         <div class="cz-bg-image row">
             <div class="col mb-3">
                 <img src="<?php echo base_url() ?>assets/images/backgrounds/04.jpg" class="rounded sidiebar-bg-img"
-                     width="50" height="100" alt="background image">
+                     width="50" height="100" alt="background image" onclick="menuBGimg(this)">
             </div>
             <div class="col mb-3">
-                <img src="<?php echo base_url() ?>assets/images/backgrounds/01.jpg" class="rounded sidiebar-bg-img"
-                     width="50"
-                     height="100" alt="background image">
+                <img src="<?php echo base_url() ?>assets/images/backgrounds/01.jpg"
+                     class="rounded sidiebar-bg-img selected"
+                     width="50" selected
+                     height="100" alt="background image" onclick="menuBGimg(this)">
             </div>
             <div class="col mb-3">
                 <img src="<?php echo base_url() ?>assets/images/backgrounds/02.jpg" class="rounded sidiebar-bg-img"
                      width="50"
-                     height="100" alt="background image">
+                     height="100" alt="background image" onclick="menuBGimg(this)">
             </div>
             <div class="col mb-3">
                 <img src="<?php echo base_url() ?>assets/images/backgrounds/05.jpg" class="rounded sidiebar-bg-img"
                      width="50"
-                     height="100" alt="background image">
+                     height="100" alt="background image" onclick="menuBGimg(this)">
             </div>
         </div>
         <!--Sidebar Background Image Ends-->
@@ -250,7 +251,10 @@
         if (menu_sidbar_mode != '' && menu_sidbar_mode != undefined) {
             $('.main-menu').removeClass('menu-dark').removeClass('menu-light').addClass(menu_sidbar_mode);
         }
-
+        var c = localStorage.getItem("menu_sidbar_bg");
+        if (c != '' && c != undefined) {
+            $('.navigation-background').css("background-image", 'url("' + c + '")');
+        }
     });
 
     function setColor(obj) {
@@ -267,6 +271,13 @@
         } else {
             localStorage.setItem("menu_sidbar_mode", 'menu-light');
         }
+    }
+
+    function menuBGimg(obj) {
+        var a = $(obj).attr('src');
+        localStorage.setItem("menu_sidbar_bg", a);
+        var b = localStorage.getItem("menu_sidbar_bg");
+        $('.navigation-background').css("background-image", 'url("' + b + '")');
     }
 </script>
 </body>

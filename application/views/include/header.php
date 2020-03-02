@@ -41,7 +41,7 @@
 </head>
 
 <body class="vertical-layout vertical-menu-modern 2-columns   fixed-navbar " data-open="click"
-      data-menu="vertical-menu-modern" data-color="bg-gradient-x-purple-red" data-col="2-columns">
+      data-menu="vertical-menu-modern" data-color="bg-gradient-x-orange-yellow" data-col="2-columns">
 
 <div class="spinner-border " id="loader">
     <span class="sr-only">Loading...</span>

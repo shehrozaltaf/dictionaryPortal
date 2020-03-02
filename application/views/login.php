@@ -27,7 +27,7 @@
     </style>
 </head>
 
-<body class="vertical-layout vertical-menu-modern 1-column  bg-full-screen-image blank-page blank-page"
+<body class="vertical-layout vertical-menu-modern 1-column  bg-full-screen-image blank-page  "
       data-open="click" data-menu="vertical-menu-modern" data-color="bg-gradient-x-purple-red" data-col="1-column">
 <div class="app-content content">
     <div class="content-wrapper">
