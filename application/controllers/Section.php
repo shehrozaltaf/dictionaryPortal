@@ -759,21 +759,18 @@ class Section extends CI_controller
             $idModule = (isset($_POST['idModule']) && $_POST['idModule'] != '' ? $_POST['idModule'] : 0);;
             $idSection = (isset($_POST['idSection']) && $_POST['idSection'] != '' ? $_POST['idSection'] : 0);;
             $variable_name = $_POST['variable'];
-
             $this->db->where('idProjects', $idProjects);
             $this->db->where('id_crf', $id_crf);
             $this->db->where('idModule', $idModule);
             $this->db->where('idSection', $idSection);
-
             $editArr = array();
             if (isset($_POST['isParent']) && $_POST['isParent'] == 1) {
-                $this->db->where('(variable_name="' . $variable_name . '" or  idParentQuestion="' . $variable_name . '" )');
+                $this->db->where("(variable_name='" . $variable_name . "' or  idParentQuestion='" . $variable_name . "')");
                 $editArr['seq_no'] = (isset($_POST['seq_no']) && $_POST['seq_no'] != '' ? $_POST['seq_no'] : '0');
             } else {
                 $this->db->where('variable_name', $variable_name);
                 $editArr['child_seq_no'] = (isset($_POST['seq_no']) && $_POST['seq_no'] != '' ? $_POST['seq_no'] : '0');
             }
-
             $update = $this->db->update('section_detail', $editArr);
             if ($update) {
                 $result = 1;
