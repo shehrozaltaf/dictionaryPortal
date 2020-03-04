@@ -16,7 +16,6 @@
             </div>
         </div>
         <div class="content-body">
-            <!-- Basic form layout section start-->
             <section id="basic-form-layouts">
                 <div class="row match-height">
                     <div class="col-md-12">
@@ -40,11 +39,6 @@
                                         <li>
                                             <a data-action="expand">
                                                 <i class="ft-maximize"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a data-action="close">
-                                                <i class="ft-x"></i>
                                             </a>
                                         </li>
                                     </ul>
