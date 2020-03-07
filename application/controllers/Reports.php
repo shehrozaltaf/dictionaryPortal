@@ -345,7 +345,9 @@ class Reports extends CI_controller
             foreach ($data as $key => $value) {
                 $xml .= "\n\n" . ' <!-- ' . strtolower($value->variable_name) . '  ' . $value->nature . '   -->' . "\n";
                 $xml .= '<androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '" >
+                android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -354,7 +356,7 @@ class Reports extends CI_controller
                         android:text="@string/' . strtolower($value->variable_name) . '" 
                         android:layout_width="match_parent"
                         android:layout_height="56dp"  
-                        android:layout_marginTop="12dp"
+                        android:layout_marginTop="12dp" 
                         />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
@@ -375,7 +377,9 @@ class Reports extends CI_controller
                         if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" />
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"/>
                             <EditText
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
@@ -387,7 +391,9 @@ class Reports extends CI_controller
                         } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
                             $xml .= '<CheckBox
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" />                       
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                         android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />                       
                             <EditText
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
@@ -407,7 +413,9 @@ class Reports extends CI_controller
                             }
                             $xml .= '<TextView 
                         android:text="@string/' . strtolower($options->variable_name) . '" 
-                          android:layout_marginTop="12dp"/>
+                          android:layout_marginTop="12dp"
+                          android:layout_width="match_parent"
+                        android:layout_height="56dp"  />
                             <com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/' . strtolower($options->variable_name) . '"
                                     android:hint="@string/' . strtolower($options->variable_name) . '" 
@@ -419,7 +427,9 @@ class Reports extends CI_controller
                         } elseif ($options->nature == 'Input') {
                             $xml .= '<TextView 
                         android:text="@string/' . strtolower($options->variable_name) . '" 
-                         android:layout_marginTop="12dp"/>
+                         android:layout_marginTop="12dp" 
+                         android:layout_width="match_parent"
+                        android:layout_height="56dp"  />
                             <EditText
                                 android:id="@+id/' . strtolower($options->variable_name) . '" 
                                 android:layout_width="match_parent"
@@ -429,15 +439,21 @@ class Reports extends CI_controller
                         } elseif ($options->nature == 'Title') {
                             $xml .= '  <TextView 
                         android:text="@string/' . strtolower($options->variable_name) . '"
-                         android:layout_marginTop="12dp"/>';
+                         android:layout_marginTop="12dp"
+                         android:layout_width="match_parent"
+                        android:layout_height="56dp"   />';
                         } elseif ($options->nature == 'Radio') {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" />';
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />';
                         } elseif ($options->nature == 'CheckBox') {
                             $xml .= ' <CheckBox
                             android:id="@+id/' . strtolower($options->variable_name) . '" 
-                            android:text="@string/' . strtolower($options->variable_name) . '" />';
+                            android:text="@string/' . strtolower($options->variable_name) . '"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />';
                         }
                     }
                     if ($value->nature == 'Radio') {
