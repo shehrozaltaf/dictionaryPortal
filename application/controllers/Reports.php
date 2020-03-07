@@ -353,7 +353,8 @@ class Reports extends CI_controller
                     <TextView 
                         android:text="@string/' . strtolower($value->variable_name) . '" 
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"
+                        android:layout_height="56dp"  
+                        android:layout_marginTop="12dp"
                         />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
@@ -405,17 +406,20 @@ class Reports extends CI_controller
                                 $minVal = $options->MinVal;
                             }
                             $xml .= '<TextView 
-                        android:text="@string/' . strtolower($options->variable_name) . '" />
+                        android:text="@string/' . strtolower($options->variable_name) . '" 
+                          android:layout_marginTop="12dp"/>
                             <com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/' . strtolower($options->variable_name) . '"
                                     android:hint="@string/' . strtolower($options->variable_name) . '" 
                                     app:mask="##"
                                     app:maxValue="' . $maxVal . '"
                                     app:minValue="' . $minVal . '"
-                                    app:type="range" />';
+                                    app:type="range"
+                                     />';
                         } elseif ($options->nature == 'Input') {
                             $xml .= '<TextView 
-                        android:text="@string/' . strtolower($options->variable_name) . '" />
+                        android:text="@string/' . strtolower($options->variable_name) . '" 
+                         android:layout_marginTop="12dp"/>
                             <EditText
                                 android:id="@+id/' . strtolower($options->variable_name) . '" 
                                 android:layout_width="match_parent"
@@ -424,7 +428,8 @@ class Reports extends CI_controller
                                  />';
                         } elseif ($options->nature == 'Title') {
                             $xml .= '  <TextView 
-                        android:text="@string/' . strtolower($options->variable_name) . '" />';
+                        android:text="@string/' . strtolower($options->variable_name) . '"
+                         android:layout_marginTop="12dp"/>';
                         } elseif ($options->nature == 'Radio') {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
