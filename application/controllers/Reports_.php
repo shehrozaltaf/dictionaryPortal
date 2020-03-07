@@ -28,25 +28,6 @@ class Reports extends CI_controller
         $this->load->view('include/footer');
     }
 
-    function questionArr($dataarr)
-    {
-        $myresult = array();
-        foreach ($dataarr as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
-                $mykey = strtolower($value->idParentQuestion);
-                $myresult[strtolower($mykey)]->myrow_options[] = $value;
-            } else {
-                $mykey = strtolower($value->variable_name);
-                $myresult[strtolower($mykey)] = $value;
-            }
-        }
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-        return $data;
-    }
-
     function getPDF()
     {
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
@@ -318,6 +299,25 @@ class Reports extends CI_controller
         }
     }
 
+    function questionArr($dataarr)
+    {
+        $myresult = array();
+        foreach ($dataarr as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                $mykey = strtolower($value->idParentQuestion);
+                $myresult[strtolower($mykey)]->myrow_options[] = $value;
+            } else {
+                $mykey = strtolower($value->variable_name);
+                $myresult[strtolower($mykey)] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+        return $data;
+    }
+
     function getXml()
     {
         ob_end_clean();
@@ -351,16 +351,13 @@ class Reports extends CI_controller
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView 
-                        android:text="@string/' . strtolower($value->variable_name) . '" 
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        />';
+                        android:text="@string/' . strtolower($value->variable_name) . '" />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
                         $xml .= '<RadioGroup
                         android:id="@+id/' . strtolower($value->variable_name) . '"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">';
+                        android:layout_height="match_parent">';
                     }
                     if ($value->nature == 'CheckBox') {
                         $xml .= '<LinearLayout
@@ -378,7 +375,7 @@ class Reports extends CI_controller
                             <EditText
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
-                            android:layout_height="56dp" 
+                            android:layout_height="wrap_content" 
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
                             android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
@@ -421,7 +418,7 @@ class Reports extends CI_controller
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"  
                                 android:hint="@string/' . strtolower($options->variable_name) . '" 
-                                 />';
+                                android:textColor="@android:color/black" />';
                         } elseif ($options->nature == 'Title') {
                             $xml .= '  <TextView 
                         android:text="@string/' . strtolower($options->variable_name) . '" />';
@@ -455,7 +452,7 @@ class Reports extends CI_controller
                         $xml .= '<com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/' . strtolower($value->variable_name) . '"
                                     android:layout_width="match_parent"
-                                    android:layout_height="56dp"  
+                                    android:layout_height="wrap_content"  
                                     android:inputType="number"
                                     android:hint="@string/' . strtolower($value->variable_name) . '"
                                     app:mask="##"
@@ -466,25 +463,20 @@ class Reports extends CI_controller
                         $xml .= '<EditText
                                 android:id="@+id/' . strtolower($value->variable_name) . '" 
                                 android:layout_width="match_parent"
-                                android:layout_height="56dp" 
+                                android:layout_height="wrap_content" 
                                 android:hint="@string/' . strtolower($value->variable_name) . '" 
-                                 />';
+                                android:textColor="@android:color/black" />';
                     } elseif ($value->nature == 'Title') {
                     }
                 }
                 $xml .= ' </LinearLayout>
             </androidx.cardview.widget.CardView>';
             }
-            $xml .= ' <LinearLayout android:layout_width="match_parent" 
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="end" 
-                        android:layout_marginTop="24dp" 
-                        android:orientation="horizontal">
-                    <Button android:id="@+id/btn_End"
-                        android:layout_marginStart="12dp"
+            $xml .= ' <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:layout_gravity="end" android:layout_marginTop="20dp" android:orientation="horizontal">
+                <Button android:id="@+id/btn_End"  android:layout_marginRight="10dp"
                         android:onClick="@{() -> callback.BtnEnd()}" android:text="Cancel"/>
-                    <Button android:id="@+id/btn_Continue" 
-                        android:layout_marginStart="12dp"
+                <Button android:id="@+id/btn_Continue" 
                         android:onClick="@{() -> callback.BtnContinue()}"
                         android:text="Save"/>
                         <!--\'onClick\' for btn_End will NOT change and always call \'endInterview\'-->
