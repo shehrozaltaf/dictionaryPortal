@@ -338,7 +338,9 @@ class Reports extends CI_controller
         <import type="android.view.View" /> 
         <variable name="callback" type="edu.aku.hassannaqvi.template.ui.' . $xml_layout_name . '"/>
     </data> 
-    <ScrollView   android:fadeScrollbars="false"  android:fillViewport="true"  
+    <ScrollView   android:fadeScrollbars="false"  android:fillViewport="true" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
     android:scrollbarSize="10dip" tools:context=".ui.' . $xml_layout_name . '">
    <LinearLayout android:id="@+id/GrpName" android:layout_width="match_parent"  android:layout_height="wrap_content"android:orientation="vertical">';
 
@@ -384,6 +386,7 @@ class Reports extends CI_controller
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
                             android:layout_height="56dp" 
+                            android:layout_marginBottom="12dp"
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
                             android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
@@ -397,7 +400,8 @@ class Reports extends CI_controller
                             <EditText
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" 
+                            android:layout_height="56dp" 
+                            android:layout_marginBottom="12dp"
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
                             android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
@@ -417,6 +421,9 @@ class Reports extends CI_controller
                           android:layout_width="match_parent"
                         android:layout_height="56dp"  />
                             <com.edittextpicker.aliazaz.EditTextPicker
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp" 
+                            android:layout_marginBottom="12dp"
                                     android:id="@+id/' . strtolower($options->variable_name) . '"
                                     android:hint="@string/' . strtolower($options->variable_name) . '" 
                                     app:mask="##"
@@ -433,7 +440,8 @@ class Reports extends CI_controller
                             <EditText
                                 android:id="@+id/' . strtolower($options->variable_name) . '" 
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"  
+                                android:layout_height="56dp"  
+                                android:layout_marginBottom="12dp"
                                 android:hint="@string/' . strtolower($options->variable_name) . '" 
                                  />';
                         } elseif ($options->nature == 'Title') {
@@ -478,6 +486,7 @@ class Reports extends CI_controller
                                     android:layout_width="match_parent"
                                     android:layout_height="56dp"  
                                     android:inputType="number"
+                                     android:layout_marginBottom="12dp"
                                     android:hint="@string/' . strtolower($value->variable_name) . '"
                                     app:mask="##"
                                     app:maxValue="' . $maxVal . '"
@@ -488,6 +497,7 @@ class Reports extends CI_controller
                                 android:id="@+id/' . strtolower($value->variable_name) . '" 
                                 android:layout_width="match_parent"
                                 android:layout_height="56dp" 
+                                android:layout_marginBottom="12dp"
                                 android:hint="@string/' . strtolower($value->variable_name) . '" 
                                  />';
                     } elseif ($value->nature == 'Title') {
@@ -503,9 +513,13 @@ class Reports extends CI_controller
                         android:orientation="horizontal">
                     <Button android:id="@+id/btn_End"
                         android:layout_marginStart="12dp"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
                         android:onClick="@{() -> callback.BtnEnd()}" android:text="Cancel"/>
                     <Button android:id="@+id/btn_Continue" 
                         android:layout_marginStart="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="@{() -> callback.BtnContinue()}"
                         android:text="Save"/>
                         <!--\'onClick\' for btn_End will NOT change and always call \'endInterview\'-->
