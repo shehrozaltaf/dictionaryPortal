@@ -108,7 +108,7 @@ class MSection extends CI_Model
 
     function maxVariable($searchdata)
     {
-        $this->db->select('variable_name, MAX(seq_no) as maxVariable');
+        $this->db->select('MAX(seq_no) as maxVariable');
         $this->db->from('section_detail');
         $this->db->where('isActive', 1);
         if (isset($searchdata['idModule']) && $searchdata['idModule'] != '' && $searchdata['idModule'] != null) {
@@ -209,7 +209,7 @@ class MSection extends CI_Model
         if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
             $this->db->where('section.idSection', $searchdata['idSection']);
         }
-        $this->db->where('section_detail.nature!="Title"');
+        $this->db->where("section_detail.nature!='Title' ");
         $this->db->where('section.isActive', 1);
         $this->db->where('section_detail.isActive', 1);
         $this->db->order_by('section_detail.variable_name', 'ASC');
@@ -237,18 +237,18 @@ section_detail.label_l5');
             $this->db->where('section_detail.id_crf', $searchdata['idCRF']);
         }
         $whereLabel = '(';
-        $whereLabel .= " label_l1 is null || label_l1='' ";
+        $whereLabel .= " label_l1 is null OR label_l1='' ";
         if (isset($searchdata['label_l2']) && $searchdata['label_l2'] != '' && $searchdata['label_l2'] != null) {
-            $whereLabel .= " || label_l2 is null || label_l2='' ";
+            $whereLabel .= " OR label_l2 is null OR label_l2='' ";
         }
         if (isset($searchdata['label_l3']) && $searchdata['label_l3'] != '' && $searchdata['label_l3'] != null) {
-            $whereLabel .= " || label_l3 is null || label_l3='' ";
+            $whereLabel .= " OR label_l3 is null OR label_l3='' ";
         }
         if (isset($searchdata['label_l4']) && $searchdata['label_l4'] != '' && $searchdata['label_l4'] != null) {
-            $whereLabel .= " || label_l4 is null || label_l4='' ";
+            $whereLabel .= " OR label_l4 is null OR label_l4='' ";
         }
         if (isset($searchdata['label_l5']) && $searchdata['label_l5'] != '' && $searchdata['label_l5'] != null) {
-            $whereLabel .= " || label_l5 is null || label_l5='' ";
+            $whereLabel .= " OR label_l5 is null OR  label_l5='' ";
         }
         $whereLabel .= ')';
         $this->db->where('section_detail.isActive', 1);

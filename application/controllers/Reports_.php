@@ -28,6 +28,25 @@ class Reports extends CI_controller
         $this->load->view('include/footer');
     }
 
+    function questionArr($dataarr)
+    {
+        $myresult = array();
+        foreach ($dataarr as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                $mykey = strtolower($value->idParentQuestion);
+                $myresult[strtolower($mykey)]->myrow_options[] = $value;
+            } else {
+                $mykey = strtolower($value->variable_name);
+                $myresult[strtolower($mykey)] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+        return $data;
+    }
+
     function getPDF()
     {
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
@@ -297,25 +316,6 @@ class Reports extends CI_controller
         } else {
             echo 'Invalid Project, Please select project';
         }
-    }
-
-    function questionArr($dataarr)
-    {
-        $myresult = array();
-        foreach ($dataarr as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
-                $mykey = strtolower($value->idParentQuestion);
-                $myresult[strtolower($mykey)]->myrow_options[] = $value;
-            } else {
-                $mykey = strtolower($value->variable_name);
-                $myresult[strtolower($mykey)] = $value;
-            }
-        }
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-        return $data;
     }
 
     function getXml()
