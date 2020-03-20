@@ -700,23 +700,19 @@ class Section extends CI_controller
         $searchArray['variable_name'] = (isset($_REQUEST['variable_name']) && $_REQUEST['variable_name'] != '' ? $_REQUEST['variable_name'] : 0);
         $searchArray['newSectionVariable'] = (isset($_REQUEST['newSectionVariable']) && $_REQUEST['newSectionVariable'] != '' ? $_REQUEST['newSectionVariable'] : 0);
         $getSectionDetails_Clone = $MSection->getSectionDetails_Clone($searchArray);
-
         $Custom = new Custom();
-
         foreach ($getSectionDetails_Clone as $data) {
             $formArray = array();
             $formArray['idSection'] = $data->idSection;
             $formArray['idModule'] = $data->idModule;
             $formArray['id_crf'] = $data->id_crf;
             $formArray['idProjects'] = $data->idProjects;
-
             if (isset($data->idParentQuestion) && $data->idParentQuestion != '') {
                 $new_variable_name = preg_replace('/\D/', '', $searchArray['newSectionVariable']);
                 $variable_name = preg_replace('/[0-9]+/', $new_variable_name, $data->variable_name);
             } else {
                 $variable_name = $searchArray['newSectionVariable'];
             }
-
             $formArray['variable_name'] = $variable_name;
             $formArray['nature'] = (isset($data->nature) && $data->nature != '' ? $data->nature : '');
             $formArray['nature_var'] = (isset($data->nature_var) && $data->nature_var != '' ? $data->nature_var : '');
@@ -739,6 +735,7 @@ class Section extends CI_controller
             $formArray['dbDecimal'] = (isset($data->dbDecimal) && $data->dbDecimal != '' ? $data->dbDecimal : '');
             $formArray['seq_no'] = (isset($data->seq_no) && $data->seq_no != '' ? $data->seq_no : '');
             $formArray['child_seq_no'] = (isset($data->child_seq_no) && $data->child_seq_no != '' ? $data->child_seq_no : '');
+            $formArray['isActive'] = 1;
             $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'N');
         }
         if ($InsertData) {

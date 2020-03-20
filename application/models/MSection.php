@@ -162,7 +162,7 @@ class MSection extends CI_Model
         $this->db->from('section_detail');
         $this->db->where('idSection', $idSection);
         $this->db->where('idModule', $idModule);
-        $this->db->where('variable_name="' . $variable_name . '" or idParentQuestion= "' . $variable_name . '" ');
+        $this->db->where("variable_name='" . $variable_name . "' or idParentQuestion= '" . $variable_name . "' ");
         $this->db->where('isActive', 1);
         $query = $this->db->get();
         return $query->result();
