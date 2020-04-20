@@ -803,6 +803,47 @@ class Reports extends CI_controller
         }
     }
 
+    function getXmlQuestions()
+    {
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $this->load->library('excel');
+            $idProject = $_REQUEST['project'];
+            $this->load->model('mmodule');
+            $this->load->model('msection');
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = $idProject;
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $result = $MSection->getCodeBookData($searchData);
+            $data = $this->questionArr($result);
+            $xml = '';
+            foreach ($data as $list) {
+                $xml .= "<string name='" . strtolower($list->variable_name) . "'>" . strtolower($list->variable_name) . "</string> \n";
+                if (isset($list->myrow_options) && $list->myrow_options != '') {
+                    foreach ($list->myrow_options as $options) {
+                        $xml .= "<string name='" . strtolower($options->variable_name) . "'>" . strtolower($options->variable_name) . "</string> \n";
+                    }
+                }
+            }
+            $file = "assets/uploads/myfiles/myXmlQuesitons.xml";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $xml);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/xml");
+            readfile($file);
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
     function getExcel($slug)
     {
         ob_end_clean();

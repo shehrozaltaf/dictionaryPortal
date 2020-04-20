@@ -149,6 +149,10 @@
                                                 onclick="getExcelData()">
                                             <i class="la la-file-excel-o"></i> Get Excel
                                         </button>
+                                        <button type="button" class="btn bg-gradient-x-blue-cyan white"
+                                                onclick="getXMLquesData()">
+                                            <i class="la la-file-excel-o"></i> Get XML Questions
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -257,6 +261,42 @@
 
         if (flag == 1) {
             $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getXMLquesData() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports/getXmlQuestions?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        }
+        if (data['idProjects'] == '' && data['idProjects'] == undefined && data['idProjects'] != null) {
+            $('#idProject').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
             return false;
         } else {
