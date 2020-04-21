@@ -219,6 +219,30 @@ class MSection extends CI_Model
         return $query->result();
     }
 
+    /*getXmlQuestions*/
+    function getXmlQuestionsData($searchdata)
+    {
+        $this->db->select('
+	section_detail.variable_name,
+	section_detail.label_l1');
+        $this->db->from('section_detail');
+        $this->db->join('section', 'section_detail.idSection =section.idSection', 'RIGHT');
+        $this->db->join('modules', 'section.idModule = modules.idModule', 'left');
+        $this->db->join('crf', 'modules.id_crf = crf.id_crf', 'left');
+        $this->db->where('crf.idProjects', $searchdata['idProjects']);
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $this->db->where('section.idSection', $searchdata['idSection']);
+        }
+        $this->db->where('section.isActive', 1);
+        $this->db->where('section_detail.isActive', 1);
+        $this->db->where("(section_detail.idParentQuestion is null  or section_detail.idParentQuestion ='')");
+        $this->db->order_by('section_detail.variable_name', 'ASC');
+        $this->db->order_by('section_detail.seq_no', 'asc');
+        $this->db->order_by('section_detail.child_seq_no', 'asc');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     /*getMissingLabels*/
     function getMissingLabels($searchdata)
     {
