@@ -23,9 +23,6 @@ class Login extends CI_Controller
         $Login = new MLogin();
         $SeesionInfo = $this->session->all_userdata();
         if (isset($_SESSION['login']['idUser'])) {
-            $this->load->model('mcustom');
-
-
             redirect(base_url('index.php/dashboard'));
         } else {
             $this->load->view('login', $data);

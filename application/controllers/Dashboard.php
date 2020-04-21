@@ -17,7 +17,6 @@ class Dashboard extends CI_controller
         $MProjects = new MProjects();
         $data = array();
         $data['projects'] = $MProjects->getAllProjects();
-
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('project', $data);

@@ -21,16 +21,15 @@ class Project extends CI_controller
 
     function index()
     {
-        $MCustom = new Custom();
-        /* $trackarray = array("action" => "Successfully login",
-             "result" => "User ".$_SESSION['login']['idUser']." Successfully login");
-         $MCustom->trackLogs($trackarray);
-         echo 2;
-         exit();*/
+        /* $MCustom = new Custom();
+      $trackarray = array("action" => "Successfully login",
+            "result" => "User ".$_SESSION['login']['idUser']." Successfully login");
+        $MCustom->trackLogs($trackarray);
+        echo 2;
+        exit();*/
         $MProjects = new MProjects();
         $data = array();
         $data['projects'] = $MProjects->getAllProjects();
-
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('project', $data);

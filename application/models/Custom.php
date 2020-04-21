@@ -78,8 +78,7 @@ class Custom extends CI_Model
             "action: " . $action . PHP_EOL .
             "result: " . $result . PHP_EOL .
             "-------------------------" . PHP_EOL;
-        write_file($logFilePath, $log);
-        echo file_put_contents($logFilePath . date("n_j_Y") . '.txt', 'asdad', mFILE_APPEND);
+        echo file_put_contents($logFilePath . date("n_j_Y") . '.txt', $log);
     }
 
 }

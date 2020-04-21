@@ -817,15 +817,10 @@ class Reports extends CI_controller
             $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $result = $MSection->getXmlQuestionsData($searchData);
-//            $data = $this->questionArr($result);
+            $data = $this->questionArr($result);
             $xml = '';
-            foreach ($result as $list) {
+            foreach ($data as $list) {
                 $xml .= "<string name='Q_" . strtolower($list->variable_name) . "'>" . strtolower($list->variable_name) . "</string> \n";
-                /* if (isset($list->myrow_options) && $list->myrow_options != '') {
-                     foreach ($list->myrow_options as $options) {
-                         $xml .= "<string name='" . strtolower($options->variable_name) . "'>" . strtolower($options->variable_name) . "</string> \n";
-                     }
-                 }*/
             }
             $file = "assets/uploads/myfiles/myXmlQuesitons.xml";
             $txt = fopen($file, "w") or die("Unable to open file!");
