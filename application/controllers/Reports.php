@@ -563,7 +563,7 @@ class Reports extends CI_controller
         if (isset($searchData['section']) && $searchData['section'] != '' && $searchData['section'] != 0) {
             $result = $MSection->getSectionDetailData($searchData);
             foreach ($result as $key => $value) {
-                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ': ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
             }
         } elseif (isset($searchData['idModule']) && $searchData['idModule'] != '' && $searchData['idModule'] != 0) {
             $getSectionData = $MSection->getSectionData($searchData);
@@ -571,7 +571,7 @@ class Reports extends CI_controller
                 $searchData['idSection'] = $data->idSection;
                 $result = $MSection->getSectionDetailData($searchData);
                 foreach ($result as $key => $value) {
-                    $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ': ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                    $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
                 }
             }
         } elseif (isset($searchData['idCRF']) && $searchData['idCRF'] != '' && $searchData['idCRF'] != 0) {
@@ -588,7 +588,7 @@ class Reports extends CI_controller
                     $searchData['idSection'] = $data->idSection;
                     $result = $MSection->getSectionDetailData($searchData);
                     foreach ($result as $key => $value) {
-                        $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ': ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                        $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
                     }
                 }
             }

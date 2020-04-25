@@ -267,7 +267,6 @@
             window.open(url, '_blank');
         }
     }
-
     function getXMLquesData() {
         $('#idProject').css('border', '1px solid #babfc7');
         $('#crf_id').css('border', '1px solid #babfc7');

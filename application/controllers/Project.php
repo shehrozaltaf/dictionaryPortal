@@ -21,12 +21,14 @@ class Project extends CI_controller
 
     function index()
     {
-        /* $MCustom = new Custom();
-      $trackarray = array("action" => "Successfully login",
-            "result" => "User ".$_SESSION['login']['idUser']." Successfully login");
+        $MCustom = new Custom();
+        /*==========Log=============*/
+        $trackarray = array("action" => "View Project Page",
+            "log_type" => "user_logs",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed the Main Project Page");
         $MCustom->trackLogs($trackarray);
-        echo 2;
-        exit();*/
+        /*==========Log=============*/
+
         $MProjects = new MProjects();
         $data = array();
         $data['projects'] = $MProjects->getAllProjects();
@@ -38,6 +40,13 @@ class Project extends CI_controller
 
     function add_project()
     {
+        $Custom = new Custom();
+        /*==========Log=============*/
+        $trackarray = array("action" => "Add Project Page",
+            "log_type" => "user_logs",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed the Add Project Page");
+        $Custom->trackLogs($trackarray);
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_project');
@@ -88,18 +97,15 @@ class Project extends CI_controller
         foreach ($table_data as $k => $v) {
             $result_table_data[] = $v;
         }
-
         $result["draw"] = (isset($_REQUEST['draw']) && $_REQUEST['draw'] != '' ? $_REQUEST['draw'] : 0);
         $totalsearchData = array();
         $totalsearchData['start'] = 0;
         $totalsearchData['length'] = 100000;
         $totalsearchData['search'] = (isset($_REQUEST['search']['value']) && $_REQUEST['search']['value'] != '' ? $_REQUEST['search']['value'] : '');
         $totalrecords = $MProjects->getCntTotalProjects($totalsearchData);
-
         $result["recordsTotal"] = $totalrecords[0]->cnttotal;
         $result["recordsFiltered"] = $totalrecords[0]->cnttotal;
         $result["data"] = $result_table_data;
-
         echo json_encode($result, true);
     }
 
@@ -133,6 +139,12 @@ class Project extends CI_controller
                 $result = 2;
             }
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Add Project Page",
+            "log_type" => "user_logs",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": try to add project page data. Result: " . $result);
+        $Custom->trackLogs($trackarray);
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -151,6 +163,13 @@ class Project extends CI_controller
         $this->load->view('include/sidebar');
         $this->load->view('edit_project', $data);
         $this->load->view('include/footer');
+        $Custom = new Custom();
+        /*==========Log=============*/
+        $trackarray = array("action" => "Edit Project Page",
+            "log_type" => "user_logs",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed the edit project page");
+        $Custom->trackLogs($trackarray);
+        /*==========Log=============*/
     }
 
     function edit()
@@ -172,6 +191,12 @@ class Project extends CI_controller
         } else {
             $result = 2;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Edit Project Page",
+            "log_type" => "user_logs",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": try to edit project page data. Result: " . $result);
+        $Custom->trackLogs($trackarray);
+        /*==========Log=============*/
         echo $result;
     }
 

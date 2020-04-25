@@ -63,22 +63,31 @@ class Custom extends CI_Model
         }
     }
 
+    /*==========Log=============*/
     function trackLogs($array)
     {
         date_default_timezone_set("Asia/Karachi");
-        $action = (isset($array['action']) ? $array['action'] : 'Invalid action');
-        $result = (isset($array['result']) ? $array['result'] : 'Invalid result');
+        $UserName = (isset($array['UserName ']) ? $array['UserName '] : $_SESSION['login']['UserName']);
+        if (isset($array['log_type']) && $array['log_type'] == 'user_logs') {
+            $logFilePath = 'customLogs/user_logs/' . $UserName . 'logs_' . date("n_j_Y") . '.txt';
+        } else {
+            $logFilePath = 'customLogs/daily_logs/logs_' . date("n_j_Y") . '.txt';
+        }
+        $action = (isset($array['action']) ? $array['action'] : 'Invalid Action');
+        $result = (isset($array['result']) ? $array['result'] : 'Invalid Result');
         $idUser = (isset($array['idUser']) ? $array['idUser'] : $_SESSION['login']['idUser']);
-        $UserName = (isset($array['UserName ']) ? $array['UserName '] : '');
-//        $logFilePath = (isset($array['logFilePath']) ? $array['logFilePath'] : '../logs/custom_logs_');
-        $logFilePath = base_url() . 'customLogs/logs_';
+
+
         $log = "UserIPAddress: " . $_SERVER['REMOTE_ADDR'] . ' - ' . date("F-j-Y g:i a") . PHP_EOL .
             "idUser: " . $idUser .
             ", UserName: " . $UserName . PHP_EOL .
-            "action: " . $action . PHP_EOL .
-            "result: " . $result . PHP_EOL .
-            "-------------------------" . PHP_EOL;
-        echo file_put_contents($logFilePath . date("n_j_Y") . '.txt', $log);
+            "Action: " . $action . PHP_EOL .
+            "Result: " . $result . PHP_EOL .
+            "-------------------------------------------------" . PHP_EOL;
+        $txt = fopen($logFilePath, "a") or die("Unable to open file!");
+        fwrite($txt, $log);
+        fclose($txt);
+//        echo file_put_contents($logFilePath . date("n_j_Y") . '.txt', $log);
     }
 
 }
