@@ -20,6 +20,12 @@ class Users extends CI_controller
         $MUser = new MUser();
         $data = array();
         $data['user'] = $MUser->getAllUser();
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View Users Page",
+            "result" => "View Users page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('users', $data);
@@ -117,7 +123,6 @@ class Users extends CI_controller
         } else {
             $result = 3;
         }
-
         echo $result;
     }
 

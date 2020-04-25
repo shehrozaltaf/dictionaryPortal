@@ -24,10 +24,17 @@ class Crf extends CI_controller
         } else {
             $data['projects'] = '';
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View CRF Page",
+            "result" => "View CRF page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('crf', $data);
         $this->load->view('include/footer');
+
     }
 
     function add_crf()
@@ -39,6 +46,12 @@ class Crf extends CI_controller
         } else {
             $data['getProjectSlug'] = 0;
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add CRF Page",
+            "result" => "View Add CRF page. Fucntion: add_crf(). ProjectSlug: " . $data['getProjectSlug']);
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_crf', $data);
@@ -75,13 +88,22 @@ class Crf extends CI_controller
         $formArray['startdate'] = (isset($_POST['startdate']) && $_POST['startdate'] != '' ? date('Y-m-d', strtotime($this->input->post('startdate'))) : date('Y-m-d'));
         $formArray['enddate'] = (isset($_POST['enddate']) && $_POST['enddate'] != '' ? date('Y-m-d', strtotime($this->input->post('enddate'))) : date('Y-m-d'));
         $formArray['no_of_modules'] = $this->input->post('num_of_modules');
-
+        $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+        $formArray['createdBy'] = $_SESSION['login']['idUser'];
+        $formArray['isActive'] =1;
         $InsertData = $Custom->Insert($formArray, 'id_crf', 'crf', 'L');
         if ($InsertData) {
             $result = 1;
         } else {
             $result = 2;
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add CRF Data",
+            "result" => "View Add CRF page Data. Fucntion: addData() Result: " . $result ." CRF: ".$formArray['crf_name']);
+        $Custom->trackLogs($trackarray, "user_logs");
+        $Custom->trackLogs($trackarray, "daily_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -177,6 +199,12 @@ class Crf extends CI_controller
         }
         $MProjects = new MProjects();
         $data['projects'] = $MProjects->getAllProjects();
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Edit CRF Page",
+            "result" => "View Edit CRF page. Fucntion: edit_crf()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('edit_crf', $data);
@@ -233,6 +261,8 @@ class Crf extends CI_controller
             if (isset($languages) && $languages != '') {
                 $editArr['languages'] = $languages;
             }
+            $editArr['updateDateTime'] = date('Y-m-d H:i:s');
+            $editArr['updatedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'id_crf', $id_crf, 'crf');
             if ($editData) {
                 $result = 1;
@@ -242,7 +272,13 @@ class Crf extends CI_controller
         } else {
             $result = 3;
         }
-
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Edit CRF Data",
+            "result" => "Edit CRF page Data. Fucntion: editData() Result: " . $result ." CRF: ".$id_crf);
+        $Custom->trackLogs($trackarray, "user_logs");
+        $Custom->trackLogs($trackarray, "daily_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -253,6 +289,8 @@ class Crf extends CI_controller
             $id_crf = $_POST['idDelete'];
             $editArr = array();
             $editArr['isActive'] = 0;
+            $editArr['deletedDateTime'] = date('Y-m-d H:i:s');
+            $editArr['deletedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'id_crf', $id_crf, 'crf');
             if ($editData) {
                 $result = 1;
@@ -262,6 +300,14 @@ class Crf extends CI_controller
         } else {
             echo 3;
         }
+
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Delete CRF",
+            "result" => "Delete CRF page Data. Fucntion: deleteData() Result: " . $result ." CRF: ".$id_crf);
+        $Custom->trackLogs($trackarray, "user_logs");
+        $Custom->trackLogs($trackarray, "daily_logs");
+        /*==========Log=============*/
         echo $result;
     }
 }

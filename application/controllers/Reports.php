@@ -21,7 +21,12 @@ class Reports extends CI_controller
     {
         $MProjects = new MProjects();
         $data = array();
-        $data['projects'] = $MProjects->getAllProjects();
+        $data['projects'] = $MProjects->getAllProjects();/*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View Reports Page",
+            "result" => "View Reports page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('reports', $data);
@@ -905,82 +910,6 @@ class Reports extends CI_controller
         $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
         $objWriter->save('php://output');
     }
-
-    /*function getIrfanExcel($slug)
-    {
-        ob_end_clean();
-        $this->load->model('msection');
-        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
-        $this->load->library('excel');
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = $slug;
-        $myresult = array();
-        $searchData = array();
-        $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
-        $result = $MSection->getSectionDetailData($searchData);
-        $data = $this->questionArr($result);
-        $objPHPExcel = new    PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable App');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Type');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Values');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Skip On xml');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Tag No');
-        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Min Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Max Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Language 1');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Language 2');
-        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Language 3');
-        $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Language 4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Language 5');
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-        $rowCount = 1;
-        foreach ($data as $list) {
-            $rowCount++;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->nature_var);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->MinVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->MaxVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->label_l1);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->label_l2);
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->label_l3);
-            $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $list->label_l4);
-            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $list->label_l5);
-            if (isset($list->myrow_options) && $list->myrow_options != '') {
-                foreach ($list->myrow_options as $options) {
-                    $rowCount++;
-                    $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->nature_var);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->skipQuestion);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->skipQuestion);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->MinVal);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->MaxVal);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->label_l1);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->label_l2);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->label_l3);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $options->label_l4);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $options->label_l5);
-                }
-            }
-            $rowCount++;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, '?');
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '?');
-        }
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-        header('Cache-Control: max-age=0'); //no cache
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('php://output');
-    }*/
 
     function getTableQuery()
     {

@@ -49,6 +49,7 @@ class Login extends CI_Controller
             exit();
         } else {
             $result = $Login->validate($username, $Password);
+            $Custom = new Custom();
             if (count($result) == 1) {
                 if ($Password === $result[0]->password) {
                     $data = array(
@@ -58,8 +59,14 @@ class Login extends CI_Controller
                         'idGroup' => (isset($result[0]->idGroup) && $result[0]->idGroup != '' ? $result[0]->idGroup : '')
                     );
                     $this->session->set_userdata('login', $data);
+                    $trackarray = array("action" => "Login Success",
+                        "result" => "User " . $result[0]->username . ": Login Success");
+                    $Custom->trackLogs($trackarray,"user_logs");
                     echo 1;
                 } else {
+                    $trackarray = array("action" => "Invalid Password",
+                        "result" => "User " . $result[0]->username . ": incorrect password");
+                    $Custom->trackLogs($trackarray,"user_logs");
                     echo 2;
                 }
             } else {
@@ -70,6 +77,10 @@ class Login extends CI_Controller
 
     function getLogout()
     {
+        $Custom = new Custom();
+        $trackarray = array("action" => "Logout",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": Logout");
+        $Custom->trackLogs($trackarray,"user_logs");
         session_destroy();
     }
 

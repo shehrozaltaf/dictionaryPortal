@@ -75,15 +75,16 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-    /*'hostname' => 'localhost:3308',
+    'hostname' => 'localhost:3308',
     'username' => 'root',
     'password' => '',
-    'database' => 'dictionary_portalnew',*/
-    'hostname' => 'f38158',
+    'database' => 'dictionary_portalnew',
+    'dbdriver' => 'mysqli',
+   /* 'hostname' => 'f38158',
     'username' => 'sa',
     'password' => 'sa',
     'database' => 'dictionary_portal',
-    'dbdriver' => 'sqlsrv',
+    'dbdriver' => 'sqlsrv',*/
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),

@@ -1,0 +1,65 @@
+UserIPAddress: 10.1.42.76 - April-25-2020 3:10 pm
+idUser: 19, UserName: Shehroz
+Action: Add Project Page
+Result: User Shehroz: add project page data. Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:14 pm
+idUser: 19, UserName: Shehroz
+Action: Edit Project Page
+Result: User Shehroz: edit project page data. Result: 1 ProjectName: Testing ProjectId: 18
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:19 pm
+idUser: 19, UserName: Shehroz
+Action: Add CRF Data
+Result: View Add CRF page Data. Fucntion: addData() Result: 1 CRF: Test crf
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:25 pm
+idUser: 19, UserName: Shehroz
+Action: Add CRF Data
+Result: View Add CRF page Data. Fucntion: addData() Result: 1 CRF: asdas
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:26 pm
+idUser: 19, UserName: Shehroz
+Action: Delete CRF
+Result: Delete CRF page Data. Fucntion: deleteData() Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:27 pm
+idUser: 19, UserName: Shehroz
+Action: Delete CRF
+Result: Delete CRF page Data. Fucntion: deleteData() Result: 1CRF: 31
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:28 pm
+idUser: 19, UserName: Shehroz
+Action: Edit CRF Data
+Result: Edit CRF page Data. Fucntion: editData() Result: 1 CRF: 32
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:28 pm
+idUser: 19, UserName: Shehroz
+Action: Delete CRF
+Result: Delete CRF page Data. Fucntion: deleteData() Result: 1 CRF: 31
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:43 pm
+idUser: 19, UserName: Shehroz
+Action: Add Module Data
+Result: View Add Module page Data. Fucntion: addData() Result: 1 ModuleName : Test Module Desc
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:44 pm
+idUser: 19, UserName: Shehroz
+Action: Edit Module
+Result: Edit Module page Data. Fucntion: editData() Result: 1 idModule: 58
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:44 pm
+idUser: 19, UserName: Shehroz
+Action: Delete Module
+Result: Delete Module page Data. Fucntion: deleteModule() Result: 1 idModule: 58
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:45 pm
+idUser: 19, UserName: Shehroz
+Action: Delete Module
+Result: Delete Module page Data. Fucntion: deleteModule() Result: 1 idModule: 58
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 3:47 pm
+idUser: 19, UserName: Shehroz
+Action: Delete Module
+Result: Delete Module page Data. Fucntion: deleteModule() Result: 1 idModule: 58
+-------------------------------------------------

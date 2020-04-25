@@ -64,11 +64,11 @@ class Custom extends CI_Model
     }
 
     /*==========Log=============*/
-    function trackLogs($array)
+    function trackLogs($array,$log_type)
     {
         date_default_timezone_set("Asia/Karachi");
         $UserName = (isset($array['UserName ']) ? $array['UserName '] : $_SESSION['login']['UserName']);
-        if (isset($array['log_type']) && $array['log_type'] == 'user_logs') {
+        if (isset($log_type) && $log_type == 'user_logs') {
             $logFilePath = 'customLogs/user_logs/' . $UserName . 'logs_' . date("n_j_Y") . '.txt';
         } else {
             $logFilePath = 'customLogs/daily_logs/logs_' . date("n_j_Y") . '.txt';
@@ -76,8 +76,6 @@ class Custom extends CI_Model
         $action = (isset($array['action']) ? $array['action'] : 'Invalid Action');
         $result = (isset($array['result']) ? $array['result'] : 'Invalid Result');
         $idUser = (isset($array['idUser']) ? $array['idUser'] : $_SESSION['login']['idUser']);
-
-
         $log = "UserIPAddress: " . $_SERVER['REMOTE_ADDR'] . ' - ' . date("F-j-Y g:i a") . PHP_EOL .
             "idUser: " . $idUser .
             ", UserName: " . $UserName . PHP_EOL .

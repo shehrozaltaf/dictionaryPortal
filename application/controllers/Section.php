@@ -24,6 +24,13 @@ class Section extends CI_controller
         } else {
             $data['projects'] = '';
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View Section Page",
+            "result" => "View Section page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
+
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('section', $data);
@@ -84,6 +91,14 @@ class Section extends CI_controller
         $this->load->model('mmodule');
         $MModule = new MModule();
         $data['module'] = $MModule->getModuleById($idModule);
+
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add Section Page",
+            "result" => "View Section add page. Fucntion: add_section()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
+
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_section', $data);
@@ -144,12 +159,20 @@ class Section extends CI_controller
                 }
             }
         }
+        $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+        $formArray['createdBy'] = $_SESSION['login']['idUser'];
         $InsertData = $Custom->Insert($formArray, 'idSections', 'section', 'M');
         if ($InsertData) {
             $result = 1;
         } else {
             $result = 2;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Add Section Page",
+            "result" => "Add Section data. Fucntion: addData() . Result: " . $result . " Data: ".$formArray['section_title_l1'] );
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -159,6 +182,13 @@ class Section extends CI_controller
         $data = array();
         $idSection = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
         $data['result'] = $MSection->getSectionDetailDataByid($idSection);
+
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add Section Detail Page",
+            "result" => "View Section Detail add page. Fucntion: add_sectiondetail(). idSection: " .$idSection);
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
 
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
@@ -172,6 +202,12 @@ class Section extends CI_controller
         $data = array();
         $idSection = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
         $data['result'] = $MSection->getSectionDetailDataByid($idSection);
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add Section Detail2 form Page",
+            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed Section Detaiul add main page. Fucntion: add_sectiondetail2()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('add_secdetail', $data);
@@ -233,6 +269,8 @@ class Section extends CI_controller
         $formArray['dbDecimal'] = (isset($_POST['dbDecimal']) && $_POST['dbDecimal'] != '' ? $_POST['dbDecimal'] : '');
         $formArray['child_seq_no'] = 0;
         $formArray['isActive'] = 1;
+        $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+        $formArray['createdBy'] = $_SESSION['login']['idUser'];
         $MSection = new MSection();
 
         $maxVarArray = array();
@@ -295,6 +333,8 @@ class Section extends CI_controller
                         $subformArray['seq_no'] = $formArray['seq_no'];
                         $subformArray['child_seq_no'] = $keys + 1;
                         $subformArray['isActive'] = 1;
+                        $subformArray['createdDateTime'] = date('Y-m-d H:i:s');
+                        $subformArray['createdBy'] = $_SESSION['login']['idUser'];
                         $checkChildVariable = $MSection->checkVariable_maxVariable($subformArray);
                         if (isset($checkChildVariable[0]->variable_name) && $checkChildVariable[0]->variable_name != '') {
                             $result[] = array('0' => 'error', '1' => 'Duplicate options variable: ' . $subformArray['variable_name']);
@@ -312,6 +352,12 @@ class Section extends CI_controller
                 $result[] = array('0' => 'error', '1' => 'Error while inserting question variable: ' . $formArray['variable_name']);
             }
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Add Section Detail Data Page (add questions)",
+            "result" => "Add Section Detail Questions. Fucntion: add_sectiondetail_data() . Result: " . $result[1] );
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo json_encode($result);
     }
 
@@ -366,6 +412,8 @@ class Section extends CI_controller
                 $subformArray['dbLength'] = (isset($options['OptionDbLength']) && $options['OptionDbLength'] != '' ? $options['OptionDbLength'] : '');
                 $subformArray['dbDecimal'] = (isset($options['OptionDbDecimal']) && $options['OptionDbDecimal'] != '' ? $options['OptionDbDecimal'] : '');
                 $subformArray['idParentQuestion'] = (isset($options['OptionParentQuestion']) && $options['OptionParentQuestion'] != '' ? $options['OptionParentQuestion'] : '');
+                $subformArray['createdDateTime'] = date('Y-m-d H:i:s');
+                $subformArray['createdBy'] = $_SESSION['login']['idUser'];
                 $InsertData = $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
         }
@@ -374,6 +422,12 @@ class Section extends CI_controller
         } else {
             $result = 2;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Add Section Detail Option Data Page (add options)",
+            "result" => "Add Section Detail Option Questions. Fucntion: add_sectiondetail_data_option() . Result: " . $result );
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -391,6 +445,12 @@ class Section extends CI_controller
         } else {
             $data['error'] = 'Invalid Section';
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Edit Section Page",
+            "result" => "View edit Section page. Fucntion: edit_section()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('edit_section', $data);
@@ -435,6 +495,8 @@ class Section extends CI_controller
                     }
                 }
             }
+            $formArray['updateDateTime'] = date('Y-m-d H:i:s');
+            $formArray['updatedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($formArray, 'idSection', $idSection, 'section');
             if ($editData) {
                 $result = 1;
@@ -444,6 +506,12 @@ class Section extends CI_controller
         } else {
             $result = 3;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Edit Section  Page (edit page)",
+            "result" => "Edit Section Page. Fucntion: editData() . Result: " . $result . "Data: " . $formArray);
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -515,6 +583,8 @@ class Section extends CI_controller
             $idSection = $_POST['idDelete'];
             $editArr = array();
             $editArr['isActive'] = 0;
+            $editArr['deletedDateTime'] = date('Y-m-d H:i:s');
+            $editArr['deletedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'idSection', $idSection, 'section');
             if ($editData) {
                 $result = 1;
@@ -524,6 +594,12 @@ class Section extends CI_controller
         } else {
             echo 3;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Delete Section  Page (delete page)",
+            "result" => "Delete Section Page. Fucntion: deleteSection() . Result: " . $result . " idSection: " . $idSection);
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -534,6 +610,8 @@ class Section extends CI_controller
             $idSectionDetail = $_POST['idSectionDetail'];
             $editArr = array();
             $editArr['isActive'] = 0;
+            $editArr['deletedDateTime'] = date('Y-m-d H:i:s');
+            $editArr['deletedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'idSectionDetail', $idSectionDetail, 'section_detail');
             if ($editData) {
                 $result = 1;
@@ -543,6 +621,12 @@ class Section extends CI_controller
         } else {
             echo 3;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Delete Section Detail Page (delete section page)",
+            "result" => "Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: " . $result . " idSectionDetail: " . $idSectionDetail);
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -595,7 +679,8 @@ class Section extends CI_controller
             $editArr['dbType'] = (isset($_POST['edit_dbType']) && $_POST['edit_dbType'] != '' ? $_POST['edit_dbType'] : '');
             $editArr['dbLength'] = (isset($_POST['edit_dbLength']) && $_POST['edit_dbLength'] != '' ? $_POST['edit_dbLength'] : '');
             $editArr['dbDecimal'] = (isset($_POST['edit_dbDecimal']) && $_POST['edit_dbDecimal'] != '' ? $_POST['edit_dbDecimal'] : '');
-
+            $formArray['updateDateTime'] = date('Y-m-d H:i:s');
+            $formArray['updatedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'idSectionDetail', $idSectionDetail, 'section_detail');
             if ($editData) {
                 $result = 1;
@@ -605,6 +690,12 @@ class Section extends CI_controller
         } else {
             $result = 3;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Edit Section Detail Question (edit question)",
+            "result" => "Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: " . $result );
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -640,6 +731,8 @@ class Section extends CI_controller
                 $formArray['section_var_name'] = $sectionData->section_var_name;
                 $formArray['section_status'] = $sectionData->section_status;
                 $formArray['tableName'] = $sectionData->tableName;
+                $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+                $formArray['createdBy'] = $_SESSION['login']['idUser'];
                 $InsertSection = $Custom->Insert($formArray, 'idSection', 'section', 'Y');
                 if ($InsertSection) {
                     if (isset($getSectionDetail_Clone) && $getSectionDetail_Clone != '') {
@@ -671,6 +764,8 @@ class Section extends CI_controller
                             $formArray_Detail['dbDecimal'] = (isset($data->dbDecimal) && $data->dbDecimal != '' ? $data->dbDecimal : '');
                             $formArray_Detail['seq_no'] = (isset($data->seq_no) && $data->seq_no != '' ? $data->seq_no : '');
                             $formArray_Detail['child_seq_no'] = (isset($data->child_seq_no) && $data->child_seq_no != '' ? $data->child_seq_no : '');
+                            $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+                            $formArray['createdBy'] = $_SESSION['login']['idUser'];
                             $InsertData = $Custom->Insert($formArray_Detail, 'idSectionDetail', 'section_detail', 'N');
                             if ($InsertData) {
                                 $result = 1;
@@ -688,6 +783,12 @@ class Section extends CI_controller
         } else {
             $result = 5;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Clone Section Detail Question (clone section questions)",
+            "result" => "Clone Section Detail Questions. Fucntion: cloneDataSection() . Result: " . $result);
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -736,6 +837,8 @@ class Section extends CI_controller
             $formArray['seq_no'] = (isset($data->seq_no) && $data->seq_no != '' ? $data->seq_no : '');
             $formArray['child_seq_no'] = (isset($data->child_seq_no) && $data->child_seq_no != '' ? $data->child_seq_no : '');
             $formArray['isActive'] = 1;
+            $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+            $formArray['createdBy'] = $_SESSION['login']['idUser'];
             $InsertData = $Custom->Insert($formArray, 'idSectionDetail', 'section_detail', 'N');
         }
         if ($InsertData) {
@@ -743,6 +846,12 @@ class Section extends CI_controller
         } else {
             $result = 2;
         }
+        /*==========Log=============*/
+        $trackarray = array("action" => "Clone Section",
+            "result" => "Clone Section with Questions. Fucntion: cloneData() . Result: " . $result);
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -778,6 +887,12 @@ class Section extends CI_controller
         } else {
             $result = 3;
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Sort Question",
+            "result" => "Sort Question. Fucntion: sortQuestions() . Result: " . $result);
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -812,6 +927,12 @@ class Section extends CI_controller
         $this->load->view('include/sidebar');
         $this->load->view('upload_data', $data);
         $this->load->view('include/footer');
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Upload Data Page",
+            "result" => "Upload Data Page. Fucntion: upload_data()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
     }
 
     public function uploadExcelData()
@@ -898,6 +1019,8 @@ class Section extends CI_controller
                         $formArray_Detail['seq_no'] = (isset($val[$r[17]]) && $val[$r[17]] != '' ? $val[$r[17]] : $key);
                         $formArray_Detail['child_seq_no'] = (isset($val[$r[18]]) && $val[$r[18]] != '' ? $val[$r[18]] : 0);
                         $formArray_Detail['isActive'] = 1;
+                        $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+                        $formArray['createdBy'] = $_SESSION['login']['idUser'];
                         $InsertData = $Custom->Insert($formArray_Detail, 'idSectionDetail', 'section_detail', 'N');
                         if ($InsertData) {
                             $data = array('0' => 'success', '1' => 'Successfully Uploaded');
@@ -912,6 +1035,13 @@ class Section extends CI_controller
                 $data = array('0' => 'error', '1' => 'Error while uploading file');
             }
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Upload Excel Data",
+            "result" => "Upload Excel Data. Fucntion: uploadExcelData() . Result: " . $data[1]);
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo json_encode($data);
     }
 
@@ -931,6 +1061,12 @@ class Section extends CI_controller
         $this->load->view('include/sidebar');
         $this->load->view('missinglabel', $data);
         $this->load->view('include/footer');
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Missing Label Page",
+            "result" => "Missing Label Page. Fucntion: missinglabel()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
     }
 
     function getMissingLabelData()

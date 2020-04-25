@@ -26,6 +26,12 @@ class Module extends CI_controller
         } else {
             $data['projects'] = '';
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View Module Page",
+            "result" => "View Module page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('module', $data);
@@ -45,6 +51,12 @@ class Module extends CI_controller
         }
         $data['slug'] = $idCRF;
         $data['crf'] = $MCrf->getCrfById($idCRF);
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add Module Page",
+            "result" => "View Add Module page. Fucntion: add_module()" );
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
 //        $data['all_crfs'] = $MCrf->getAllCrfs();
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
@@ -63,6 +75,12 @@ class Module extends CI_controller
         } else {
             $data['error'] = 'Invalid Module';
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Edit Module Page",
+            "result" => "View Edit Module page. Fucntion: edit_module() idModuleSlug: ".$slug );
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('edit_module', $data);
@@ -76,6 +94,8 @@ class Module extends CI_controller
             $idModule = $_POST['idDelete'];
             $editArr = array();
             $editArr['isActive'] = 0;
+            $editArr['deletedDateTime'] = date('Y-m-d H:i:s');
+            $editArr['deletedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'idModule', $idModule, 'modules');
             if ($editData) {
                 $result = 1;
@@ -85,6 +105,13 @@ class Module extends CI_controller
         } else {
             echo 3;
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Delete Module",
+            "result" => "Delete Module page Data. Fucntion: deleteModule() Result: ". $result ." idModule: ".$idModule );
+        $Custom->trackLogs($trackarray, "daily_logs");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -121,6 +148,8 @@ class Module extends CI_controller
             }
             $formArray['module_status'] = $this->input->post('module_status');
             $formArray['module_type'] = $this->input->post('module_type');
+            $formArray['updateDateTime'] = date('Y-m-d H:i:s');
+            $formArray['updatedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($formArray, 'idModule', $idModule, 'modules');
             if ($editData) {
                 $result = 1;
@@ -130,7 +159,13 @@ class Module extends CI_controller
         } else {
             $result = 3;
         }
-
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Edit Module",
+            "result" => "Edit Module page Data. Fucntion: editData() Result: ". $result ." idModule: ".$idModule);
+        $Custom->trackLogs($trackarray, "user_logs");
+        $Custom->trackLogs($trackarray, "daily_logs");
+        /*==========Log=============*/
         echo $result;
     }
 
@@ -196,12 +231,21 @@ class Module extends CI_controller
         $formArray['module_status'] = $this->input->post('module_status');
         $formArray['module_type'] = $this->input->post('module_type');
         $formArray['isActive'] = 1;
+        $formArray['createdDateTime'] = date('Y-m-d H:i:s');
+        $formArray['createdBy'] = $_SESSION['login']['idUser'];
         $InsertData = $Custom->Insert($formArray, 'idModule', 'modules', 'M');
         if ($InsertData) {
             $result = 1;
         } else {
             $result = 2;
         }
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "Add Module Data",
+            "result" => "View Add Module page Data. Fucntion: addData() Result: ". $result ." ModuleName : ". $formArray['module_desc_l1'] );
+        $Custom->trackLogs($trackarray, "user_logs");
+        $Custom->trackLogs($trackarray, "daily_logs");
+        /*==========Log=============*/
         echo $result;
     }
 

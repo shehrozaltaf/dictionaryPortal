@@ -17,7 +17,12 @@ class Dashboard extends CI_controller
         $MProjects = new MProjects();
         $data = array();
         $data['projects'] = $MProjects->getAllProjects();
-
+        /*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View Dashboard",
+            "result" => "View Dashboard page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('project', $data);

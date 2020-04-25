@@ -24,9 +24,8 @@ class Project extends CI_controller
         $MCustom = new Custom();
         /*==========Log=============*/
         $trackarray = array("action" => "View Project Page",
-            "log_type" => "user_logs",
-            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed the Main Project Page");
-        $MCustom->trackLogs($trackarray);
+            "result" => "View the Main Project Page");
+        $MCustom->trackLogs($trackarray,"user_logs");
         /*==========Log=============*/
 
         $MProjects = new MProjects();
@@ -43,9 +42,8 @@ class Project extends CI_controller
         $Custom = new Custom();
         /*==========Log=============*/
         $trackarray = array("action" => "Add Project Page",
-            "log_type" => "user_logs",
-            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed the Add Project Page");
-        $Custom->trackLogs($trackarray);
+            "result" => "View the Add Project Page");
+        $Custom->trackLogs($trackarray,"user_logs");
         /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
@@ -141,9 +139,9 @@ class Project extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Add Project Page",
-            "log_type" => "user_logs",
-            "result" => "User " . $_SESSION['login']['UserName'] . ": try to add project page data. Result: " . $result);
-        $Custom->trackLogs($trackarray);
+            "result" => "User " . $_SESSION['login']['UserName'] . ": add project page data. Result: " . $result ." Project: ".$formArray['project_name']);
+        $Custom->trackLogs($trackarray,"daily_logs");
+        $Custom->trackLogs($trackarray,"user_logs");
         /*==========Log=============*/
         echo $result;
     }
@@ -166,9 +164,8 @@ class Project extends CI_controller
         $Custom = new Custom();
         /*==========Log=============*/
         $trackarray = array("action" => "Edit Project Page",
-            "log_type" => "user_logs",
-            "result" => "User " . $_SESSION['login']['UserName'] . ": viewed the edit project page");
-        $Custom->trackLogs($trackarray);
+            "result" => "View the edit project page. Project Id: ".$idProject);
+        $Custom->trackLogs($trackarray,"user_logs");
         /*==========Log=============*/
     }
 
@@ -185,6 +182,8 @@ class Project extends CI_controller
         $editArr['languages'] = $this->input->post('languages');
         $editArr['no_of_sites'] = $this->input->post('num_of_site');
         $editArr['email_of_person'] = $this->input->post('email');
+        $editArr['updateDateTime'] = date('Y-m-d H:i:s');
+        $editArr['updatedBy'] = $_SESSION['login']['idUser'];
         $editData = $Custom->Edit($editArr, 'idProjects', $idproject, 'projects');
         if ($editData) {
             $result = 1;
@@ -193,9 +192,10 @@ class Project extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Edit Project Page",
-            "log_type" => "user_logs",
-            "result" => "User " . $_SESSION['login']['UserName'] . ": try to edit project page data. Result: " . $result);
-        $Custom->trackLogs($trackarray);
+            "result" => "User " . $_SESSION['login']['UserName'] . ": edit project page data. Result: " . $result
+                ." ProjectName: ".$editArr['project_name'] ." ProjectId: ". $idproject);
+        $Custom->trackLogs($trackarray,"daily_logs");
+        $Custom->trackLogs($trackarray,"user_logs");
         /*==========Log=============*/
         echo $result;
     }
