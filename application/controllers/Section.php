@@ -169,7 +169,7 @@ class Section extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Add Section Page",
-            "result" => "Add Section data. Fucntion: addData() . Result: " . $result . " Data: ".$formArray['section_title_l1'] );
+            "result" => "Add Section data. Fucntion: addData() . Result: " . $result);
         $Custom->trackLogs($trackarray, "daily_logs");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
@@ -354,7 +354,7 @@ class Section extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Add Section Detail Data Page (add questions)",
-            "result" => "Add Section Detail Questions. Fucntion: add_sectiondetail_data() . Result: " . $result[1] );
+            "result" => "Add Section Detail Questions. Fucntion: add_sectiondetail_data() ");
         $Custom->trackLogs($trackarray, "daily_logs");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
@@ -508,7 +508,7 @@ class Section extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Edit Section  Page (edit page)",
-            "result" => "Edit Section Page. Fucntion: editData() . Result: " . $result . "Data: " . $formArray);
+            "result" => "Edit Section Page. Fucntion: editData() . Result: " . $result);
         $Custom->trackLogs($trackarray, "daily_logs");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
@@ -1038,7 +1038,7 @@ class Section extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Upload Excel Data",
-            "result" => "Upload Excel Data. Fucntion: uploadExcelData() . Result: " . $data[1]);
+            "result" => "Upload Excel Data. Fucntion: uploadExcelData() .  ");
         $Custom->trackLogs($trackarray, "daily_logs");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/

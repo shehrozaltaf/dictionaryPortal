@@ -318,3 +318,8 @@ idUser: 19, UserName: Shehroz
 Action: Add Section Detail Page
 Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 41
 -------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-25-2020 4:36 pm
+idUser: 19, UserName: Shehroz
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
