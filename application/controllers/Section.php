@@ -414,6 +414,7 @@ class Section extends CI_controller
                 $subformArray['idParentQuestion'] = (isset($options['OptionParentQuestion']) && $options['OptionParentQuestion'] != '' ? $options['OptionParentQuestion'] : '');
                 $subformArray['createdDateTime'] = date('Y-m-d H:i:s');
                 $subformArray['createdBy'] = $_SESSION['login']['idUser'];
+                $subformArray['isActive'] = 1;
                 $InsertData = $Custom->Insert($subformArray, 'idSectionDetail', 'section_detail', 'N');
             }
         }
@@ -999,7 +1000,7 @@ class Section extends CI_controller
                         $formArray_Detail['variable_name'] = (isset($val[$r[0]]) && $val[$r[0]] != '' ? $val[$r[0]] : '');
                         $formArray_Detail['nature'] = $type;
                         $formArray_Detail['nature_var'] = (isset($val[$r[1]]) && $val[$r[1]] != '' ? $val[$r[1]] : '');
-                        $formArray_Detail['question_type'] = (isset($val[$r[8]]) && $val[$r[8]] != '' ? $type : '');
+                        $formArray_Detail['question_type'] = (isset($val[$r[1]]) && $val[$r[1]] != '' ? $type : '');
                         $formArray_Detail['MinVal'] = (isset($val[$r[10]]) && $val[$r[10]] != '' ? $val[$r[10]] : '');
                         $formArray_Detail['MaxVal'] = (isset($val[$r[11]]) && $val[$r[11]] != '' ? $val[$r[11]] : '');
                         $formArray_Detail['skipQuestion'] = (isset($val[$r[9]]) && $val[$r[9]] != '' ? $val[$r[9]] : '');

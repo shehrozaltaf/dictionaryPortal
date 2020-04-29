@@ -1,4 +1,7 @@
-<?php date_default_timezone_set("Asia/Karachi"); ?>
+<?php date_default_timezone_set("Asia/Karachi");
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache"); ?>
 <!DOCTYPE html>
 <html class="loading" lang="en" data-textdirection="ltr">
 <head>
