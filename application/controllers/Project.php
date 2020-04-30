@@ -1,5 +1,8 @@
 <?php ob_start();
 header('Content-type: text/html; charset=utf-8');
+ini_set('memory_limit', '256M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
+ini_set('sqlsrv.ClientBufferMaxKBSize', '524288'); // Setting to 512M
+ini_set('pdo_sqlsrv.client_buffer_max_kb_size', '524288');
 error_reporting(0);
 
 class Project extends CI_controller
