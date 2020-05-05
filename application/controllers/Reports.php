@@ -400,7 +400,7 @@ class Reports extends CI_controller
                             android:layout_marginBottom="12dp"
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
-                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
+                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : "-1"}\'
                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
                             $xml .= '<CheckBox
@@ -415,7 +415,7 @@ class Reports extends CI_controller
                             android:layout_marginBottom="12dp"
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
-                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
+                            android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : "-1"}\'
                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($options->nature == 'Input-Numeric') {
                             $minVal = 0;
@@ -637,54 +637,54 @@ class Reports extends CI_controller
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $result = $MSection->getSectionDetailData($searchData);
             $data = $this->questionArr($result);
-            $fileData = 'JSONObject f1 = new JSONObject(); ' . "\n";
+            $fileData = 'JSONObject json = new JSONObject(); ' . "\n";
             foreach ($data as $key => $value) {
                 $fileOtherData = '';
                 $question_type = $value->nature;
                 if ($question_type == 'Input-Numeric') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Input') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Title') {
-//                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+//                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", ' . "\n";
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", ' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Title') {
@@ -693,24 +693,24 @@ class Reports extends CI_controller
                                 $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
                             }
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             }
                         }
                     }
-                    $fileData .= ' "0"); ' . "\n";
+                    $fileData .= ' "-1"); ' . "\n";
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
+                            $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"-1");' . "\n";
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
                             }
                         }
                     }
