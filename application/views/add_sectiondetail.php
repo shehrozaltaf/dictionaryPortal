@@ -195,17 +195,18 @@
             </div>
         </div>
         <div class="sidebar-detached sidebar-right sidebar-sticky"
-             style=" height: 1000px;  overflow-y: scroll;">
+             style=" height: 1000px; width: 100%  overflow-y: auto;">
             <div class=" sidebar">
                 <div class="sidebar-content card d-block d-lg-block">
                     <div class="card-body">
-                        <div class="category-title pb-1">
+                        <div class="category-title pb-1 text-center">
                             <h6>Questions</h6>
                         </div>
                         <div class="sidebaroptions">
 
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -229,8 +230,6 @@
                     <a class="Input-Numeric" rel="Input-Numeric" draggable="true">Input - Numeric</a>
                     <span class="primary lighten-1"> | </span>
                 </li>
-
-
                 <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Radio">
                     <a class="Radio" rel="Radio" draggable="true">Radio</a>
                     <span class="primary lighten-1"> | </span>
@@ -312,7 +311,6 @@
         $('.mysection').addClass('open');
         $('.section_add').addClass('active');
         getData();
-
         $(".sortinp").ForceNumericOnly();
     });
 
@@ -390,9 +388,7 @@
             toastMsg('Sort No', 'Invalid Sort No', 'error');
             flag = 1;
         }
-
         if (flag == 0) {
-            console.log(data);
             showloader();
             CallAjax('<?php echo base_url('index.php/Section/sortQuestions') ?>', data, 'POST', function (result) {
                 hideloader();
@@ -697,6 +693,14 @@
         }
     }
 
+    function toggleInstruction() {
+        if ($('input[name=Instructions]:checked').val() == 'Instructions') {
+            $('.InstructionOption').show();
+        } else {
+            $('.InstructionOption').hide();
+        }
+    }
+
     function selectType(obj) {
         var type = $(obj).attr('data-type');
         var module_variable = $('#module_variable').val();
@@ -710,7 +714,6 @@
             varname = module_variable + section_variable + 0 + lastvariable_name;
         }
         var html = '';
-        var otherhtml = '';
         var htmloptions = '';
         var totallanguages = $('#totallanguages').val();
         var l1 = $('#l1').val();
@@ -718,14 +721,18 @@
         var l3 = $('#l3').val();
         var l4 = $('#l4').val();
         var l5 = $('#l5').val();
+        var instruction_option = '';
         var dbStructure = '';
 
         html += '<div class="row form-row">';
 
-
         htmloptions += '<hr> ' +
             '<div class="col-md-12">' +
             '<div class="mb-2">' +
+            '<div class="form-check form-check-inline"> ' +
+            '<input class="form-check-input" type="checkbox" id="Instructions" name="Instructions" value="Instructions" onclick="toggleInstruction()"> ' +
+            '<label class="form-check-label" for="Instructions">Instructions</label> ' +
+            '</div>' +
             '<div class="form-check form-check-inline"> ' +
             '<input class="form-check-input" type="checkbox" id="Required" name="otheroptions" value="Required"> ' +
             '<label class="form-check-label" for="Required">Required</label> ' +
@@ -734,11 +741,24 @@
             '<input class="form-check-input" type="checkbox" id="ReadOnly" name="otheroptions" value="ReadOnly"> ' +
             '<label class="form-check-label" for="ReadOnly">ReadOnly</label> ' +
             '</div>' +
-            '</div>' +
-            '</div>' +
 
-            '<div class="col-md-12 col">' +
-            '<div class="form-group"><label for="parentQuestion">Parent Question</label>' +
+            '</div>' +
+            '</div>';
+
+        /*Instruction*/
+        for (var b = 1; b <= totallanguages; b++) {
+            instruction_option += '<div class="col-md-12 InstructionOption" style="display: none;">' +
+                '<div class="form-group ">' +
+                '<label for="instruction_' + b + '">Instruction' + ' (' + $('#l' + b).val() + ')</label>' +
+                '<input type="text" id="instruction_' + b + '" name="instruction" class="form-control input-sm instruction" placeholder="Instruction">' +
+                '</div>' +
+                '</div>';
+        }
+        htmloptions += instruction_option;
+        /*Parent Question & Skip*/
+        htmloptions += '<div class="col-md-12 col">' +
+            '<div class="form-group">' +
+            '<label for="parentQuestion">Parent Question</label>' +
             '<input type="text" id="parentQuestion" name="parentQuestion" class="form-control parentQuestion  input-sm"' +
             '  placeholder="Parent Question" >' +
             '</div>' +
@@ -895,8 +915,17 @@
                         '</div>' +
                         '</div>';
                 }
+                html += '<hr> ' +
+                    '<div class="col-md-12">' +
+                    '<div class="mb-2">' +
+                    '<div class="form-check form-check-inline"> ' +
+                    '<input class="form-check-input" type="checkbox" id="Instructions" name="Instructions" value="Instructions" onclick="toggleInstruction()"> ' +
+                    '<label class="form-check-label" for="Instructions">Instructions</label> ' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>';
+                html += instruction_option;
             } else if (type == 'SelectBox' || type == 'Radio' || type == 'CheckBox') {
-
                 for (var i = 1; i <= totallanguages; i++) {
                     html += '<div class="col-md-12">' +
                         '<div class="form-group ">' +
@@ -906,21 +935,15 @@
                         '</div>' +
                         '</div>';
                 }
-
                 dbStructure = showDbStructure();
                 htmloptions += dbStructure;
-
                 html += htmloptions;
-
-
                 html += '<div class="form-group col-12 mb-2 file-repeater"><hr>' +
                     '<div data-repeater-list="repeater-group">' +
                     '<label for="options_list">Responses</label>' +
                     '<button type="button" data-repeater-create class="btn primary"  >' +
                     '<i class="ft-plus"></i> Add Options</button>' +
-
                     '<div class="input-group mb-1 col-md-12 border border-light options_list" id="options_list" data-repeater-item>' +
-
                     '<div class="col-md-12 col">' +
                     '<span class="input-group-append float-right" id="button-addon2">' +
                     '<i class="ft-x" data-repeater-delete  ></i>' +
@@ -930,7 +953,6 @@
                     'data-key="OptionVar"  placeholder="Option Variable Name" >' +
                     '</div>' +
                     '</div>';
-
                 html += '<div class="col-md-12 col">' +
                     '<div class="form-group">' +
                     '<select id="option_nature" name="option_nature" class="form-control  input-sm option_nature" onclick="addActive(this)" onchange="showOpionsDbStructure(this)" > ' +
@@ -945,8 +967,6 @@
                     '</select>' +
                     '</div>' +
                     '</div>';
-
-
                 for (var z = 1; z <= totallanguages; z++) {
                     html += '<div class="col-md-12 col">' +
                         '<div class="form-group">' +
@@ -978,7 +998,9 @@
                 '<button type="submit" class="btn btn-success mybtn" onclick="addType(this)"> ' +
                 '<i class="la la-check"></i> Save ' +
                 '</button> ' +
-                '</div><hr> <div class="p-5"></div>';
+                '</div>' +
+                '<hr>' +
+                ' <div class="p-10"></div>';
         }
         $('.sidebaroptions').html(html);
         $('.DbOptionStructure').hide();
@@ -1369,6 +1391,9 @@
                     flag = 1;
                     return false;
                 }
+            });
+            $($(this).find('.instruction')).each(function (i, v) {
+                data['instruction_l' + (i + 1)] = $(this).val();
             });
             data['min_val'] = $(this).find('.min_val').val();
             data['max_val'] = $(this).find('.max_val').val();

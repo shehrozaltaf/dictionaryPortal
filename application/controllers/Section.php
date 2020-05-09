@@ -189,7 +189,7 @@ class Section extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Add Section Detail Page",
-            "result" => "View Section Detail add page. Fucntion: add_sectiondetail(). idSection: " .$idSection);
+            "result" => "View Section Detail add page. Fucntion: add_sectiondetail(). idSection: " . $idSection);
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
 
@@ -266,6 +266,11 @@ class Section extends CI_controller
         $formArray['label_l3'] = (isset($_POST['L3']) && $_POST['L3'] != '' ? $_POST['L3'] : '');
         $formArray['label_l4'] = (isset($_POST['L4']) && $_POST['L4'] != '' ? $_POST['L4'] : '');
         $formArray['label_l5'] = (isset($_POST['L5']) && $_POST['L5'] != '' ? $_POST['L5'] : '');
+        $formArray['instruction_l1'] = (isset($_POST['instruction_l1']) && $_POST['instruction_l1'] != '' ? $_POST['instruction_l1'] : '');
+        $formArray['instruction_l2'] = (isset($_POST['instruction_l2']) && $_POST['instruction_l2'] != '' ? $_POST['instruction_l2'] : '');
+        $formArray['instruction_l3'] = (isset($_POST['instruction_l3']) && $_POST['instruction_l3'] != '' ? $_POST['instruction_l3'] : '');
+        $formArray['instruction_l4'] = (isset($_POST['instruction_l4']) && $_POST['instruction_l4'] != '' ? $_POST['instruction_l4'] : '');
+        $formArray['instruction_l5'] = (isset($_POST['instruction_l5']) && $_POST['instruction_l5'] != '' ? $_POST['instruction_l5'] : '');
         $formArray['insertDB'] = (isset($_POST['insertDB']) && $_POST['insertDB'] != '' ? $_POST['insertDB'] : '');
         $formArray['dbType'] = (isset($_POST['dbType']) && $_POST['dbType'] != '' ? $_POST['dbType'] : '');
         $formArray['dbLength'] = (isset($_POST['dbLength']) && $_POST['dbLength'] != '' ? $_POST['dbLength'] : '');
@@ -428,7 +433,7 @@ class Section extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Add Section Detail Option Data Page (add options)",
-            "result" => "Add Section Detail Option Questions. Fucntion: add_sectiondetail_data_option() . Result: " . $result );
+            "result" => "Add Section Detail Option Questions. Fucntion: add_sectiondetail_data_option() . Result: " . $result);
         $Custom->trackLogs($trackarray, "daily_logs");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
@@ -696,7 +701,7 @@ class Section extends CI_controller
         }
         /*==========Log=============*/
         $trackarray = array("action" => "Edit Section Detail Question (edit question)",
-            "result" => "Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: " . $result );
+            "result" => "Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: " . $result);
         $Custom->trackLogs($trackarray, "daily_logs");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/

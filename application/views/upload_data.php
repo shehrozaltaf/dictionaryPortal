@@ -301,7 +301,7 @@
                     toastMsg(response[0], response[1], response[0]);
                     if (response[0] == 'success') {
                         setTimeout(function () {
-                            window.location.reload();
+                            // window.location.reload();
                         }, 500);
                     }
                 } catch (e) {

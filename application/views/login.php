@@ -50,13 +50,14 @@
                                 <div class="card-body">
 
                                     <fieldset class="form-group position-relative">
-                                        <input type="text" class="form-control round" id="login_username"
+                                        <input type="text" class="form-control round inpSubmit" id="login_username"
                                                placeholder="Your Username" required>
                                         <div class="form-control-position">
                                         </div>
                                     </fieldset>
                                     <fieldset class="form-group position-relative">
-                                        <input type="password" class="form-control round myPwdInput" id="login_password"
+                                        <input type="password" class="form-control round myPwdInput inpSubmit"
+                                               id="login_password"
                                                placeholder="Enter Password" required>
                                         <div class="form-control-position toggle-password">
                                             <i class="ft-eye-off pwdIcon"></i>
@@ -103,6 +104,14 @@
 
 <script src="<?php echo base_url() ?>assets/js/core.js"></script>
 <script>
+    $('.inpSubmit').keypress(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            login();
+        }
+    });
+
+
     function login() {
         var errorFlag = 0;
         $('#login_username').removeClass('error');
