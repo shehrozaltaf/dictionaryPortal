@@ -137,7 +137,6 @@
         </div>
     </div>
 </div>
-
 <!-- Lock Modal -->
 <div class="modal fade text-left" id="lockModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8_lock"
      aria-hidden="true">
