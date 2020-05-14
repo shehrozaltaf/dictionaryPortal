@@ -54,6 +54,7 @@ class MModule extends CI_Model
 	modules.module_desc_l5,
 	modules.module_status,
     modules.module_type,
+    modules.locked,
 	crf.id_crf,
 	crf.idProjects,
 	crf.crf_name,

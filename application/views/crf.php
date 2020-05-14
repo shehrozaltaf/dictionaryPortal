@@ -51,7 +51,7 @@
                                                 <th>Name</th>
                                                 <th>Title</th>
                                                 <th>Languages</th>
-                                                <th>No Of Modules</th>
+                                                <th>Lock Status</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Action</th>
@@ -65,7 +65,7 @@
                                                 <th>Name</th>
                                                 <th>Title</th>
                                                 <th>Languages</th>
-                                                <th>No Of Modules</th>
+                                                <th>Lock Status</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
                                                 <th>Action</th>
@@ -138,6 +138,28 @@
     </div>
 </div>
 
+<!-- Lock Modal -->
+<div class="modal fade text-left" id="lockModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel8_lock"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary white">
+                <h4 class="modal-title white" id="myModalLabel8_lock">Lock CRF</h4>
+                <input type="hidden" id="idLock" name="idLock">
+                <input type="hidden" id="locked_val" name="locked_val">
+            </div>
+            <div class="modal-body">
+                <p>Are you sure, you want to <span class="lockspan"> </span> this CRF?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn grey btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger lock-btn" onclick="lockedData()">Lock
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <!-- BEGIN: Page Vendor JS-->
 <script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
@@ -172,6 +194,47 @@
                 if (res == 1) {
                     toastMsg('CRF', 'Successfully Deleted', 'success');
                     $('#deleteModal').modal('hide');
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 500);
+                } else if (res == 2) {
+                    toastMsg('CRF', 'Something went wrong', 'error');
+                } else if (res == 3) {
+                    toastMsg('CRF', 'Invalid Section', 'error');
+                }
+            });
+        }
+    }
+
+    function getLocked(obj, val) {
+        if (val == 'Y') {
+            $('.lockspan').text('lock');
+            $('.lock-btn').text('Lock');
+            $('#locked_val').val('Y');
+        } else if (val == 'N') {
+            $('.lockspan').text('unlock');
+            $('.lock-btn').text('Unlock');
+            $('#locked_val').val('N');
+        } else {
+
+        }
+        var id = $(obj).attr('data-id');
+        $('#idLock').val(id);
+        $('#lockModal').modal('show');
+    }
+
+    function lockedData() {
+        var data = {};
+        data['idLock'] = $('#idLock').val();
+        data['locked_val'] = $('#locked_val').val();
+        if (data['idLock'] == '' || data['idLock'] == undefined || data['idLock'] == 0) {
+            toastMsg('CRF', 'Something went wrong', 'error');
+            return false;
+        } else {
+            CallAjax('<?php echo base_url('index.php/CRF/lockData')?>', data, 'POST', function (res) {
+                if (res == 1) {
+                    toastMsg('CRF', 'Successfully locked', 'success');
+                    $('#lockModal').modal('hide');
                     setTimeout(function () {
                         window.location.reload();
                     }, 500);
@@ -288,7 +351,8 @@
                 {"data": "crf_name"},
                 {"data": "crf_title"},
                 {"data": "languages"},
-                {"data": "no_of_modules"},
+                // {"data": "no_of_modules"},
+                {"data": "locked"},
                 {"data": "startdate"},
                 {"data": "enddate"},
                 {"data": "action"}

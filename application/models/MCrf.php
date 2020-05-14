@@ -131,6 +131,7 @@ crf.l5');
 	crf.startdate,
 	crf.enddate,
 	crf.no_of_modules,
+	crf.locked,
 	projects.project_name,
 	projects.short_title,
 	crf.idProjects,
