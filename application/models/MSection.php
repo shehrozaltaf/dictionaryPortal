@@ -72,6 +72,7 @@ class MSection extends CI_Model
 	crf.id_crf,
 	crf.crf_name,
 	crf.languages,
+	crf.locked,
     crf.l1,
     crf.l2,
     crf.l3,
