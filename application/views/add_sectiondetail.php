@@ -515,10 +515,12 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                         '<span class="text-justify font-medium-2">' + vv.variable_name + ': </span>' +
                                         '<div class="float-right">' +
                                         '<ul class="list-inline text-right sorting_parent">' +
-                                        '<li class="inpSort"></li>' +
-                                        '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
-                                        'data-variable="' + vv.variable_name + '"  data-isParent="0" data-seq="' + child_seq_no + '"> ' + child_seq_no + '</li>' +
-                                        '<li><span class="badge badge-primary  font-small-3"> ' + vv.nature + '</span></li>' +
+                                        '<li class="inpSort"></li>';
+                                    if (locked_status == 'N') {
+                                        subhtml += '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
+                                            'data-variable="' + vv.variable_name + '"  data-isParent="0" data-seq="' + child_seq_no + '"> ' + child_seq_no + '</li>';
+                                    }
+                                    subhtml += '<li><span class="badge badge-primary  font-small-3"> ' + vv.nature + '</span></li>' +
                                         '</ul>';
                                     if (locked_status == 'N') {
                                         subhtml += '<ul class="list-inline text-right">' +
