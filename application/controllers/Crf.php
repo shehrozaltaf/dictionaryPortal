@@ -2,7 +2,6 @@
 ini_set('memory_limit', '256M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
 ini_set('sqlsrv.ClientBufferMaxKBSize', '524288'); // Setting to 512M
 ini_set('pdo_sqlsrv.client_buffer_max_kb_size', '524288');
-
 class Crf extends CI_controller
 {
 
@@ -30,7 +29,7 @@ class Crf extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "View CRF Page",
-            "result" => "View CRF page. Function: index()");
+            "result" => "View CRF page. Fucntion: index()");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
         $this->load->view('include/header');
@@ -52,7 +51,7 @@ class Crf extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Add CRF Page",
-            "result" => "View Add CRF page. Function: add_crf(). ProjectSlug: " . $data['getProjectSlug']);
+            "result" => "View Add CRF page. Fucntion: add_crf(). ProjectSlug: " . $data['getProjectSlug']);
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
         $this->load->view('include/header');
@@ -103,7 +102,7 @@ class Crf extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Add CRF Data",
-            "result" => "View Add CRF page Data. Function: addData() Result: " . $result . " CRF: " . $formArray['crf_name']);
+            "result" => "View Add CRF page Data. Fucntion: addData() Result: " . $result . " CRF: " . $formArray['crf_name']);
         $Custom->trackLogs($trackarray, "user_logs");
         $Custom->trackLogs($trackarray, "daily_logs");
         /*==========Log=============*/
@@ -148,15 +147,6 @@ class Crf extends CI_controller
             $table_data[$value->crf_name]['startdate'] = $value->startdate;
             $table_data[$value->crf_name]['enddate'] = $value->enddate;
             $table_data[$value->crf_name]['no_of_modules'] = $value->no_of_modules;
-
-            if ($value->locked == 'Y') {
-                $va = "getLocked(this,'N')";
-                $locked_icon = '<a href="javascript:void(0)" onclick="' . $va . '"  class="red" data-id="' . $value->id_crf . '">Locked <span class="ft-lock"></span></a>';
-            } else {
-                $va = "getLocked(this,'Y')";
-                $locked_icon = '<a href="javascript:void(0)" onclick="' . $va . '" class="secondary"  data-id="' . $value->id_crf . '">Unlock <span class="ft-unlock"></span></a>';
-            }
-            $table_data[$value->crf_name]['locked'] = $locked_icon;
             $table_data[$value->crf_name]['action'] = '<div class="btn-group mr-1 mb-1">
 							<button class="btn btn-danger dropdown-toggle btn-sm" type="button" 
 							id="dropdownMenuButton' . $value->id_crf . '" data-toggle="dropdown" >
@@ -214,7 +204,7 @@ class Crf extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Edit CRF Page",
-            "result" => "View Edit CRF page. Function: edit_crf()");
+            "result" => "View Edit CRF page. Fucntion: edit_crf()");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
         $this->load->view('include/header');
@@ -287,7 +277,7 @@ class Crf extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Edit CRF Data",
-            "result" => "Edit CRF page Data. Function: editData() Result: " . $result . " CRF: " . $id_crf);
+            "result" => "Edit CRF page Data. Fucntion: editData() Result: " . $result . " CRF: " . $id_crf);
         $Custom->trackLogs($trackarray, "user_logs");
         $Custom->trackLogs($trackarray, "daily_logs");
         /*==========Log=============*/
@@ -316,36 +306,7 @@ class Crf extends CI_controller
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Delete CRF",
-            "result" => "Delete CRF page Data. Function: deleteData() Result: " . $result . " CRF: " . $id_crf);
-        $Custom->trackLogs($trackarray, "user_logs");
-        $Custom->trackLogs($trackarray, "daily_logs");
-        /*==========Log=============*/
-        echo $result;
-    }
-
-    function lockData()
-    {
-        if (isset($_POST['idLock']) && $_POST['idLock'] != '' && isset($_POST['locked_val']) && $_POST['locked_val'] != '') {
-            $Custom = new Custom();
-            $id_crf = $_POST['idLock'];
-            $editArr = array();
-            $editArr['locked'] = $_POST['locked_val'];
-            $editArr['lockedDateTime'] = date('Y-m-d H:i:s');
-            $editArr['lockedBy'] = $_SESSION['login']['idUser'];
-            $editData = $Custom->Edit($editArr, 'id_crf', $id_crf, 'crf');
-            if ($editData) {
-                $result = 1;
-            } else {
-                $result = 2;
-            }
-        } else {
-            echo 3;
-        }
-
-        /*==========Log=============*/
-        $Custom = new Custom();
-        $trackarray = array("action" => "Lock CRF",
-            "result" => "Lock CRF page Data. Function: lockData() Result: " . $result . " CRF: " . $id_crf . " changeVaue: " . $editArr['locked']);
+            "result" => "Delete CRF page Data. Fucntion: deleteData() Result: " . $result . " CRF: " . $id_crf);
         $Custom->trackLogs($trackarray, "user_logs");
         $Custom->trackLogs($trackarray, "daily_logs");
         /*==========Log=============*/

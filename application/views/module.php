@@ -269,12 +269,6 @@
                                 expend = 'aria-expanded="false"';
                                 show = '';
                             }*/
-                            /* var locked_icon = 'unlock';
-                             var locked_value = 'Y';
-                             if (v.locked == 'Y') {
-                                 locked_icon = 'lock';
-                                 locked_value = 'N';
-                             }*/
                             expend = 'aria-expanded="false"';
                             show = '';
                             html += '<div class="card ">';
@@ -287,7 +281,6 @@
                                 '</button>' +
                                 '<a href="<?php echo base_url() ?>index.php/edit_module/' + v.idModule + '"><span class="la la-edit"></span></a>' +
                                 '<a href="javascript:void(0)" onclick="getDelete(this)" data-id="' + v.idModule + '"><span class="la la-trash"></span></a>' +
-                                // '<a href="javascript:void(0)" onclick="lockData(this,' + locked_value + ')" data-id="' + v.idModule + '"><span class="ft-' + locked_icon + '"></span></a>' +
                                 '</h5>' +
                                 '</div>' +
                                 ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +

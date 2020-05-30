@@ -213,51 +213,46 @@
     </div>
 </div>
 <div style="height: 100px;"></div>
-
-<?php
-echo '<input type="text" value="' . $getdata->locked . '" id="locked_status" name="locked_status">';
-if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
-    <footer class="footer fixed-bottom footer-dark navbar-border navbar-shadow">
-        <div class="text-sm-center mb-0 px-2">
-            <div class="toolPalette float-md-left  ">
-                <h3 class="font-small-3 white  d-md-inline-block">Select Type:</h3>
-                <ul class="d-md-inline-block font-medium-2  " id="sortable-1">
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Title">
-                        <a class="Title" rel="Title" draggable="true">Title</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block " onclick="selectType(this)" data-type="Input">
-                        <a class="Input" rel="Input" draggable="true">Input</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Input-Numeric">
-                        <a class="Input-Numeric" rel="Input-Numeric" draggable="true">Input - Numeric</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Radio">
-                        <a class="Radio" rel="Radio" draggable="true">Radio</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="RadioOption">
-                        <a class="RadioOption" rel="RadioOption" draggable="true">Radio Option</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="CheckBox">
-                        <a class="CheckBox" rel="CheckBox" draggable="true">Check Box</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="SelectBox">
-                        <a class="SelectBox" rel="SelectBox" draggable="true">Select Box</a>
-                        <span class="primary lighten-1"> | </span>
-                    </li>
-                    <li class=" d-md-inline-block" onclick="selectType(this)" data-type="TextArea">
-                        <a class="TextArea" rel="TextArea" draggable="true">TextArea</a>
-                    </li>
-                </ul>
-            </div>
+<footer class="footer fixed-bottom footer-dark navbar-border navbar-shadow">
+    <div class="text-sm-center mb-0 px-2">
+        <div class="toolPalette float-md-left  ">
+            <h3 class="font-small-3 white  d-md-inline-block">Select Type:</h3>
+            <ul class="d-md-inline-block font-medium-2  " id="sortable-1">
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Title">
+                    <a class="Title" rel="Title" draggable="true">Title</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block " onclick="selectType(this)" data-type="Input">
+                    <a class="Input" rel="Input" draggable="true">Input</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Input-Numeric">
+                    <a class="Input-Numeric" rel="Input-Numeric" draggable="true">Input - Numeric</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="Radio">
+                    <a class="Radio" rel="Radio" draggable="true">Radio</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="RadioOption">
+                    <a class="RadioOption" rel="RadioOption" draggable="true">Radio Option</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="CheckBox">
+                    <a class="CheckBox" rel="CheckBox" draggable="true">Check Box</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="SelectBox">
+                    <a class="SelectBox" rel="SelectBox" draggable="true">Select Box</a>
+                    <span class="primary lighten-1"> | </span>
+                </li>
+                <li class=" d-md-inline-block" onclick="selectType(this)" data-type="TextArea">
+                    <a class="TextArea" rel="TextArea" draggable="true">TextArea</a>
+                </li>
+            </ul>
         </div>
-    </footer>
-<?php } ?>
+    </div>
+</footer>
 <script src="<?php echo base_url(); ?>assets/vendors/js/forms/extended/inputmask/jquery.inputmask.bundle.min.js"
         type="text/javascript"></script>
 <script src="<?php echo base_url(); ?>assets/js/scripts/forms/extended/form-inputmask.min.js"
@@ -443,7 +438,6 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                     var classl3 = $('#l3').val();
                     var classl4 = $('#l4').val();
                     var classl5 = $('#l5').val();
-                    var locked_status = $('#locked_status').val();
                     try {
                         $.each(response, function (i, j) {
                             // v=j.values[0];
@@ -458,23 +452,17 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                 '<span class="text-justify font-medium-2 variableval">' + v.variable_name + ': </span>' +
                                 '<div class="float-right">' +
                                 '<ul class="list-inline text-right sorting_parent">' +
-                                '<li class="inpSort"></li>';
-                            if (locked_status == 'N') {
-                                html += '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
-                                    'data-variable="' + v.variable_name + '" data-isParent="1" data-seq="' + seq_no + '"> ' + seq_no + '</li>';
-                            }
-                            html += '<li class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</li>';
-                            html += '</ul>';
-
-                            if (locked_status == 'N') {
-                                html += '<ul class="list-inline text-right">' +
-                                    '<li class="" onclick="cloneModal(this)" data-idSectionDetail="' + v.variable_name + '"><span class="la la-clone"></span></li>' +
-                                    '<li class="" onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
-                                    '<li class="" onclick="deleterow(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-trash"></span></li>' +
-                                    '</ul>';
-                            }
-
-                            html += '</div>' +
+                                '<li class="inpSort"></li>' +
+                                '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
+                                'data-variable="' + v.variable_name + '" data-isParent="1" data-seq="' + seq_no + '"> ' + seq_no + '</li>' +
+                                '<li class="badge badge-info font-small-3 natureval text-right"> ' + v.nature + '</li>' +
+                                '</ul>' +
+                                '<ul class="list-inline text-right">' +
+                                '<li class="" onclick="cloneModal(this)" data-idSectionDetail="' + v.variable_name + '"><span class="la la-clone"></span></li>' +
+                                '<li class="" onclick="getEdit(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-edit"></span></li>' +
+                                '<li class="" onclick="deleterow(this)" data-idSectionDetail="' + v.idSectionDetail + '"><span class="la la-trash"></span></li>' +
+                                '</ul>' +
+                                '</div>' +
                                 '<span class=" "> ' + v.label_l1 + '</span><br>';
 
                             if (v.label_l2 != '' && v.label_l2 != undefined) {
@@ -515,20 +503,17 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                         '<span class="text-justify font-medium-2">' + vv.variable_name + ': </span>' +
                                         '<div class="float-right">' +
                                         '<ul class="list-inline text-right sorting_parent">' +
-                                        '<li class="inpSort"></li>';
-                                    if (locked_status == 'N') {
-                                        subhtml += '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
-                                            'data-variable="' + vv.variable_name + '"  data-isParent="0" data-seq="' + child_seq_no + '"> ' + child_seq_no + '</li>';
-                                    }
-                                    subhtml += '<li><span class="badge badge-primary  font-small-3"> ' + vv.nature + '</span></li>' +
-                                        '</ul>';
-                                    if (locked_status == 'N') {
-                                        subhtml += '<ul class="list-inline text-right">' +
+                                        '<li class="inpSort"></li>' +
+                                        '<li class="badge badge-success font-small-3 " onclick="openSortInput(this)"  ' +
+                                        'data-variable="' + vv.variable_name + '"  data-isParent="0" data-seq="' + child_seq_no + '"> ' + child_seq_no + '</li>' +
+                                        '<li><span class="badge badge-primary  font-small-3"> ' + vv.nature + '</span></li>' +
+                                        '</ul>' +
+                                        '<ul class="list-inline text-right">' +
+
                                         '<li onclick="getEdit(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-edit"></span></li>' +
                                         '<li onclick="deleterow(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-trash"></span></li>' +
-                                            '</ul>';
-                                    }
-                                    subhtml += '</div>' +
+                                        '</ul>' +
+                                        '</div>' +
                                         '<span class=" "> ' + vv.label_l1 + '</span><br>';
                                     if (vv.label_l2 != '' && vv.label_l2 != undefined) {
                                         subhtml += '<span class=" ' + classl2 + ' "> ' + vv.label_l2 + '</span> <br>';
