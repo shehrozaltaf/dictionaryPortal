@@ -84,6 +84,11 @@ class MProjects extends CI_Model
 	crf.id_crf,
 	crf.crf_name,
 	crf.crf_title,
+	projects.db_hostname,
+projects.db_username,
+projects.db_password,
+projects.db_database,
+projects.db_type,
 	crf.languages as crf_languages');
         $this->db->from('projects');
         $this->db->join('crf', 'projects.idProjects = crf.idProjects', 'left');

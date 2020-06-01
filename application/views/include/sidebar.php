@@ -185,6 +185,14 @@
                     <span class="menu-title" data-i18n="">Users</span>
                 </a>
             </li>
+
+            <li class=" nav-item myformdata">
+                <a href="<?php echo base_url('index.php/FormData') ?>" class="">
+                    <i class="ft-upload"></i>
+                    <span class="menu-title" data-i18n="">Form Data</span>
+                </a>
+            </li>
+
             <li class=" nav-item">
                 <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i class="ft-power"></i>
                     Logout</a>

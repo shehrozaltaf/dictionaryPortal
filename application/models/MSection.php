@@ -281,4 +281,37 @@ section_detail.label_l5');
         $query = $this->db->get();
         return $query->result();
     }
+
+    /*get Form Data*/
+    function getFormData($searchdata)
+    {
+        $this->db->select('section_detail.variable_name,
+section_detail.idSectionDetail,
+section_detail.idParentQuestion,
+section_detail.label_l1,
+section_detail.label_l2,
+section_detail.label_l3,
+section_detail.label_l4,
+section_detail.label_l5,
+section_detail.option_value,
+section_detail.question_type');
+        $this->db->from('section_detail');
+        if (isset($searchdata['idProjects']) && $searchdata['idProjects'] != '' && $searchdata['idProjects'] != null) {
+            $this->db->where('section_detail.idProjects', $searchdata['idProjects']);
+        }
+        if (isset($searchdata['idCRF']) && $searchdata['idCRF'] != '' && $searchdata['idCRF'] != null) {
+            $this->db->where('section_detail.id_crf', $searchdata['idCRF']);
+        }
+        if (isset($searchdata['idModule']) && $searchdata['idModule'] != '' && $searchdata['idModule'] != null) {
+            $this->db->where('section_detail.idModule', $searchdata['idModule']);
+        }
+        if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
+            $this->db->where('section_detail.idSection', $searchdata['idSection']);
+        }
+        $this->db->where('section_detail.isActive', 1);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+
 }
