@@ -46,7 +46,6 @@ class FormData extends CI_controller
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $GetReportData = $MProjects->getPDFData($searchData);
             $getModules = $MModule->getModulesData($searchData);
-
             $servername = $GetReportData[0]->db_hostname;
             $username = $GetReportData[0]->db_username;
             $password = $GetReportData[0]->db_password;
