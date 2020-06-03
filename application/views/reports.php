@@ -153,6 +153,10 @@
                                                 onclick="getXMLquesData()">
                                             <i class="la la-file-excel-o"></i> Get XML Questions
                                         </button>
+                                        <button type="button" class="btn bg-gradient-x-blue-cyan white"
+                                                onclick="getContractsData()">
+                                            <i class="la la-file-excel-o"></i> Get Contracts
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -167,6 +171,44 @@
     $(document).ready(function () {
         $('.myreport').addClass('active');
     });
+
+    function getContractsData() {
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var flag = 0;
+        var url = '<?php echo base_url('index.php/Reports/getContractsData?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        } else {
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+
+
+        if (flag == 1) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
 
     function getTableQuery() {
         $('#idSection').css('border', '1px solid #babfc7');
@@ -233,7 +275,7 @@
         }
         if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
             url += '&crf=' + data['crf_id'];
-        }else {
+        } else {
             $('#crf_id').css('border', '1px solid red');
             toastMsg('CRF', 'Invalid CRF', 'error');
             flag = 1;
@@ -267,6 +309,7 @@
             window.open(url, '_blank');
         }
     }
+
     function getXMLquesData() {
         $('#idProject').css('border', '1px solid #babfc7');
         $('#crf_id').css('border', '1px solid #babfc7');

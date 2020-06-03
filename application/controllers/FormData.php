@@ -8,6 +8,7 @@ class FormData extends CI_controller
         parent::__construct();
         $this->load->model('custom');
         $this->load->model('MProjects');
+        $this->load->model('MSection');
         $this->load->model('Mformdata');
         if (!isset($_SESSION['login']['idUser'])) {
             redirect(base_url());
@@ -44,13 +45,22 @@ class FormData extends CI_controller
             $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
             $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-            $GetReportData = $MProjects->getPDFData($searchData);
-            $getModules = $MModule->getModulesData($searchData);
+            $GetReportData = $MSection->getSectionDetailDataByid($searchData['idSection']);
+
+            /*echo '<pre>';
+            print_r($GetReportData);
+            echo '</pre>';
+            exit();*/
+
+
+//            $getModules = $MModule->getModulesData($searchData);
             $servername = $GetReportData[0]->db_hostname;
             $username = $GetReportData[0]->db_username;
             $password = $GetReportData[0]->db_password;
             $dbname = $GetReportData[0]->db_database;
-            $table = $getModules[0]->db_table;
+            $table = $GetReportData[0]->tableName;
+            $columns = $GetReportData[0]->columnToShow;
+//            $table = $getModules[0]->db_table;
             if ($GetReportData[0]->db_type == 'sqlserver') {
                 $connectionInfo = array("Database" => $dbname, "UID" => $username, "PWD" => $password);
                 $conn = sqlsrv_connect($servername, $connectionInfo);
@@ -64,24 +74,33 @@ class FormData extends CI_controller
                 }
             }
 
-            $query = "SELECT * FROM " . $table . " where col_id='170' ";
+            $query = "SELECT " . $columns . " FROM " . $table;
+
             $Result = sqlsrv_query($conn, $query);
-            $sql_res = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC);
-            /*while ($row = a) {
-                print_r($row) ;
-                 $res.='<div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>'.$v->label_l1.'</label>
-                                                <input type="text" value="'.$row->.'" class="form-control">
-                                            </div>
-                                        </div>';
-            }*/
-            $res = '<div class="row">';
-            $getSections = $MSection->getFormData($searchData);
-
+            if ($Result === false) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+            $sql_res = array();
+            while ($row = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC)) {
+                $sql_res[] = $row;
+            }
+            sqlsrv_free_stmt($Result);
+//            $sql_res = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC);
+            $res = '<table id="my_table_pro"  class="table table-striped table-bordered  ">';
+            $headrow = '<tr>';
+            $tbody = '<tr>';
+            foreach ($sql_res as $sql_key => $sql_val) {
+                $headrow .= '<th>' . $sql_key . '</th>';
+                $tbody .= '<td>' . $sql_val . '</td>';
+            }
+            $headrow .= '</tr>';
+            $tbody .= '</tr>';
+            $res .= '<thead>' . $headrow . '</thead>';
+            $res .= '<tbody>' . $tbody . '</tbody>';
+            $res .= '<tfoot>' . $headrow . '</tfoot>';
+            /* $getSections = $MSection->getFormData($searchData);
             $getSectionsResult = $this->questionArr($getSections);
-
-            foreach ($getSections as $k => $v) {
+           foreach ($getSections as $k => $v) {
                 foreach ($sql_res as $sql_key => $sql_val) {
                     if (strtolower($sql_key) == strtolower($v->variable_name)) {
                         if ($v->question_type == 'Input') {
@@ -129,8 +148,8 @@ class FormData extends CI_controller
 
                     }
                 }
-            }
-            $res .= '</div>';
+            }*/
+            $res .= '</table>';
             echo $res;
         } else {
             echo 'Invalid Project, Please select project';

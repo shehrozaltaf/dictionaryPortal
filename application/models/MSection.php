@@ -66,6 +66,8 @@ class MSection extends CI_Model
 	section_detail.variable_name,
 	section.section_title,
 	section.section_var_name,
+	section.tableName,
+	section.columnToShow,
 	modules.variable_module,
 	modules.idModule,
 	modules.module_name_l1,
@@ -79,7 +81,13 @@ class MSection extends CI_Model
     crf.l4,
     crf.l5,
 	projects.idProjects,
-	projects.project_name');
+	projects.project_name,
+	projects.db_hostname,
+    projects.db_username,
+    projects.db_password,
+    projects.db_database,
+    projects.db_type'
+        );
         $this->db->from('section_detail');
         $this->db->join('section', 'section_detail.idSection = section.idSection', 'RIGHT');
         $this->db->join('modules', 'section.idModule = modules.idModule', 'left');

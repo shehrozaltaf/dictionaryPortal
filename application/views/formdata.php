@@ -144,7 +144,12 @@
                                 </div>
                             </div>
                             <div class="card-content collapse show">
-                                <div class="card-body myresult">
+                                <div class="card-body ">
+                                    <div class="table-responsive myresult">
+                                        <table id="my_table_pro" class="table table-striped table-bordered  ">
+
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -154,10 +159,15 @@
         </div>
     </div>
 </div>
+<!-- BEGIN: Page Vendor JS-->
+<script src="<?php echo base_url(); ?>assets/vendors/js/tables/datatable/datatables.min.js"
+        type="text/javascript"></script>
+<!-- END: Page Vendor JS-->
 <script>
     $(document).ready(function () {
         $('.myformdata').addClass('active');
     });
+
 
 
     function getData() {
@@ -190,6 +200,7 @@
         } else {
             CallAjax(url, data, 'POST', function (res) {
                 $('.myresult').html('').html(res);
+                $('#my_table_pro').DataTable();
             });
         }
     }

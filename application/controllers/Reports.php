@@ -946,4 +946,102 @@ class Reports extends CI_controller
         }
 
     }
+
+    function getContractsData()
+    {
+        ob_end_clean();
+        $flag = 0;
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idProjects'] = $_REQUEST['project'];
+        $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        if (isset($_REQUEST['language']) && $_REQUEST['language'] != '' && $_REQUEST['language'] != '0') {
+            $lang = 'label_' . $_REQUEST['language'];
+        } else {
+            $lang = 'label_l1';
+        }
+        $fileEngSting = '';
+        if (isset($searchData['section']) && $searchData['section'] != '' && $searchData['section'] != 0) {
+            $result = $MSection->getSectionDetailData($searchData);
+            foreach ($result as $key => $value) {
+                $fileEngSting .= 'private String ' . strtolower($value->variable_name) . ';' . "\n";
+                $question_type = $value->nature;
+                if (isset($value->myrow_options)) {
+                    foreach ($value->myrow_options as $options) {
+                        if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
+                            $fileEngSting .= 'private String ' . strtolower($options->variable_name) . ';' . "\n";
+                        }
+                    }
+                }
+            }
+        } elseif (isset($searchData['idModule']) && $searchData['idModule'] != '' && $searchData['idModule'] != 0) {
+            $getSectionData = $MSection->getSectionData($searchData);
+            foreach ($getSectionData as $data) {
+                $searchData['idSection'] = $data->idSection;
+                $result = $MSection->getSectionDetailData($searchData);
+                $data = $this->questionArr($result);
+                foreach ($data as $key => $value) {
+                    $fileEngSting .= 'private String ' . strtolower($value->variable_name) . ';' . "\n";
+                    $question_type = $value->nature;
+                    if (isset($value->myrow_options)) {
+                        foreach ($value->myrow_options as $options) {
+                            if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
+                                $fileEngSting .= 'private String ' . strtolower($options->variable_name) . ';' . "\n";
+                            }
+                        }
+                    }
+                }
+            }
+        } elseif (isset($searchData['idCRF']) && $searchData['idCRF'] != '' && $searchData['idCRF'] != 0) {
+            $this->load->model('mmodule');
+            $MModule = new MModule();
+            $searchcrfdata = array();
+            $searchcrfdata['idCRF'] = $searchData['idCRF'];
+            $getModByCrf = $MModule->getModulesData($searchcrfdata);
+            foreach ($getModByCrf as $mod) {
+                $searchData['idSection'] = '';
+                $searchData['idModule'] = $mod->idModule;
+                $getSectionData = $MSection->getSectionData($searchData);
+                foreach ($getSectionData as $data) {
+                    $searchData['idSection'] = $data->idSection;
+                    $result = $MSection->getSectionDetailData($searchData);
+                    $data = $this->questionArr($result);
+                    foreach ($data as $key => $value) {
+                        $question_type = $value->nature;
+
+                        $fileEngSting .= 'private String ' . strtolower($value->variable_name) . ';' . "\n";
+                        if (isset($value->myrow_options)) {
+                            foreach ($value->myrow_options as $options) {
+                                if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
+                                    $fileEngSting .= 'private String ' . strtolower($options->variable_name) . ';' . "\n";
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        } else {
+            $flag = 1;
+        }
+        if ($flag == 0) {
+            $file = 'assets/uploads/myfiles/contract.txt';
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileEngSting);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: plain/text");
+            readfile($file);
+        } else {
+            echo 'Invalid Section, Please provide proper details';
+        }
+    }
 } ?>
