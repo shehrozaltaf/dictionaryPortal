@@ -1,10 +1,256 @@
-<string name="s6q1">s6q1: توهان جي مادري زبان ڪهڙي آهي؟</string>
-<string name="s6q101">اردو</string>
-<string name="s6q102">پنجابي</string>
-<string name="s6q103">سنڌي</string>
-<string name="s6q104">پشتو</string>
-<string name="s6q105">بلوچي</string>
-<string name="s6q106">سرائڪي</string>
-<string name="s6q107">دٽڪي</string>
-<string name="s6q196">ٻيو ڪو</string>
-<string name="s1q696x">s1q696x: ٻيو ڪو وضاحت ڪريو</string>
+<div class="row urdu">
+    <div class="col-md-12">
+        <h4>
+            <small>d0501 :</small>
+        </h4>
+        <input type="Radio" name="d0501"
+               value="1" id="d0501a" required>
+        <br>
+        <input type="Radio" name="d0501"
+               value="2" id="d0501b" required>
+        <br>
+        <input type="Radio" name="d0501"
+               value="3" id="d0501c" required>
+        <br>
+    </div>
+</div><hr>
+<div class="row urdu">
+    <div class="col-md-12">
+        <h4>
+            <small>d0502 :</small>
+        </h4>
+    </div>
+</div>
+<hr>
+    <div class="row urdu">
+        <div class="col-md-12">
+            <h4>
+                <small>d0502a0a :</small>
+            </h4>
+            <input type="Radio" name="d0502a0a"
+                   value="1" id="d0502a0ay" required>
+            <br>
+            <input type="Radio" name="d0502a0a"
+                   value="2" id="d0502a0an" required>
+            <br>
+        </div>
+    </div>
+    <hr>
+        <div class="row urdu">
+            <div class="col-md-12">
+                <h4>
+                    <small>d0502a0f :</small>
+                </h4>
+                <input type="Radio" name="d0502a0f"
+                       value="1" id="d0502a0fy" required>
+                <br>
+                <input type="Radio" name="d0502a0f"
+                       value="2" id="d0502a0fn" required>
+                <br>
+            </div>
+        </div>
+        <hr>
+            <div class="row urdu">
+                <div class="col-md-12">
+                    <h4>
+                        <small>d0502b0a :</small>
+                    </h4>
+                    <input type="Radio" name="d0502b0a"
+                           value="1" id="d0502b0ay" required>
+                    <br>
+                    <input type="Radio" name="d0502b0a"
+                           value="2" id="d0502b0an" required>
+                    <br>
+                </div>
+            </div>
+            <hr>
+                <div class="row urdu">
+                    <div class="col-md-12">
+                        <h4>
+                            <small>d0502b0f :</small>
+                        </h4>
+                        <input type="Radio" name="d0502b0f"
+                               value="1" id="d0502b0fy" required>
+                        <br>
+                        <input type="Radio" name="d0502b0f"
+                               value="2" id="d0502b0fn" required>
+                        <br>
+                    </div>
+                </div>
+                <hr>
+                    <div class="row urdu">
+                        <div class="col-md-12">
+                            <h4>
+                                <small>d0502c0a :</small>
+                            </h4>
+                            <input type="Radio" name="d0502c0a"
+                                   value="1" id="d0502c0ay" required>
+                            <br>
+                            <input type="Radio" name="d0502c0a"
+                                   value="2" id="d0502c0an" required>
+                            <br>
+                        </div>
+                    </div>
+                    <hr>
+                        <div class="row urdu">
+                            <div class="col-md-12">
+                                <h4>
+                                    <small>d0502c0f :</small>
+                                </h4>
+                                <input type="Radio" name="d0502c0f"
+                                       value="1" id="d0502c0fy" required>
+                                <br>
+                                <input type="Radio" name="d0502c0f"
+                                       value="2" id="d0502c0fn" required>
+                                <br>
+                            </div>
+                        </div>
+                        <hr>
+                            <div class="row urdu">
+                                <div class="col-md-12">
+                                    <h4>
+                                        <small>d0502d0a :</small>
+                                    </h4>
+                                    <input type="Radio" name="d0502d0a"
+                                           value="1" id="d0502d0ay" required>
+                                    <br>
+                                    <input type="Radio" name="d0502d0a"
+                                           value="2" id="d0502d0an" required>
+                                    <br>
+                                </div>
+                            </div>
+                            <hr>
+                                <div class="row urdu">
+                                    <div class="col-md-12">
+                                        <h4>
+                                            <small>d0502d0f :</small>
+                                        </h4>
+                                        <input type="Radio" name="d0502d0f"
+                                               value="1" id="d0502d0fy" required>
+                                        <br>
+                                        <input type="Radio" name="d0502d0f"
+                                               value="2" id="d0502d0fn" required>
+                                        <br>
+                                    </div>
+                                </div>
+                                <hr>
+                                    <div class="row urdu">
+                                        <div class="col-md-12">
+                                            <h4>
+                                                <small>d0503 :</small>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                        <div class="row urdu">
+                                            <div class="col-md-12">
+                                                <h4>
+                                                    <small>d0503a :</small>
+                                                </h4>
+                                                <input type="Radio" name="d0503a"
+                                                       value="1" id="d0503aa" required>
+                                                <br>
+                                                <input type="Radio" name="d0503a"
+                                                       value="2" id="d0503ab" required>
+                                                <br>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                            <div class="row urdu">
+                                                <div class="col-md-12">
+                                                    <h4>
+                                                        <small>d0503b :</small>
+                                                    </h4>
+                                                    <input type="Radio" name="d0503b"
+                                                           value="1" id="d0503ba" required>
+                                                    <br>
+                                                    <input type="Radio" name="d0503b"
+                                                           value="2" id="d0503bb" required>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                                <div class="row urdu">
+                                                    <div class="col-md-12">
+                                                        <h4>
+                                                            <small>d0503c :</small>
+                                                        </h4>
+                                                        <input type="Radio" name="d0503c"
+                                                               value="1" id="d0503ca" required>
+                                                        <br>
+                                                        <input type="Radio" name="d0503c"
+                                                               value="2" id="d0503cb" required>
+                                                        <br>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                    <div class="row urdu">
+                                                        <div class="col-md-12">
+                                                            <h4>
+                                                                <small>d0503d :</small>
+                                                            </h4>
+                                                            <input type="Radio" name="d0503d"
+                                                                   value="1" id="d0503da" required>
+                                                            <br>
+                                                            <input type="Radio" name="d0503d"
+                                                                   value="2" id="d0503db" required>
+                                                            <br>
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                        <div class="row urdu">
+                                                            <div class="col-md-12">
+                                                                <h4>
+                                                                    <small>d0503e :</small>
+                                                                </h4>
+                                                                <input type="Radio" name="d0503e"
+                                                                       value="1" id="d0503ea" required>
+                                                                <br>
+                                                                <input type="Radio" name="d0503e"
+                                                                       value="2" id="d0503eb" required>
+                                                                <br>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                            <div class="row urdu">
+                                                                <div class="col-md-12">
+                                                                    <h4>
+                                                                        <small>d0503f :</small>
+                                                                    </h4>
+                                                                    <input type="Radio" name="d0503f"
+                                                                           value="1" id="d0503fa" required>
+                                                                    <br>
+                                                                    <input type="Radio" name="d0503f"
+                                                                           value="2" id="d0503fb" required>
+                                                                    <br>
+                                                                </div>
+                                                            </div>
+                                                            <hr>
+                                                                <div class="row urdu">
+                                                                    <div class="col-md-12">
+                                                                        <h4>
+                                                                            <small>d0503g :</small>
+                                                                        </h4>
+                                                                        <input type="Radio" name="d0503g"
+                                                                               value="1" id="d0503ga" required>
+                                                                        <br>
+                                                                        <input type="Radio" name="d0503g"
+                                                                               value="2" id="d0503gb" required>
+                                                                        <br>
+                                                                    </div>
+                                                                </div>
+                                                                <hr>
+                                                                    <div class="row urdu">
+                                                                        <div class="col-md-12">
+                                                                            <h4>
+                                                                                <small>d0503h :</small>
+                                                                            </h4>
+                                                                            <input type="Radio" name="d0503h"
+                                                                                   value="1" id="d0503ha" required>
+                                                                            <br>
+                                                                            <input type="Radio" name="d0503h"
+                                                                                   value="2" id="d0503hb" required>
+                                                                            <br>
+                                                                        </div>
+                                                                    </div>
+                                                                    <hr>

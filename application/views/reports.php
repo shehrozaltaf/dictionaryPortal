@@ -157,6 +157,14 @@
                                                 onclick="getContractsData()">
                                             <i class="la la-file-excel-o"></i> Get Contracts
                                         </button>
+                                        <button type="button" class="btn bg-gradient-x-blue-cyan white"
+                                                onclick="getuenForm()">
+                                            <i class="la la-file-excel-o"></i> Get UEN Form
+                                        </button>
+                                        <button type="button" class="btn bg-gradient-x-purple-blue white"
+                                                onclick="getXmlDataSajid()">
+                                            <i class="la la-file-o"></i> Get XMLs Sajid
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -171,6 +179,57 @@
     $(document).ready(function () {
         $('.myreport').addClass('active');
     });
+
+    function getuenForm() {
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var flag = 0;
+        var url = '<?php echo base_url('index.php/Reports/getuenForm?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        } else {
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        } /*else {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+            flag = 1;
+            return false;
+        }*/
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        } else {
+            $('#language').css('border', '1px solid red');
+            toastMsg('Language', 'Invalid Language', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (flag == 1) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
 
     function getContractsData() {
         $('#idSection').css('border', '1px solid #babfc7');
@@ -346,6 +405,39 @@
         }
     }
 
+    function getXmlDataSajid() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports_Sajid/getXml?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+
+        if (data['idSection'] == '' && data['idSection'] == undefined && data['idSection'] != null) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
     function getXmlData() {
         $('#idProject').css('border', '1px solid #babfc7');
         $('#crf_id').css('border', '1px solid #babfc7');

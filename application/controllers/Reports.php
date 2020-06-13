@@ -555,6 +555,79 @@ class Reports extends CI_controller
         }
     }
 
+    function getuenForm()
+    {
+        ob_end_clean();
+        $flag = 0;
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idProjects'] = $_REQUEST['project'];
+        $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        $lang = 'label_l2';
+        $fileEngSting = '';
+        if (isset($searchData['idSection']) && $searchData['idSection'] != '' && $searchData['idSection'] != 0) {
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            foreach ($data as $key => $value) {
+                if ($value->nature == 'Input' || $value->nature == 'Input-Numeric') {
+                    $fileEngSting .= '<div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group  ">
+                                                <label for="crf_title" class="urdu"><small>' . strtolower($value->variable_name) . ' : </small> ' . htmlspecialchars($value->$lang) . ' </label>
+                                                <input type="text" id="' . strtolower($value->variable_name) . '" class="form-control" required
+                                                       placeholder="' . htmlspecialchars($value->$lang) . '" name="' . strtolower($value->variable_name) . '">
+                                            </div>
+                                        </div>
+                                    </div><hr>';
+
+                }
+                if ($value->nature == 'Radio' || $value->nature == 'CheckBox') {
+                    $fileEngSting .= '<div class="row urdu">
+                                        <div class="col-md-12">
+                                            <h4><small>' . strtolower($value->variable_name) . ' : </small>' . htmlspecialchars($value->$lang) . '</h4> 
+                                      ';
+
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Radio') {
+                                $fileEngSting .= '<input type="' . $options->nature . '" name="' . strtolower($value->variable_name) . '" 
+                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '" required >
+                             ' . htmlspecialchars($options->$lang) . '<br>';
+                            }
+                            if ($options->nature == 'CheckBox') {
+                                $fileEngSting .= '<input type="' . $options->nature . '" name="' . strtolower($value->variable_name) . '" 
+                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '"  >
+                             ' . htmlspecialchars($options->$lang) . '<br>';
+                            }
+                        }
+                    }
+                    $fileEngSting .= '  </div>
+                                    </div><hr>';
+                }
+            }
+        } else {
+            $flag = 1;
+        }
+        if ($flag == 0) {
+            $file = 'assets/uploads/myfiles/' . $lang . "sting.xml";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileEngSting);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/xml");
+            readfile($file);
+        } else {
+            echo 'Invalid Section, Please provide proper details';
+        }
+    }
+
     function getStings()
     {
         ob_end_clean();
@@ -966,12 +1039,12 @@ class Reports extends CI_controller
         if (isset($searchData['section']) && $searchData['section'] != '' && $searchData['section'] != 0) {
             $result = $MSection->getSectionDetailData($searchData);
             foreach ($result as $key => $value) {
-                $fileEngSting .= 'private String ' . strtolower($value->variable_name) . ';' . "\n";
+                $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
                 $question_type = $value->nature;
                 if (isset($value->myrow_options)) {
                     foreach ($value->myrow_options as $options) {
                         if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
-                            $fileEngSting .= 'private String ' . strtolower($options->variable_name) . ';' . "\n";
+                            $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
                         }
                     }
                 }
@@ -983,12 +1056,12 @@ class Reports extends CI_controller
                 $result = $MSection->getSectionDetailData($searchData);
                 $data = $this->questionArr($result);
                 foreach ($data as $key => $value) {
-                    $fileEngSting .= 'private String ' . strtolower($value->variable_name) . ';' . "\n";
+                    $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
                     $question_type = $value->nature;
                     if (isset($value->myrow_options)) {
                         foreach ($value->myrow_options as $options) {
                             if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
-                                $fileEngSting .= 'private String ' . strtolower($options->variable_name) . ';' . "\n";
+                                $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
                             }
                         }
                     }
@@ -1011,11 +1084,11 @@ class Reports extends CI_controller
                     foreach ($data as $key => $value) {
                         $question_type = $value->nature;
 
-                        $fileEngSting .= 'private String ' . strtolower($value->variable_name) . ';' . "\n";
+                        $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
                         if (isset($value->myrow_options)) {
                             foreach ($value->myrow_options as $options) {
                                 if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
-                                    $fileEngSting .= 'private String ' . strtolower($options->variable_name) . ';' . "\n";
+                                    $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
                                 }
                             }
                         }
