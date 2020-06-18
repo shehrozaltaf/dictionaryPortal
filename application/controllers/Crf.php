@@ -94,6 +94,7 @@ class Crf extends CI_controller
         $formArray['createdDateTime'] = date('Y-m-d H:i:s');
         $formArray['createdBy'] = $_SESSION['login']['idUser'];
         $formArray['isActive'] = 1;
+        $formArray['locked'] = 'N';
         $InsertData = $Custom->Insert($formArray, 'id_crf', 'crf', 'L');
         if ($InsertData) {
             $result = 1;
@@ -341,7 +342,6 @@ class Crf extends CI_controller
         } else {
             echo 3;
         }
-
         /*==========Log=============*/
         $Custom = new Custom();
         $trackarray = array("action" => "Lock CRF",
