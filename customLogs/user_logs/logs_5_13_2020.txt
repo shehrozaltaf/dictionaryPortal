@@ -1,0 +1,5 @@
+UserIPAddress: 10.1.42.152 - May-13-2020 3:34 pm
+idUser: , UserName: 
+Action: Invalid Password
+Result: User Javed Khan: incorrect password
+-------------------------------------------------

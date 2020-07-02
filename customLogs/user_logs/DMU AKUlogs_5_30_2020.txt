@@ -1,0 +1,35 @@
+UserIPAddress: 10.1.42.80 - May-30-2020 2:34 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-30-2020 2:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-30-2020 2:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-30-2020 2:37 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-30-2020 2:37 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-30-2020 2:37 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-30-2020 2:38 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------

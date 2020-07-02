@@ -1,0 +1,540 @@
+UserIPAddress: 10.1.42.76 - May-9-2020 12:30 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:30 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:32 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:32 pm
+idUser: 2, UserName: DMU AKU
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:32 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:34 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:39 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:40 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:42 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:43 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:43 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:44 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:48 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Missing Label Page
+Result: Missing Label Page. Fucntion: missinglabel()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:51 pm
+idUser: 2, UserName: DMU AKU
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Missing Label Page
+Result: Missing Label Page. Fucntion: missinglabel()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Missing Label Page
+Result: Missing Label Page. Fucntion: missinglabel()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Missing Label Page
+Result: Missing Label Page. Fucntion: missinglabel()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:53 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:54 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 12:59 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:06 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:07 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:08 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:11 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:12 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:12 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:12 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:13 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:13 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:15 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:19 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:19 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:19 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:19 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:20 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:20 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:20 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:21 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:21 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:22 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:22 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:23 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:23 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:24 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:24 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:24 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:24 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:25 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:27 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:28 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:28 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:30 pm
+idUser: 2, UserName: DMU AKU
+Action: Missing Label Page
+Result: Missing Label Page. Fucntion: missinglabel()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:30 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:40 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:42 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:42 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:45 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:45 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:45 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:49 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:50 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 149
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:57 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:57 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:58 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 1:59 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 2:01 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:14 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:15 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:17 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:17 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:17 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:38 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 12
+-------------------------------------------------

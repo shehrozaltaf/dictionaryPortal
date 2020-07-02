@@ -1,0 +1,30 @@
+UserIPAddress: 10.1.42.80 - June-19-2020 8:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-19-2020 8:41 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-19-2020 8:42 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-19-2020 8:43 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-19-2020 8:49 pm
+idUser: 2, UserName: DMU AKU
+Action: Upload Data Page
+Result: Upload Data Page. Fucntion: upload_data()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-19-2020 8:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------

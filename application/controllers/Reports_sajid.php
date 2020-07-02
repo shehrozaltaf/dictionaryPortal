@@ -360,6 +360,7 @@ class Reports_sajid extends CI_controller
         android:layout_height="wrap_content">
    <LinearLayout android:id="@+id/GrpName" style="@style/vlinearlayout">';
 
+
             foreach ($data as $key => $value) {
                 $xml .= "\n\n" . ' <!-- ' . strtolower($value->variable_name) . '  ' . $value->nature . '   -->' . "\n";
                 $xml .= '<androidx.cardview.widget.CardView
@@ -368,12 +369,29 @@ class Reports_sajid extends CI_controller
 
                 <LinearLayout
                     style="@style/vlinearlayout">
-                    <TextView 
-                        android:text="@string/' . strtolower($value->variable_name) . '" 
+                     
+                  <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bottom">
+                    <TextView
+                        android:id="@+id/qtxt_' . strtolower($value->variable_name) . '"
                         android:layout_width="match_parent"
-                        android:layout_height="56dp"  
-                        android:layout_marginTop="12dp" 
-                        />';
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/q_' . strtolower($value->variable_name) . '"
+                        android:text="@string/' . strtolower($value->variable_name) . '" />
+                    <TextView
+                        android:id="@+id/q_' . strtolower($value->variable_name) . '"
+                        style="@style/quesNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/qtxt_' . strtolower($value->variable_name) . '"
+                        android:layout_alignBottom="@id/qtxt_' . strtolower($value->variable_name) . '"
+                        android:text="@string/Q_' . strtolower($value->variable_name) . '" />    
+                </RelativeLayout> 
+                
+                
+                ';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
                         $xml .= '<RadioGroup

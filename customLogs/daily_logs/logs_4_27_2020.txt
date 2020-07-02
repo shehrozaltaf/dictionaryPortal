@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.76 - April-27-2020 12:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - April-27-2020 12:41 pm
+idUser: 2, UserName: DMU AKU
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 9052
+-------------------------------------------------

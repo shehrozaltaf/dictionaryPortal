@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.46 - April-29-2020 12:48 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Project Page
+Result: User Hamza Amir: add project page data. Result: 1 Project: UeN Midline Health Facility Assesment
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:23 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add CRF Data
+Result: View Add CRF page Data. Fucntion: addData() Result: 1 CRF: UeN Midline Health Facility Assessment
+-------------------------------------------------

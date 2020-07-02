@@ -1,0 +1,5 @@
+UserIPAddress: 10.1.42.80 - June-19-2020 8:51 pm
+idUser: 2, UserName: DMU AKU
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------

@@ -1,0 +1,80 @@
+UserIPAddress: 10.1.42.80 - June-1-2020 4:30 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:30 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:31 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:32 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:33 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:33 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 4:45 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 5:39 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 5:40 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.171 - June-1-2020 5:42 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.171 - June-1-2020 5:42 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.171 - June-1-2020 5:42 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 5:55 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - June-1-2020 5:57 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.171 - June-1-2020 6:13 pm
+idUser: 2, UserName: DMU AKU
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------

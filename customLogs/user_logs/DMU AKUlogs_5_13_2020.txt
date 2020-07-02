@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.152 - May-13-2020 3:34 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.152 - May-13-2020 3:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.152 - May-13-2020 3:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.152 - May-13-2020 4:12 pm
+idUser: 2, UserName: DMU AKU
+Action: Logout
+Result: User DMU AKU: Logout
+-------------------------------------------------

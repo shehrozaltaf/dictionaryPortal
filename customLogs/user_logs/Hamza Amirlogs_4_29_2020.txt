@@ -1,0 +1,130 @@
+UserIPAddress: 10.1.42.46 - April-29-2020 12:46 pm
+idUser: 17, UserName: Hamza Amir
+Action: Login Success
+Result: User Hamza Amir: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:46 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:46 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Section Page
+Result: View Section add page. Fucntion: add_section()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:46 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Module Page
+Result: View Add Module page. Fucntion: add_module()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:46 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add CRF Page
+Result: View Add CRF page. Fucntion: add_crf(). ProjectSlug: 0
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:46 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Project Page
+Result: View the Add Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:48 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Project Page
+Result: User Hamza Amir: add project page data. Result: 1 Project: UeN Midline Health Facility Assesment
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:48 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Project Page
+Result: View the Main Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:48 pm
+idUser: 17, UserName: Hamza Amir
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:48 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add CRF Page
+Result: View Add CRF page. Fucntion: add_crf(). ProjectSlug: 0
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:48 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 12:49 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:19 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:20 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Section Page
+Result: View Section add page. Fucntion: add_section()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:21 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Project Page
+Result: View the Main Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:21 pm
+idUser: 17, UserName: Hamza Amir
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:21 pm
+idUser: 17, UserName: Hamza Amir
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:22 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Project Page
+Result: View the Main Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:22 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add CRF Page
+Result: View Add CRF page. Fucntion: add_crf(). ProjectSlug: 19
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:23 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add CRF Data
+Result: View Add CRF page Data. Fucntion: addData() Result: 1 CRF: UeN Midline Health Facility Assessment
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:23 pm
+idUser: 17, UserName: Hamza Amir
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:23 pm
+idUser: 17, UserName: Hamza Amir
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:23 pm
+idUser: 17, UserName: Hamza Amir
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:23 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Module Page
+Result: View Add Module page. Fucntion: add_module()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:26 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Section Page
+Result: View Section add page. Fucntion: add_section()
+-------------------------------------------------
+UserIPAddress: 10.1.42.46 - April-29-2020 1:26 pm
+idUser: 17, UserName: Hamza Amir
+Action: Add Section Page
+Result: View Section add page. Fucntion: add_section()
+-------------------------------------------------

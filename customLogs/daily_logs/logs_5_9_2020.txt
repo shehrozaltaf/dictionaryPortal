@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.76 - May-9-2020 3:15 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.76 - May-9-2020 3:17 pm
+idUser: 2, UserName: DMU AKU
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------

@@ -1,0 +1,375 @@
+UserIPAddress: 10.1.42.80 - May-14-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: Login Success
+Result: User DMU AKU: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:10 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:11 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:12 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:12 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:12 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:13 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:13 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:13 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:14 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:15 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:15 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:16 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:24 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:25 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:26 pm
+idUser: 2, UserName: DMU AKU
+Action: Edit Module Page
+Result: View Edit Module page. Fucntion: edit_module() idModuleSlug: 65
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:26 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:29 pm
+idUser: 2, UserName: DMU AKU
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:29 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:29 pm
+idUser: 2, UserName: DMU AKU
+Action: View Project Page
+Result: View the Main Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:29 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:32 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:32 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:33 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:33 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:35 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:36 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:36 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:37 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:40 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:41 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:41 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:41 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:44 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:50 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:51 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:52 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:53 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:54 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:54 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:55 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:55 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:56 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:56 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:58 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:58 pm
+idUser: 2, UserName: DMU AKU
+Action: View Project Page
+Result: View the Main Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:58 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:58 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Fucntion: lockData() Result: 1 CRF: 16
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:59 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:59 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Fucntion: lockData() Result: 1 CRF: 16
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:59 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 1:59 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Fucntion: lockData() Result: 1 CRF: 39
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:00 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:02 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Function: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:02 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Function: lockData() Result: 1 CRF: 39 changeVaue: N
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:02 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Function: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:03 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Function: lockData() Result: 1 CRF: 16 changeVaue: Y
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:03 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Function: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:03 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Function: lockData() Result: 1 CRF: 39 changeVaue: Y
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:03 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Function: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:04 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Function: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:04 pm
+idUser: 2, UserName: DMU AKU
+Action: Lock CRF
+Result: Lock CRF page Data. Function: lockData() Result: 1 CRF: 16 changeVaue: N
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - May-14-2020 2:04 pm
+idUser: 2, UserName: DMU AKU
+Action: View CRF Page
+Result: View CRF page. Function: index()
+-------------------------------------------------
