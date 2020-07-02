@@ -160,15 +160,15 @@
             <li class=" nav-item myupload_data">
                 <a href="<?php echo base_url('index.php/upload_data') ?>" class="">
                     <i class="ft-upload"></i>
-                    <span class="menu-title" data-i18n="">Upload Data</span>
+                    <span class="menu-title" data-i18n="">Upload/Import Data</span>
                 </a>
             </li>
-            <li class=" nav-item mylangauge">
-                <a href="<?php echo base_url('index.php/language') ?>" class="">
+            <!--<li class=" nav-item mylangauge">
+                <a href="<?php /*echo base_url('index.php/language') */ ?>" class="">
                     <i class="ft-volume-2"></i>
                     <span class="menu-title" data-i18n="">Language</span>
                 </a>
-            </li>
+            </li>-->
             <li class="nav-item mysettings"><a href="javascript:void(0)">
                     <i class="ft-settings"></i><span class="menu-title" data-i18n="">Settings</span></a>
                 <ul class="menu-content">

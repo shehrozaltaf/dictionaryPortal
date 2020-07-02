@@ -40,6 +40,11 @@
                                                 <i class="ft-maximize"></i>
                                             </a>
                                         </li>
+                                        <li>
+                                            <a data-action="close">
+                                                <i class="ft-x"></i>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>
