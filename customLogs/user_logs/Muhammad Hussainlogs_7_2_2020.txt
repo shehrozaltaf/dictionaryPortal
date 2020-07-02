@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.84 - July-2-2020 12:37 pm
+idUser: 27, UserName: Muhammad Hussain
+Action: Login Success
+Result: User Muhammad Hussain: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-2-2020 12:37 pm
+idUser: 27, UserName: Muhammad Hussain
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-2-2020 12:37 pm
+idUser: 27, UserName: Muhammad Hussain
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-2-2020 12:50 pm
+idUser: 27, UserName: Muhammad Hussain
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

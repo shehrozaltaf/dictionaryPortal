@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.80 - July-2-2020 12:35 pm
+idUser: , UserName: 
+Action: Invalid Password
+Result: User Shahroz Khan: incorrect password
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 12:35 pm
+idUser: , UserName: 
+Action: Invalid Password
+Result: User Shahroz Khan: incorrect password
+-------------------------------------------------

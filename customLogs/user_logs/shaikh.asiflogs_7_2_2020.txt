@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.80 - July-2-2020 12:39 pm
+idUser: 44, UserName: shaikh.asif
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 12:39 pm
+idUser: 44, UserName: shaikh.asif
+Action: Logout
+Result: User shaikh.asif: Logout
+-------------------------------------------------
