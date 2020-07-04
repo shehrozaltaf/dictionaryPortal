@@ -75,11 +75,6 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-    /*'hostname' => 'localhost:3308',
-    'username' => 'root',
-    'password' => '',
-    'database' => 'dictionary_portalnew',
-    'dbdriver' => 'mysqli',*/
     'hostname' => 'f38158',
     'username' => 'sa',
     'password' => 'sa',
