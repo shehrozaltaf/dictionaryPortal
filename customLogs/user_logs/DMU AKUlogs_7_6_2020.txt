@@ -193,3 +193,8 @@ idUser: 2, UserName: DMU AKU
 Action: View Dashboard
 Result: View Dashboard page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-6-2020 5:47 pm
+idUser: 2, UserName: DMU AKU
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
