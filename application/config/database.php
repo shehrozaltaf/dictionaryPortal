@@ -75,9 +75,9 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-    'hostname' => 'f38158',
-    'username' => 'sa',
-    'password' => 'sa',
+    'hostname' => 'vcoe1',
+    'username' => 'app',
+    'password' => 'abcd1234',
     'database' => 'dictionary_portal',
     'dbdriver' => 'sqlsrv',
 	'dbprefix' => '',

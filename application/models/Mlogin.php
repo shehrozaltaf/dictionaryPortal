@@ -15,7 +15,11 @@ class MLogin extends CI_Model
 
     function validate($user, $pass)
     {
-        $this->db->select('*');
+        $this->db->select('idUser,
+	username,
+	password,
+	email,
+	idGroup');
         $this->db->from('users');
         $this->db->where('password', $pass);
         $this->db->where('username', $user);
@@ -27,7 +31,11 @@ class MLogin extends CI_Model
 
     function ForgetPass($email)
     {
-        $this->db->select('*');
+        $this->db->select('idUser,
+	username,
+	password,
+	email,
+	idGroup');
         $this->db->from('users');
         $this->db->where('email', $email);
         $this->db->where('status', 1);

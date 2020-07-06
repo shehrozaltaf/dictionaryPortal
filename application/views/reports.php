@@ -112,76 +112,36 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="action_type">Export Action Type</label>
+                                                        <select id="action_type" name="action_type"
+                                                                class="form-control">
+                                                            <option value="1" selected>Export PDF</option>
+                                                            <option value="2">Export XML</option>
+                                                            <option value="3">Export Strings</option>
+                                                            <option value="4">Export Save Draft</option>
+                                                            <option value="5">Export Code Book</option>
+                                                            <option value="6">Export Excel</option>
+                                                            <option value="7">Export DCF File</option>
+                                                            <option value="8">Export XML Questions</option>
+                                                            <option value="9">Export Contracts</option>
+                                                            <option value="10">Export XMLs Sajid</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     <div class="form-actions ">
-
                                         <button type="button"
                                                 class="btn bg-gradient-x-blue-green white"
-                                                onclick="getPDFData()">
-                                            <i class="la la-file-pdf-o"></i> Get PDF
+                                                onclick="getData()">
+                                            <i class="la la-file-pdf-o"></i> Export Data
                                         </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-purple-blue white"
-                                                onclick="getXmlData()">
-                                            <i class="la la-file-o"></i> Get XMLs
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-orange-yellow   white"
-                                                onclick="getStingsData()">
-                                            <i class="la la-file-o"></i> Get Strings
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-red-pink    white"
-                                                onclick="getSaveDraftData()">
-                                            <i class="la la-file-o"></i> Get Save
-                                            Draft
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-red-pink    white"
-                                                onclick="getCodeBook()">
-                                            <i class="la la-file-o"></i> Get Code
-                                            Book
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-blue-cyan white"
-                                                onclick="getTableQuery()">
-                                            <i class="la la-file-excel-o"></i> Get
-                                            Database Query
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-blue-cyan white"
-                                                onclick="getExcelData()">
-                                            <i class="la la-file-excel-o"></i> Get
-                                            Excel
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-blue-cyan white"
-                                                onclick="getXMLquesData()">
-                                            <i class="la la-file-excel-o"></i> Get
-                                            XML Questions
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-blue-cyan white"
-                                                onclick="getContractsData()">
-                                            <i class="la la-file-excel-o"></i> Get
-                                            Contracts
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-blue-cyan white"
-                                                onclick="getuenForm()">
-                                            <i class="la la-file-excel-o"></i> Get
-                                            UEN Form
-                                        </button>
-                                        <button type="button"
-                                                class="btn bg-gradient-x-purple-blue white"
-                                                onclick="getXmlDataSajid()">
-                                            <i class="la la-file-o"></i> Get XMLs
-                                            Sajid
-                                        </button>
-
-
                                     </div>
                                 </div>
                             </div>
@@ -196,6 +156,72 @@
     $(document).ready(function () {
         $('.myreport').addClass('active');
     });
+
+    function getData() {
+        var flag = 0;
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        data['action_type'] = $('#action_type').val();
+        var url = '<?php echo base_url('index.php/Reports/') ?>';
+        if (data['action_type'] == 1) {
+            url += 'getPDF?';
+        } else if (data['action_type'] == 2) {
+            url += 'getXml?';
+        } else if (data['action_type'] == 3) {
+            url += 'getStings?';
+        } else if (data['action_type'] == 4) {
+            url += 'getSaveDraftData?';
+        } else if (data['action_type'] == 5) {
+            url += 'getCodeBook?';
+        } else if (data['action_type'] == 6) {
+            url += 'getExcel?';
+        } else if (data['action_type'] == 7) {
+            url += 'getDCF?';
+        } else if (data['action_type'] == 8) {
+            url += 'getXmlQuestions?';
+        } else if (data['action_type'] == 9) {
+            url += 'getContractsData?';
+        } else if (data['action_type'] == 10) {
+            url = '<?php echo base_url('index.php/Reports_Sajid/getXml?') ?>';
+        } else {
+            $('#action_type').css('border', '1px solid red');
+            toastMsg('Action', 'Invalid Export Type', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        } else {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            flag = 1;
+            return false;
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        }
+        if (flag == 0) {
+            window.open(url, '_blank');
+
+        } else {
+            toastMsg('Error', 'Something went wrong', 'error');
+        }
+    }
+
 
     function getContractsData() {
         $('#idSection').css('border', '1px solid #babfc7');

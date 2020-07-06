@@ -1,4 +1,7 @@
 <?php ob_start();
+ini_set('memory_limit', '256M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
+ini_set('sqlsrv.ClientBufferMaxKBSize', '524288'); // Setting to 512M
+ini_set('pdo_sqlsrv.client_buffer_max_kb_size', '524288');
 header('Content-type: text/html; charset=utf-8');
 
 class Reports extends CI_controller
@@ -15,13 +18,21 @@ class Reports extends CI_controller
         if (!isset($_SESSION['login']['idUser'])) {
             redirect(base_url());
         }
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
     }
 
     function index()
     {
         $MProjects = new MProjects();
         $data = array();
-        $data['projects'] = $MProjects->getAllProjects();
+        $data['projects'] = $MProjects->getAllProjects();/*==========Log=============*/
+        $Custom = new Custom();
+        $trackarray = array("action" => "View Reports Page",
+            "result" => "View Reports page. Fucntion: index()");
+        $Custom->trackLogs($trackarray, "user_logs");
+        /*==========Log=============*/
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
         $this->load->view('reports', $data);
@@ -338,26 +349,34 @@ class Reports extends CI_controller
         <import type="android.view.View" /> 
         <variable name="callback" type="edu.aku.hassannaqvi.template.ui.' . $xml_layout_name . '"/>
     </data> 
-    <ScrollView   android:fadeScrollbars="false"  android:fillViewport="true"  
+    <ScrollView   android:fadeScrollbars="false"  android:fillViewport="true" 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" 
     android:scrollbarSize="10dip" tools:context=".ui.' . $xml_layout_name . '">
    <LinearLayout android:id="@+id/GrpName" android:layout_width="match_parent"  android:layout_height="wrap_content"android:orientation="vertical">';
 
             foreach ($data as $key => $value) {
                 $xml .= "\n\n" . ' <!-- ' . strtolower($value->variable_name) . '  ' . $value->nature . '   -->' . "\n";
                 $xml .= '<androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '" >
+                android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
                     <TextView 
-                        android:text="@string/' . strtolower($value->variable_name) . '" />';
+                        android:text="@string/' . strtolower($value->variable_name) . '" 
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"  
+                        android:layout_marginTop="12dp" 
+                        />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
                         $xml .= '<RadioGroup
                         android:id="@+id/' . strtolower($value->variable_name) . '"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">';
+                        android:layout_height="wrap_content">';
                     }
                     if ($value->nature == 'CheckBox') {
                         $xml .= '<LinearLayout
@@ -371,11 +390,14 @@ class Reports extends CI_controller
                         if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" />
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"/>
                             <EditText
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" 
+                            android:layout_height="56dp" 
+                            android:layout_marginBottom="12dp"
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
                             android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
@@ -383,11 +405,14 @@ class Reports extends CI_controller
                         } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
                             $xml .= '<CheckBox
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" />                       
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                         android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />                       
                             <EditText
                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" 
+                            android:layout_height="56dp" 
+                            android:layout_marginBottom="12dp"
                             android:hint="@string/' . strtolower($options->variable_name) . '"
                             android:tag="' . strtolower($options->variable_name) . '"
                             android:text=\'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
@@ -402,34 +427,52 @@ class Reports extends CI_controller
                                 $minVal = $options->MinVal;
                             }
                             $xml .= '<TextView 
-                        android:text="@string/' . strtolower($options->variable_name) . '" />
+                        android:text="@string/' . strtolower($options->variable_name) . '" 
+                          android:layout_marginTop="12dp"
+                          android:layout_width="match_parent"
+                        android:layout_height="56dp"  />
                             <com.edittextpicker.aliazaz.EditTextPicker
+                            android:layout_width="match_parent"
+                            android:layout_height="56dp" 
+                            android:layout_marginBottom="12dp"
                                     android:id="@+id/' . strtolower($options->variable_name) . '"
                                     android:hint="@string/' . strtolower($options->variable_name) . '" 
                                     app:mask="##"
                                     app:maxValue="' . $maxVal . '"
                                     app:minValue="' . $minVal . '"
-                                    app:type="range" />';
+                                    app:type="range"
+                                     />';
                         } elseif ($options->nature == 'Input') {
                             $xml .= '<TextView 
-                        android:text="@string/' . strtolower($options->variable_name) . '" />
+                        android:text="@string/' . strtolower($options->variable_name) . '" 
+                         android:layout_marginTop="12dp" 
+                         android:layout_width="match_parent"
+                        android:layout_height="56dp"  />
                             <EditText
                                 android:id="@+id/' . strtolower($options->variable_name) . '" 
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"  
+                                android:layout_height="56dp"  
+                                android:layout_marginBottom="12dp"
                                 android:hint="@string/' . strtolower($options->variable_name) . '" 
-                                android:textColor="@android:color/black" />';
+                                 />';
                         } elseif ($options->nature == 'Title') {
                             $xml .= '  <TextView 
-                        android:text="@string/' . strtolower($options->variable_name) . '" />';
+                        android:text="@string/' . strtolower($options->variable_name) . '"
+                         android:layout_marginTop="12dp"
+                         android:layout_width="match_parent"
+                        android:layout_height="56dp"   />';
                         } elseif ($options->nature == 'Radio') {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" />';
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />';
                         } elseif ($options->nature == 'CheckBox') {
                             $xml .= ' <CheckBox
                             android:id="@+id/' . strtolower($options->variable_name) . '" 
-                            android:text="@string/' . strtolower($options->variable_name) . '" />';
+                            android:text="@string/' . strtolower($options->variable_name) . '"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />';
                         }
                     }
                     if ($value->nature == 'Radio') {
@@ -452,8 +495,9 @@ class Reports extends CI_controller
                         $xml .= '<com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/' . strtolower($value->variable_name) . '"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"  
+                                    android:layout_height="56dp"  
                                     android:inputType="number"
+                                     android:layout_marginBottom="12dp"
                                     android:hint="@string/' . strtolower($value->variable_name) . '"
                                     app:mask="##"
                                     app:maxValue="' . $maxVal . '"
@@ -463,20 +507,30 @@ class Reports extends CI_controller
                         $xml .= '<EditText
                                 android:id="@+id/' . strtolower($value->variable_name) . '" 
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content" 
+                                android:layout_height="56dp" 
+                                android:layout_marginBottom="12dp"
                                 android:hint="@string/' . strtolower($value->variable_name) . '" 
-                                android:textColor="@android:color/black" />';
+                                 />';
                     } elseif ($value->nature == 'Title') {
                     }
                 }
                 $xml .= ' </LinearLayout>
             </androidx.cardview.widget.CardView>';
             }
-            $xml .= ' <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                          android:layout_gravity="end" android:layout_marginTop="20dp" android:orientation="horizontal">
-                <Button android:id="@+id/btn_End"  android:layout_marginRight="10dp"
+            $xml .= ' <LinearLayout android:layout_width="match_parent" 
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end" 
+                        android:layout_marginTop="24dp" 
+                        android:orientation="horizontal">
+                    <Button android:id="@+id/btn_End"
+                        android:layout_marginStart="12dp"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
                         android:onClick="@{() -> callback.BtnEnd()}" android:text="Cancel"/>
-                <Button android:id="@+id/btn_Continue" 
+                    <Button android:id="@+id/btn_Continue" 
+                        android:layout_marginStart="12dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:onClick="@{() -> callback.BtnContinue()}"
                         android:text="Save"/>
                         <!--\'onClick\' for btn_End will NOT change and always call \'endInterview\'-->
@@ -501,6 +555,79 @@ class Reports extends CI_controller
         }
     }
 
+    function getuenForm()
+    {
+        ob_end_clean();
+        $flag = 0;
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idProjects'] = $_REQUEST['project'];
+        $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        $lang = 'label_l2';
+        $fileEngSting = '';
+        if (isset($searchData['idSection']) && $searchData['idSection'] != '' && $searchData['idSection'] != 0) {
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            foreach ($data as $key => $value) {
+                if ($value->nature == 'Input' || $value->nature == 'Input-Numeric') {
+                    $fileEngSting .= '<div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group  ">
+                                                <label for="crf_title" class="urdu"><small>' . strtolower($value->variable_name) . ' : </small> ' . htmlspecialchars($value->$lang) . ' </label>
+                                                <input type="text" id="' . strtolower($value->variable_name) . '" class="form-control" required
+                                                       placeholder="' . htmlspecialchars($value->$lang) . '" name="' . strtolower($value->variable_name) . '">
+                                            </div>
+                                        </div>
+                                    </div><hr>';
+
+                }
+                if ($value->nature == 'Radio' || $value->nature == 'CheckBox') {
+                    $fileEngSting .= '<div class="row urdu">
+                                        <div class="col-md-12">
+                                            <h4><small>' . strtolower($value->variable_name) . ' : </small>' . htmlspecialchars($value->$lang) . '</h4> 
+                                      ';
+
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Radio') {
+                                $fileEngSting .= '<input type="' . $options->nature . '" name="' . strtolower($value->variable_name) . '" 
+                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '" required >
+                             ' . htmlspecialchars($options->$lang) . '<br>';
+                            }
+                            if ($options->nature == 'CheckBox') {
+                                $fileEngSting .= '<input type="' . $options->nature . '" name="' . strtolower($value->variable_name) . '" 
+                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '"  >
+                             ' . htmlspecialchars($options->$lang) . '<br>';
+                            }
+                        }
+                    }
+                    $fileEngSting .= '  </div>
+                                    </div><hr>';
+                }
+            }
+        } else {
+            $flag = 1;
+        }
+        if ($flag == 0) {
+            $file = 'assets/uploads/myfiles/' . $lang . "sting.xml";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileEngSting);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/xml");
+            readfile($file);
+        } else {
+            echo 'Invalid Section, Please provide proper details';
+        }
+    }
+
     function getStings()
     {
         ob_end_clean();
@@ -520,7 +647,7 @@ class Reports extends CI_controller
         if (isset($searchData['section']) && $searchData['section'] != '' && $searchData['section'] != 0) {
             $result = $MSection->getSectionDetailData($searchData);
             foreach ($result as $key => $value) {
-                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ': ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
             }
         } elseif (isset($searchData['idModule']) && $searchData['idModule'] != '' && $searchData['idModule'] != 0) {
             $getSectionData = $MSection->getSectionData($searchData);
@@ -528,7 +655,7 @@ class Reports extends CI_controller
                 $searchData['idSection'] = $data->idSection;
                 $result = $MSection->getSectionDetailData($searchData);
                 foreach ($result as $key => $value) {
-                    $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ': ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                    $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
                 }
             }
         } elseif (isset($searchData['idCRF']) && $searchData['idCRF'] != '' && $searchData['idCRF'] != 0) {
@@ -545,7 +672,7 @@ class Reports extends CI_controller
                     $searchData['idSection'] = $data->idSection;
                     $result = $MSection->getSectionDetailData($searchData);
                     foreach ($result as $key => $value) {
-                        $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '"> ' . ($value->idParentQuestion == null || $value->idParentQuestion == '' ? strtolower($value->variable_name) . ': ' : '') . htmlspecialchars($value->$lang) . '</string>' . "\n";
+                        $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
                     }
                 }
             }
@@ -583,80 +710,80 @@ class Reports extends CI_controller
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $result = $MSection->getSectionDetailData($searchData);
             $data = $this->questionArr($result);
-            $fileData = 'JSONObject f1 = new JSONObject(); ' . "\n";
+            $fileData = 'JSONObject json = new JSONObject(); ' . "\n";
             foreach ($data as $key => $value) {
                 $fileOtherData = '';
                 $question_type = $value->nature;
                 if ($question_type == 'Input-Numeric') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Input') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Title') {
-//                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+//                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
-                    $fileData .= 'f1.put("' . strtolower($value->variable_name) . '", ' . "\n";
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", ';
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Title') {
                                 $fileData .= '';
                             } else {
-                                $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" : ' . "\n";
+                                $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" ' . "\n" . ' : ';
                             }
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             }
                         }
                     }
-                    $fileData .= ' "0"); ' . "\n";
+                    $fileData .= ' "-1"); ' . "\n\n";
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ?"' . $options->option_value . '" :"0");' . "\n";
+                            $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" :"-1");' . "\n\n";
                             if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'f1.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -760,6 +887,42 @@ class Reports extends CI_controller
         }
     }
 
+    function getXmlQuestions()
+    {
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $this->load->library('excel');
+            $idProject = $_REQUEST['project'];
+            $this->load->model('mmodule');
+            $this->load->model('msection');
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = $idProject;
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $result = $MSection->getXmlQuestionsData($searchData);
+            $data = $this->questionArr($result);
+            $xml = '';
+            foreach ($data as $list) {
+                $xml .= "<string name='Q_" . strtolower($list->variable_name) . "'>" . strtolower($list->variable_name) . "</string> \n";
+            }
+            $file = "assets/uploads/myfiles/myXmlQuesitons.xml";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $xml);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/xml");
+            readfile($file);
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
     function getExcel($slug)
     {
         ob_end_clean();
@@ -827,82 +990,6 @@ class Reports extends CI_controller
         $objWriter->save('php://output');
     }
 
-    /*function getIrfanExcel($slug)
-    {
-        ob_end_clean();
-        $this->load->model('msection');
-        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
-        $this->load->library('excel');
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = $slug;
-        $myresult = array();
-        $searchData = array();
-        $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
-        $result = $MSection->getSectionDetailData($searchData);
-        $data = $this->questionArr($result);
-        $objPHPExcel = new    PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable App');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Type');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Values');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Skip On xml');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Tag No');
-        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Min Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Max Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Language 1');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Language 2');
-        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Language 3');
-        $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Language 4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Language 5');
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-        $rowCount = 1;
-        foreach ($data as $list) {
-            $rowCount++;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->nature_var);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->option_value);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->MinVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->MaxVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->label_l1);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->label_l2);
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->label_l3);
-            $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $list->label_l4);
-            $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $list->label_l5);
-            if (isset($list->myrow_options) && $list->myrow_options != '') {
-                foreach ($list->myrow_options as $options) {
-                    $rowCount++;
-                    $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->variable_name);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->nature_var);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->skipQuestion);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->skipQuestion);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->MinVal);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->MaxVal);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->label_l1);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->label_l2);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->label_l3);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $options->label_l4);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $options->label_l5);
-                }
-            }
-            $rowCount++;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, '?');
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '?');
-        }
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-        header('Cache-Control: max-age=0'); //no cache
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('php://output');
-    }*/
-
     function getTableQuery()
     {
         ob_end_clean();
@@ -931,5 +1018,103 @@ class Reports extends CI_controller
             echo 'Invalid Table Name';
         }
 
+    }
+
+    function getContractsData()
+    {
+        ob_end_clean();
+        $flag = 0;
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idProjects'] = $_REQUEST['project'];
+        $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        if (isset($_REQUEST['language']) && $_REQUEST['language'] != '' && $_REQUEST['language'] != '0') {
+            $lang = 'label_' . $_REQUEST['language'];
+        } else {
+            $lang = 'label_l1';
+        }
+        $fileEngSting = '';
+        if (isset($searchData['section']) && $searchData['section'] != '' && $searchData['section'] != 0) {
+            $result = $MSection->getSectionDetailData($searchData);
+            foreach ($result as $key => $value) {
+                $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
+                $question_type = $value->nature;
+                if (isset($value->myrow_options)) {
+                    foreach ($value->myrow_options as $options) {
+                        if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
+                            $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
+                        }
+                    }
+                }
+            }
+        } elseif (isset($searchData['idModule']) && $searchData['idModule'] != '' && $searchData['idModule'] != 0) {
+            $getSectionData = $MSection->getSectionData($searchData);
+            foreach ($getSectionData as $data) {
+                $searchData['idSection'] = $data->idSection;
+                $result = $MSection->getSectionDetailData($searchData);
+                $data = $this->questionArr($result);
+                foreach ($data as $key => $value) {
+                    $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
+                    $question_type = $value->nature;
+                    if (isset($value->myrow_options)) {
+                        foreach ($value->myrow_options as $options) {
+                            if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
+                                $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
+                            }
+                        }
+                    }
+                }
+            }
+        } elseif (isset($searchData['idCRF']) && $searchData['idCRF'] != '' && $searchData['idCRF'] != 0) {
+            $this->load->model('mmodule');
+            $MModule = new MModule();
+            $searchcrfdata = array();
+            $searchcrfdata['idCRF'] = $searchData['idCRF'];
+            $getModByCrf = $MModule->getModulesData($searchcrfdata);
+            foreach ($getModByCrf as $mod) {
+                $searchData['idSection'] = '';
+                $searchData['idModule'] = $mod->idModule;
+                $getSectionData = $MSection->getSectionData($searchData);
+                foreach ($getSectionData as $data) {
+                    $searchData['idSection'] = $data->idSection;
+                    $result = $MSection->getSectionDetailData($searchData);
+                    $data = $this->questionArr($result);
+                    foreach ($data as $key => $value) {
+                        $question_type = $value->nature;
+
+                        $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
+                        if (isset($value->myrow_options)) {
+                            foreach ($value->myrow_options as $options) {
+                                if (($value->nature == 'Radio' && $options->nature == 'Input') || ($value->nature == 'CheckBox' && $options->nature == 'Input') || $question_type == 'CheckBox') {
+                                    $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
+                                }
+                            }
+                        }
+
+
+                    }
+                }
+            }
+        } else {
+            $flag = 1;
+        }
+        if ($flag == 0) {
+            $file = 'assets/uploads/myfiles/contract.txt';
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileEngSting);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: plain/text");
+            readfile($file);
+        } else {
+            echo 'Invalid Section, Please provide proper details';
+        }
     }
 } ?>

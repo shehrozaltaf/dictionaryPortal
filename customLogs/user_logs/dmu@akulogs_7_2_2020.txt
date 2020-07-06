@@ -18,3 +18,38 @@ idUser: 1, UserName: dmu@aku
 Action: View Reports Page
 Result: View Reports page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 5:38 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 5:39 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 5:45 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 5:55 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 6:14 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 6:15 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - July-2-2020 6:21 pm
+idUser: 1, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

@@ -1,0 +1,938 @@
+
+            [Dictionary]
+            Version=CSPro 7.4
+            Label=Covid Sero Survey 2019
+            Name=Covid Sero Survey 2019
+            RecordTypeStart=1
+            RecordTypeLen=1
+            Positions=Relative
+            ZeroFill=No
+            DecimalChar=Yes
+            SecurityOptions=4FDC6D1E5AA972FD3858B5064FBFCD16A5D14508F2F8BA5C6EB018E2C77D25FA
+            
+            [Languages]
+            EN=English
+            UR=Urdu
+            
+            [Level]
+            Label=Covid Sero Survey 2019 
+            Name=Covid Sero Survey 2019
+            
+            [IdItems]
+            
+            [Item]
+            Label=coe_covid_sero Identification
+            Name=COE_COVID_SERO_ID
+            Start=2
+            Len=1
+            
+            [Record]
+            Label=COE_COVID_SERO_HH|COE_COVID_SERO_HH
+            Name=COE_COVID_SERO_HH
+            RecordTypeValue="1"
+            RecordLen=308
+            
+            
+
+            [Item]
+                Label=Date of interview|انٹرویو کی تاریخ
+                Name=hh01
+                Start=
+                Len=
+                DataType=TextArea
+
+            [Item]
+                Label=Start Time of interview (In 24-hour format)|انٹرویو شروع کرنے کا وقت(24 گھنٹوں میں)
+                Name=hh02
+                Start=
+                Len=
+                DataType=TextArea
+
+            [Item]
+                Label=Interviewer’s code|انٹرویو لینے والے کا کوڈ
+                Name=hh03
+                Start=
+                Len=
+                DataType=TextArea
+
+            [Item]
+                Label=Interviewer’s name|انٹرویو لینے والے کا نام
+                Name=hh03a
+                Start=
+                Len=
+                DataType=TextArea
+
+            [Item]
+                Label=Supervisor’s code|سُپروائزر کا کوڈ
+                Name=hh04
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=Supervisor’s name|سُپروائزر کا نام
+                Name=hh04a
+                Start=
+                Len=
+                DataType=TextArea
+
+            [Item]
+                Label=Enumeration Block Number|اینومیریشن بلاک نمبر
+                Name=hh05
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=Province|صوبہ                                                
+                Name=hh06
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=District |ضلع                                                         
+                Name=hh07
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=Tehsil / Taluka|تحصیل/ تعلقہ                                    
+                Name=hh08
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=City / Village |شہر/گاوں                                         
+                Name=hh09
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=Locality, Street Address with landmarks|مقام،گھر کے قریب مشہور جگہ کے ساتھ گلی کا پتہ
+                Name=hh10
+                Start=
+                Len=
+                DataType=TextArea
+
+            [Item]
+                Label=Cluster number |کلسٹر نمبر                                      
+                Name=hh11
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=Household number |گھرانے کانمبر                           
+                Name=hh12
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=What is the mother tongue of the head of household?|گھرانےکے سربراہ کی مادری زبان کیا ہے ؟
+                Name=ss01
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Urdu   |اردو
+                Name=ss01a
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Punjabi   |پنجابی
+                Name=ss01b
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Sindhi   |سند ھی
+                Name=ss01c
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Pushtu   |پشتو
+                Name=ss01d
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Baluchi   |بلوچی
+                Name=ss01e
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Siraiki  |سرائیکی
+                Name=ss01f
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Hindko   |ھند کو
+                Name=ss01g
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Other (specify) |دیگر وضاحت کریں
+                Name=ss01x
+                Start=
+                Len=
+                DataType=Input
+
+            [Item]
+                Label=What is ownership status of household? |آپ کے گھرکی مالکانہ حیثیت کیا ہے ؟
+                Name=ss02
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Own|اپنا
+                Name=ss02a
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Rented |کرائے کا
+                Name=ss02b
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Other (specify) |دیگر وضاحت کریں
+                Name=ss02x
+                Start=
+                Len=
+                DataType=Input
+
+            [Item]
+                Label=Electricity Connection |بجلی
+                Name=ss03a
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes|ہاں 
+                Name=ss03aa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No|نہیں
+                Name=ss03ab
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Radio |ریڈیو
+                Name=ss03b
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes|ہاں 
+                Name=ss03ba
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No|نہیں
+                Name=ss03bb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Television |ٹیلی وژن
+                Name=ss03c
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes|ہاں 
+                Name=ss03ca
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No|نہیں
+                Name=ss03cb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Landline phone|ٹیلیفون
+                Name=ss03d
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03da
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03db
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Refrigerator|فریج
+                Name=ss03e
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ea
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03eb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Almirah/Cabinet|الماری
+                Name=ss03f
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03fa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03fb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Chair|کرسی
+                Name=ss03g
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ga
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03gb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Room Cooler|روم کولر
+                Name=ss03h
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ha
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03hb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Air conditioner|ائیرکنڈئشن
+                Name=ss03i
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ia
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03ib
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Washing machine |واشنگ مشین
+                Name=ss03j
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ja
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03jb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Water Pump|پانی کا پمپ
+                Name=ss03k
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ka
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03kb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Bed |پلنگ 
+                Name=ss03l
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03la
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03lb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Clock |گھٹری 
+                Name=ss03m
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ma
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03mb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Sofa |صوفہ
+                Name=ss03n
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03na
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03nb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Camera |کیمرہ 
+                Name=ss03o
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03oa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03ob
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Sewing machine| سلائی میشن
+                Name=ss03p
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03pa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03pb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Computer/laptop  |کمپیوٹر/لیپ ٹاپ
+                Name=ss03q
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03qa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03qb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Internet connection |انٹرنیٹ کا کنکشن
+                Name=ss03r
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03ra
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03rb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label= Dish/Cable Network |ڈش /کیبل نیٹ ورک
+                Name=ss03s
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss03sa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss03sb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Watch|گھڑی
+                Name=ss04a
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04aa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04ab
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Mobile Phone| موبائل فون 
+                Name=ss04b
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04ba
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04bb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Bicycle |سائیکل
+                Name=ss04c
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04ca
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04cb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Motorcycle or scooter| موٹر سائیکل/ سکوٹر 
+                Name=ss04d
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04da
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04db
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Animal-drawn cart |جانوروں سے چلائی جانے والی گاڑی
+                Name=ss04e
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04ea
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04eb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Car or truck or bus| گاڑی /ٹرک/ بس
+                Name=ss04f
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04fa
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04fb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Tractor |ٹریکٹر
+                Name=ss04g
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04ga
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04gb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Boat with a motor|موٹر کے ساتھ کشتی
+                Name=ss04h
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04ha
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04hb
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Boat without motor |موٹر کے بغیر کشتی
+                Name=ss04i
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes	|ہاں
+                Name=ss04ia
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No	|نہیں
+                Name=ss04ib
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=What type of fuel do you usually use for cooking in your household?|عام طورپر آپ کے گھر میں کھانا پکانے کے لیے کس قسم کا ایندھن /چولہااستعمال ہوتا ہے ؟
+                Name=ss05
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Electricity|بجلی
+                Name=ss05a
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=LPG|ایل –پی-جی   سیلنڈر
+                Name=ss05b
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Natural Gas|قدرتی گیس
+                Name=ss05c
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Biogas|بائیو گیس
+                Name=ss05d
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Kerosene|مٹی کا تیل
+                Name=ss05e
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Coal/Lignite|قدرتی کوئلہ
+                Name=ss05f
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Charcoal|لکٹری کاکوئلہ
+                Name=ss05g
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Wood|لکٹری
+                Name=ss05h
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Straw/Shrubs/Grass|تنکے/جھاڑیاں/گھاس پھونس
+                Name=ss05i
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Animal Dung|جانوروں کا گوبر
+                Name=ss05j
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No food cooked in household|گھر میں کھانا نہیں پکتا 
+                Name=ss05k
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Other (specify) |دیگر وضاحت کریں
+                Name=ss05x
+                Start=
+                Len=
+                DataType=Input
+
+            [Item]
+                Label=Rooms| کمرے
+                Name=ss06a
+                Start=
+                Len=
+                DataType=Input-Numeric
+
+            [Item]
+                Label=Does any member of this household own any agricultural land?|کیا اس گھر میں رہنے والا کوئی فرد  زرعی زمین کا مالک ہے؟
+                Name=ss07
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Yes|ہاں
+                Name=ss07a
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=No|نہیں
+                Name=ss07b
+                Start=
+                Len=
+                DataType=Radio
+
+            [Item]
+                Label=Record Interview End Time|انٹرویو کے اختتام کا وقت درج کریں
+                Name=ss08
+                Start=
+                Len=
+                DataType=Input

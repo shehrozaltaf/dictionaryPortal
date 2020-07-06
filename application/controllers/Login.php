@@ -52,10 +52,6 @@ class Login extends CI_Controller
             exit();
         } else {
             $result = $Login->validate($username, $Password);
-            echo '<pre>';
-            print_r($result);
-            echo '</pre>';
-            exit();
             $Custom = new Custom();
             if (count($result) == 1) {
                 if ($Password === $result[0]->password) {
