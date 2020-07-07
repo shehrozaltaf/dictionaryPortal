@@ -286,7 +286,7 @@ class Reports extends CI_controller
                     if (isset($valueModule->module_name_l2) && $valueModule->module_name_l2 != '' &&
                         $displaylanguagel2 == 'on') {
                         $subhtml .= "<h4>" . $valueModule->module_name_l2 . "</h4>" .
-                            (isset($valueModule->module_desc_l2) && $valueModule->module_desc_l2 != '' ? ' < h5>' . $valueModule->module_desc_l2 . ' </h5 > ' : '');
+                            (isset($valueModule->module_desc_l2) && $valueModule->module_desc_l2 != '' ? ' <h5>' . $valueModule->module_desc_l2 . ' </h5> ' : '');
                     }
                     if (isset($valueModule->module_name_l3) && $valueModule->module_name_l3 != '' &&
                         $displaylanguagel3 == 'on') {
@@ -319,26 +319,26 @@ class Reports extends CI_controller
 
                         $myresult = $this->questionArr($getSectionDetails);
 
-                        $optionsubhtml = ' < style>table tr {
+                        $optionsubhtml = ' <style>table tr {
                 font - size: 13px}table tr th {
                 font - size: 14px; font - weight: bold}
                                             .fright{
                 float:
                 right}
-                                           </style > ';
+                                           </style> ';
                         if ($l == 1) {
                             $optionsubhtml .= $subhtml;
                         }
-                        $optionsubhtml .= '<table border = "1" cellpadding = "1" cellspacing = "0" >
-                                       <tr  align = "center" >
-                                                 <th colspan = "4" > ' . $sectionHeading . '</th >
-                                            </tr >
-                                            <tr  align = "center" >
-                                                <th width = "12%" > Variable</th >
-                                                <th width = "45%" > Label</th > 
-                                                <th width = "36%" > Options</th >
-                                                <th width = "7%" > Other</th >
-                                            </tr > ';
+                        $optionsubhtml .= '<table border = "1" cellpadding = "1" cellspacing = "0">
+                                       <tr align = "center">
+                                                 <th colspan = "4"> ' . $sectionHeading . '</th>
+                                            </tr>
+                                            <tr  align = "center">
+                                                <th width = "12%"> Variable</th>
+                                                <th width = "45%"> Label</th> 
+                                                <th width = "36%"> Options</th>
+                                                <th width = "7%"> Other</th>
+                                            </tr> ';
                         foreach ($myresult as $keySectionDetail => $valueSectionDetail) {
                             if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
                                 $l1sec = '';
@@ -356,90 +356,90 @@ class Reports extends CI_controller
                                 }
                                 if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
                                     $displaylanguagel2 == 'on') {
-                                    $l2sec = ' < br> ' . htmlspecialchars($valueSectionDetail->label_l2);
+                                    $l2sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l2);
                                 }
                                 if (isset($valueSectionDetail->label_l3) && $valueSectionDetail->label_l3 != '' &&
                                     $displaylanguagel3 == 'on') {
-                                    $l3sec = ' < br> ' . htmlspecialchars($valueSectionDetail->label_l3);
+                                    $l3sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l3);
                                 }
                                 if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
                                     $displaylanguagel4 == 'on') {
-                                    $l4sec = ' < br> ' . htmlspecialchars($valueSectionDetail->label_l4);
+                                    $l4sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l4);
                                 }
                                 if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
                                     $displaylanguagel5 == 'on') {
-                                    $l5sec = ' < br> ' . htmlspecialchars($valueSectionDetail->label_l5);
+                                    $l5sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l5);
                                 }
-                                $optionsubhtml .= ' < tr >
-                                       <td  width = "12%"  align = "center" ><strong > ' . strtolower($valueSectionDetail->variable_name) . '</strong ><br >
-                                       <small > ' . $valueSectionDetail->nature . '</small ></td >
-                                       <td width = "45%" >
+                                $optionsubhtml .= ' <tr>
+                                       <td  width = "12%"  align = "center"><strong> ' . strtolower($valueSectionDetail->variable_name) . '</strong><br>
+                                       <small> ' . $valueSectionDetail->nature . '</small></td>
+                                       <td width = "45%">
                 ' . $l1sec . '
                                              ' . $l2sec . ' 
                                              ' . $l3sec . ' 
                                              ' . $l4sec . '
                                              ' . $l5sec . '
-                                             </td > ';
-                                $optsubhtml = '<td width = "36%" > ';
+                                             </td> ';
+                                $optsubhtml = '<td width = "36%"> ';
                                 if (isset($valueSectionDetail->myrow_options) && $valueSectionDetail->myrow_options != '') {
-                                    $optsubhtml .= ' < table    cellpadding = "2" cellspacing = "0" > ';
+                                    $optsubhtml .= ' <table    cellpadding = "2" cellspacing = "0"> ';
                                     foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
                                         if ($displaylanguagel1 == 'on') {
                                             $ol1sec = htmlspecialchars($oval->label_l1);
                                         }
                                         if (isset($oval->label_l2) && $oval->label_l2 != '' &&
                                             $displaylanguagel2 == 'on') {
-                                            $ol2sec = ' < br>' . htmlspecialchars($oval->label_l2);
+                                            $ol2sec = ' <br>' . htmlspecialchars($oval->label_l2);
                                         }
                                         if (isset($oval->label_l3) && $oval->label_l3 != '' &&
                                             $displaylanguagel3 == 'on') {
-                                            $ol3sec = ' < br>' . htmlspecialchars($oval->label_l3);
+                                            $ol3sec = ' <br>' . htmlspecialchars($oval->label_l3);
                                         }
                                         if (isset($oval->label_l4) && $oval->label_l4 != '' &&
                                             $displaylanguagel4 == 'on') {
-                                            $ol4sec = ' < br>' . htmlspecialchars($oval->label_l4);
+                                            $ol4sec = ' <br>' . htmlspecialchars($oval->label_l4);
                                         }
                                         if (isset($oval->label_l5) && $oval->label_l5 != '' &&
                                             $displaylanguagel5 == 'on') {
-                                            $ol5sec = ' < br>' . htmlspecialchars($oval->label_l5);
+                                            $ol5sec = ' <br>' . htmlspecialchars($oval->label_l5);
                                         }
-                                        $optsubhtml .= ' < tr>';
-                                        $optsubhtml .= "<td width=\"70%\" ><br><span><span><small><strong>" . strtolower($oval->variable_name) . ": </strong></small> " . $ol1sec . " 
+                                        $optsubhtml .= ' <tr>';
+                                        $optsubhtml .= "<td width=\"70%\"><br><span><span><small><strong>" . strtolower($oval->variable_name) . ": </strong></small> " . $ol1sec . " 
                                              " . $ol2sec . " 
                                              " . $ol3sec . " 
                                              " . $ol4sec . "
                                              " . $ol5sec . "  </span> </span>
                                              </td>";
-                                        $optsubhtml .= ' < td width = "15%" > ' . $oval->option_value . '</td > ';
+                                        $optsubhtml .= ' <td width = "15%"> ' . $oval->option_value . '</td> ';
 
-                                        $optsubhtml .= '<td width = "15%" > ' . (isset($oval->nature) && $oval->nature ?
-                                                '<small > ' . $oval->nature . ' </small > ' : '') . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
-                                                ' < small>Skip:' . htmlspecialchars($oval->skipQuestion) . ' </small > ' : '') . ' </td > ';
-                                        $optsubhtml .= '</tr > ';
+                                        $optsubhtml .= '<td width = "15%"> ' . (isset($oval->nature) && $oval->nature ?
+                                                '<small> ' . $oval->nature . ' </small> ' : '') . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
+                                                ' <small>Skip:' . htmlspecialchars($oval->skipQuestion) . ' </small> ' : '') . ' </td> ';
+                                        $optsubhtml .= '</tr> ';
                                         if (isset($oval->otherOptions) && $oval->otherOptions != '') {
-                                            $optsubhtml .= ' < tr><td colspan = "3" ><ul > ';
+                                            $optsubhtml .= ' <tr><td colspan = "3"><ul> ';
                                             foreach ($oval->otherOptions as $ok => $ov) {
-                                                $optsubhtml .= '<li ><small ><strong > ' . $ov->variable_name . '</strong ></small > --' . $ov->label_l1 . ' --' . $ov->option_value . '</li > ';
+                                                $optsubhtml .= '<li><small><strong> ' . $ov->variable_name . '</strong></small> --' . $ov->label_l1 . ' --' . $ov->option_value . '</li> ';
                                             }
-                                            $optsubhtml .= '</ul ></td ></tr > ';
+                                            $optsubhtml .= '</ul></td></tr> ';
                                         }
                                     }
-                                    $optsubhtml .= '</table > ';
+                                    $optsubhtml .= '</table> ';
                                 }
-                                $optsubhtml .= '</td > ';
+                                $optsubhtml .= '</td> ';
                                 $optionsubhtml .= $optsubhtml;
-                                $optionsubhtml .= '<td width = "7%"  align = "center" > ';
+                                $optionsubhtml .= '<td width = "7%"  align = "center"> ';
                                 if (isset($valueSectionDetail->skipQuestion) && $valueSectionDetail->skipQuestion != '') {
-                                    $optionsubhtml .= ' < small> Skip: </small ><strong > ' . htmlspecialchars($valueSectionDetail->skipQuestion) . '</strong > ';
+                                    $optionsubhtml .= ' <small> Skip: </small><strong> ' . htmlspecialchars($valueSectionDetail->skipQuestion) . '</strong> ';
                                 }
                                 if (isset($valueSectionDetail->MinVal) && $valueSectionDetail->MinVal != '') {
-                                    $optionsubhtml .= ' < small> Min: </small > ' . $valueSectionDetail->MinVal;
+                                    $optionsubhtml .= ' <small> Min: </small> ' . $valueSectionDetail->MinVal;
                                 }
                                 if (isset($valueSectionDetail->MaxVal) && $valueSectionDetail->MaxVal != '') {
-                                    $optionsubhtml .= ' < small>, Max: </small > ' . $valueSectionDetail->MaxVal;
+                                    $optionsubhtml .= ' <small>, Max: </small> ' . $valueSectionDetail->MaxVal;
                                 }
-                                $optionsubhtml .= '</td >
-                                    </tr > ';
+                                $optionsubhtml .= '</td>
+                                    </tr> ';
                             }
                         }
                         $optionsubhtml .= "</table>";
@@ -474,28 +474,28 @@ class Reports extends CI_controller
             $xml_layout_name = 'Myactivity';
             $result = $MSection->getSectionDetailData($searchData);
             $data = $this->questionArr($result);
-            $xml = ' < layout xmlns:android = "http://schemas.android.com/apk/res/android"  xmlns:tools = "http://schemas.android.com/tools" 
-  xmlns:app = "http://schemas.android.com/apk/res-auto" > 
-    <data > 
+            $xml = ' <layout xmlns:android = "http://schemas.android.com/apk/res/android"  xmlns:tools = "http://schemas.android.com/tools" 
+  xmlns:app = "http://schemas.android.com/apk/res-auto"> 
+    <data> 
         <import type = "android.view.View" /> 
         <variable name = "callback" type = "edu.aku.hassannaqvi.template.ui.' . $xml_layout_name . '" />
-    </data > 
+    </data> 
     <ScrollView   android:fadeScrollbars = "false"  android:fillViewport = "true" 
     android:layout_width = "match_parent"
     android:layout_height = "wrap_content" 
-    android:scrollbarSize = "10dip" tools:context = ".ui.' . $xml_layout_name . '" >
-   <LinearLayout android:id = "@+id/GrpName" android:layout_width = "match_parent"  android:layout_height = "wrap_content"android:orientation = "vertical" > ';
+    android:scrollbarSize = "10dip" tools:context = ".ui.' . $xml_layout_name . '">
+   <LinearLayout android:id = "@+id/GrpName" android:layout_width = "match_parent"  android:layout_height = "wrap_content"android:orientation = "vertical"> ';
 
             foreach ($data as $key => $value) {
                 $xml .= "\n\n" . ' <!--' . strtolower($value->variable_name) . '  ' . $value->nature . '-->' . "\n";
                 $xml .= '<androidx . cardview . widget . CardView
                 android:id = "@+id/fldGrpCV' . strtolower($value->variable_name) . '"
                 android:layout_width = "match_parent"
-                android:layout_height = "wrap_content" >
+                android:layout_height = "wrap_content">
                 <LinearLayout
                     android:layout_width = "match_parent"
                     android:layout_height = "wrap_content"
-                    android:orientation = "vertical" >
+                    android:orientation = "vertical">
                     <TextView 
                         android:text = "@string/' . strtolower($value->variable_name) . '" 
                         android:layout_width = "match_parent"
@@ -504,22 +504,22 @@ class Reports extends CI_controller
                 />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
-                        $xml .= ' < RadioGroup
+                        $xml .= ' <RadioGroup
                         android:id = "@+id/' . strtolower($value->variable_name) . '"
                         android:layout_width = "match_parent"
-                        android:layout_height = "wrap_content" > ';
+                        android:layout_height = "wrap_content"> ';
                     }
                     if ($value->nature == 'CheckBox') {
-                        $xml .= ' < LinearLayout
+                        $xml .= ' <LinearLayout
                                 android:id = "@+id/' . strtolower($value->variable_name) . 'check"
                                 android:layout_width = "match_parent"
                                 android:layout_height = "wrap_content"
                                 android:orientation = "vertical"
-                                android:tag = "0" > ';
+                                android:tag = "0"> ';
                     }
                     foreach ($value->myrow_options as $options) {
                         if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input - Numeric')) {
-                            $xml .= ' < RadioButton
+                            $xml .= ' <RadioButton
                                         android:id = "@+id/' . strtolower($options->variable_name) . '" 
                                         android:text = "@string/' . strtolower($options->variable_name) . '"
                                         android:layout_width = "match_parent"
@@ -730,12 +730,12 @@ class Reports extends CI_controller
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Radio') {
                                 $fileEngSting .= '<input type="' . $options->nature . '" name="' . strtolower($value->variable_name) . '" 
-                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '" required >
+                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '" required>
                              ' . htmlspecialchars($options->$lang) . '<br>';
                             }
                             if ($options->nature == 'CheckBox') {
                                 $fileEngSting .= '<input type="' . $options->nature . '" name="' . strtolower($value->variable_name) . '" 
-                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '"  >
+                            value="' . $options->option_value . '" id="' . strtolower($options->variable_name) . '">
                              ' . htmlspecialchars($options->$lang) . '<br>';
                             }
                         }
