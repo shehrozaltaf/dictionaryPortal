@@ -1,5 +1,17 @@
 <link rel="stylesheet" type="text/css"
       href="<?php echo base_url() ?>assets/css/plugins/forms/checkboxes-radios.min.css">
+
+
+<style>
+    label {
+        color: #4d4f5c;
+    }
+
+    .main_question_head {
+        color: #000b70;
+    }
+
+</style>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
@@ -55,50 +67,55 @@
                                             $innterHtml = '';
                                             if (isset($data) && $data != '') {
                                                 foreach ($data as $k => $v) {
-                                                    if ($v->nature == 'Radio') {
-
-                                                        $innterHtml = '<label class="main_question_head">' . $v->variable_name . ':' . $v->label_l1 . '</label>';
-
-                                                        if (isset($v->myrow_options) && $v->myrow_options != '') {
-                                                            foreach ($v->myrow_options as $c_k => $c_v) {
-                                                                $innterHtml .= '<div class="form-check">
-                                                        <input type="radio" class="form-check-input" 
-                                                         value="' . $c_v->option_value . '" id="' . $c_v->variable_name . '"
-                                                         name="' . $v->variable_name . '" >
-                                                        <label for="' . $c_v->variable_name . '" class="form-check-label">' . $c_v->label_l1 . '</label>
-                                                        </div>';
-                                                            }
-                                                        }
-
-                                                        $innterHtml .= '  ';
-                                                    } elseif ($v->nature == 'CheckBox') {
-                                                        $innterHtml = '<label class="main_question_head">' . $v->variable_name . ':' . $v->label_l1 . '</label>';
-
-                                                        if (isset($v->myrow_options) && $v->myrow_options != '') {
-                                                            foreach ($v->myrow_options as $c_k => $c_v) {
-                                                                $innterHtml .= '<div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" 
-                                                         value="' . $c_v->option_value . '" id="' . $c_v->variable_name . '"
-                                                         name="' . $v->variable_name . '" >
-                                                        <label for="' . $c_v->variable_name . '" class="form-check-label">' . $c_v->label_l1 . '</label>
-                                                        </div>';
-                                                            }
-                                                        }
+                                                    if ($v->nature == 'Radio' || $v->nature == 'CheckBox') {
+                                                        $innterHtml = '<label class="main_question_head"><small>' . strtolower($v->variable_name) . ':</small> ' . $v->label_l1 . '</label>';
                                                     } elseif ($v->nature == 'Input') {
-                                                        $innterHtml = ' <label for="' . $v->variable_name . '" class="main_question_head">' . $v->variable_name . ':' . $v->label_l1 . '</label>
-                                                        <input type="text"  class="form-control" value="' . $v->option_value . '" id="' . $v->variable_name . '" name="' . $v->variable_name . '" >';
+                                                        $innterHtml = ' <label for="' . strtolower($v->variable_name) . '" class="main_question_head"><small>' . strtolower($v->variable_name) . ':</small> ' . $v->label_l1 . '</label>
+                                                        <input type="text"  class="form-control" value="' . $v->option_value . '" id="' . strtolower($v->variable_name) . '" name="' . strtolower($v->variable_name) . '" >';
                                                     } elseif ($v->nature == 'Input-Numeric') {
-                                                        $innterHtml = ' <label for="' . $v->variable_name . '" class="main_question_head">' . $v->variable_name . ':' . $v->label_l1 . '</label>
-                                                        <input type="number"  class="form-control" value="' . $v->option_value . '" id="' . $v->variable_name . '" name="' . $v->variable_name . '" >';
+                                                        $innterHtml = ' <label for="' . strtolower($v->variable_name) . '" class="main_question_head"><small>' . strtolower($v->variable_name) . ':</small> ' . $v->label_l1 . '</label>
+                                                        <input type="number"  class="form-control" value="' . $v->option_value . '" id="' . strtolower($v->variable_name) . '" name="' . strtolower($v->variable_name) . '" >';
                                                     } elseif ($v->nature == 'Title') {
-                                                        $innterHtml = '<h6>' . $v->label_l1 . '</h6>';
-                                                        if (isset($v->myrow_options) && $v->myrow_options != '') {
-                                                            foreach ($v->myrow_options as $c_k => $c_v) {
-                                                                $innterHtml = ' <label for="' . $v->variable_name . '" class="main_question_head">' . $v->variable_name . ':' . $v->label_l1 . '</label>
-                                                        <input type="text"  class="form-control" value="' . $v->option_value . '" id="' . $v->variable_name . '" name="' . $v->variable_name . '" >';
+                                                        $innterHtml = '<h6 class="main_question_head"><small>' . strtolower($v->variable_name) . ':</small> ' . $v->label_l1 . '</h6>';
+                                                    }
+
+                                                    if (isset($v->myrow_options) && $v->myrow_options != '') {
+                                                        foreach ($v->myrow_options as $c_k => $c_v) {
+                                                            if ($c_v->nature == 'Radio' || $c_v->nature == 'CheckBox') {
+                                                                $innterHtml .= '<div class="form-check">
+                                                        <input type="' . strtolower($c_v->nature) . '" class="form-check-input" 
+                                                         value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '"
+                                                         name="' . strtolower($v->variable_name) . '" >
+                                                        <label for="' . strtolower($c_v->variable_name) . '" class="form-check-label"><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        </div>';
+                                                            } elseif (($v->nature == 'Radio' || $v->nature == 'CheckBox') || $c_v->nature == 'Input') {
+                                                                $innterHtml .= '<div class="form-check">
+                                                        <input type="' . strtolower($v->nature) . '" class="form-check-input" 
+                                                         value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '"
+                                                         name="' . strtolower($v->variable_name) . '" onclick="showInp(this)">
+                                                        <label for="' . strtolower($c_v->variable_name) . '" class="form-check-label"><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        </div>';
+                                                                $innterHtml .= ' <div class="hidden"><label for="' . strtolower($c_v->variable_name) . '" class=""><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        <input type="text"  class="form-control" value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '" name="' . strtolower($c_v->variable_name) . '" ></div>';
+                                                            } elseif (($v->nature == 'Radio' || $v->nature == 'CheckBox') && $c_v->nature == 'Input-Numeric') {
+                                                                $innterHtml .= '<div class="form-check">
+                                                        <input type="' . strtolower($v->nature) . '" class="form-check-input" 
+                                                         value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '"
+                                                         name="' . strtolower($v->variable_name) . '" >
+                                                        <label for="' . strtolower($c_v->variable_name) . '" class="form-check-label"><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        </div>';
+                                                                $innterHtml .= ' <label for="' . strtolower($c_v->variable_name) . '" class=""><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        <input type="number"  class="form-control" value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '" name="' . strtolower($c_v->variable_name) . '" >';
+                                                            } elseif ($c_v->nature == 'Input') {
+                                                                $innterHtml .= '<label for="' . strtolower($c_v->variable_name) . '" class=""><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        <input type="text"  class="form-control" value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '" name="' . strtolower($c_v->variable_name) . '" >';
+                                                            } elseif ($c_v->nature == 'Input-Numeric') {
+                                                                $innterHtml .= '<label for="' . strtolower($c_v->variable_name) . '" class=""><small>' . strtolower($c_v->variable_name) . ':</small> ' . $c_v->label_l1 . '</label>
+                                                        <input type="number"  class="form-control" value="' . $c_v->option_value . '" id="' . strtolower($c_v->variable_name) . '" name="' . strtolower($c_v->variable_name) . '" >';
                                                             }
                                                         }
                                                     }
+
 
                                                     $html = '<div class="row">
                                                 <div class="col-md-12">
@@ -139,4 +156,8 @@
     $(document).ready(function () {
         $('.myreport').addClass('active');
     });
+
+    function showInp(obj) {
+        alert(1);
+    }
 </script>

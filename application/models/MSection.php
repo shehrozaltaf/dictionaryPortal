@@ -222,6 +222,9 @@ class MSection extends CI_Model
         if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
             $this->db->where('section_detail.idSection', $searchdata['idSection']);
         }
+        if (!isset($searchdata['includeTitle']) || $searchdata['includeTitle'] != 'Y') {
+            $this->db->where("section_detail.nature!='Title' ");
+        }
         if (isset($searchdata['orderby']) && $searchdata['orderby'] != '' && $searchdata['orderby'] != null) {
             $this->db->order_by('section_detail.' . $searchdata['orderby'], 'asc');
         }
@@ -255,14 +258,14 @@ section_detail.MaxVal
         if (isset($searchdata['idSection']) && $searchdata['idSection'] != '' && $searchdata['idSection'] != null) {
             $this->db->where('section.idSection', $searchdata['idSection']);
         }
-        $this->db->where("section_detail.nature!='Title' ");
+
         $this->db->where('crf.isActive', 1);
         $this->db->where('modules.isActive', 1);
         $this->db->where('section.isActive', 1);
         $this->db->where('section_detail.isActive', 1);
-        $this->db->order_by('section_detail.variable_name', 'ASC');
         $this->db->order_by('section_detail.seq_no', 'asc');
         $this->db->order_by('section_detail.child_seq_no', 'asc');
+        $this->db->order_by('section_detail.variable_name', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }

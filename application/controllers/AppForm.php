@@ -24,11 +24,12 @@ class AppForm extends CI_controller
         $searchData['idProjects'] = 26;
         $searchData['idCRF'] = 40;
         $searchData['idModule'] = 81;
-        $searchData['idSection'] = 244;
+        $searchData['idSection'] = 249;
         $searchData['includeTitle'] = 'Y';
         $searchData['orderby'] = '';
         $MSection = new MSection();
         $getSectionDetails = $MSection->getAllData($searchData);
+
         $data['data'] = $this->questionArr($getSectionDetails);
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
