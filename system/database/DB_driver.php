@@ -1466,10 +1466,20 @@ abstract class CI_DB_driver {
 	 * @param	array	the insert values
 	 * @return	string
 	 */
-	protected function _insert($table, $keys, $values)
-	{
-		return 'INSERT INTO '.$table.' ('.implode(', ', $keys).') VALUES ('.implode(', ', $values).')';
-	}
+    /*protected function _insert($table, $keys, $values)
+    {
+        return 'INSERT INTO '.$table.' ('.implode(', ', $keys).') VALUES ('.implode(', ', $values).')';
+    }*/
+    protected function _insert($table, $keys, $values)
+    {
+        foreach ($values as $key => $value) {
+            if (substr($value, 0, 1) == "'") {
+                $values[$key] = "N" . $value;
+            }
+        }
+
+        return 'INSERT INTO ' . $table . ' (' . implode(', ', $keys) . ') VALUES (' . implode(', ', $values) . ')';
+    }
 
 	// --------------------------------------------------------------------
 
@@ -1512,18 +1522,38 @@ abstract class CI_DB_driver {
 	 * @param	array	the update data
 	 * @return	string
 	 */
-	protected function _update($table, $values)
-	{
-		foreach ($values as $key => $val)
-		{
-			$valstr[] = $key.' = '.$val;
-		}
+    /*protected function _update($table, $values)
+    {
+        foreach ($values as $key => $val)
+        {
+            $valstr[] = $key.' = '.$val;
+        }
 
-		return 'UPDATE '.$table.' SET '.implode(', ', $valstr)
-			.$this->_compile_wh('qb_where')
-			.$this->_compile_order_by()
-			.($this->qb_limit !== FALSE ? ' LIMIT '.$this->qb_limit : '');
-	}
+        return 'UPDATE '.$table.' SET '.implode(', ', $valstr)
+            .$this->_compile_wh('qb_where')
+            .$this->_compile_order_by()
+            .($this->qb_limit !== FALSE ? ' LIMIT '.$this->qb_limit : '');
+    }*/
+
+    protected function _update($table, $values)
+    {
+
+        foreach ($values as $key => $value) {
+            if (substr($value, 0, 1) == "'") {
+                $values[$key] = "N" . $value;
+            }
+        }
+
+        foreach ($values as $key => $val) {
+            $valstr[] = $key . ' = ' . $val;
+        }
+
+
+        return 'UPDATE ' . $table . ' SET ' . implode(', ', $valstr)
+            . $this->_compile_wh('qb_where')
+            . $this->_compile_order_by()
+            . ($this->qb_limit ? ' LIMIT ' . $this->qb_limit : '');
+    }
 
 	// --------------------------------------------------------------------
 
