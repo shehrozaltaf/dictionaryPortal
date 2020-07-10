@@ -57,6 +57,101 @@ class Reports extends CI_controller
             $lang = 'label_l1';
         }
         $fileEngSting = '';
+
+        if ($lang == 'label_l1') {
+            $fileEngSting .= '<string name="app_name">  </string>
+<string name="btnSync">Download Data</string>
+<string name="btnUpload">Upload Data</string>
+<string name="prompt_email">Email</string>
+<string name="prompt_password">Password</string>
+<string name="action_sign_in">Login</string>
+<string name="action_sign_in_short">Sign in</string>
+<string name="splashText"> </string>
+<string name="splashText2">  </string>
+<string name="check_pending_forms">CHECK PENDING FORMS</string>
+<string name="open_new_form">OPEN NEW FORM</string>
+<string name="records_summary">Records Summary</string>
+<string name="main_menu">Main Menu</string>
+<string name="only_for_testing">ONLY FOR TESTING</string>
+<string name="database">Database</string>
+<string name="no"> No </string>
+<string name="dkn"> Don’t Know </string>
+<string name="none"> No one </string>
+<string name="never"> Never</string>
+<string name="na"> Applicable /Not Available  </string>
+<string name="nap"> Not Applicable </string>
+<string name="error_invalid_password">This password is too short</string>
+<string name="error_field_required">This field is required</string>
+<string name="error_incorrect_password">This password is incorrect</string>
+<string name="nav">Not Available </string>
+<string name="ref"> Refused </string>
+<string name="other"> Other </string>
+<string name="specify"> Please explain </string>
+<string name="year"> Year </string>
+<string name="month"> Month </string>
+<string name="weeks"> Week </string>
+<string name="days"> Day </string>
+<string name="hours"> Hour </string>
+<string name="minutes"> Minutes </string>
+<string name="kg"> Kilograms </string>
+<string name="km"> Kilometers </string>
+<string name="cm"> cm </string>
+<string name="in"> Inch </string>
+<string name="rupees">  Rupees </string>
+<string name="num"> Number </string>
+<string name="name"> Name </string>
+<string name="contactnum">Contact Number </string>
+<string name="checkHHpresent"> The name of head of the household corresponds to the line listing data.</string>
+<string name="newHHheadname"> Name of new head of the household </string>' . "\n";
+        } elseif ($lang == 'label_l2') {
+            $fileEngSting .= '<string name="app_name">  </string>
+<string name="btnSync">Download Data</string>
+<string name="btnUpload">Upload Data</string>
+<string name="prompt_email">Email</string>
+<string name="prompt_password">Password</string>
+<string name="action_sign_in">Login</string>
+<string name="action_sign_in_short">Sign in</string>
+<string name="splashText"> </string>
+<string name="splashText2">  </string>
+<string name="check_pending_forms">CHECK PENDING FORMS</string>
+<string name="open_new_form">OPEN NEW FORM</string>
+<string name="records_summary">Records Summary</string>
+<string name="main_menu">Main Menu</string>
+<string name="only_for_testing">ONLY FOR TESTING</string>
+<string name="database">Database</string>
+<string name="error_invalid_password">This password is too short</string>
+<string name="error_field_required">This field is required</string>
+<string name="error_incorrect_password">This password is incorrect</string>
+<string name="no"> نہیں </string>
+<string name="dkn"> معلوم نہیں </string>
+<string name="none"> کوئی نہیں </string>
+<string name="never"> کبھی نہیں </string>
+<string name="na"> قابل اطلاق / دستیاب نہیں  </string>
+<string name="nap"> قابل اطلاق نہیں </string>
+<string name="nav"> دستیاب نہیں </string>
+<string name="ref"> انکار کر دیا </string>
+<string name="other"> دیگر </string>
+<string name="specify"> وضاحت کریں </string>
+<string name="year"> سال </string>
+<string name="month"> مہینہ </string>
+<string name="weeks"> ہفتے </string>
+<string name="days"> دن </string>
+<string name="hours"> گھنٹے </string>
+<string name="minutes"> منٹ </string>
+<string name="kg"> کلوگرام </string>
+<string name="km"> کلومیٹر </string>
+<string name="cm"> سینٹی میٹر </string>
+<string name="in"> انچ </string>
+<string name="rupees"> روپے </string>
+<string name="num"> اعداد </string>
+<string name="name"> نام </string>
+<string name="contactnum"> رابطہ نمبر </string>
+<string name="checkHHpresent"> گھر کے سربراہ کا نام لائن لسٹنگ ڈیٹا سے مطابقت رکھتا ہے۔ </string>
+<string name="newHHheadname"> نیا سربراہ کا نام </string>' . "\n";
+        } else {
+            $fileEngSting .= '';
+        }
+
         $result = $MSection->getAllData($searchData);
         foreach ($result as $key => $value) {
             $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
