@@ -50,7 +50,6 @@ class Reports extends CI_controller
         $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
         $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
         $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-        $searchData['includeTitle'] = 'Y';
         $searchData['orderby'] = 'idSection';
         if (isset($_REQUEST['language']) && $_REQUEST['language'] != '' && $_REQUEST['language'] != '0') {
             $lang = 'label_' . $_REQUEST['language'];
@@ -262,25 +261,6 @@ class Reports extends CI_controller
 
     /*Not working*/
 
-    function questionArr($dataarr)
-    {
-        $myresult = array();
-        foreach ($dataarr as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
-                $mykey = strtolower($value->idParentQuestion);
-                $myresult[strtolower($mykey)]->myrow_options[] = $value;
-            } else {
-                $mykey = strtolower($value->variable_name);
-                $myresult[strtolower($mykey)] = $value;
-            }
-        }
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-        return $data;
-    }
-
     function getPDF()
     {
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
@@ -425,15 +405,15 @@ class Reports extends CI_controller
                         if ($l == 1) {
                             $optionsubhtml .= $subhtml;
                         }
-                        $optionsubhtml .= '<table border="1" cellpadding="1" cellspacing="0">
-                                       <tr align="center">
-                                                 <th colspan="4"> ' . $sectionHeading . '</th>
+                        $optionsubhtml .= '<table border = "1" cellpadding = "1" cellspacing = "0">
+                                       <tr align = "center">
+                                                 <th colspan = "4"> ' . $sectionHeading . '</th>
                                             </tr>
-                                            <tr  align="center">
-                                                <th width="12%"> Variable</th>
-                                                <th width="45%"> Label</th> 
-                                                <th width="36%"> Options</th>
-                                                <th width="7%"> Other</th>
+                                            <tr  align = "center">
+                                                <th width = "12%"> Variable</th>
+                                                <th width = "45%"> Label</th> 
+                                                <th width = "36%"> Options</th>
+                                                <th width = "7%"> Other</th>
                                             </tr> ';
                         foreach ($myresult as $keySectionDetail => $valueSectionDetail) {
                             if (isset($valueSectionDetail->variable_name) && $valueSectionDetail->variable_name != '') {
@@ -467,18 +447,18 @@ class Reports extends CI_controller
                                     $l5sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l5);
                                 }
                                 $optionsubhtml .= ' <tr>
-                                       <td  width="12%"  align="center"><strong> ' . strtolower($valueSectionDetail->variable_name) . '</strong><br>
+                                       <td  width = "12%"  align = "center"><strong> ' . strtolower($valueSectionDetail->variable_name) . '</strong><br>
                                        <small> ' . $valueSectionDetail->nature . '</small></td>
-                                       <td width="45%">
+                                       <td width = "45%">
                 ' . $l1sec . '
                                              ' . $l2sec . ' 
                                              ' . $l3sec . ' 
                                              ' . $l4sec . '
                                              ' . $l5sec . '
                                              </td> ';
-                                $optsubhtml = '<td width="36%"> ';
+                                $optsubhtml = '<td width = "36%"> ';
                                 if (isset($valueSectionDetail->myrow_options) && $valueSectionDetail->myrow_options != '') {
-                                    $optsubhtml .= ' <table    cellpadding="2" cellspacing="0"> ';
+                                    $optsubhtml .= ' <table    cellpadding = "2" cellspacing = "0"> ';
                                     foreach ($valueSectionDetail->myrow_options as $okey => $oval) {
                                         if ($displaylanguagel1 == 'on') {
                                             $ol1sec = htmlspecialchars($oval->label_l1);
@@ -506,14 +486,14 @@ class Reports extends CI_controller
                                              " . $ol4sec . "
                                              " . $ol5sec . "  </span> </span>
                                              </td>";
-                                        $optsubhtml .= ' <td width="15%"> ' . $oval->option_value . '</td> ';
+                                        $optsubhtml .= ' <td width = "15%"> ' . $oval->option_value . '</td> ';
 
-                                        $optsubhtml .= '<td width="15%"> ' . (isset($oval->nature) && $oval->nature ?
+                                        $optsubhtml .= '<td width = "15%"> ' . (isset($oval->nature) && $oval->nature ?
                                                 '<small> ' . $oval->nature . ' </small> ' : '') . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
                                                 ' <small>Skip:' . htmlspecialchars($oval->skipQuestion) . ' </small> ' : '') . ' </td> ';
                                         $optsubhtml .= '</tr> ';
                                         if (isset($oval->otherOptions) && $oval->otherOptions != '') {
-                                            $optsubhtml .= ' <tr><td colspan="3"><ul> ';
+                                            $optsubhtml .= ' <tr><td colspan = "3"><ul> ';
                                             foreach ($oval->otherOptions as $ok => $ov) {
                                                 $optsubhtml .= '<li><small><strong> ' . $ov->variable_name . '</strong></small> --' . $ov->label_l1 . ' --' . $ov->option_value . '</li> ';
                                             }
@@ -524,7 +504,7 @@ class Reports extends CI_controller
                                 }
                                 $optsubhtml .= '</td> ';
                                 $optionsubhtml .= $optsubhtml;
-                                $optionsubhtml .= '<td width="7%"  align="center"> ';
+                                $optionsubhtml .= '<td width = "7%"  align = "center"> ';
                                 if (isset($valueSectionDetail->skipQuestion) && $valueSectionDetail->skipQuestion != '') {
                                     $optionsubhtml .= ' <small> Skip: </small><strong> ' . htmlspecialchars($valueSectionDetail->skipQuestion) . '</strong> ';
                                 }
@@ -556,6 +536,25 @@ class Reports extends CI_controller
         }
     }
 
+    function questionArr($dataarr)
+    {
+        $myresult = array();
+        foreach ($dataarr as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                $mykey = strtolower($value->idParentQuestion);
+                $myresult[strtolower($mykey)]->myrow_options[] = $value;
+            } else {
+                $mykey = strtolower($value->variable_name);
+                $myresult[strtolower($mykey)] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+        return $data;
+    }
+
     function getXml()
     {
         ob_end_clean();
@@ -570,63 +569,63 @@ class Reports extends CI_controller
             $xml_layout_name = 'Myactivity';
             $result = $MSection->getSectionDetailData($searchData);
             $data = $this->questionArr($result);
-            $xml = ' <layout xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:tools="http://schemas.android.com/tools" 
-  xmlns:app="http://schemas.android.com/apk/res-auto"> 
+            $xml = ' <layout xmlns:android = "http://schemas.android.com/apk/res/android"  xmlns:tools = "http://schemas.android.com/tools" 
+  xmlns:app = "http://schemas.android.com/apk/res-auto"> 
     <data> 
-        <import type="android.view.View" /> 
-        <variable name="callback" type="edu.aku.hassannaqvi.template.ui.' . $xml_layout_name . '" />
+        <import type = "android.view.View" /> 
+        <variable name = "callback" type = "edu.aku.hassannaqvi.template.ui.' . $xml_layout_name . '" />
     </data> 
-    <ScrollView   android:fadeScrollbars="false"  android:fillViewport="true" 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content" 
-    android:scrollbarSize="10dip" tools:context=".ui.' . $xml_layout_name . '">
-   <LinearLayout android:id="@+id/GrpName" android:layout_width="match_parent"  android:layout_height="wrap_content"android:orientation="vertical"> ';
+    <ScrollView   android:fadeScrollbars = "false"  android:fillViewport = "true" 
+    android:layout_width = "match_parent"
+    android:layout_height = "wrap_content" 
+    android:scrollbarSize = "10dip" tools:context = ".ui.' . $xml_layout_name . '">
+   <LinearLayout android:id = "@+id/GrpName" android:layout_width = "match_parent"  android:layout_height = "wrap_content"android:orientation = "vertical"> ';
 
             foreach ($data as $key => $value) {
                 $xml .= "\n\n" . ' <!--' . strtolower($value->variable_name) . '  ' . $value->nature . '-->' . "\n";
-                $xml .= '<androidx.cardview.widget.CardView
-                android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                $xml .= '<androidx . cardview . widget . CardView
+                android:id = "@+id/fldGrpCV' . strtolower($value->variable_name) . '"
+                android:layout_width = "match_parent"
+                android:layout_height = "wrap_content">
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_width = "match_parent"
+                    android:layout_height = "wrap_content"
+                    android:orientation = "vertical">
                     <TextView 
-                        android:text="@string/' . strtolower($value->variable_name) . '" 
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"  
-                        android:layout_marginTop="12dp"
+                        android:text = "@string/' . strtolower($value->variable_name) . '" 
+                        android:layout_width = "match_parent"
+                        android:layout_height = "56dp"  
+                        android:layout_marginTop = "12dp"
                 />';
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
                         $xml .= ' <RadioGroup
-                        android:id="@+id/' . strtolower($value->variable_name) . '"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"> ';
+                        android:id = "@+id/' . strtolower($value->variable_name) . '"
+                        android:layout_width = "match_parent"
+                        android:layout_height = "wrap_content"> ';
                     }
                     if ($value->nature == 'CheckBox') {
                         $xml .= ' <LinearLayout
-                                android:id="@+id/' . strtolower($value->variable_name) . 'check"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="vertical"
-                                android:tag="0"> ';
+                                android:id = "@+id/' . strtolower($value->variable_name) . 'check"
+                                android:layout_width = "match_parent"
+                                android:layout_height = "wrap_content"
+                                android:orientation = "vertical"
+                                android:tag = "0"> ';
                     }
                     foreach ($value->myrow_options as $options) {
                         if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input - Numeric')) {
                             $xml .= ' <RadioButton
-                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
-                                        android:text="@string/' . strtolower($options->variable_name) . '"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
+                                        android:id = "@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text = "@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width = "match_parent"
+                                        android:layout_height = "wrap_content" />
                             <EditText
-                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
-                            android:layout_width="match_parent"
-                            android:layout_height="56dp" 
-                            android:layout_marginBottom="12dp"
-                            android:hint="@string/' . strtolower($options->variable_name) . '"
-                            android:tag="' . strtolower($options->variable_name) . '"
+                            android:id = "@+id/' . strtolower($options->variable_name) . 'x" 
+                            android:layout_width = "match_parent"
+                            android:layout_height = "56dp" 
+                            android:layout_marginBottom = "12dp"
+                            android:hint = "@string/' . strtolower($options->variable_name) . '"
+                            android:tag = "' . strtolower($options->variable_name) . '"
                             android:text = \'@{' . strtolower($options->variable_name) . '.checked? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif
