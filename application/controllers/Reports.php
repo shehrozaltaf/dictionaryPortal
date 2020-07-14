@@ -321,9 +321,9 @@ class Reports extends CI_controller
             $xml = '<layout xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"> 
                         <data> 
                             <import type="android.view.View" />
-                            <variable
+                            <!--<variable
                                 name="form"
-                                type="edu.aku.hassannaqvi.' . $xml_layout_name . '.models.Form" />
+                                type="edu.aku.hassannaqvi.' . $xml_layout_name . '.models.Form" />-->
                             <variable name="callback" 
                             type="edu.aku.hassannaqvi.' . $xml_layout_name . '.ui.sections.SectionFActivity"/>
                         </data> 
@@ -384,11 +384,11 @@ class Reports extends CI_controller
                     foreach ($value->myrow_options as $options) {
                         $s++;
                         if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                            //   android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
-                                        android:layout_width="match_parent"
-                                        android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
+                                        android:layout_width="match_parent" 
                                         android:layout_height="wrap_content"/>
                                         <EditText
                                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
@@ -400,12 +400,13 @@ class Reports extends CI_controller
                                             android:text=\'@{' . strtolower($options->variable_name) . '.checked ? form.' . strtolower($options->variable_name) . 'x.toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+//                            android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
                             $xml .= '<CheckBox
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
                                          android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'                     
+                                        android:layout_height="wrap_content" />
+                                                             
                                         <EditText
                                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                                             android:layout_width="match_parent"
@@ -458,19 +459,21 @@ class Reports extends CI_controller
                                         android:layout_width="match_parent"
                                         android:layout_height="56dp"   />';
                         } elseif ($options->nature == 'Radio') {
+                            //  android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" 
-                                        android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\' />';
+                                        android:layout_height="wrap_content"  
+                                        /> ';
                         } elseif ($options->nature == 'CheckBox') {
+//   android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
                             $xml .= '<CheckBox
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
                                         android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'  />';
+                                        android:layout_height="wrap_content" 
+                                        />';
                         }
                     }
                     if ($value->nature == 'Radio') {
@@ -556,6 +559,25 @@ class Reports extends CI_controller
         } else {
             echo 'Invalid Project, Please select project';
         }
+    }
+
+    function questionArr($dataarr)
+    {
+        $myresult = array();
+        foreach ($dataarr as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                $mykey = strtolower($value->idParentQuestion);
+                $myresult[strtolower($mykey)]->myrow_options[] = $value;
+            } else {
+                $mykey = strtolower($value->variable_name);
+                $myresult[strtolower($mykey)] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+        return $data;
     }
 
     function getXml()
@@ -795,25 +817,6 @@ class Reports extends CI_controller
         } else {
             echo 'Invalid Project, Please select project';
         }
-    }
-
-    function questionArr($dataarr)
-    {
-        $myresult = array();
-        foreach ($dataarr as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
-                $mykey = strtolower($value->idParentQuestion);
-                $myresult[strtolower($mykey)]->myrow_options[] = $value;
-            } else {
-                $mykey = strtolower($value->variable_name);
-                $myresult[strtolower($mykey)] = $value;
-            }
-        }
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-        return $data;
     }
 
     function getXmlQuestions()
