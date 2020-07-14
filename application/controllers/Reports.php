@@ -1279,7 +1279,6 @@ class Reports extends CI_controller
         }
     }
 
-
     function getCodeBook()
     {
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {

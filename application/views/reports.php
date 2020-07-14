@@ -199,6 +199,7 @@
         }
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null && data['idProjects'] != '0') {
             url += 'project=' + data['idProjects'];
+            $('#idProjects').css('border', '1px solid #babfc7');
         } else {
             $('#idProject').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
@@ -210,6 +211,8 @@
             toastMsg('Section', 'Invalid Section', 'error');
             flag = 1;
             return false;
+        } else {
+            $('#idSection').css('border', '1px solid #babfc7');
         }
 
         if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
