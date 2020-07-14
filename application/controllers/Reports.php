@@ -1001,6 +1001,153 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select project';
         }
     }
+    
+    function getCodeBook()
+    {
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $this->load->library('excel');
+            $idProject = $_REQUEST['project'];
+            $this->load->model('mmodule');
+            $this->load->model('msection');
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = $idProject;
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
+            $result = $MSection->getCodeBookData($searchData);
+            $data = $this->questionArr($result);
+            $fileName = 'codebook_' . $data[0]->crf_name . '.xlsx';
+            $objPHPExcel = new    PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Inst');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable Name');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Variable Label');
+            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
+            $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
+            $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Table Name');
+            $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+            $rowCount = 1;
+
+            foreach ($data as $list) {
+                $rowCount++;
+                if (isset($list->option_value) && $list->option_value != '' && $list->option_value != null) {
+                    $op = $list->option_value;
+                    $li = $list->label_l1;
+                } else {
+                    $op = '';
+                    $li = '';
+                }
+                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($list->variable_name));
+                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $op);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $li);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
+                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->tableName);
+
+                if (isset($list->myrow_options) && $list->myrow_options != '') {
+                    foreach ($list->myrow_options as $options) {
+                        $rowCount++;
+                        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
+                        if (($list->nature == 'Radio' && $options->nature == 'Input') || $options->nature == 'CheckBox' || $list->nature == 'CheckBox') {
+                            $rowCount++;
+                            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($options->variable_name) . 'x');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
+                            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
+                            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
+                        }
+                    }
+                }
+            }
+            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+            header('Content-Type: application/vnd.ms-excel'); //mime type
+            header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+            header('Cache-Control: max-age=0'); //no cache
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+            $objWriter->save('php://output');
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
+    function getExcel($slug)
+    {
+        ob_end_clean();
+        $this->load->model('msection');
+        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
+        $this->load->library('excel');
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idSection'] = $slug;
+        $searchData = array();
+        $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
+        $result = $MSection->getSectionDetailData($searchData);
+        $data = $this->questionArr($result);
+        $objPHPExcel = new    PHPExcel();
+        $objPHPExcel->setActiveSheetIndex(0);
+        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
+        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Language 1');
+        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Language 2');
+        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Language 3');
+        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Language 4');
+        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Language 5');
+        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Values');
+        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Type');
+        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Skip');
+        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Min Range');
+        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Max Range');
+        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+        $rowCount = 1;
+        foreach ($data as $list) {
+            $rowCount++;
+            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
+            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->label_l1);
+            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l2);
+            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->label_l3);
+            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->label_l4);
+            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->label_l5);
+            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->option_value);
+            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->nature);
+            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->skipQuestion);
+            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->MinVal);
+            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->MaxVal);
+            if (isset($list->myrow_options) && $list->myrow_options != '') {
+                foreach ($list->myrow_options as $options) {
+                    $rowCount++;
+                    $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->label_l1);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l2);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->label_l3);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l4);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->label_l5);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->option_value);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->nature);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->skipQuestion);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->MinVal);
+                    $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->MaxVal);
+
+                }
+            }
+        }
+        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+        header('Content-Type: application/vnd.ms-excel'); //mime type
+        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+        header('Cache-Control: max-age=0'); //no cache
+        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+        $objWriter->save('php://output');
+    }
 
     /*Not working*/
 
@@ -1279,152 +1426,6 @@ class Reports extends CI_controller
         }
     }
 
-    function getCodeBook()
-    {
-        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
-            $this->load->library('excel');
-            $idProject = $_REQUEST['project'];
-            $this->load->model('mmodule');
-            $this->load->model('msection');
-            $MSection = new MSection();
-            $searchData = array();
-            $searchData['idProjects'] = $idProject;
-            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
-            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
-            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-            $searchData['language'] = (isset($_REQUEST['language']) && $_REQUEST['language'] != '' ? $_REQUEST['language'] : 0);
-            $result = $MSection->getCodeBookData($searchData);
-            $data = $this->questionArr($result);
-            $fileName = 'codebook_' . $data[0]->crf_name . '.xlsx';
-            $objPHPExcel = new    PHPExcel();
-            $objPHPExcel->setActiveSheetIndex(0);
-            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Inst');
-            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Variable Name');
-            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Variable Label');
-            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Answer Code');
-            $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Answer Label');
-            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Type');
-            $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Table Name');
-            $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-            $rowCount = 1;
-
-            foreach ($data as $list) {
-                $rowCount++;
-                if (isset($list->option_value) && $list->option_value != '' && $list->option_value != null) {
-                    $op = $list->option_value;
-                    $li = $list->label_l1;
-                } else {
-                    $op = '';
-                    $li = '';
-                }
-                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->crf_name);
-                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($list->variable_name));
-                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
-                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $op);
-                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $li);
-                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->dbType);
-                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->tableName);
-
-                if (isset($list->myrow_options) && $list->myrow_options != '') {
-                    foreach ($list->myrow_options as $options) {
-                        $rowCount++;
-                        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->option_value);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l1);
-                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
-                        if (($list->nature == 'Radio' && $options->nature == 'Input') || $options->nature == 'CheckBox' || $list->nature == 'CheckBox') {
-                            $rowCount++;
-                            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->crf_name);
-                            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, strtolower($options->variable_name) . 'x');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
-                            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, '');
-                            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->tableName);
-                        }
-                    }
-                }
-            }
-            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-            header('Content-Type: application/vnd.ms-excel'); //mime type
-            header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-            header('Cache-Control: max-age=0'); //no cache
-            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-            $objWriter->save('php://output');
-        } else {
-            echo 'Invalid Project, Please select project';
-        }
-    }
-
-    function getExcel($slug)
-    {
-        ob_end_clean();
-        $this->load->model('msection');
-        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
-        $this->load->library('excel');
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = $slug;
-        $searchData = array();
-        $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
-        $result = $MSection->getSectionDetailData($searchData);
-        $data = $this->questionArr($result);
-        $objPHPExcel = new    PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Language 1');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Language 2');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Language 3');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Language 4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Language 5');
-        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Values');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Type');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Skip');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Min Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Max Range');
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-        $rowCount = 1;
-        foreach ($data as $list) {
-            $rowCount++;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->label_l1);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l2);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->label_l3);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->label_l4);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->label_l5);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->option_value);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->nature);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->MinVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->MaxVal);
-            if (isset($list->myrow_options) && $list->myrow_options != '') {
-                foreach ($list->myrow_options as $options) {
-                    $rowCount++;
-                    $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->label_l1);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l2);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->label_l3);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l4);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->label_l5);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->option_value);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->nature);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->skipQuestion);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->MinVal);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->MaxVal);
-
-                }
-            }
-        }
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-        header('Cache-Control: max-age=0'); //no cache
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('php://output');
-    }
 
     function getTableQuery()
     {
