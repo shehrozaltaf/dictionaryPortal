@@ -209,6 +209,7 @@
             flag = 1;
             return false;
         }
+
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null && data['idProjects'] != '0') {
             url += 'project=' + data['idProjects'];
         } else {
@@ -234,6 +235,320 @@
 
         } else {
             toastMsg('Error', 'Something went wrong', 'error');
+        }
+    }
+
+
+    function getContractsData() {
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var flag = 0;
+        var url = '<?php echo base_url('index.php/Reports/getContractsData?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        } else {
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+
+
+        if (flag == 1) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getTableQuery() {
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idSection'] = $('#idSection').val();
+        var url = '<?php echo base_url('index.php/Reports/getTableQuery?') ?>';
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+            window.open(url, '_blank');
+        } else {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+        }
+    }
+
+    function getCodeBook() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports/getCodeBook?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        }
+        if (data['idProjects'] == '' && data['idProjects'] == undefined && data['idProjects'] != null) {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getStingsData() {
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var flag = 0;
+        var url = '<?php echo base_url('index.php/Reports/getStings?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        } else {
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            flag = 1;
+            return false;
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        } /*else {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+            flag = 1;
+            return false;
+        }*/
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        } else {
+            $('#language').css('border', '1px solid red');
+            toastMsg('Language', 'Invalid Language', 'error');
+            flag = 1;
+            return false;
+        }
+
+        if (flag == 1) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getXMLquesData() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports/getXmlQuestions?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        }
+        if (data['idProjects'] == '' && data['idProjects'] == undefined && data['idProjects'] != null) {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getXmlData() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports/getXml?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+
+        if (data['idSection'] == '' && data['idSection'] == undefined && data['idSection'] != null) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getSaveDraftData() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports/getSaveDraftData?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+
+        if (data['idSection'] == '' && data['idSection'] == undefined && data['idSection'] != null) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
+        }
+    }
+
+    function getExcelData() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        if (data['idProjects'] == '' || data['idProjects'] == undefined || data['idProjects'] == 0) {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        }
+        data['crf_id'] = $('#crf_id').val();
+        if (data['crf_id'] == '' || data['crf_id'] == undefined || data['crf_id'] == 0) {
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            return false;
+        }
+        data['idModule'] = $('#idModule').val();
+        if (data['idModule'] == '' || data['idModule'] == undefined || data['idModule'] == 0) {
+            $('#idModule').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid Module', 'error');
+            return false;
+        }
+        data['idSection'] = $('#idSection').val();
+        if (data['idSection'] == '' || data['idSection'] == undefined || data['idSection'] == 0) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+            return false;
+        } else {
+            var url = '<?php echo base_url('index.php/Reports/getExcel/') ?>' + data['idSection'];
+            window.location.href = url;
+        }
+    }
+
+    function getPDFData() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports/getPDF?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+        if (data['language'] != '' && data['language'] != undefined && data['language'] != null) {
+            url += '&language=' + data['language'];
+        }
+        if (data['idProjects'] == '' && data['idProjects'] == undefined && data['idProjects'] != null) {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
         }
     }
 
@@ -333,6 +648,40 @@
             });
         } else {
             $('#idSection').html('');
+        }
+    }
+
+    function getXmlDataSajid() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        data['language'] = $('#language').val();
+        var url = '<?php echo base_url('index.php/Reports_Sajid/getXml?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+
+        if (data['idSection'] == '' && data['idSection'] == undefined && data['idSection'] != null) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            window.open(url, '_blank');
         }
     }
 
