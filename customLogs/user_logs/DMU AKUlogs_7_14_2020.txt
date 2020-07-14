@@ -88,3 +88,18 @@ idUser: 2, UserName: DMU AKU
 Action: View Reports Page
 Result: View Reports page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-14-2020 4:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-14-2020 4:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-14-2020 4:34 pm
+idUser: 2, UserName: DMU AKU
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
