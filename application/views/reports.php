@@ -121,6 +121,7 @@
                                                                 class="form-control">
                                                             <option value="1" selected>Export PDF</option>
                                                             <option value="2">Export XML</option>
+                                                            <option value="10">Export XMLs(Sajid)</option>
                                                             <option value="3">Export Strings</option>
                                                             <option value="4">Export Save Draft</option>
                                                             <option value="5">Export Code Book</option>
@@ -128,7 +129,6 @@
                                                             <option value="7">Export DCF File</option>
                                                             <option value="8">Export XML Questions</option>
                                                             <option value="9">Export Contracts</option>
-                                                            <option value="10">Export XMLs Sajid</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -170,7 +170,15 @@
         if (data['action_type'] == 1) {
             url += 'getPDF?';
         } else if (data['action_type'] == 2) {
-            url += 'getXml?';
+            if (data['idSection'] == '' || data['idSection'] == '0' || data['idSection'] == undefined || data['idSection'] == null) {
+                $('#idSection').css('border', '1px solid red');
+                toastMsg('Section', 'Invalid Section', 'error');
+                flag = 1;
+                return false;
+            } else {
+                url += 'getXml?';
+            }
+
         } else if (data['action_type'] == 3) {
             url += 'getStings?';
         } else if (data['action_type'] == 4) {
@@ -186,7 +194,15 @@
         } else if (data['action_type'] == 9) {
             url += 'getContractsData?';
         } else if (data['action_type'] == 10) {
-            url = '<?php echo base_url('index.php/Reports_Sajid/getXml?') ?>';
+            if (data['idSection'] == '' || data['idSection'] == '0' || data['idSection'] == undefined || data['idSection'] == null) {
+                $('#idSection').css('border', '1px solid red');
+                toastMsg('Section', 'Invalid Section', 'error');
+                flag = 1;
+                return false;
+            } else {
+                url += 'getXmlSajid?';
+                //url = '<?php //echo base_url('index.php/Reports_Sajid/getXml?') ?>//';
+            }
         } else {
             $('#action_type').css('border', '1px solid red');
             toastMsg('Action', 'Invalid Export Type', 'error');
@@ -194,7 +210,7 @@
             return false;
         }
 
-        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null && data['idProjects'] != '0') {
             url += 'project=' + data['idProjects'];
         } else {
             $('#idProject').css('border', '1px solid red');

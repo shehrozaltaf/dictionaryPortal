@@ -1,0 +1,5 @@
+UserIPAddress: 10.1.42.84 - July-14-2020 1:33 pm
+idUser: , UserName: 
+Action: Invalid Password
+Result: User Shahroz Khan: incorrect password
+-------------------------------------------------

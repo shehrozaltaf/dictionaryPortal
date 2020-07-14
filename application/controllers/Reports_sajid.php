@@ -350,7 +350,7 @@ class Reports_sajid extends CI_controller
 
         <variable
             name="formsContract"
-            type="edu.aku.hassannaqvi.uen_hfa_ml.contracts.FormsContract" />
+            type="edu.aku.hassannaqvi.' . $xml_layout_name . '.models.Form" />
 
         <variable name="callback" 
         type="edu.aku.hassannaqvi.ui.' . $xml_layout_name . '"/>
