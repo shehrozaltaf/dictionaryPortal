@@ -88,5 +88,4 @@ class Custom extends CI_Model
 //        echo file_put_contents($logFilePath . date("n_j_Y") . '.txt', $log);
     }
 
-
 }
