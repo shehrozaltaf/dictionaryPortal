@@ -166,22 +166,17 @@
         data['idSection'] = $('#idSection').val();
         data['language'] = $('#language').val();
         data['action_type'] = $('#action_type').val();
+        var chkSec = 0;
         var url = '<?php echo base_url('index.php/Reports/') ?>';
         if (data['action_type'] == 1) {
             url += 'getPDF?';
         } else if (data['action_type'] == 2) {
-            if (data['idSection'] == '' || data['idSection'] == '0' || data['idSection'] == undefined || data['idSection'] == null) {
-                $('#idSection').css('border', '1px solid red');
-                toastMsg('Section', 'Invalid Section', 'error');
-                flag = 1;
-                return false;
-            } else {
-                url += 'getXml?';
-            }
-
+            chkSec = 1;
+            url += 'getXml?';
         } else if (data['action_type'] == 3) {
             url += 'getStings?';
         } else if (data['action_type'] == 4) {
+            chkSec = 1;
             url += 'getSaveDraftData?';
         } else if (data['action_type'] == 5) {
             url += 'getCodeBook?';
@@ -194,15 +189,8 @@
         } else if (data['action_type'] == 9) {
             url += 'getContractsData?';
         } else if (data['action_type'] == 10) {
-            if (data['idSection'] == '' || data['idSection'] == '0' || data['idSection'] == undefined || data['idSection'] == null) {
-                $('#idSection').css('border', '1px solid red');
-                toastMsg('Section', 'Invalid Section', 'error');
-                flag = 1;
-                return false;
-            } else {
-                url += 'getXmlSajid?';
-                //url = '<?php //echo base_url('index.php/Reports_Sajid/getXml?') ?>//';
-            }
+            chkSec = 1;
+            url += 'getXmlSajid?';
         } else {
             $('#action_type').css('border', '1px solid red');
             toastMsg('Action', 'Invalid Export Type', 'error');
@@ -217,6 +205,13 @@
             flag = 1;
             return false;
         }
+        if (chkSec == 1 && (data['idSection'] == '' || data['idSection'] == '0' || data['idSection'] == undefined || data['idSection'] == null)) {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+            flag = 1;
+            return false;
+        }
+
         if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
             url += '&crf=' + data['crf_id'];
         }
