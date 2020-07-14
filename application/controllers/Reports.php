@@ -892,6 +892,116 @@ class Reports extends CI_controller
         readfile($file);
     }
 
+    function getSaveDraftData()
+    {
+        ob_end_clean();
+        if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
+            $this->load->model('msection');
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = $_REQUEST['project'];
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            $fileData = 'JSONObject json = new JSONObject(); ' . "\n";
+            foreach ($data as $key => $value) {
+                $fileOtherData = '';
+                $question_type = $value->nature;
+                if ($question_type == 'Input-Numeric') {
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Input') {
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Title') {
+//                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n\n";
+                            } elseif ($options->nature == 'Title') {
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Radio') {
+                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", ';
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Title') {
+                                $fileData .= '';
+                            } else {
+                                $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" ' . "\n" . ' : ';
+                            }
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= ' "-1"); ' . "\n\n";
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'CheckBox') {
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" :"-1");' . "\n\n";
+                            if ($options->nature == 'Input-Numeric') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Input') {
+                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                            } elseif ($options->nature == 'Title') {
+//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                }
+            }
+            $file = "assets/uploads/myfiles/savedraft.java";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileData);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/plain");
+            readfile($file);
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
     /*Not working*/
 
     function getPDF()
@@ -1169,115 +1279,6 @@ class Reports extends CI_controller
         }
     }
 
-    function getSaveDraftData()
-    {
-        ob_end_clean();
-        if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
-            $this->load->model('msection');
-            $MSection = new MSection();
-            $searchData = array();
-            $searchData['idProjects'] = $_REQUEST['project'];
-            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
-            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
-            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
-            $result = $MSection->getSectionDetailData($searchData);
-            $data = $this->questionArr($result);
-            $fileData = 'JSONObject json = new JSONObject(); ' . "\n";
-            foreach ($data as $key => $value) {
-                $fileOtherData = '';
-                $question_type = $value->nature;
-                if ($question_type == 'Input-Numeric') {
-                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Input') {
-                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Title') {
-//                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n";
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n\n";
-                            } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'Radio') {
-                    $fileData .= 'json.put("' . strtolower($value->variable_name) . '", ';
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Title') {
-                                $fileData .= '';
-                            } else {
-                                $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" ' . "\n" . ' : ';
-                            }
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= ' "-1"); ' . "\n\n";
-                    $fileData .= $fileOtherData;
-                } elseif ($question_type == 'CheckBox') {
-                    if (isset($value->myrow_options) && $value->myrow_options != '') {
-                        foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '",bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" :"-1");' . "\n\n";
-                            if ($options->nature == 'Input-Numeric') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Input') {
-                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . 'x", bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
-                            } elseif ($options->nature == 'Title') {
-//                                $fileOtherData .= 'json.put("' . strtolower($options->variable_name) . '", bi.' . $options->variable_name . '.getText().toString());' . "\n";
-                            }
-                        }
-                    }
-                    $fileData .= $fileOtherData;
-                }
-            }
-            $file = "assets/uploads/myfiles/savedraft.java";
-            $txt = fopen($file, "w") or die("Unable to open file!");
-            fwrite($txt, $fileData);
-            fclose($txt);
-            header('Content-Description: File Transfer');
-            header('Content-Disposition: attachment; filename=' . basename($file));
-            header('Expires: 0');
-            header('Cache-Control: must-revalidate');
-            header('Pragma: public');
-            header('Content-Length: ' . filesize($file));
-            header("Content-Type: text/plain");
-            readfile($file);
-        } else {
-            echo 'Invalid Project, Please select project';
-        }
-    }
 
     function getCodeBook()
     {
