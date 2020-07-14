@@ -1001,7 +1001,7 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select project';
         }
     }
-    
+
     function getCodeBook()
     {
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
@@ -1426,7 +1426,6 @@ class Reports extends CI_controller
         }
     }
 
-
     function getTableQuery()
     {
         ob_end_clean();
@@ -1455,6 +1454,5 @@ class Reports extends CI_controller
             echo 'Invalid Table Name';
         }
     }
-
 
 } ?>
