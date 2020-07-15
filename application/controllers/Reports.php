@@ -394,7 +394,7 @@ class Reports extends CI_controller
                                             android:layout_marginBottom="12dp"
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
                                             android:tag="' . strtolower($options->variable_name) . '"
-                                            android:text=\'@{' . strtolower($options->variable_name) . '.checked ? form.' . strtolower($options->variable_name) . 'x.toString() : ""}\'
+                                            android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
 //                            android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
@@ -411,7 +411,7 @@ class Reports extends CI_controller
                                             android:layout_marginBottom="12dp"
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
                                             android:tag="' . strtolower($options->variable_name) . '"
-                                            android:text=\'@{' . strtolower($options->variable_name) . '.checked ? form.' . strtolower($options->variable_name) . 'x.toString() : ""}\'
+                                            android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
                         } elseif ($options->nature == 'Input-Numeric') {
                             $minVal = 0;
