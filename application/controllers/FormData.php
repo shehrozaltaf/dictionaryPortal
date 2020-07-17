@@ -1,4 +1,5 @@
 <?php ob_start();
+error_reporting(0);
 
 class FormData extends CI_controller
 {
@@ -46,11 +47,10 @@ class FormData extends CI_controller
             $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
             $GetReportData = $MSection->getSectionDetailDataByid($searchData['idSection']);
-
-            /*echo '<pre>';
-            print_r($GetReportData);
-            echo '</pre>';
-            exit();*/
+            /*  echo '<pre>';
+              print_r($GetReportData[0]);
+              echo '</pre>';
+              exit();*/
 
 
 //            $getModules = $MModule->getModulesData($searchData);
@@ -58,8 +58,18 @@ class FormData extends CI_controller
             $username = $GetReportData[0]->db_username;
             $password = $GetReportData[0]->db_password;
             $dbname = $GetReportData[0]->db_database;
-            $table = $GetReportData[0]->tableName;
-            $columns = $GetReportData[0]->columnToShow;
+            if (isset($GetReportData[0]->tableName) && $GetReportData[0]->tableName != '') {
+                $table = $GetReportData[0]->tableName;
+            } else {
+                die(print_r('Invalid Table', true));
+            }
+
+            if (isset($GetReportData[0]->columnToShow) && $GetReportData[0]->columnToShow != '') {
+                $columns = $GetReportData[0]->columnToShow;
+            } else {
+                $columns = '*';
+            }
+
 //            $table = $getModules[0]->db_table;
             if ($GetReportData[0]->db_type == 'sqlserver') {
                 $connectionInfo = array("Database" => $dbname, "UID" => $username, "PWD" => $password);
@@ -74,8 +84,7 @@ class FormData extends CI_controller
                 }
             }
 
-            $query = "SELECT " . $columns . " FROM " . $table;
-
+            $query = "SELECT " . $columns . " FROM " . $table . " where hfCode='414069'";
             $Result = sqlsrv_query($conn, $query);
             if ($Result === false) {
                 die(print_r(sqlsrv_errors(), true));
@@ -85,11 +94,13 @@ class FormData extends CI_controller
                 $sql_res[] = $row;
             }
             sqlsrv_free_stmt($Result);
+
+            $res = '';
 //            $sql_res = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC);
-            $res = '<table id="my_table_pro"  class="table table-striped table-bordered  ">';
-            $headrow = '<tr>';
+//            $res = '<table id="my_table_pro"  class="table table-striped table-bordered  ">';
+            /*$headrow = '<tr>';
             $tbody = '<tr>';
-            foreach ($sql_res as $sql_key => $sql_val) {
+            foreach ($sql_res[0] as $sql_key => $sql_val) {
                 $headrow .= '<th>' . $sql_key . '</th>';
                 $tbody .= '<td>' . $sql_val . '</td>';
             }
@@ -97,11 +108,12 @@ class FormData extends CI_controller
             $tbody .= '</tr>';
             $res .= '<thead>' . $headrow . '</thead>';
             $res .= '<tbody>' . $tbody . '</tbody>';
-            $res .= '<tfoot>' . $headrow . '</tfoot>';
-            /* $getSections = $MSection->getFormData($searchData);
+            $res .= '<tfoot>' . $headrow . '</tfoot>';*/
+            $getSections = $MSection->getFormData($searchData);
             $getSectionsResult = $this->questionArr($getSections);
-           foreach ($getSections as $k => $v) {
-                foreach ($sql_res as $sql_key => $sql_val) {
+
+            foreach ($getSectionsResult as $k => $v) {
+                foreach ($sql_res[0] as $sql_key => $sql_val) {
                     if (strtolower($sql_key) == strtolower($v->variable_name)) {
                         if ($v->question_type == 'Input') {
                             $res .= '<div class="col-md-12">
@@ -109,7 +121,7 @@ class FormData extends CI_controller
                                                 <label><small>' . $v->variable_name . '</small>: ' . $v->label_l1 . '</label>
                                                 <input type="text" value="' . $sql_val . '" class="form-control">
                                             </div>
-                                        </div>';
+                                     </div>';
                         }
                         if ($v->question_type == 'Radio') {
                             $res .= '<div class="col-md-12">
@@ -117,16 +129,26 @@ class FormData extends CI_controller
                                                 <label><small>' . $v->variable_name . '</small>: ' . $v->label_l1 . '</label>
                                                 <div class="mb-2">';
                             if (isset($v->myrow_options)) {
+
                                 foreach ($v->myrow_options as $child_key => $child_val) {
+
                                     $res .= '  <div class="form-check ">
                                             <input class="form-check-input" type="radio" value="' . $sql_val . '" disabled ' . ($sql_val == $child_val->option_value ? "checked" : "") . '>
                                             <label class="form-check-label" ><small>' . $child_val->variable_name . ': </small>' . $child_val->label_l1 . '</label>
                                         </div> ';
+                                    $va = $sql_res[0][$sql_key . 'xx'];
+                                    if (isset($va) && $va != '' && $va != '-1' && ($child_val->question_type == 'Input' || $child_val->question_type == 'Input-Numeric')) {
+                                        $res .= '<div class="col-md-12">
+                                                        <div class="form-group"> 
+                                                            <input type="text" value="' . $va . '" class="form-control">
+                                                        </div>
+                                                 </div>';
+                                    }
                                 }
-                                $res .= '     </div>
-      </div>
-                                        </div>';
                             }
+                            $res .= '     </div>
+                                          </div>
+                                        </div>';
                         }
                         if ($v->question_type == 'CheckBox') {
                             $res .= '<div class="col-md-12">
@@ -139,17 +161,27 @@ class FormData extends CI_controller
                                             <input class="form-check-input" type="checkbox" value="' . $sql_val . '" disabled ' . ($sql_val == $child_val->option_value ? "checked" : "") . '>
                                             <label class="form-check-label" ><small>' . $child_val->variable_name . ': </small>' . $child_val->label_l1 . '</label>
                                         </div> ';
+
+                                    $va = $sql_res[0][$sql_key . 'xx'];
+                                    if (isset($va) && $va != '' && $va != '-1' && ($child_val->question_type == 'Input' || $child_val->question_type == 'Input-Numeric')) {
+                                        $res .= '<div class="col-md-12">
+                                                        <div class="form-group"> 
+                                                            <input type="text" value="' . $va . '" class="form-control">
+                                                        </div>
+                                                 </div>';
+                                    }
+
                                 }
-                                $res .= '     </div>
-      </div>
-                                        </div>';
                             }
+                            $res .= '     </div>
+                                            </div>
+                                        </div>';
                         }
 
                     }
                 }
-            }*/
-            $res .= '</table>';
+            }
+//            $res .= '</table>';
             echo $res;
         } else {
             echo 'Invalid Project, Please select project';

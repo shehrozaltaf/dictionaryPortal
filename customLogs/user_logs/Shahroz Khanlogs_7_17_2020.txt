@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.84 - July-17-2020 10:23 am
+idUser: 1, UserName: Shahroz Khan
+Action: Login Success
+Result: User Shahroz Khan: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-17-2020 10:23 am
+idUser: 1, UserName: Shahroz Khan
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-17-2020 10:23 am
+idUser: 1, UserName: Shahroz Khan
+Action: Login Success
+Result: User Shahroz Khan: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-17-2020 10:24 am
+idUser: 1, UserName: Shahroz Khan
+Action: Logout
+Result: User Shahroz Khan: Logout
+-------------------------------------------------
