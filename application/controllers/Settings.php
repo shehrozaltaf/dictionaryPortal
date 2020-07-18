@@ -35,6 +35,7 @@ class Settings extends CI_controller
             $Custom = new Custom();
             $formArray = array();
             $formArray['groupName'] = ucfirst($_POST['groupName']);
+            $formArray['isActive'] = 1;
             $InsertData = $Custom->Insert($formArray, 'idGroup', 'group', 'N');
             if ($InsertData) {
                 $result = 1;
