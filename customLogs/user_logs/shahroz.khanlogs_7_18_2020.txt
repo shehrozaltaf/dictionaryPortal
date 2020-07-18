@@ -53,3 +53,18 @@ idUser: 1, UserName: shahroz.khan
 Action: View Form Data Page
 Result: View Form Data page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-18-2020 3:45 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-18-2020 4:21 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-18-2020 4:21 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

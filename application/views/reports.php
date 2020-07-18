@@ -129,6 +129,7 @@
                                                             <option value="7">Export DCF File</option>
                                                             <option value="8">Export XML Questions</option>
                                                             <option value="9">Export Contracts</option>
+                                                            <option value="11">Export New Save Drafts</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -191,6 +192,9 @@
         } else if (data['action_type'] == 10) {
             chkSec = 1;
             url += 'getXmlSajid?';
+        } else if (data['action_type'] == 11) {
+            chkSec = 1;
+            url += 'getNewSaveDraft?';
         } else {
             $('#action_type').css('border', '1px solid red');
             toastMsg('Action', 'Invalid Export Type', 'error');
