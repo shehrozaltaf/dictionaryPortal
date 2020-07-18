@@ -84,7 +84,7 @@ class FormData extends CI_controller
                 }
             }
 
-            $query = "SELECT " . $columns . " FROM " . $table . " where hfCode='414069'";
+            $query = "SELECT " . $columns . " FROM " . $table . " ";
             $Result = sqlsrv_query($conn, $query);
             if ($Result === false) {
                 die(print_r(sqlsrv_errors(), true));

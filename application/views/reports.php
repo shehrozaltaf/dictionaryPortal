@@ -130,6 +130,8 @@
                                                             <option value="8">Export XML Questions</option>
                                                             <option value="9">Export Contracts</option>
                                                             <option value="11">Export New Save Drafts</option>
+                                                            <option value="12">Export toString</option>
+                                                            <option value="13">Export Hydrate</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -195,6 +197,12 @@
         } else if (data['action_type'] == 11) {
             chkSec = 1;
             url += 'getNewSaveDraft?';
+        } else if (data['action_type'] == 12) {
+            chkSec = 1;
+            url += 'toString?';
+        } else if (data['action_type'] == 13) {
+            chkSec = 1;
+            url += 'hydrate?';
         } else {
             $('#action_type').css('border', '1px solid red');
             toastMsg('Action', 'Invalid Export Type', 'error');
