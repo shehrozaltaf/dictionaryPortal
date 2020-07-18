@@ -7,7 +7,7 @@ class MUser extends CI_Model
     function getAllUser()
     {
 
-        $this->db->select('idUser, userName,email');
+        $this->db->select('idUser, fullName,userName,email');
         $this->db->from('users');
         $this->db->where('users.status', 1);
         $this->db->order_By('idUser', 'DESC');
