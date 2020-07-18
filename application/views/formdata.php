@@ -40,11 +40,6 @@
                                                 <i class="ft-maximize"></i>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a data-action="close">
-                                                <i class="ft-x"></i>
-                                            </a>
-                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,12 +57,14 @@
                                                             <select id="idProject" name="idProject"
                                                                     onchange="changeProject()"
                                                                     class="form-control">
-                                                                <option value="0" selected>
+                                                                <option value="14">UEN (Umeed-e-Nau)</option>
+
+                                                                <!--<option value="0" selected>
                                                                     Select Project
                                                                 </option>
-                                                                <?php foreach ($projects as $key => $values) {
+                                                                --><?php /*foreach ($projects as $key => $values) {
                                                                     echo '<option value="' . $values->idProjects . '">' . $values->project_name . '</option>';
-                                                                } ?>
+                                                                } */ ?>
                                                             </select>
                                                         <?php } ?>
                                                     </div>
@@ -77,11 +74,12 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="crf_id">CRF</label>
-                                                        <select id="crf_id" name="crf_id" class="form-control"
-                                                                onchange="changeCrf()">
-                                                            <option value="0" selected>
-                                                                Select CRF
-                                                            </option>
+                                                        <!--  onchange="changeCrf()"-->
+                                                        <select id="crf_id" name="crf_id" class="form-control">
+                                                            <option value="34">Health Facility Assesment</option>
+                                                            <!-- <option value="0" selected>
+                                                                 Select CRF
+                                                             </option>-->
                                                         </select>
                                                     </div>
                                                 </div>
@@ -92,10 +90,39 @@
                                                         <label for="idModule">Module</label>
                                                         <select id="idModule" name="idModule" class="form-control"
                                                                 onchange="changeModule() ">
+                                                            <option value="0" selected="">Select Module</option>
+                                                            <option value="68">MODULE-A: FACILITY IDENTIFICATION
+                                                            </option>
+                                                            <option value="69">MODULE-B: INPATIENT &amp; OBSERVATION
+                                                                BEDS
+                                                            </option>
+                                                            <option value="70">MODULE-C: STAFFING (NUMBERS &amp; THEIR
+                                                                CAPACITY)
+                                                            </option>
+                                                            <option value="71">MODULE-D: INFRASTRUCTURE</option>
+                                                            <option value="72">MODULE-E: AVAILABLE SERVICES</option>
+                                                            <option value="73">MODULE-F: DIAGNOSTICS</option>
+                                                            <option value="74">MODULE-G: COMMODITIES &amp; SUPPLIES
+                                                            </option>
+                                                            <option value="75">MODULE-H: RECORDING AND REPORTING OF
+                                                                DATA
+                                                            </option>
+                                                            <option value="76">SECTION-I: CLIENT / PATIENT’S
+                                                                SATISFACTION
+                                                            </option>
+                                                            <option value="77">MODULE-J: QUALITY ASSESSMENT OF HEALTH
+                                                                CARE PROVIDER AT FACILITY
+                                                            </option>
+                                                            <option value="80">MODULE-K: COVID-19 ARRANGEMENTS IN HEALTH
+                                                                FACILITY
+                                                            </option>
+                                                        </select>
+                                                        <!--<select id="idModule" name="idModule" class="form-control"
+                                                                onchange="changeModule() ">
                                                             <option value="0" selected>
                                                                 Select Module
                                                             </option>
-                                                        </select>
+                                                        </select>-->
                                                     </div>
                                                 </div>
                                             </div>
@@ -167,7 +194,6 @@
     $(document).ready(function () {
         $('.myformdata').addClass('active');
     });
-
 
 
     function getData() {
