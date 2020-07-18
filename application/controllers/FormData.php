@@ -170,14 +170,12 @@ class FormData extends CI_controller
                                                         </div>
                                                  </div>';
                                     }
-
                                 }
                             }
                             $res .= '     </div>
                                             </div>
                                         </div>';
                         }
-
                     }
                 }
             }
@@ -206,6 +204,4 @@ class FormData extends CI_controller
         }
         return $data;
     }
-
-
 } ?>
