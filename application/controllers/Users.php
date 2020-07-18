@@ -49,6 +49,10 @@ class Users extends CI_controller
             $flag = 1;
         }
 
+        if (!isset($_POST['fullName']) || $_POST['fullName'] == '') {
+            $result = 5;
+            $flag = 1;
+        }
         if (!isset($_POST['userName']) || $_POST['userName'] == '') {
             $result = 5;
             $flag = 1;
@@ -66,6 +70,7 @@ class Users extends CI_controller
 
         if ($flag == 0) {
             $idUser = $_POST['idUser'];
+            $editArr['fullName'] = $_POST['fullName'];
             $editArr['username'] = $_POST['userName'];
             $editArr['email'] = $_POST['email'];
             $editArr['password'] = $_POST['password'];
@@ -108,9 +113,10 @@ class Users extends CI_controller
         if (isset($_POST['userName']) && $_POST['userName'] != '' && isset($_POST['email']) && $_POST['email'] != '' && isset($_POST['password']) && $_POST['password'] != '') {
             $Custom = new Custom();
             $formArray = array();
-            $formArray['userName'] = ucfirst($_POST['userName']);
-            $formArray['email'] = ucfirst($_POST['email']);
-            $formArray['password'] = ucfirst($_POST['password']);
+            $formArray['fullName'] = ucfirst($_POST['fullName']);
+            $formArray['userName'] = strtolower($_POST['userName']);
+            $formArray['email'] = strtolower($_POST['email']);
+            $formArray['password'] = strtolower($_POST['password']);
             $formArray['createdBy'] = $_SESSION['login']['idUser'];
             $formArray['createdDateTime'] = date('Y-m-d H:m:s');
             $formArray['status'] = 1;

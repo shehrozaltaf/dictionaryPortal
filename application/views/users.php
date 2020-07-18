@@ -54,6 +54,7 @@
                                             <thead>
                                             <tr>
                                                 <th>SNo</th>
+                                                <th>Full Name</th>
                                                 <th>Username</th>
                                                 <th>Email</th>
                                                 <th>Action</th>
@@ -67,6 +68,7 @@
                                                     $SNo++; ?>
                                                     <tr>
                                                         <td><?php echo $SNo ?></td>
+                                                        <td><?php echo $userdata->fullName ?></td>
                                                         <td><?php echo $userdata->userName ?></td>
                                                         <td><?php echo $userdata->email ?></td>
                                                         <td data-id="<?php echo $userdata->idUser ?>">
@@ -84,6 +86,7 @@
                                             <tfoot>
                                             <tr>
                                                 <th>SNo</th>
+                                                <th>Full Name</th>
                                                 <th>Username</th>
                                                 <th>Email</th>
                                                 <th>Action</th>
@@ -112,7 +115,12 @@
             </div>
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="username">Name: </label>
+                    <label for="fullName">Full Name: </label>
+                    <input type="text" class="form-control fullName" id="fullName">
+                </div>
+
+                <div class="form-group">
+                    <label for="username">User Name: </label>
                     <input type="text" class="form-control username" id="username">
                 </div>
 
@@ -155,7 +163,12 @@
             <div class="modal-body">
 
                 <div class="form-group">
-                    <label for="edit_userName">Name: </label>
+                    <label for="edit_fullName">Full Name: </label>
+                    <input type="text" class="form-control edit_fullName" id="edit_fullName">
+                </div>
+
+                <div class="form-group">
+                    <label for="edit_userName">User Name: </label>
                     <input type="text" class="form-control edit_userName" id="edit_userName">
                 </div>
 
@@ -221,14 +234,23 @@
     });
 
     function addData() {
+        $('#fullName').css('border', '1px solid #babfc7');
         $('#username').css('border', '1px solid #babfc7');
         $('#email').css('border', '1px solid #babfc7');
         $('#password').css('border', '1px solid #babfc7');
         var data = {};
+        data['fullName'] = $('#fullName').val();
         data['userName'] = $('#username').val();
         data['email'] = $('#email').val();
         data['password'] = $('#password').val();
         var flag = 0;
+
+        if (data['fullName'] == '' || data['fullName'] == undefined) {
+            toastMsg('Full Name', 'Invalid Full Name', 'error');
+            $('#fullName').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
 
         if (data['userName'] == '' || data['userName'] == undefined) {
             toastMsg('User Name', 'Invalid User Name', 'error');
@@ -310,6 +332,7 @@
                     var a = JSON.parse(result);
                     try {
                         $('#edit_idUser').val(data['id']);
+                        $('#edit_fullName').val(a[0]['fullName']);
                         $('#edit_userName').val(a[0]['username']);
                         $('#edit_email').val(a[0]['email']);
                         $('#edit_password').val(a[0]['password']);
@@ -324,12 +347,14 @@
     }
 
     function editData() {
+        $('#edit_fullName').css('border', '1px solid #babfc7');
         $('#edit_userName').css('border', '1px solid #babfc7');
         $('#edit_email').css('border', '1px solid #babfc7');
         $('#edit_password').css('border', '1px solid #babfc7');
         var flag = 0;
         var data = {};
         data['idUser'] = $('#edit_idUser').val();
+        data['fullName'] = $('#edit_fullName').val();
         data['userName'] = $('#edit_userName').val();
         data['email'] = $('#edit_email').val();
         data['password'] = $('#edit_password').val();
@@ -340,6 +365,12 @@
             return false;
         }
 
+        if (data['fullName'] == '' || data['fullName'] == undefined) {
+            toastMsg('Full Name', 'Invalid Full Name', 'error');
+            $('#edit_fullName').css('border', '1px solid red');
+            flag = 1;
+            return false;
+        }
         if (data['userName'] == '' || data['userName'] == undefined) {
             toastMsg('User Name', 'Invalid User Name', 'error');
             $('#edit_userName').css('border', '1px solid red');
