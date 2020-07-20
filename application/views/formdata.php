@@ -146,6 +146,11 @@
                                                 onclick="getData()">
                                             <i class="la la-file-pdf-o"></i> Get Data
                                         </button>
+
+                                        <button type="button" class="btn bg-gradient-x-cyan white"
+                                                onclick="getUnmatched()">
+                                            <i class="la la-file-pdf-o"></i> Get Unmatched
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -207,6 +212,42 @@
         data['idModule'] = $('#idModule').val();
         data['idSection'] = $('#idSection').val();
         var url = '<?php echo base_url('index.php/FormData/getData?') ?>';
+        if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
+            url += 'project=' + data['idProjects'];
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        }
+        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        }
+        if (data['idProjects'] == '' && data['idProjects'] == undefined && data['idProjects'] != null) {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
+        } else {
+            CallAjax(url, data, 'POST', function (res) {
+                $('.myresult').html('').html(res);
+                $('#my_table_pro').DataTable();
+            });
+        }
+    }
+
+
+    function getUnmatched() {
+        $('#idProject').css('border', '1px solid #babfc7');
+        $('#crf_id').css('border', '1px solid #babfc7');
+        $('#idModule').css('border', '1px solid #babfc7');
+        $('#idSection').css('border', '1px solid #babfc7');
+        var data = {};
+        data['idProjects'] = $('#idProject').val();
+        data['crf_id'] = $('#crf_id').val();
+        data['idModule'] = $('#idModule').val();
+        data['idSection'] = $('#idSection').val();
+        var url = '<?php echo base_url('index.php/FormData/unMatched?') ?>';
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
             url += 'project=' + data['idProjects'];
         }

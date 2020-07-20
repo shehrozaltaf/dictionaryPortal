@@ -204,4 +204,79 @@ class FormData extends CI_controller
         }
         return $data;
     }
+
+    function unMatched()
+    {
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $idProject = $_REQUEST['project'];
+            $this->load->model('mmodule');
+            $this->load->model('msection');
+            $MProjects = new MProjects();
+            $MModule = new MModule();
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = $idProject;
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $GetReportData = $MSection->getSectionDetailDataByid($searchData['idSection']);
+
+            $servername = $GetReportData[0]->db_hostname;
+            $username = $GetReportData[0]->db_username;
+            $password = $GetReportData[0]->db_password;
+            $dbname = $GetReportData[0]->db_database;
+            if (isset($GetReportData[0]->tableName) && $GetReportData[0]->tableName != '') {
+                $table = $GetReportData[0]->tableName;
+            } else {
+                die(print_r('Invalid Table', true));
+            }
+
+            if (isset($GetReportData[0]->columnToShow) && $GetReportData[0]->columnToShow != '') {
+                $columns = $GetReportData[0]->columnToShow;
+            } else {
+                $columns = '*';
+            }
+            if ($GetReportData[0]->db_type == 'sqlserver') {
+                $connectionInfo = array("Database" => $dbname, "UID" => $username, "PWD" => $password);
+                $conn = sqlsrv_connect($servername, $connectionInfo);
+                if ($conn === false) {
+                    die(print_r(sqlsrv_errors(), true));
+                }
+            } else {
+                $conn = new mysqli($servername, $username, $password, $dbname);
+                if ($conn->connect_error) {
+                    die("Connection failed: " . $conn->connect_error);
+                }
+            }
+
+            $query = "SELECT " . $columns . " FROM " . $table . " ";
+            $Result = sqlsrv_query($conn, $query);
+            if ($Result === false) {
+                die(print_r(sqlsrv_errors(), true));
+            }
+            $sql_res = array();
+            while ($row = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC)) {
+                $sql_res[] = $row;
+            }
+            sqlsrv_free_stmt($Result);
+
+            $res = '<table>
+                        <tr>
+                            <th>Varibale</th>
+                            <th>Label</th>
+                        </tr>';
+            $getSections = $MSection->getFormData($searchData);
+
+            foreach ($getSections as $k => $v) {
+                $res .= '<tr>
+                                <td>' . strtolower($v->variable_name) . '</td>
+                                <td>' . $v->label_l1 . '</td>
+                         </tr>';
+            }
+            $res .= '</table>';
+            echo $res;
+        } else {
+            echo 'Invalid Section, Please select Section';
+        }
+    }
 } ?>
