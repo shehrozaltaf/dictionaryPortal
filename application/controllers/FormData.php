@@ -46,6 +46,7 @@ class FormData extends CI_controller
             $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
             $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
             $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $searchData['hfcode'] = (isset($_REQUEST['hfcode']) && $_REQUEST['hfcode'] != '' && $_REQUEST['hfcode'] != 0 ? $_REQUEST['hfcode'] : 0);
             $GetReportData = $MSection->getSectionDetailDataByid($searchData['idSection']);
             $servername = $GetReportData[0]->db_hostname;
             $username = $GetReportData[0]->db_username;
@@ -75,7 +76,8 @@ class FormData extends CI_controller
                 }
             }
 
-            $query = "SELECT TOP(1) " . $columns . " FROM " . $table . " ";
+            $query = "SELECT TOP(1) " . $columns . " FROM " . $table . " where hfcode='" . $searchData['hfcode'] . "' ";
+
             $Result = sqlsrv_query($conn, $query);
             if ($Result === false) {
                 die(print_r(sqlsrv_errors(), true));
@@ -90,6 +92,7 @@ class FormData extends CI_controller
             sqlsrv_free_stmt($Result);
 
             $getSections = $MSection->getFormData($searchData);
+
             $getSectionsResult = $this->questionArr($getSections);
 
             $res = '';
@@ -100,7 +103,7 @@ class FormData extends CI_controller
                             $res .= '<div class="col-md-12">
                                             <div class="form-group">
                                                 <label><small>' . $v->variable_name . '</small>: ' . $v->label_l1 . '</label>
-                                                <input type="text" value="' . $sql_val . '" class="form-control">
+                                                <input type="text" readonly disabled value="' . $sql_val . '" class="form-control">
                                             </div>
                                      </div>';
                         }
@@ -119,7 +122,7 @@ class FormData extends CI_controller
                                     if (isset($va) && $va != '' && $va != '-1' && ($child_val->question_type == 'Input' || $child_val->question_type == 'Input-Numeric')) {
                                         $res .= '<div class="col-md-12">
                                                         <div class="form-group"> 
-                                                            <input type="text" value="' . $va . '" class="form-control">
+                                                            <input type="text" readonly disabled value="' . $va . '" class="form-control">
                                                         </div>
                                                  </div>';
                                     }
@@ -127,7 +130,8 @@ class FormData extends CI_controller
                             }
                             $res .= '     </div>
                                           </div>
-                                        </div>';
+                                        </div>
+                                        ';
                         }
                         if ($v->question_type == 'CheckBox') {
                             $res .= '<div class="col-md-12">
@@ -145,7 +149,7 @@ class FormData extends CI_controller
                                     if (isset($va) && $va != '' && $va != '-1' && ($child_val->question_type == 'Input' || $child_val->question_type == 'Input-Numeric')) {
                                         $res .= '<div class="col-md-12">
                                                         <div class="form-group"> 
-                                                            <input type="text" value="' . $va . '" class="form-control">
+                                                            <input type="text" readonly disabled value="' . $va . '" class="form-control">
                                                         </div>
                                                  </div>';
                                     }
@@ -158,9 +162,51 @@ class FormData extends CI_controller
                     }
                 }
             }
+
+
+            $chkNextSec = $MSection->chkNextSec($searchData);
+
+            if (isset($chkNextSec[0]) && $chkNextSec[0] != '') {
+                $res .= ' <button type="button" class="btn bg-gradient-radial-red white"
+                                            onclick="getNextSect(' . $chkNextSec[0]->idSection . ';)"> Next Section (' . $chkNextSec[0]->section_title . ')
+                                    </button>';
+            }
+
             echo $res;
         } else {
             echo 'Invalid Project, Please select project';
+        }
+    }
+
+    function questionArr($dataarr)
+    {
+        $myresult = array();
+        foreach ($dataarr as $key => $value) {
+            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
+                $mykey = strtolower($value->idParentQuestion);
+                $myresult[strtolower($mykey)]->myrow_options[] = $value;
+            } else {
+                $mykey = strtolower($value->variable_name);
+                $myresult[strtolower($mykey)] = $value;
+            }
+        }
+        $data = array();
+        foreach ($myresult as $val) {
+            $data[] = $val;
+        }
+        return $data;
+    }
+
+    function has_next($array)
+    {
+        if (is_array($array)) {
+            if (next($array) === false) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
         }
     }
 
@@ -343,25 +389,6 @@ class FormData extends CI_controller
         } else {
             echo 'Invalid Project, Please select project';
         }
-    }
-
-    function questionArr($dataarr)
-    {
-        $myresult = array();
-        foreach ($dataarr as $key => $value) {
-            if (isset($value->idParentQuestion) && $value->idParentQuestion != '' && array_key_exists(strtolower($value->idParentQuestion), $myresult)) {
-                $mykey = strtolower($value->idParentQuestion);
-                $myresult[strtolower($mykey)]->myrow_options[] = $value;
-            } else {
-                $mykey = strtolower($value->variable_name);
-                $myresult[strtolower($mykey)] = $value;
-            }
-        }
-        $data = array();
-        foreach ($myresult as $val) {
-            $data[] = $val;
-        }
-        return $data;
     }
 
     function unMatched()

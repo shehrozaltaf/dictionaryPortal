@@ -140,6 +140,17 @@
                                                     </div>
                                                 </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="hfcode">HF Code</label>
+                                                        <input type="number" id="hfcode" name="hfcode"
+                                                               class="form-control" max="6" value="211033">
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
 
@@ -180,10 +191,11 @@
                             <div class="card-content collapse show">
                                 <div class="card-body ">
                                     <div class="table-responsive myresult">
-                                        <table id="my_table_pro" class="table table-striped table-bordered  ">
+                                        <!--  <table id="my_table_pro" class="table table-striped table-bordered  ">
 
-                                        </table>
+                                          </table>-->
                                     </div>
+
                                 </div>
                             </div>
                         </div>
@@ -203,17 +215,30 @@
         changeCrf();
     });
 
+    function getNextSect(id) {
+        if (id != '' && id != undefined) {
+            $('#idSection').val(id);
+            getData();
+        } else {
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Next Section', 'Invalid next Section', 'error');
+            return false;
+        }
+
+    }
 
     function getData() {
         $('#idProject').css('border', '1px solid #babfc7');
         $('#crf_id').css('border', '1px solid #babfc7');
         $('#idModule').css('border', '1px solid #babfc7');
         $('#idSection').css('border', '1px solid #babfc7');
+        $('#hfcode').css('border', '1px solid #babfc7');
         var data = {};
         data['idProjects'] = $('#idProject').val();
         data['crf_id'] = $('#crf_id').val();
         data['idModule'] = $('#idModule').val();
         data['idSection'] = $('#idSection').val();
+        data['hfcode'] = $('#hfcode').val();
         var flag = 0;
         var url = '<?php echo base_url('index.php/FormData/getData?') ?>';
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
@@ -248,10 +273,20 @@
             toastMsg('Section', 'Invalid Section', 'error');
             return false;
         }
+        if (data['hfcode'] != '' && data['hfcode'] != '0' && data['hfcode'] != undefined && data['hfcode'] != null) {
+            url += '&hfcode=' + data['hfcode'];
+        } else {
+            flag = 1;
+            $('#hfcode').css('border', '1px solid red');
+            toastMsg('HF Code', 'Invalid HF Code', 'error');
+            return false;
+        }
         if (flag == 0) {
+            showloader();
             CallAjax(url, data, 'POST', function (res) {
                 $('.myresult').html('').html(res);
                 $('#my_table_pro').DataTable();
+                hideloader();
             });
         } else {
             $('#idProject').css('border', '1px solid red');
@@ -323,7 +358,9 @@
         var data = {};
         data['idCrf'] = $('#crf_id').val();
         if (data['idCrf'] != '' && data['idCrf'] != undefined && data['idCrf'] != '0' && data['idCrf'] != '$1') {
+            showloader();
             CallAjax('<?php echo base_url() . 'index.php/Module/getModuleByCrf'  ?>', data, 'POST', function (res) {
+                hideloader();
                 var items = '<option value="0"  selected>Select Module</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
@@ -347,7 +384,9 @@
         var data = {};
         data['idModule'] = $('#idModule').val();
         if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != '0' && data['idModule'] != '$1') {
+            showloader();
             CallAjax('<?php echo base_url() . 'index.php/Section/getSectionByModule'  ?>', data, 'POST', function (res) {
+                hideloader();
                 var items = '<option value="0"   selected>Select Section</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
