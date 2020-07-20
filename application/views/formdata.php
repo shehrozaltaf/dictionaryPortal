@@ -75,8 +75,10 @@
                                                     <div class="form-group">
                                                         <label for="crf_id">CRF</label>
                                                         <!--  onchange="changeCrf()"-->
-                                                        <select id="crf_id" name="crf_id" class="form-control">
+                                                        <select id="crf_id" name="crf_id" class="form-control"
+                                                                onchange="changeCrf()">
                                                             <option value="34">Health Facility Assesment</option>
+                                                            <option value="38">Health Facility Assessment</option>
                                                             <!-- <option value="0" selected>
                                                                  Select CRF
                                                              </option>-->
@@ -88,45 +90,45 @@
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="idModule">Module</label>
+                                                        <!-- <select id="idModule" name="idModule" class="form-control"
+                                                                 onchange="changeModule() ">
+                                                             <option value="0" selected="">Select Module</option>
+                                                             <option value="68">MODULE-A: FACILITY IDENTIFICATION
+                                                             </option>
+                                                             <option value="69">MODULE-B: INPATIENT &amp; OBSERVATION
+                                                                 BEDS
+                                                             </option>
+                                                             <option value="70">MODULE-C: STAFFING (NUMBERS &amp; THEIR
+                                                                 CAPACITY)
+                                                             </option>
+                                                             <option value="71">MODULE-D: INFRASTRUCTURE</option>
+                                                             <option value="72">MODULE-E: AVAILABLE SERVICES</option>
+                                                             <option value="73">MODULE-F: DIAGNOSTICS</option>
+                                                             <option value="74">MODULE-G: COMMODITIES &amp; SUPPLIES
+                                                             </option>
+                                                             <option value="75">MODULE-H: RECORDING AND REPORTING OF
+                                                                 DATA
+                                                             </option>
+                                                             <option value="76">SECTION-I: CLIENT / PATIENT’S
+                                                                 SATISFACTION
+                                                             </option>
+                                                             <option value="77">MODULE-J: QUALITY ASSESSMENT OF HEALTH
+                                                                 CARE PROVIDER AT FACILITY
+                                                             </option>
+                                                             <option value="80">MODULE-K: COVID-19 ARRANGEMENTS IN HEALTH
+                                                                 FACILITY
+                                                             </option>
+                                                         </select>-->
                                                         <select id="idModule" name="idModule" class="form-control"
-                                                                onchange="changeModule() ">
-                                                            <option value="0" selected="">Select Module</option>
-                                                            <option value="68">MODULE-A: FACILITY IDENTIFICATION
-                                                            </option>
-                                                            <option value="69">MODULE-B: INPATIENT &amp; OBSERVATION
-                                                                BEDS
-                                                            </option>
-                                                            <option value="70">MODULE-C: STAFFING (NUMBERS &amp; THEIR
-                                                                CAPACITY)
-                                                            </option>
-                                                            <option value="71">MODULE-D: INFRASTRUCTURE</option>
-                                                            <option value="72">MODULE-E: AVAILABLE SERVICES</option>
-                                                            <option value="73">MODULE-F: DIAGNOSTICS</option>
-                                                            <option value="74">MODULE-G: COMMODITIES &amp; SUPPLIES
-                                                            </option>
-                                                            <option value="75">MODULE-H: RECORDING AND REPORTING OF
-                                                                DATA
-                                                            </option>
-                                                            <option value="76">SECTION-I: CLIENT / PATIENT’S
-                                                                SATISFACTION
-                                                            </option>
-                                                            <option value="77">MODULE-J: QUALITY ASSESSMENT OF HEALTH
-                                                                CARE PROVIDER AT FACILITY
-                                                            </option>
-                                                            <option value="80">MODULE-K: COVID-19 ARRANGEMENTS IN HEALTH
-                                                                FACILITY
-                                                            </option>
-                                                        </select>
-                                                        <!--<select id="idModule" name="idModule" class="form-control"
                                                                 onchange="changeModule() ">
                                                             <option value="0" selected>
                                                                 Select Module
                                                             </option>
-                                                        </select>-->
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <!--<div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="idSection">Section</label>
@@ -137,7 +139,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
 
@@ -147,10 +149,10 @@
                                             <i class="la la-file-pdf-o"></i> Get Data
                                         </button>
 
-                                        <button type="button" class="btn bg-gradient-x-cyan white"
+                                        <!--<button type="button" class="btn bg-gradient-x-cyan white"
                                                 onclick="getUnmatched()">
                                             <i class="la la-file-pdf-o"></i> Get Unmatched
-                                        </button>
+                                        </button>-->
                                     </div>
                                 </div>
                             </div>
@@ -198,6 +200,7 @@
 <script>
     $(document).ready(function () {
         $('.myformdata').addClass('active');
+        changeCrf();
     });
 
 
@@ -210,29 +213,50 @@
         data['idProjects'] = $('#idProject').val();
         data['crf_id'] = $('#crf_id').val();
         data['idModule'] = $('#idModule').val();
-        data['idSection'] = $('#idSection').val();
+        // data['idSection'] = $('#idSection').val();
+        var flag = 0;
         var url = '<?php echo base_url('index.php/FormData/getData?') ?>';
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
             url += 'project=' + data['idProjects'];
-        }
-        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
-            url += '&crf=' + data['crf_id'];
-        }
-        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
-            url += '&module=' + data['idModule'];
-        }
-        if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
-            url += '&section=' + data['idSection'];
-        }
-        if (data['idProjects'] == '' && data['idProjects'] == undefined && data['idProjects'] != null) {
+        } else {
+            flag = 1;
             $('#idProject').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
             return false;
+        }
+        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+            url += '&crf=' + data['crf_id'];
         } else {
+            flag = 1;
+            $('#crf_id').css('border', '1px solid red');
+            toastMsg('CRF', 'Invalid CRF', 'error');
+            return false;
+        }
+        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+            url += '&module=' + data['idModule'];
+        } else {
+            flag = 1;
+            $('#idModule').css('border', '1px solid red');
+            toastMsg('Module', 'Invalid Module', 'error');
+            return false;
+        }
+        /*  if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
+              url += '&section=' + data['idSection'];
+          } else {
+              $('#idSection').css('border', '1px solid red');
+              toastMsg('Section', 'Invalid Section', 'error');
+              return false;
+          }*/
+        if (flag == 0) {
             CallAjax(url, data, 'POST', function (res) {
                 $('.myresult').html('').html(res);
                 $('#my_table_pro').DataTable();
             });
+
+        } else {
+            $('#idProject').css('border', '1px solid red');
+            toastMsg('Project', 'Invalid Project', 'error');
+            return false;
         }
     }
 
@@ -300,7 +324,8 @@
         data['idCrf'] = $('#crf_id').val();
         if (data['idCrf'] != '' && data['idCrf'] != undefined && data['idCrf'] != '0' && data['idCrf'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Module/getModuleByCrf'  ?>', data, 'POST', function (res) {
-                var items = '<option value="0"  selected>Select Module</option>';
+                // var items = '<option value="0"  selected>Select Module</option>';
+                var items = '';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -312,8 +337,6 @@
                 }
                 $('#idModule').html('').html(items);
             });
-
-
         } else {
             $('#idModule').html('');
         }
