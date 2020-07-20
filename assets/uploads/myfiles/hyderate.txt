@@ -1,0 +1,37 @@
+ 
+this.g0101 = json.getString("g0101");​
+this.g0102 = json.getString("g0102");​
+this.g0201 = json.getString("g0201");​
+this.g0202 = json.getString("g0202");​
+this.g0301 = json.getString("g0301");​
+this.g0302 = json.getString("g0302");​
+this.g0401 = json.getString("g0401");​
+this.g0402 = json.getString("g0402");​
+this.g0403 = json.getString("g0403");​
+this.g0404 = json.getString("g0404");​
+this.g0405 = json.getString("g0405");​
+this.g0406 = json.getString("g0406");​
+this.g0407 = json.getString("g0407");​
+this.g04096 = json.getString("g04096");​
+this.g04096x = json.getString("g04096x");​
+this.g0601 = json.getString("g0601");​
+this.g0602 = json.getString("g0602");​
+this.g0901 = json.getString("g0901");​
+this.g0902 = json.getString("g0902");​
+this.g10 = json.getString("g10");​
+
+this.g1101 = json.getString("g1101");​
+this.g1102 = json.getString("g1102");​
+this.g1201 = json.getString("g1201");​
+this.g1202 = json.getString("g1202");​
+this.g1203 = json.getString("g1203");​
+this.g1204 = json.getString("g1204");​
+this.g1205 = json.getString("g1205");​
+this.g12096 = json.getString("g12096");​
+this.g1301 = json.getString("g1301");​
+this.g1302 = json.getString("g1302");​
+this.g1303 = json.getString("g1303");​
+this.g1304 = json.getString("g1304");​
+this.g1305 = json.getString("g1305");​
+this.g1306 = json.getString("g1306");​
+this.g13096 = json.getString("g13096");​

@@ -1,0 +1,15 @@
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------

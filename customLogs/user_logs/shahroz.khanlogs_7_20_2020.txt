@@ -1,0 +1,180 @@
+UserIPAddress: 10.1.42.84 - July-20-2020 10:48 am
+idUser: 1, UserName: shahroz.khan
+Action: Login Success
+Result: User shahroz.khan: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 10:48 am
+idUser: 1, UserName: shahroz.khan
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 10:48 am
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 10:53 am
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 10:53 am
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 10:55 am
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 12:06 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 12:18 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 12:19 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:13 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:16 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:16 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:16 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:18 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Data Page
+Result: Upload Data Page. Fucntion: upload_data()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:20 pm
+idUser: 1, UserName: shahroz.khan
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:23 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:24 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:25 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:25 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:25 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:26 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:28 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:28 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:29 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:30 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:36 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:37 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:37 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:37 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 2:40 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 3:10 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 3:33 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 3:47 pm
+idUser: 1, UserName: shahroz.khan
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------

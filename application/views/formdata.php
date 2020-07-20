@@ -128,7 +128,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--<div class="row">
+                                            <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
                                                         <label for="idSection">Section</label>
@@ -139,7 +139,7 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                            </div>-->
+                                            </div>
                                         </div>
                                     </div>
 
@@ -213,7 +213,7 @@
         data['idProjects'] = $('#idProject').val();
         data['crf_id'] = $('#crf_id').val();
         data['idModule'] = $('#idModule').val();
-        // data['idSection'] = $('#idSection').val();
+        data['idSection'] = $('#idSection').val();
         var flag = 0;
         var url = '<?php echo base_url('index.php/FormData/getData?') ?>';
         if (data['idProjects'] != '' && data['idProjects'] != undefined && data['idProjects'] != null) {
@@ -224,7 +224,7 @@
             toastMsg('Project', 'Invalid Project', 'error');
             return false;
         }
-        if (data['crf_id'] != '' && data['crf_id'] != undefined && data['crf_id'] != null) {
+        if (data['crf_id'] != '' && data['crf_id'] != '0' && data['crf_id'] != undefined && data['crf_id'] != null) {
             url += '&crf=' + data['crf_id'];
         } else {
             flag = 1;
@@ -232,7 +232,7 @@
             toastMsg('CRF', 'Invalid CRF', 'error');
             return false;
         }
-        if (data['idModule'] != '' && data['idModule'] != undefined && data['idModule'] != null) {
+        if (data['idModule'] != '' && data['idModule'] != '0' && data['idModule'] != undefined && data['idModule'] != null) {
             url += '&module=' + data['idModule'];
         } else {
             flag = 1;
@@ -240,19 +240,19 @@
             toastMsg('Module', 'Invalid Module', 'error');
             return false;
         }
-        /*  if (data['idSection'] != '' && data['idSection'] != undefined && data['idSection'] != null) {
-              url += '&section=' + data['idSection'];
-          } else {
-              $('#idSection').css('border', '1px solid red');
-              toastMsg('Section', 'Invalid Section', 'error');
-              return false;
-          }*/
+        if (data['idSection'] != '' && data['idSection'] != '0' && data['idSection'] != undefined && data['idSection'] != null) {
+            url += '&section=' + data['idSection'];
+        } else {
+            flag = 1;
+            $('#idSection').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid Section', 'error');
+            return false;
+        }
         if (flag == 0) {
             CallAjax(url, data, 'POST', function (res) {
                 $('.myresult').html('').html(res);
                 $('#my_table_pro').DataTable();
             });
-
         } else {
             $('#idProject').css('border', '1px solid red');
             toastMsg('Project', 'Invalid Project', 'error');
@@ -324,8 +324,7 @@
         data['idCrf'] = $('#crf_id').val();
         if (data['idCrf'] != '' && data['idCrf'] != undefined && data['idCrf'] != '0' && data['idCrf'] != '$1') {
             CallAjax('<?php echo base_url() . 'index.php/Module/getModuleByCrf'  ?>', data, 'POST', function (res) {
-                // var items = '<option value="0"  selected>Select Module</option>';
-                var items = '';
+                var items = '<option value="0"  selected>Select Module</option>';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -337,6 +336,8 @@
                 }
                 $('#idModule').html('').html(items);
             });
+
+
         } else {
             $('#idModule').html('');
         }
