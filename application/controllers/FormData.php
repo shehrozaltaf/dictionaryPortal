@@ -112,7 +112,6 @@ class FormData extends CI_controller
                         $missingClass = 'missing';
                     }
 
-
                     if (isset($v->skipQuestion) && $v->skipQuestion != '') {
                         $skip = '<p class="red">Note: skip to ' . $v->skipQuestion . '</p>';
                         $from = "'$var'";
