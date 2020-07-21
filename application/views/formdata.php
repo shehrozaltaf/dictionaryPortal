@@ -1,3 +1,8 @@
+<style>
+    .missing {
+        text-decoration: #ff0000 underline !important;
+    }
+</style>
 <div class="app-content content">
     <div class="content-wrapper">
         <div class="content-wrapper-before"></div>
@@ -190,10 +195,10 @@
                             </div>
                             <div class="card-content collapse show">
                                 <div class="card-body ">
-                                    <div class="table-responsive myresult">
-                                        <!--  <table id="my_table_pro" class="table table-striped table-bordered  ">
-
-                                          </table>-->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul class="list-group myresult"></ul>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -213,6 +218,9 @@
     $(document).ready(function () {
         $('.myformdata').addClass('active');
         changeCrf();
+        setTimeout(function () {
+            changeModule();
+        }, 700);
     });
 
     function getNextSect(id) {
@@ -361,7 +369,8 @@
             showloader();
             CallAjax('<?php echo base_url() . 'index.php/Module/getModuleByCrf'  ?>', data, 'POST', function (res) {
                 hideloader();
-                var items = '<option value="0"  selected>Select Module</option>';
+                // var items = '<option value="0"  selected>Select Module</option>';
+                var items = '';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -387,7 +396,8 @@
             showloader();
             CallAjax('<?php echo base_url() . 'index.php/Section/getSectionByModule'  ?>', data, 'POST', function (res) {
                 hideloader();
-                var items = '<option value="0"   selected>Select Section</option>';
+                // var items = '<option value="0"   selected>Select Section</option>';
+                var items = '';
                 if (res != '' && JSON.parse(res).length > 0) {
                     var response = JSON.parse(res);
                     try {
@@ -403,5 +413,30 @@
             $('#idSection').html('');
         }
     }
+
+    function showInp(obj) {
+        if ($(obj).is(":checked")) {
+            $(obj).parents('.form-check').next('.toggleInp').removeClass('hidden');
+        } else {
+            $(obj).parents('.form-check').next('.toggleInp').addClass('hidden');
+        }
+    }
+
+    function skipTo(obj, divFrom, divTo) {
+        $(".div_" + divFrom).next(".div_" + divTo).find('input').removeAttr('disabled', 'disabled');
+        if ($(obj).is(":checked")) {
+            $(".div_" + divFrom).nextUntil(".div_" + divTo).find('input').attr('disabled', 'disabled')
+        } else {
+            $(".div_" + divFrom).nextUntil(".div_" + divTo).find('input').removeAttr('disabled', 'disabled')
+        }
+
+    }
+
+
+    function returnTo(obj, div) {
+        $(".div_" + div).next('.mainli').find('input').removeAttr('disabled', 'disabled');
+
+    }
+
 
 </script>

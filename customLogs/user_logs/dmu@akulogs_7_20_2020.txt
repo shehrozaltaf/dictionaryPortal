@@ -73,3 +73,33 @@ idUser: 2, UserName: dmu@aku
 Action: View Form Data Page
 Result: View Form Data page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 6:36 pm
+idUser: 2, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 6:38 pm
+idUser: 2, UserName: dmu@aku
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 6:38 pm
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 190
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 6:38 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 6:38 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-20-2020 6:38 pm
+idUser: 2, UserName: dmu@aku
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
