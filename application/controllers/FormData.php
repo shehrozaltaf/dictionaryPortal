@@ -143,7 +143,6 @@ class FormData extends CI_controller
                         foreach ($v->myrow_options as $c_k => $c_v) {
                             $c_var = strtolower($c_v->variable_name);
 
-
                             if ($v->nature == 'Radio') {
                                 $c_sql_val = $sql_res[0][$var];
                             } else {
