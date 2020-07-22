@@ -222,10 +222,9 @@ class FormData extends CI_controller
 
 
             $chkNextSec = $MSection->chkNextSec($searchData);
-
             if (isset($chkNextSec[0]) && $chkNextSec[0] != '') {
                 $res .= ' <button type="button" class="btn bg-gradient-radial-red white"
-                                            onclick="getNextSect(' . $chkNextSec[0]->idSection . ';)"> Next Section (' . $chkNextSec[0]->section_title . ')
+                 onclick="getNextSect(' . $chkNextSec[0]->idSection . ';)"> Next Section (' . $chkNextSec[0]->section_title . ')
                                     </button>';
             }
             $html .= $res;

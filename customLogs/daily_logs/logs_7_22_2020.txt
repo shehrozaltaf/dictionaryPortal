@@ -3,3 +3,13 @@ idUser: 1, UserName: shahroz.khan
 Action: Edit Section Detail Question (edit question)
 Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-22-2020 2:32 pm
+idUser: 1, UserName: shahroz.khan
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-22-2020 2:33 pm
+idUser: 1, UserName: shahroz.khan
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
