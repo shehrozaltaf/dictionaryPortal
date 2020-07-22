@@ -85,7 +85,6 @@ class FormData extends CI_controller
 
 
             $sql_res = array();
-
             while ($row = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC)) {
                 $sql_res[] = $row;
             }

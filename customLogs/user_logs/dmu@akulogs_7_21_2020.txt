@@ -1,0 +1,55 @@
+UserIPAddress: 10.1.42.84 - July-21-2020 10:18 am
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-21-2020 10:18 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-21-2020 10:18 am
+idUser: 2, UserName: dmu@aku
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 12:36 pm
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 12:36 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 12:36 pm
+idUser: 2, UserName: dmu@aku
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 12:50 pm
+idUser: 2, UserName: dmu@aku
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 12:56 pm
+idUser: 2, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 6:08 pm
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 6:08 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - July-21-2020 6:08 pm
+idUser: 2, UserName: dmu@aku
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
