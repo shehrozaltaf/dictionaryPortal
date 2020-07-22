@@ -85,6 +85,7 @@ class FormData extends CI_controller
 
 
             $sql_res = array();
+
             while ($row = sqlsrv_fetch_array($Result, SQLSRV_FETCH_ASSOC)) {
                 $sql_res[] = $row;
             }
@@ -102,6 +103,7 @@ class FormData extends CI_controller
             $innterHtml = '';
             if (isset($data) && $data != '') {
                 foreach ($data as $k => $v) {
+
                     $var = strtolower($v->variable_name);
                     $sql_val = $sql_res[0][$var];
 
@@ -186,7 +188,7 @@ class FormData extends CI_controller
                                                                                     </label>' . $c_skip . '
                                                                                 </div>';
                                 $va = $sql_res[0][$c_var . 'x'];
-                                if (isset($va) && $va != '' && $va != '-1' &&
+                                if (isset($va) &&
                                     ($c_v->nature == 'Input' || $c_v->nature == 'Input-Numeric')) {
                                     $innterHtml .= '<div class="  toggleInp ' . $c_var . 'x">
                                                                                         <label for="' . $c_var . 'x" class=" ' . $c_missingClass . '">
@@ -212,10 +214,9 @@ class FormData extends CI_controller
                     }
 
 
-                    $html = '<li class="list-group-item bg-blue-grey bg-lighten-4 mainli div_' . strtolower($var) . '">';
+                    $html .= '<li class="list-group-item bg-blue-grey bg-lighten-4 mainli div_' . strtolower($var) . '">';
                     $html .= $innterHtml;
                     $html .= '</li> ';
-                    echo $html;
                 }
             }
 
@@ -227,9 +228,7 @@ class FormData extends CI_controller
                                             onclick="getNextSect(' . $chkNextSec[0]->idSection . ';)"> Next Section (' . $chkNextSec[0]->section_title . ')
                                     </button>';
             }
-
             $html .= $res;
-
             echo $html;
         } else {
             echo 'Invalid Project, Please select project';
