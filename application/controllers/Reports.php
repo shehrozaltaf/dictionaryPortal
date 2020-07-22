@@ -338,12 +338,21 @@ class Reports extends CI_controller
                 android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '"
                 style="@style/cardView"
                 >
+                
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    >
-                  <RelativeLayout
+                    >';
+                if ($value->nature == 'Title') {
+                    $rl = ' <TextView
+                        android:id="@+id/qtxt_' . strtolower($value->variable_name) . '"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/q_' . strtolower($value->variable_name) . '"
+                        android:text="@string/' . strtolower($value->variable_name) . '" />';
+                } else {
+                    $rl = '  <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bottom">
@@ -362,6 +371,10 @@ class Reports extends CI_controller
                         android:layout_alignBottom="@id/qtxt_' . strtolower($value->variable_name) . '"
                         android:text="@string/Q_' . strtolower($value->variable_name) . '" />    
                 </RelativeLayout>';
+                }
+
+                $xml .= $rl;
+
                 if (isset($value->myrow_options) && $value->myrow_options != '') {
                     if ($value->nature == 'Radio') {
                         $xml .= '<RadioGroup
@@ -507,6 +520,7 @@ class Reports extends CI_controller
                                     android:layout_marginBottom="12dp"
                                     android:hint="@string/' . strtolower($value->variable_name) . '" />';
                     } elseif ($value->nature == 'Title') {
+
                     }
                 }
                 $xml .= ' </LinearLayout>
