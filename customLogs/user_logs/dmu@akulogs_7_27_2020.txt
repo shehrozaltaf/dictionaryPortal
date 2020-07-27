@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.84 - July-27-2020 10:54 am
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 10:54 am
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 10:54 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 10:55 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------

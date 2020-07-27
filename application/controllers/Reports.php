@@ -447,6 +447,7 @@ class Reports extends CI_controller
                                                 android:id="@+id/' . strtolower($options->variable_name) . '"
                                                 android:hint="@string/' . strtolower($options->variable_name) . '" 
                                                 app:mask="##"
+                                                android:inputType="number"
                                                 app:maxValue="' . $maxVal . '"
                                                 app:minValue="' . $minVal . '"
                                                 app:type="range"  />';
@@ -509,6 +510,7 @@ class Reports extends CI_controller
                                     android:layout_marginBottom="12dp"
                                     android:hint="@string/' . strtolower($value->variable_name) . '"
                                     app:mask="##"
+                                    android:inputType="number"
                                     app:maxValue="' . $maxVal . '"
                                     app:minValue="' . $minVal . '"
                                     app:type="range" />';

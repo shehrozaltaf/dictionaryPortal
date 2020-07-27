@@ -1,0 +1,15 @@
+UserIPAddress: 10.1.42.75 - July-23-2020 1:50 pm
+idUser: 17, UserName: hamza.amir
+Action: Login Success
+Result: User hamza.amir: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.75 - July-23-2020 1:50 pm
+idUser: 17, UserName: hamza.amir
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.75 - July-23-2020 1:50 pm
+idUser: 17, UserName: hamza.amir
+Action: View Form Data Page
+Result: View Form Data page. Fucntion: index()
+-------------------------------------------------
