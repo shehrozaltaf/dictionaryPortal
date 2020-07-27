@@ -18,3 +18,258 @@ idUser: 2, UserName: dmu@aku
 Action: View Dashboard
 Result: View Dashboard page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:04 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:05 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:06 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:06 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:06 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:06 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:06 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:06 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:07 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:13 am
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:17 am
+idUser: 2, UserName: dmu@aku
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:17 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 11:18 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 12:05 pm
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 12:09 pm
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - July-27-2020 12:15 pm
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 267
+-------------------------------------------------
