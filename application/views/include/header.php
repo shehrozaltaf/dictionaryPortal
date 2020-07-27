@@ -45,7 +45,6 @@ header("Pragma: no-cache"); ?>
     <script src="<?php echo base_url(); ?>assets/vendors/js/vendors.min.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/vendors/css/extensions/toastr.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/css/style.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/fonts/line-awesome/css/line-awesome.min.css">
 
 
 </head>
