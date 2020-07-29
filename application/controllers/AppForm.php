@@ -21,10 +21,10 @@ class AppForm extends CI_controller
             "result" => "View Dashboard page. Fucntion: index()");
         $Custom->trackLogs($trackarray, "user_logs");
         /*==========Log=============*/
-        $searchData['idProjects'] = 26;
-        $searchData['idCRF'] = 40;
-        $searchData['idModule'] = 81;
-        $searchData['idSection'] = 249;
+        $searchData['idProjects'] = 25;
+        $searchData['idCRF'] = 48;
+        $searchData['idModule'] = 91;
+        $searchData['idSection'] = 285;
         $searchData['includeTitle'] = 'Y';
         $searchData['orderby'] = '';
         $MSection = new MSection();
