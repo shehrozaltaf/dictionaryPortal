@@ -29,7 +29,6 @@ class AppForm extends CI_controller
         $searchData['orderby'] = '';
         $MSection = new MSection();
         $getSectionDetails = $MSection->getAllData($searchData);
-
         $data['data'] = $this->questionArr($getSectionDetails);
         $this->load->view('include/header');
         $this->load->view('include/sidebar');
