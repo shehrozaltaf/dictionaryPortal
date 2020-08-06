@@ -228,7 +228,7 @@
             toastMsg('Module', 'Invalid Module', 'error');
             flag = 1;
             return false;
-        }
+        } 
 
 
         if (flag == 0) {
