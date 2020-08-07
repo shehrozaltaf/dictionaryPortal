@@ -23,7 +23,7 @@ class AppForm extends CI_controller
         /*==========Log=============*/
         $searchData['idProjects'] = 25;
         $searchData['idCRF'] = 48;
-        $searchData['idModule'] = 91;
+        $searchData['idModule'] = 91; 
         $searchData['idSection'] = 285;
         $searchData['includeTitle'] = 'Y';
         $searchData['orderby'] = '';
