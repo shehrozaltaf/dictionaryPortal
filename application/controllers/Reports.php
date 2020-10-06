@@ -393,8 +393,7 @@ class Reports extends CI_controller
                     $s = 0;
                     foreach ($value->myrow_options as $options) {
                         $s++;
-                        if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
-                            //   android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
+                        if ($value->nature == 'Radio' && $options->nature == 'Input') {
                             $xml .= '<RadioButton
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
@@ -403,72 +402,129 @@ class Reports extends CI_controller
                                         <EditText
                                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                                             android:layout_width="match_parent"
-                                            android:layout_height="56dp"
-                                            android:layout_marginBottom="12dp"
+                                            android:layout_height="wrap_content"
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
                                             android:tag="' . strtolower($options->variable_name) . '"
                                             android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
-                        } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                        } elseif ($value->nature == 'Radio' && $options->nature == 'Input-Numeric') {
+                            $minVal_o = '';
+                            $maxVal_o = '';
+                            $maxLength_o = '';
+                            if (isset($options->MaxVal) && $options->MaxVal != '') {
+                                $maxVal_o = 'app:maxValue="' . $options->MaxVal . '"';
+                                $maxLength_o = 'app:maxLength="' . strlen($options->MaxVal) . '"';
+                            }
+                            if (isset($options->MinVal) && $options->MinVal != '') {
+                                $minVal_o = 'app:minValue="' . $options->MinVal . '"';
+                            }
+                            $xml .= '<RadioButton
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent" 
+                                        android:layout_height="wrap_content"/>
+                                         <com.edittextpicker.aliazaz.EditTextPicker
+                                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:tag="' . strtolower($options->variable_name) . '"
+                                            android:inputType="number" 
+                                            ' . $maxLength_o . '
+                                            ' . $maxVal_o . '
+                                            ' . $minVal_o . '
+                                            app:type="range" 
+                                            android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
+                                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($value->nature == 'CheckBox' && $options->nature == 'Input') {
 //                            android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
                             $xml .= '<CheckBox
                                         android:id="@+id/' . strtolower($options->variable_name) . '" 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
                                          android:layout_width="match_parent"
-                                        android:layout_height="wrap_content" />
-                                                             
+                                        android:layout_height="wrap_content" />                        
                                         <EditText
                                             android:id="@+id/' . strtolower($options->variable_name) . 'x" 
                                             android:layout_width="match_parent"
-                                            android:layout_height="56dp" 
-                                            android:layout_marginBottom="12dp"
+                                            android:layout_height="wrap_content" 
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
                                             android:tag="' . strtolower($options->variable_name) . '"
                                             android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
-                        } elseif ($options->nature == 'Input-Numeric') {
-                            $minVal = 0;
-                            $maxVal = 0;
+                        } elseif ($value->nature == 'CheckBox' && $options->nature == 'Input-Numeric') {
+                            $minVal_o = '';
+                            $maxVal_o = '';
+                            $maxLength_o = '';
                             if (isset($options->MaxVal) && $options->MaxVal != '') {
-                                $maxVal = $options->MaxVal;
+                                $maxVal_o = 'app:maxValue="' . $options->MaxVal . '"';
+                                $maxLength_o = 'app:maxLength="' . strlen($options->MaxVal) . '"';
                             }
                             if (isset($options->MinVal) && $options->MinVal != '') {
-                                $minVal = $options->MinVal;
+                                $minVal_o = 'app:minValue="' . $options->MinVal . '"';
+                            }
+//                            android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
+                            $xml .= '<CheckBox
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                         android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" />                        
+                                        <com.edittextpicker.aliazaz.EditTextPicker
+                                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"  
+                                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:tag="' . strtolower($options->variable_name) . '"
+                                             android:inputType="number" 
+                                            ' . $maxLength_o . '
+                                            ' . $maxVal_o . '
+                                            ' . $minVal_o . '
+                                            app:type="range" 
+                                            android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
+                                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($options->nature == 'Input-Numeric') {
+                            /*$minVal = 0;
+                            $maxVal = 0;*/
+                            $minVal = '';
+                            $maxVal = '';
+                            $maxLength_o = '';
+                            if (isset($options->MaxVal) && $options->MaxVal != '') {
+                                $maxVal = 'app:maxValue="' . $options->MaxVal . '"';
+                                $maxLength_o = 'app:maxLength="' . strlen($options->MaxVal) . '"';
+                            }
+                            if (isset($options->MinVal) && $options->MinVal != '') {
+                                $minVal = 'app:minValue="' . $options->MinVal . '"';
                             }
                             $xml .= '<TextView 
-                                        android:text="@string/' . strtolower($options->variable_name) . '" 
-                                        android:layout_marginTop="12dp"
+                                        android:text="@string/' . strtolower($options->variable_name) . '"  
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"  />
+                                        android:layout_height="wrap_content"  />
                                         <com.edittextpicker.aliazaz.EditTextPicker
                                                 android:layout_width="match_parent"
-                                                android:layout_height="56dp"
-                                                android:layout_marginBottom="12dp"
+                                                android:layout_height="wrap_content"
                                                 android:id="@+id/' . strtolower($options->variable_name) . '"
-                                                android:hint="@string/' . strtolower($options->variable_name) . '" 
-                                                app:mask="##"
-                                                android:inputType="number"
-                                                app:maxValue="' . $maxVal . '"
-                                                app:minValue="' . $minVal . '"
+                                                android:hint="@string/' . strtolower($options->variable_name) . '"  
+                                                android:inputType="number" 
+                                                ' . $maxLength_o . '
+                                                ' . $maxVal . '
+                                                ' . $minVal . '
                                                 app:type="range"  />';
                         } elseif ($options->nature == 'Input') {
                             $xml .= '<TextView 
                                         android:text="@string/' . strtolower($options->variable_name) . '" 
                                         android:layout_marginTop="12dp" 
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"  />
+                                        android:layout_height="wrap_content"  />
                                         <EditText
                                             android:id="@+id/' . strtolower($options->variable_name) . '" 
                                             android:layout_width="match_parent"
-                                            android:layout_height="56dp"  
-                                            android:layout_marginBottom="12dp"
+                                            android:layout_height="wrap_content"   
                                             android:hint="@string/' . strtolower($options->variable_name) . '" />';
                         } elseif ($options->nature == 'Title') {
                             $xml .= '<TextView 
                                         android:text="@string/' . strtolower($options->variable_name) . '"
                                         android:layout_marginTop="12dp"
                                         android:layout_width="match_parent"
-                                        android:layout_height="56dp"   />';
+                                        android:layout_height="wrap_content"   />';
                         } elseif ($options->nature == 'Radio') {
                             //  android:checked=\'@{form.' . strtolower($options->variable_name) . '.equals("' . $s . '")}\'
                             $xml .= '<RadioButton
@@ -495,31 +551,34 @@ class Reports extends CI_controller
                     }
                 } else {
                     if ($value->nature == 'Input-Numeric') {
-                        $minVal = 0;
-                        $maxVal = 0;
+                        /*$minVal = 0;
+                        $maxVal = 0;*/
+                        $maxLength_o = '';
+                        $minValue = '';
+                        $maxValue = '';
                         if (isset($value->MaxVal) && $value->MaxVal != '') {
-                            $maxVal = $value->MaxVal;
+                            $maxValue = 'app:maxValue="' . $value->MaxVal . '"';
+                            $maxLength_o = 'app:maxLength="' . strlen($value->MaxVal) . '"';
                         }
                         if (isset($value->MinVal) && $value->MinVal != '') {
-                            $minVal = $value->MinVal;
+                            $minValue = 'app:minValue="' . $value->MinVal . '"';
                         }
+
                         $xml .= '<com.edittextpicker.aliazaz.EditTextPicker
                                     android:id="@+id/' . strtolower($value->variable_name) . '"
                                     android:layout_width="match_parent"
-                                    android:layout_height="56dp"
-                                    android:layout_marginBottom="12dp"
-                                    android:hint="@string/' . strtolower($value->variable_name) . '"
-                                    app:mask="##"
-                                    android:inputType="number"
-                                    app:maxValue="' . $maxVal . '"
-                                    app:minValue="' . $minVal . '"
+                                    android:layout_height="wrap_content" 
+                                    android:hint="@string/' . strtolower($value->variable_name) . '" 
+                                    android:inputType="number" 
+                                   ' . $maxLength_o . '
+                                   ' . $maxValue . '
+                                   ' . $minValue . '
                                     app:type="range" />';
                     } elseif ($value->nature == 'Input') {
                         $xml .= '<EditText
                                     android:id="@+id/' . strtolower($value->variable_name) . '" 
                                     android:layout_width="match_parent"
-                                    android:layout_height="56dp"
-                                    android:layout_marginBottom="12dp"
+                                    android:layout_height="wrap_content" 
                                     android:hint="@string/' . strtolower($value->variable_name) . '" />';
                     } elseif ($value->nature == 'Title') {
 
@@ -686,6 +745,7 @@ class Reports extends CI_controller
                         ($options->nature == 'Input-Numeric') {
                             $minVal = 0;
                             $maxVal = 0;
+
                             if (isset($options->MaxVal) && $options->MaxVal != '') {
                                 $maxVal = $options->MaxVal;
                             }
@@ -1542,11 +1602,10 @@ class Reports extends CI_controller
                         $myresult = $this->questionArr($getSectionDetails);
 
                         $optionsubhtml = ' <style>table tr {
-                font - size: 13px}table tr th {
-                font - size: 14px; font - weight: bold}
+                font-size: 13px}  table tr th {
+                font-size: 14px; font-weight: bold}
                                             .fright{
-                float:
-                right}
+                float:right}
                                            </style> ';
                         if ($l == 1) {
                             $optionsubhtml .= $subhtml;
@@ -1633,10 +1692,21 @@ class Reports extends CI_controller
                                              " . $ol5sec . "  </span> </span>
                                              </td>";
                                         $optsubhtml .= ' <td width="15%"> ' . $oval->option_value . '</td> ';
+                                        $optionsubhtml_Min = '';
+                                        $optionsubhtml_max = '';
+                                        if (isset($oval->MinVal) && $oval->MinVal != '') {
+                                            $optionsubhtml_Min .= ' <small>Min:' . htmlspecialchars($oval->MinVal) . ' </small> ';
+                                        }
+                                        if (isset($oval->MaxVal) && $oval->MaxVal != '') {
+                                            $optionsubhtml_max .= ' <small>Max:' . htmlspecialchars($oval->MaxVal) . ' </small> ';
+                                        }
 
-                                        $optsubhtml .= '<td width="15%"> ' . (isset($oval->nature) && $oval->nature ?
-                                                '<small> ' . $oval->nature . ' </small> ' : '') . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
-                                                ' <small>Skip:' . htmlspecialchars($oval->skipQuestion) . ' </small> ' : '') . ' </td> ';
+                                        $optsubhtml .= '<td width="15%">' . (isset($oval->nature) && $oval->nature ?
+                                                '<small>' . $oval->nature . ' </small> ' : '')
+                                            . ' ' . (isset($oval->skipQuestion) && $oval->skipQuestion ?
+                                                ' <small>Skip:' . htmlspecialchars($oval->skipQuestion) . ' </small> ' : '')
+                                            . $optionsubhtml_Min . $optionsubhtml_max
+                                            . ' </td> ';
                                         $optsubhtml .= '</tr> ';
                                         if (isset($oval->otherOptions) && $oval->otherOptions != '') {
                                             $optsubhtml .= ' <tr><td colspan="3"><ul> ';
