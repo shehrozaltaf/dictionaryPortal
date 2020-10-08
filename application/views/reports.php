@@ -120,8 +120,8 @@
                                                         <select id="action_type" name="action_type"
                                                                 class="form-control">
                                                             <option value="1" selected>Export PDF</option>
-                                                            <option value="2">Export XML</option>
-                                                            <option value="10">Export XMLs(Sajid)</option>
+                                                            <!--                                                            <option value="2">Export XML</option>-->
+                                                            <option value="10">Export XML</option>
                                                             <option value="3">Export Strings</option>
                                                             <option value="4">Export Save Draft</option>
                                                             <option value="5">Export Code Book</option>

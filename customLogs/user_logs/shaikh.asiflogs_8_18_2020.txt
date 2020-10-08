@@ -1,0 +1,30 @@
+UserIPAddress: 10.1.42.80 - August-18-2020 3:55 pm
+idUser: 9, UserName: shaikh.asif
+Action: Login Success
+Result: User shaikh.asif: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - August-18-2020 3:55 pm
+idUser: 9, UserName: shaikh.asif
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - August-18-2020 3:55 pm
+idUser: 9, UserName: shaikh.asif
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - August-18-2020 4:02 pm
+idUser: 9, UserName: shaikh.asif
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - August-18-2020 4:02 pm
+idUser: 9, UserName: shaikh.asif
+Action: View Project Page
+Result: View the Main Project Page
+-------------------------------------------------
+UserIPAddress: 10.1.42.80 - August-18-2020 4:02 pm
+idUser: 9, UserName: shaikh.asif
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------

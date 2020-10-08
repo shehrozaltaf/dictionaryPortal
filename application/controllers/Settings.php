@@ -21,7 +21,8 @@ class Settings extends CI_controller
         $MSettings = new MSettings();
         $data = array();
         $data['groups'] = $MSettings->getAllGroups();
-        $data['permission'] = $MSettings->getUserRights($_SESSION['login']['idGroup'], '', 'form');
+//        $data['permission'] = $MSettings->getUserRights($_SESSION['login']['idGroup'], '', 'index.php/settings/groups');
+        $data['permission'] = '';
         $this->load->view('include/header', $data);
         $this->load->view('include/sidebar');
         $this->load->view('settings/group');

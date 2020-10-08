@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.65 - October-1-2020 12:50 pm
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-1-2020 12:51 pm
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------

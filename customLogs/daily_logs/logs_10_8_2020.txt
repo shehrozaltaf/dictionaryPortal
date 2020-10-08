@@ -1,0 +1,255 @@
+UserIPAddress: 10.1.42.65 - October-8-2020 10:26 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:26 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:27 am
+idUser: 9, UserName: shaikh.asif
+Action: Add Section Detail Option Data Page (add options)
+Result: Add Section Detail Option Questions. Fucntion: add_sectiondetail_data_option() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:30 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:30 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47423
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48768
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47422
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48767
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48766
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48765
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:31 am
+idUser: 9, UserName: shaikh.asif
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:32 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48772
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:32 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48771
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:32 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48770
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:32 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:34 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:35 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:35 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:35 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:35 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:36 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:36 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:37 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:37 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47420
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48769
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47421
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48734
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 48735
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47424
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47425
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47426
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47427
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47428
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47429
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47430
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47431
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47432
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47433
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:55 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47434
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:56 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47435
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:56 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47436
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:56 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47437
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:56 am
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 47419
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:57 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 10:57 am
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.65 - October-8-2020 1:18 pm
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.107 - October-8-2020 3:49 pm
+idUser: 2, UserName: dmu@aku
+Action: Lock CRF
+Result: Lock CRF page Data. Function: lockData() Result: 1 CRF: 56 changeVaue: Y
+-------------------------------------------------
+UserIPAddress: 10.1.42.107 - October-8-2020 3:50 pm
+idUser: 2, UserName: dmu@aku
+Action: Lock CRF
+Result: Lock CRF page Data. Function: lockData() Result: 1 CRF: 56 changeVaue: N
+-------------------------------------------------

@@ -80,6 +80,10 @@ class Dashboard extends CI_controller
         } else {
             $Menu = '';
         }
+        $Menu .= '<li class=" nav-item">
+                <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i class="ft-power"></i>
+                    Logout</a>
+            </li>';
         echo $Menu;
     }
 

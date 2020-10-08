@@ -157,10 +157,10 @@
                     <span class="menu-title" data-i18n="">Documents</span>
                 </a>
             </li>
-            <li class=" nav-item myupload_data">
-                <a href="<?php echo base_url('index.php/upload_data') ?>" class="">
-                    <i class="ft-upload"></i>
-                    <span class="menu-title" data-i18n="">Upload/Import Data</span>
+            <li class=" nav-item myAppForm">
+                <a href="<?php echo base_url('index.php/AppForm') ?>" class="">
+                    <i class="ft-list"></i>
+                    <span class="menu-title" data-i18n="">Check Form</span>
                 </a>
             </li>
             <!--<li class=" nav-item mylangauge">
@@ -169,6 +169,14 @@
                     <span class="menu-title" data-i18n="">Language</span>
                 </a>
             </li>-->
+
+
+            <li class=" nav-item myformdata">
+                <a href="<?php echo base_url('index.php/FormData') ?>" class="">
+                    <i class="ft-upload"></i>
+                    <span class="menu-title" data-i18n="">UEN Form Data</span>
+                </a>
+            </li>
             <li class="nav-item mysettings"><a href="javascript:void(0)">
                     <i class="ft-settings"></i><span class="menu-title" data-i18n="">Settings</span></a>
                 <ul class="menu-content">
@@ -177,22 +185,18 @@
                             Groups
                         </a>
                     </li>
+                    <li class="myusers">
+                        <a href="<?php echo base_url('index.php/users') ?>" class="menu-item ">
+                            Users
+                        </a>
+                    </li>
+                    <li class="myupload_data">
+                        <a href="<?php echo base_url('index.php/upload_data') ?>" class="menu-item ">
+                            Upload/Import Data
+                        </a>
+                    </li>
                 </ul>
             </li>
-            <li class=" nav-item myusers">
-                <a href="<?php echo base_url('index.php/users') ?>" class="">
-                    <i class="ft-users"></i>
-                    <span class="menu-title" data-i18n="">Users</span>
-                </a>
-            </li>
-
-            <li class=" nav-item myformdata">
-                <a href="<?php echo base_url('index.php/FormData') ?>" class="">
-                    <i class="ft-upload"></i>
-                    <span class="menu-title" data-i18n="">Form Data</span>
-                </a>
-            </li>
-
             <li class=" nav-item">
                 <a class="dropdown-item" href="javascript:void(0)" onclick="logout()"><i class="ft-power"></i>
                     Logout</a>

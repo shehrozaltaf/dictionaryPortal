@@ -1,0 +1,55 @@
+UserIPAddress: 10.1.42.44 - August-7-2020 2:28 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 4:52 pm
+idUser: , UserName: 
+Action: Logout
+Result: User : Logout
+-------------------------------------------------

@@ -404,6 +404,7 @@ class Reports extends CI_controller
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                             android:tag="' . strtolower($options->variable_name) . '"
                                             android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
@@ -413,7 +414,7 @@ class Reports extends CI_controller
                             $maxLength_o = '';
                             if (isset($options->MaxVal) && $options->MaxVal != '') {
                                 $maxVal_o = 'app:maxValue="' . $options->MaxVal . '"';
-                                $maxLength_o = 'app:maxLength="' . strlen($options->MaxVal) . '"';
+                                $maxLength_o = 'android:maxLength="' . strlen($options->MaxVal) . '"';
                             }
                             if (isset($options->MinVal) && $options->MinVal != '') {
                                 $minVal_o = 'app:minValue="' . $options->MinVal . '"';
@@ -448,6 +449,7 @@ class Reports extends CI_controller
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content" 
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                             android:tag="' . strtolower($options->variable_name) . '"
                                             android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
@@ -457,7 +459,7 @@ class Reports extends CI_controller
                             $maxLength_o = '';
                             if (isset($options->MaxVal) && $options->MaxVal != '') {
                                 $maxVal_o = 'app:maxValue="' . $options->MaxVal . '"';
-                                $maxLength_o = 'app:maxLength="' . strlen($options->MaxVal) . '"';
+                                $maxLength_o = 'android:maxLength="' . strlen($options->MaxVal) . '"';
                             }
                             if (isset($options->MinVal) && $options->MinVal != '') {
                                 $minVal_o = 'app:minValue="' . $options->MinVal . '"';
@@ -489,7 +491,7 @@ class Reports extends CI_controller
                             $maxLength_o = '';
                             if (isset($options->MaxVal) && $options->MaxVal != '') {
                                 $maxVal = 'app:maxValue="' . $options->MaxVal . '"';
-                                $maxLength_o = 'app:maxLength="' . strlen($options->MaxVal) . '"';
+                                $maxLength_o = 'android:maxLength="' . strlen($options->MaxVal) . '"';
                             }
                             if (isset($options->MinVal) && $options->MinVal != '') {
                                 $minVal = 'app:minValue="' . $options->MinVal . '"';
@@ -558,7 +560,7 @@ class Reports extends CI_controller
                         $maxValue = '';
                         if (isset($value->MaxVal) && $value->MaxVal != '') {
                             $maxValue = 'app:maxValue="' . $value->MaxVal . '"';
-                            $maxLength_o = 'app:maxLength="' . strlen($value->MaxVal) . '"';
+                            $maxLength_o = 'android:maxLength="' . strlen($value->MaxVal) . '"';
                         }
                         if (isset($value->MinVal) && $value->MinVal != '') {
                             $minValue = 'app:minValue="' . $value->MinVal . '"';

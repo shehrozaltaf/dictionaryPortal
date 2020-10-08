@@ -1,0 +1,15 @@
+UserIPAddress: 10.1.42.44 - August-7-2020 12:16 pm
+idUser: 9, UserName: shaikh.asif
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 12:16 pm
+idUser: 9, UserName: shaikh.asif
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 36276
+-------------------------------------------------
+UserIPAddress: 10.1.42.44 - August-7-2020 2:30 pm
+idUser: 9, UserName: shaikh.asif
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------

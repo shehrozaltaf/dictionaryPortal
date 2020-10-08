@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.123 - October-8-2020 3:41 pm
+idUser: 12, UserName: abdul.sajid
+Action: Login Success
+Result: User abdul.sajid: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.123 - October-8-2020 3:41 pm
+idUser: 12, UserName: abdul.sajid
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.123 - October-8-2020 3:41 pm
+idUser: 12, UserName: abdul.sajid
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.123 - October-8-2020 3:41 pm
+idUser: 12, UserName: abdul.sajid
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

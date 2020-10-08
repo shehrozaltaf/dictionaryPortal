@@ -52,7 +52,7 @@ class MSettings extends CI_Model
 	pages.sort_no');
         $this->db->from('pagegroup');
         $this->db->join('pages', 'pagegroup.idPages = pages.idPages', 'left');
-        $this->db->join('group', 'pagegroup.idGroup = `group`.idGroup', 'left');
+        $this->db->join('group', 'pagegroup.idGroup = group.idGroup', 'left');
         $this->db->where('pages.isActive', 1);
         $this->db->where('pagegroup.idGroup', $idGroup);
         $this->db->order_by('pages.sort_no', 'ASC');
