@@ -346,10 +346,8 @@ class Reports extends CI_controller
                     >';
                 if ($value->nature == 'Title') {
                     $rl = ' <TextView
-                        android:id="@+id/qtxt_' . strtolower($value->variable_name) . '"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/q_' . strtolower($value->variable_name) . '"
                         android:text="@string/' . strtolower($value->variable_name) . '" />';
                 } else {
                     $rl = '  <RelativeLayout
