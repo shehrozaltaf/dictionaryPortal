@@ -943,16 +943,25 @@ class Reports extends CI_controller
         $data = $MSection->getAllData($searchData);
         $result = $this->questionArr($data);
         foreach ($result as $key => $value) {
-            $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
+            if ($value->nature != 'Title') {
+                $fileEngSting .= 'public String ' . strtolower($value->variable_name) . ';' . "\n";
+            }
             if (isset($value->myrow_options)) {
                 foreach ($value->myrow_options as $options) {
-                    if (($value->nature == 'Radio' && $options->nature == 'Input') ||
-                        ($value->nature == 'CheckBox' && $options->nature == 'Input') ||
-                        $value->nature == 'CheckBox') {
+                    if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                        $fileEngSting .= 'public String ' . strtolower($options->variable_name) . 'x;' . "\n";
+                    } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                        $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
+                        $fileEngSting .= 'public String ' . strtolower($options->variable_name) . 'x;' . "\n";
+                    } elseif ($options->nature == 'CheckBox') {
+                        $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
+                    } elseif ($options->nature == 'Input' || $options->nature == 'Input-Numeric') {
                         $fileEngSting .= 'public String ' . strtolower($options->variable_name) . ';' . "\n";
                     }
+
                 }
             }
+
         }
         $file = 'assets/uploads/myfiles/contract.txt';
         $txt = fopen($file, "w") or die("Unable to open file!");
@@ -1096,11 +1105,11 @@ class Reports extends CI_controller
                 $fileOtherData = '';
                 $question_type = $value->nature;
                 if ($question_type == 'Input-Numeric' || $question_type == 'Input') {
-                    $fileData .= 'form.set' . ucfirst($value->variable_name) . '(bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
+                    $fileData .= 'form.set' . ucfirst(strtolower($value->variable_name)) . '(bi.' . strtolower($value->variable_name) . '.getText().toString());' . "\n\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'form.set' . ucfirst($options->variable_name) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . '(bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -1109,13 +1118,13 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'form.set' . ucfirst($options->variable_name) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . '(bi.' . strtolower($options->variable_name) . '.getText().toString());' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
-                    $fileData .= 'form.set' . ucfirst($value->variable_name) . '( ';
+                    $fileData .= 'form.set' . ucfirst(strtolower($value->variable_name)) . '( ';
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Title') {
@@ -1124,7 +1133,7 @@ class Reports extends CI_controller
                                 $fileData .= 'bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" ' . "\n" . ' : ';
                             }
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'form.set' . ucfirst($options->variable_name) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -1133,9 +1142,9 @@ class Reports extends CI_controller
                 } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'form.set' . ucfirst($options->variable_name) . '(bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" : "-1";' . "\n\n";
+                            $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . '(bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" : "-1";' . "\n\n";
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'form.set' . ucfirst($options->variable_name) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
+                                $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             }
                         }
                     }
@@ -1158,7 +1167,6 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select project';
         }
     }
-
 
     function toString()
     {
@@ -1239,7 +1247,7 @@ class Reports extends CI_controller
         }
     }
 
-    function hydrate()
+    function hydrate2()
     {
         ob_end_clean();
         if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
@@ -1261,7 +1269,7 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
                             }
                         }
                     }
@@ -1270,18 +1278,20 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
+                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Title') {
                                 $fileData .= '';
                             } else {
-                                $fileData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                                $fileData .= '';
+//                                $fileData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
                             }
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
                                 $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
@@ -1317,6 +1327,102 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select Section';
         }
     }
+
+
+    function hydrate()
+    {
+        ob_end_clean();
+        if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
+            $this->load->model('msection');
+            $MSection = new MSection();
+            /*$searchData = array();
+            $searchData['idProjects'] = $_REQUEST['project'];
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);*/
+
+            $searchData = array();
+            $searchData['idProjects'] = $_REQUEST['project'];
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $searchData['includeTitle'] = 'Y';
+            $searchData['orderby'] = 'idSection';
+
+            $result = $MSection->getAllData($searchData);
+            $data = $this->questionArr($result);
+
+
+            $fileData = ' ' . "\n";
+            foreach ($data as $key => $value) {
+                $fileOtherData = '';
+                $question_type = $value->nature;
+                if ($question_type == 'Input-Numeric' || $question_type == 'Input') {
+                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Title') {
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Radio') {
+                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Title') {
+                                $fileData .= '';
+                            } else {
+                                $fileData .= '';
+//                                $fileData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                            }
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'CheckBox') {
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                }
+            }
+            $file = "assets/uploads/myfiles/hyderate.txt";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileData);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/plain");
+            readfile($file);
+        } else {
+            echo 'Invalid Project, Please select Section';
+        }
+    }
+
 
     function getCodeBook()
     {
