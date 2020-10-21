@@ -1,0 +1,5 @@
+UserIPAddress: 10.1.42.65 - October-13-2020 12:20 pm
+idUser: 9, UserName: shaikh.asif
+Action: Upload Excel Data
+Result: Upload Excel Data. Fucntion: uploadExcelData() .  
+-------------------------------------------------

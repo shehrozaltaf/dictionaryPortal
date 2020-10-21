@@ -1,46 +1,42 @@
  
-.put("s5q101", s5q101)
-.put("s5q102", s5q102)
-.put("s5q1a01", s5q1a01)
-.put("s5q1a02", s5q1a02)
-.put("s5q1a03", s5q1a03)
-.put("s5q201", s5q201)
-.put("s5q202", s5q202)
-.put("s5q2a01", s5q2a01)
-.put("s5q2a02", s5q2a02)
-.put("s5q2a03", s5q2a03)
-.put("s5q301", s5q301)
-.put("s5q302", s5q302)
-.put("s5q3a01", s5q3a01)
-.put("s5q3a02", s5q3a02)
-.put("s5q3a03", s5q3a03)
-.put("s5q401", s5q401)
-.put("s5q402", s5q402)
-.put("s5q4a01", s5q4a01)
-.put("s5q4a02", s5q4a02)
-.put("s5q4a03", s5q4a03)
-.put("s5q501", s5q501)
-.put("s5q502", s5q502)
-.put("s5q5a01", s5q5a01)
-.put("s5q5a02", s5q5a02)
-.put("s5q5a03", s5q5a03)
-.put("s5q601", s5q601)
-.put("s5q602", s5q602)
-.put("s5q6a01", s5q6a01)
-.put("s5q6a02", s5q6a02)
-.put("s5q6a03", s5q6a03)
-.put("s5q701", s5q701)
-.put("s5q702", s5q702)
-.put("s5q7a01", s5q7a01)
-.put("s5q7a02", s5q7a02)
-.put("s5q7a03", s5q7a03)
-.put("s5q801", s5q801)
-.put("s5q802", s5q802)
-.put("s5q8a01", s5q8a01)
-.put("s5q8a02", s5q8a02)
-.put("s5q8a03", s5q8a03)
-.put("s5q901", s5q901)
-.put("s5q902", s5q902)
-.put("s5q9a01", s5q9a01)
-.put("s5q9a02", s5q9a02)
-.put("s5q9a03", s5q9a03)
+.put("s1qno", s1qno)
+
+.put("s1q1", s1q1)
+.put("s1q2", s1q2)
+
+.put("s1q4", s1q4)
+
+.put("s1q6", s1q6)
+
+.put("s1q8", s1q8)
+
+.put("s1q9", s1q9)
+
+.put("s1q10", s1q10)
+
+.put("s1q11", s1q11)
+
+.put("s1q12", s1q12)
+
+.put("s1q13", s1q13)
+.put("s1q14", s1q14)
+
+.put("s1q15", s1q15)
+
+.put("s1q16", s1q16)
+
+.put("s1q17", s1q17)
+.put("s1q18", s1q18)
+.put("s1_consent", s1_consent)
+.put("s1q19et", s1q19et)
+
+.put("s1q20a", s1q20a)
+
+.put("s1q20b", s1q20b)
+
+.put("s1q20c", s1q20c)
+
+.put("s1q20d", s1q20d)
+
+.put("s1q20e", s1q20e)
+

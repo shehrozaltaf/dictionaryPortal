@@ -1142,7 +1142,13 @@ class Reports extends CI_controller
                 } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . '(bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" : "-1";' . "\n\n";
+                            if ($options->nature == 'Title') {
+                                $fileOtherData .= '';
+                            } else {
+                                $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . '(bi.' . strtolower($options->variable_name) . '.isChecked() ? "' . $options->option_value . '" : "-1");' . "\n\n";
+                            }
+
+
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
                                 $fileOtherData .= 'form.set' . ucfirst(strtolower($options->variable_name)) . 'x(bi.' . strtolower($options->variable_name) . 'x.getText().toString());' . "\n";
                             }
@@ -1190,7 +1196,7 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
                             }
                         }
                     }
@@ -1199,19 +1205,15 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
+                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . strtolower($value->variable_name) . ')' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            if ($options->nature == 'Title') {
-                                $fileData .= '';
-                            } else {
-                                $fileData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
-                            }
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
                                 $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
                             }
@@ -1221,7 +1223,13 @@ class Reports extends CI_controller
                 } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n\n";
+                            if ($options->nature == 'Title') {
+                                $fileOtherData .= '';
+                            } else {
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n\n";
+                            }
+
+
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
                                 $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
                             }
@@ -1397,7 +1405,12 @@ class Reports extends CI_controller
                 } elseif ($question_type == 'CheckBox') {
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
-                            $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                            if ($options->nature == 'Title') {
+                                $fileOtherData .= '';
+                            } else {
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                            }
+
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
                                 $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
                             }
