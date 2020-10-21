@@ -977,6 +977,7 @@ class Reports extends CI_controller
         readfile($file);
     }
 
+
     function getSaveDraftData()
     {
         ob_end_clean();
@@ -1255,7 +1256,7 @@ class Reports extends CI_controller
         }
     }
 
-    function hydrate2()
+    function hydrate2_old()
     {
         ob_end_clean();
         if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
@@ -1337,7 +1338,7 @@ class Reports extends CI_controller
     }
 
 
-    function hydrate()
+    function hydrateJson()
     {
         ob_end_clean();
         if (isset($_REQUEST['project']) && $_REQUEST['project'] != '' && $_REQUEST['project'] != 0) {
@@ -1363,16 +1364,16 @@ class Reports extends CI_controller
             $data = $this->questionArr($result);
 
 
-            $fileData = ' ' . "\n";
+            $fileData = ' ' . "\r\n";
             foreach ($data as $key => $value) {
                 $fileOtherData = '';
                 $question_type = $value->nature;
                 if ($question_type == 'Input-Numeric' || $question_type == 'Input') {
-                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\n";
+                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\r\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\r\n";
                             }
                         }
                     }
@@ -1381,23 +1382,23 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\r\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
-                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\n";
+                    $fileData .= 'this.' . strtolower($value->variable_name) . ' = json.getString("' . strtolower($value->variable_name) . '");​' . "\r\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Title') {
                                 $fileData .= '';
                             } else {
                                 $fileData .= '';
-//                                $fileData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+//                                $fileData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\r\n";
                             }
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\r\n";
                             }
                         }
                     }
@@ -1408,11 +1409,11 @@ class Reports extends CI_controller
                             if ($options->nature == 'Title') {
                                 $fileOtherData .= '';
                             } else {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . ' = json.getString("' . strtolower($options->variable_name) . '");​' . "\r\n";
                             }
 
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\n";
+                                $fileOtherData .= 'this.' . strtolower($options->variable_name) . 'x = json.getString("' . strtolower($options->variable_name) . 'x");​' . "\r\n";
                             }
                         }
                     }
@@ -1436,6 +1437,53 @@ class Reports extends CI_controller
         }
     }
 
+    function hydrateModel()
+    {
+        ob_end_clean();
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idProjects'] = $_REQUEST['project'];
+        $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+        $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+        $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+        $searchData['includeTitle'] = 'Y';
+        $searchData['orderby'] = 'idSection';
+        $fileEngSting = '';
+        $data = $MSection->getAllData($searchData);
+        $result = $this->questionArr($data);
+        foreach ($result as $key => $value) {
+            if ($value->nature != 'Title') {
+                $fileEngSting .= 'this.' . strtolower($value->variable_name) . '=cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_' . strtoupper($value->variable_name) . '));' . "\r\n";
+            }
+            if (isset($value->myrow_options)) {
+                foreach ($value->myrow_options as $options) {
+                    if ($value->nature == 'Radio' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                        $fileEngSting .= 'this.' . strtolower($options->variable_name) . 'x=cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_' . strtoupper($options->variable_name) . 'x));' . "\r\n";
+                    } elseif ($value->nature == 'CheckBox' && ($options->nature == 'Input' || $options->nature == 'Input-Numeric')) {
+                        $fileEngSting .= 'this.' . strtolower($options->variable_name) . '=cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_' . strtoupper($options->variable_name) . '));' . "\r\n";
+                        $fileEngSting .= 'this.' . strtolower($options->variable_name) . 'x=cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_' . strtoupper($options->variable_name) . 'x));' . "\r\n";
+                    } elseif ($options->nature == 'CheckBox') {
+                        $fileEngSting .= 'this.' . strtolower($options->variable_name) . '=cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_' . strtoupper($options->variable_name) . '));' . "\r\n";
+                    } elseif ($options->nature == 'Input' || $options->nature == 'Input-Numeric') {
+                        $fileEngSting .= 'this.' . strtolower($options->variable_name) . '=cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_' . strtoupper($options->variable_name) . '));' . "\r\n";
+                    }
+
+                }
+            }
+        }
+        $file = 'assets/uploads/myfiles/hydrateModel.txt';
+        $txt = fopen($file, "w") or die("Unable to open file!");
+        fwrite($txt, $fileEngSting);
+        fclose($txt);
+        header('Content-Description: File Transfer');
+        header('Content-Disposition: attachment; filename=' . basename($file));
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($file));
+        header("Content-Type: plain/text");
+        readfile($file);
+    }
 
     function getCodeBook()
     {
