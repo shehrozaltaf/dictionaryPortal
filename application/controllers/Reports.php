@@ -1191,13 +1191,16 @@ class Reports extends CI_controller
             $fileData = ' ' . "\n";
             foreach ($data as $key => $value) {
                 $fileOtherData = '';
+//                .put("s1q9", s1q9 == null ? "" : s1q9)
                 $question_type = $value->nature;
+                $ques = strtolower($value->variable_name) . ' == null ? "" :' . strtolower($value->variable_name);
                 if ($question_type == 'Input-Numeric' || $question_type == 'Input') {
-                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . strtolower($value->variable_name) . ')' . "\n\n";
+                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . $ques . ')' . "\n\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
+                                $quesX = strtolower($options->variable_name) . ' == null ? "" :' . strtolower($options->variable_name);
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . $quesX . ')' . "\n";
                             }
                         }
                     }
@@ -1206,17 +1209,19 @@ class Reports extends CI_controller
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
+                                $quesX = strtolower($options->variable_name) . ' == null ? "" :' . strtolower($options->variable_name);
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . $quesX . ')' . "\n";
                             }
                         }
                     }
                     $fileData .= $fileOtherData;
                 } elseif ($question_type == 'Radio') {
-                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . strtolower($value->variable_name) . ')' . "\n";
+                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . $ques . ')' . "\n";
                     if (isset($value->myrow_options) && $value->myrow_options != '') {
                         foreach ($value->myrow_options as $options) {
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
+                                $quesX = strtolower($options->variable_name . 'x') . ' == null ? "" :' . strtolower($options->variable_name . 'x');
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . $quesX . ')' . "\n";
                             }
                         }
                     }
@@ -1227,12 +1232,14 @@ class Reports extends CI_controller
                             if ($options->nature == 'Title') {
                                 $fileOtherData .= '';
                             } else {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n\n";
+                                $quesO = strtolower($options->variable_name) . ' == null ? "" :' . strtolower($options->variable_name);
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . $quesO . ')' . "\n\n";
                             }
 
 
                             if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
-                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
+                                $quesX = strtolower($options->variable_name . 'x') . ' == null ? "" :' . strtolower($options->variable_name . 'x');
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . $quesX . ')' . "\n";
                             }
                         }
                     }

@@ -1,42 +1,42 @@
  
-.put("s1qno", s1qno)
+.put("s13q1", s13q1 == null ? "" :s13q1)
+.put("s13q196x", s13q196x == null ? "" :s13q196x)
+.put("s13q2", s13q2 == null ? "" :s13q2)
+.put("s13q201x", s13q201x == null ? "" :s13q201x)
+.put("s13q202x", s13q202x == null ? "" :s13q202x)
+.put("s13q3", s13q3 == null ? "" :s13q3)
+.put("s13q4", s13q4 == null ? "" :s13q4)
+.put("s13q496x", s13q496x == null ? "" :s13q496x)
+.put("s13q5", s13q5 == null ? "" :s13q5)
+.put("s13q596x", s13q596x == null ? "" :s13q596x)
+.put("s13q601", s13q601 == null ? "" :s13q601)
 
-.put("s1q1", s1q1)
-.put("s1q2", s1q2)
+.put("s13q602", s13q602 == null ? "" :s13q602)
 
-.put("s1q4", s1q4)
+.put("s13q603", s13q603 == null ? "" :s13q603)
 
-.put("s1q6", s1q6)
+.put("s13q698", s13q698 == null ? "" :s13q698)
 
-.put("s1q8", s1q8)
+.put("s13q696", s13q696 == null ? "" :s13q696)
 
-.put("s1q9", s1q9)
+.put("s13q696x", s13q696x == null ? "" :s13q696x)
+.put("s13q7", s13q7 == null ? "" :s13q7)
+.put("s13q796x", s13q796x == null ? "" :s13q796x)
+.put("s13q8", s13q8 == null ? "" :s13q8)
+.put("s13q896x", s13q896x == null ? "" :s13q896x)
+.put("s13q9", s13q9 == null ? "" :s13q9)
+.put("s13q996x", s13q996x == null ? "" :s13q996x)
+.put("s13q1001", s13q1001 == null ? "" :s13q1001)
 
-.put("s1q10", s1q10)
+.put("s13q1002", s13q1002 == null ? "" :s13q1002)
 
-.put("s1q11", s1q11)
+.put("s13q1003", s13q1003 == null ? "" :s13q1003)
 
-.put("s1q12", s1q12)
+.put("s13q1004", s13q1004 == null ? "" :s13q1004)
 
-.put("s1q13", s1q13)
-.put("s1q14", s1q14)
+.put("s13q1005", s13q1005 == null ? "" :s13q1005)
 
-.put("s1q15", s1q15)
+.put("s13q1006", s13q1006 == null ? "" :s13q1006)
 
-.put("s1q16", s1q16)
-
-.put("s1q17", s1q17)
-.put("s1q18", s1q18)
-.put("s1_consent", s1_consent)
-.put("s1q19et", s1q19et)
-
-.put("s1q20a", s1q20a)
-
-.put("s1q20b", s1q20b)
-
-.put("s1q20c", s1q20c)
-
-.put("s1q20d", s1q20d)
-
-.put("s1q20e", s1q20e)
+.put("s13q1007", s13q1007 == null ? "" :s13q1007)
 
