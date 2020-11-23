@@ -76,6 +76,7 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
     'hostname' => 'vcoe1',
+//    'hostname' => 'f38158',
     'username' => 'app',
     'password' => 'abcd1234',
     'database' => 'dictionary_portal',

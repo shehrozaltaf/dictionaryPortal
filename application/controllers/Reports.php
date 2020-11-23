@@ -1,7 +1,8 @@
 <?php ob_start();
-ini_set('memory_limit', '256M'); // This also needs to be increased in some cases. Can be changed to a higher value as per need)
-ini_set('sqlsrv.ClientBufferMaxKBSize', '524288'); // Setting to 512M
-ini_set('pdo_sqlsrv.client_buffer_max_kb_size', '524288');
+ini_set('memory_limit', '-1');
+//ini_set('memory_limit', '512M');
+ini_set('sqlsrv.ClientBufferMaxKBSize', '5242888'); // Setting to 512M
+ini_set('pdo_sqlsrv.client_buffer_max_kb_size', '5242888');
 header('Content-type: text/html; charset=utf-8');
 
 class Reports extends CI_controller
@@ -1175,7 +1176,7 @@ class Reports extends CI_controller
         }
     }
 
-    function toString()
+    function toString_()
     {
         ob_end_clean();
         if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
@@ -1262,6 +1263,89 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select Section';
         }
     }
+
+    function toString()
+    {
+        ob_end_clean();
+        if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
+            $this->load->model('msection');
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = $_REQUEST['project'];
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            $fileData = ' ' . "\n";
+            foreach ($data as $key => $value) {
+                $fileOtherData = '';
+//                .put("s1q9", s1q9 == null ? "" : s1q9)
+                $question_type = $value->nature;
+                if ($question_type == 'Input-Numeric' || $question_type == 'Input') {
+                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . strtolower($value->variable_name) . ')' . "\n\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Title') {
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'Radio') {
+                    $fileData .= '.put("' . strtolower($value->variable_name) . '", ' . strtolower($value->variable_name) . ')' . "\n";
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                } elseif ($question_type == 'CheckBox') {
+                    if (isset($value->myrow_options) && $value->myrow_options != '') {
+                        foreach ($value->myrow_options as $options) {
+                            if ($options->nature == 'Title') {
+                                $fileOtherData .= '';
+                            } else {
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . '", ' . strtolower($options->variable_name) . ')' . "\n\n";
+                            }
+
+
+                            if ($options->nature == 'Input-Numeric' || $options->nature == 'Input') {
+                                $fileOtherData .= '.put("' . strtolower($options->variable_name) . 'x", ' . strtolower($options->variable_name) . 'x)' . "\n";
+                            }
+                        }
+                    }
+                    $fileData .= $fileOtherData;
+                }
+            }
+            $file = "assets/uploads/myfiles/toString.txt";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $fileData);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/plain");
+            readfile($file);
+        } else {
+            echo 'Invalid Project, Please select Section';
+        }
+    }
+
 
     function hydrate2_old()
     {
@@ -1576,67 +1660,78 @@ class Reports extends CI_controller
     {
         ob_end_clean();
         $this->load->model('msection');
-        $fileName = 'data-dictionaryportal-' . time() . '.xlsx';
+        $fileName = 'data_dictionaryportal_' . time() . '.xlsx';
         $this->load->library('excel');
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = $slug;
-        $searchData = array();
-        $searchData['idSection'] = (isset($slug) && $slug != '' && $slug != 0 ? $slug : 0);
-        $result = $MSection->getSectionDetailData($searchData);
-        $data = $this->questionArr($result);
-        $objPHPExcel = new    PHPExcel();
-        $objPHPExcel->setActiveSheetIndex(0);
-        $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
-        $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Language 1');
-        $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Language 2');
-        $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Language 3');
-        $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Language 4');
-        $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Language 5');
-        $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Values');
-        $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Type');
-        $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Skip');
-        $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Min Range');
-        $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Max Range');
-        $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
-        $rowCount = 1;
-        foreach ($data as $list) {
-            $rowCount++;
-            $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
-            $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->label_l1);
-            $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l2);
-            $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->label_l3);
-            $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->label_l4);
-            $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->label_l5);
-            $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->option_value);
-            $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->nature);
-            $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->skipQuestion);
-            $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->MinVal);
-            $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->MaxVal);
-            if (isset($list->myrow_options) && $list->myrow_options != '') {
-                foreach ($list->myrow_options as $options) {
-                    $rowCount++;
-                    $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->label_l1);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l2);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->label_l3);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l4);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->label_l5);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->option_value);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->nature);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->skipQuestion);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->MinVal);
-                    $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->MaxVal);
 
+        if (isset($_GET['project']) && $_GET['project'] != '' && $_GET['project'] != 0) {
+            $MSection = new MSection();
+            $searchData = array();
+            $searchData['idProjects'] = (isset($_GET['project']) && $_GET['project'] != '' && $_GET['project'] != 0 ? $_GET['project'] : 0);
+            $searchData['idCRF'] = (isset($_GET['crf']) && $_GET['crf'] != '' && $_GET['crf'] != 0 ? $_GET['crf'] : 0);
+            $searchData['idModule'] = (isset($_GET['module']) && $_GET['module'] != '' && $_GET['module'] != 0 ? $_GET['module'] : 0);
+            $searchData['idSection'] = (isset($_GET['section']) && $_GET['section'] != '' && $_GET['section'] != 0 ? $_GET['section'] : 0);
+            $searchData['type'] = 1;
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            $objPHPExcel = new    PHPExcel();
+            $objPHPExcel->setActiveSheetIndex(0);
+            $objPHPExcel->getActiveSheet()->SetCellValue('A1', 'Variable');
+            $objPHPExcel->getActiveSheet()->SetCellValue('B1', 'Type');
+            $objPHPExcel->getActiveSheet()->SetCellValue('C1', 'Language 1');
+            $objPHPExcel->getActiveSheet()->SetCellValue('D1', 'Language 2');
+            $objPHPExcel->getActiveSheet()->SetCellValue('E1', 'Language 3');
+            $objPHPExcel->getActiveSheet()->SetCellValue('F1', 'Language 4');
+            $objPHPExcel->getActiveSheet()->SetCellValue('G1', 'Language 5');
+            $objPHPExcel->getActiveSheet()->SetCellValue('H1', 'Values');
+            $objPHPExcel->getActiveSheet()->SetCellValue('I1', 'Skip');
+            $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Parent');
+            $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Min Range');
+            $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Max Range');
+            $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
+            $rowCount = 1;
+            foreach ($data as $list) {
+                $rowCount++;
+                $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $list->variable_name);
+                $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $list->nature);
+                $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $list->label_l1);
+                $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $list->label_l2);
+                $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $list->label_l3);
+                $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $list->label_l4);
+                $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $list->label_l5);
+                $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $list->option_value);
+                $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $list->skipQuestion);
+                $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->idParentQuestion);
+                $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->MinVal);
+                $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $list->MaxVal);
+                if (isset($list->myrow_options) && $list->myrow_options != '') {
+                    foreach ($list->myrow_options as $options) {
+                        $rowCount++;
+                        $objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $options->variable_name);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, $options->nature);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('C' . $rowCount, $options->label_l1);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('D' . $rowCount, $options->label_l2);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('E' . $rowCount, $options->label_l3);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('F' . $rowCount, $options->label_l4);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('G' . $rowCount, $options->label_l5);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('H' . $rowCount, $options->option_value);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('I' . $rowCount, $options->skipQuestion);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->idParentQuestion);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->MinVal);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $options->MaxVal);
+
+                    }
                 }
             }
+            $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+            header('Content-Type: application/vnd.ms-excel'); //mime type
+            header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
+            header('Cache-Control: max-age=0'); //no cache
+            $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+            $objWriter->save('php://output');
+        } else {
+            echo 'Invalid Project';
         }
-        $objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
-        header('Content-Type: application/vnd.ms-excel'); //mime type
-        header('Content-Disposition: attachment;filename="' . $fileName . '"'); //tell browser what's the file name
-        header('Cache-Control: max-age=0'); //no cache
-        $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-        $objWriter->save('php://output');
+
     }
 
     /*Not working*/
