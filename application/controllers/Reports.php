@@ -2015,7 +2015,7 @@ class Reports extends CI_controller
             $pdf->SetAutoPageBreak($auto_page_break, $bMargin);
             $pdf->setPageMark();
             ob_end_clean();
-            $pdf->Output('dictionary . pdf', 'I');
+            $pdf->Output('dictionary.pdf', 'I');
         } else {
             echo 'Invalid Project, Please select project';
         }
