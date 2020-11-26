@@ -1,0 +1,110 @@
+UserIPAddress: 10.1.42.84 - November-26-2020 2:32 pm
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:32 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:32 pm
+idUser: 2, UserName: dmu@aku
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:32 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:35 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:35 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:35 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:35 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:37 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:37 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:37 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:38 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:38 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:38 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:42 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:43 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:43 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:44 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:44 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:44 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 2:45 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - November-26-2020 3:10 pm
+idUser: 2, UserName: dmu@aku
+Action: Logout
+Result: User dmu@aku: Logout
+-------------------------------------------------
