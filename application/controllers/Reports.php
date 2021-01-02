@@ -653,6 +653,353 @@ class Reports extends CI_controller
         return $data;
     }
 
+    function getXmlDataBinding()
+    {
+        ob_end_clean();
+        if (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0) {
+            $this->load->model('msection');
+            $searchData = array();
+            $searchData['idProjects'] = $_REQUEST['project'];
+            $searchData['idCRF'] = (isset($_REQUEST['crf']) && $_REQUEST['crf'] != '' && $_REQUEST['crf'] != 0 ? $_REQUEST['crf'] : 0);
+            $searchData['idModule'] = (isset($_REQUEST['module']) && $_REQUEST['module'] != '' && $_REQUEST['module'] != 0 ? $_REQUEST['module'] : 0);
+            $searchData['idSection'] = (isset($_REQUEST['section']) && $_REQUEST['section'] != '' && $_REQUEST['section'] != 0 ? $_REQUEST['section'] : 0);
+
+            $MProjects = new MProjects();
+            $project = $MProjects->getEditProject($searchData['idProjects']);
+            $MSection = new MSection();
+            $result = $MSection->getSectionDetailData($searchData);
+            $data = $this->questionArr($result);
+            if (isset($project[0]->short_title) && $project[0]->short_title != '') {
+                $xml_layout_name = strtolower($this->clean($project[0]->short_title));
+            } else {
+                $xml_layout_name = 'myactivity';
+            }
+            $xml = '<layout xmlns:android="http://schemas.android.com/apk/res/android"  xmlns:tools="http://schemas.android.com/tools" xmlns:app="http://schemas.android.com/apk/res-auto"> 
+                        <data> 
+                            <import type="android.view.View" />  
+                            <variable
+                                name="form"
+                                type="edu.aku.hassannaqvi.databinding.Form"/>
+                        </data>  
+
+                        <ScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                           <LinearLayout android:id="@+id/GrpName" 
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                           >';
+            foreach ($data as $key => $value) {
+                $xml .= "\n\n" . ' <!-- ' . strtolower($value->variable_name) . '  ' . $value->nature . '   -->' . "\n";
+                $xml .= '<androidx.cardview.widget.CardView
+                android:id="@+id/fldGrpCV' . strtolower($value->variable_name) . '"
+                style="@style/cardView" >
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" >';
+                if ($value->nature == 'Title') {
+                    $rl = ' <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/' . strtolower($value->variable_name) . '" />';
+                } else {
+                    $rl = '  <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bottom">
+                    <TextView
+                        android:id="@+id/qtxt_' . strtolower($value->variable_name) . '"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/q_' . strtolower($value->variable_name) . '"
+                        android:text="@string/' . strtolower($value->variable_name) . '" />
+                    <TextView
+                        android:id="@+id/q_' . strtolower($value->variable_name) . '"
+                        style="@style/quesNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignTop="@id/qtxt_' . strtolower($value->variable_name) . '"
+                        android:layout_alignBottom="@id/qtxt_' . strtolower($value->variable_name) . '"
+                        android:text="@string/Q_' . strtolower($value->variable_name) . '" />    
+                </RelativeLayout>';
+                }
+
+                $xml .= $rl;
+
+                if (isset($value->myrow_options) && $value->myrow_options != '') {
+                    if ($value->nature == 'Radio') {
+                        $xml .= '<RadioGroup
+                        android:id="@+id/' . strtolower($value->variable_name) . '"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">';
+                    }
+                    if ($value->nature == 'CheckBox') {
+                        $xml .= '<LinearLayout
+                                android:id="@+id/' . strtolower($value->variable_name) . 'check"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:tag="0">';
+                    }
+                    $s = 0;
+                    foreach ($value->myrow_options as $options) {
+                        $s++;
+                        if ($value->nature == 'Radio' && $options->nature == 'Input') {
+                            $xml .= '<RadioButton
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent" 
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.' . strtolower($value->variable_name) . '.equals(`' . $options->option_value . '`)}"
+                                        android:onClick="@{()->form.set' . ucfirst(strtolower($value->variable_name)) . '(`' . $options->option_value . '`)}" 
+                                        />
+                                        <EditText
+                                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                            android:tag="' . strtolower($options->variable_name) . '"
+                                            android:text="@={form.' . strtolower($options->variable_name) . 'x}" 
+                                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($value->nature == 'Radio' && $options->nature == 'Input-Numeric') {
+                            $minVal_o = '';
+                            $maxVal_o = '';
+                            $maxLength_o = '';
+                            if (isset($options->MaxVal) && $options->MaxVal != '') {
+                                $maxVal_o = 'app:maxValue="' . $options->MaxVal . '"';
+                                $maxLength_o = 'android:maxLength="' . strlen($options->MaxVal) . '"';
+                            }
+                            if (isset($options->MinVal) && $options->MinVal != '') {
+                                $minVal_o = 'app:minValue="' . $options->MinVal . '"';
+                            }
+                            $xml .= '<RadioButton
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent" 
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.' . strtolower($value->variable_name) . '.equals(`' . $options->option_value . '`)}"
+                                        android:onClick="@{()->form.set' . ucfirst(strtolower($value->variable_name)) . '(`' . $options->option_value . '`)}"
+                                        />
+                                         <com.edittextpicker.aliazaz.EditTextPicker
+                                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:tag="' . strtolower($options->variable_name) . '"
+                                            android:inputType="number" 
+                                            ' . $maxLength_o . '
+                                            ' . $maxVal_o . '
+                                            ' . $minVal_o . '
+                                            app:type="range" 
+                                            android:text="@={form.' . strtolower($options->variable_name) . 'x}"
+                                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($value->nature == 'CheckBox' && $options->nature == 'Input') {
+                            $xml .= '<CheckBox
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:checked="@{form.' . strtolower($options->variable_name) . '.equals(`' . $options->option_value . '`)}"
+                                        android:onClick="@{()->form.set' . ucfirst(strtolower($options->variable_name)) . '(form.' . strtolower($options->variable_name) . '.equals(`' . $options->option_value . '`)?``:`' . $options->option_value . '`)}"
+                                         />                        
+                                        <EditText
+                                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content" 
+                                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                            android:tag="' . strtolower($options->variable_name) . '"
+                                            android:text="@={form.' . strtolower($options->variable_name) . 'x}"
+                                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($value->nature == 'CheckBox' && $options->nature == 'Input-Numeric') {
+                            $minVal_o = '';
+                            $maxVal_o = '';
+                            $maxLength_o = '';
+                            if (isset($options->MaxVal) && $options->MaxVal != '') {
+                                $maxVal_o = 'app:maxValue="' . $options->MaxVal . '"';
+                                $maxLength_o = 'android:maxLength="' . strlen($options->MaxVal) . '"';
+                            }
+                            if (isset($options->MinVal) && $options->MinVal != '') {
+                                $minVal_o = 'app:minValue="' . $options->MinVal . '"';
+                            }
+                            $xml .= '<CheckBox
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" android:checked="@{form.' . strtolower($options->variable_name) . '.equals(`' . $options->option_value . '`)}"
+                                        android:onClick="@{()->form.set' . ucfirst(strtolower($options->variable_name)) . '(form.' . strtolower($options->variable_name) . '.equals(`' . $options->option_value . '`)?``:`' . $options->option_value . '`)}"
+                                        />                        
+                                        <com.edittextpicker.aliazaz.EditTextPicker
+                                            android:id="@+id/' . strtolower($options->variable_name) . 'x" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"  
+                                            android:hint="@string/' . strtolower($options->variable_name) . '"
+                                            android:tag="' . strtolower($options->variable_name) . '"
+                                             android:inputType="number" 
+                                            ' . $maxLength_o . '
+                                            ' . $maxVal_o . '
+                                            ' . $minVal_o . '
+                                            app:type="range" 
+                                            android:text="@={form.' . strtolower($options->variable_name) . 'x}"
+                                            android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
+                        } elseif ($options->nature == 'Input-Numeric') {
+                            $minVal = '';
+                            $maxVal = '';
+                            $maxLength_o = '';
+                            if (isset($options->MaxVal) && $options->MaxVal != '') {
+                                $maxVal = 'app:maxValue="' . $options->MaxVal . '"';
+                                $maxLength_o = 'android:maxLength="' . strlen($options->MaxVal) . '"';
+                            }
+                            if (isset($options->MinVal) && $options->MinVal != '') {
+                                $minVal = 'app:minValue="' . $options->MinVal . '"';
+                            }
+                            $xml .= '<TextView 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"  
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"  />
+                                        <com.edittextpicker.aliazaz.EditTextPicker
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:id="@+id/' . strtolower($options->variable_name) . '"
+                                                android:hint="@string/' . strtolower($options->variable_name) . '"  
+                                                android:inputType="number" 
+                                                ' . $maxLength_o . '
+                                                ' . $maxVal . '
+                                                ' . $minVal . '
+                                                app:type="range" 
+                                                android:text="@={form.' . strtolower($options->variable_name) . '}"/>';
+                        } elseif ($options->nature == 'Input') {
+                            $xml .= '<TextView 
+                                        android:text="@string/' . strtolower($options->variable_name) . '" 
+                                        android:layout_marginTop="12dp" 
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"  />
+                                        <EditText
+                                            android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"   
+                                            android:text="@={form.' . strtolower($options->variable_name) . '}"
+                                            android:hint="@string/' . strtolower($options->variable_name) . '" />';
+                        } elseif ($options->nature == 'Title') {
+                            $xml .= '<TextView 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_marginTop="12dp"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"   />';
+                        } elseif ($options->nature == 'Radio') {
+                            $xml .= '<RadioButton
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"  
+                                        android:checked="@{form.' . strtolower($value->variable_name) . '.equals(`' . $options->option_value . '`)}"
+                                        android:onClick="@{()->form.set' . ucfirst(strtolower($value->variable_name)) . '(`' . $options->option_value . '`)}"
+                                        /> ';
+                        } elseif ($options->nature == 'CheckBox') {
+                            $xml .= '<CheckBox
+                                        android:id="@+id/' . strtolower($options->variable_name) . '" 
+                                        android:text="@string/' . strtolower($options->variable_name) . '"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" 
+                                        android:checked="@{form.' . strtolower($options->variable_name) . '.equals(`' . $options->option_value . '`)}"
+                                        android:onClick="@{()->form.set' . ucfirst(strtolower($options->variable_name)) . '(form.' . strtolower($options->variable_name) . '.equals(`' . $options->option_value . '`)?``:`' . $options->option_value . '`)}"
+                                        />';
+                        }
+                    }
+                    if ($value->nature == 'Radio') {
+                        $xml .= '</RadioGroup>';
+                    }
+                    if ($value->nature == 'CheckBox') {
+                        $xml .= '</LinearLayout>';
+                    }
+                } else {
+                    if ($value->nature == 'Input-Numeric') {
+                        $maxLength_o = '';
+                        $minValue = '';
+                        $maxValue = '';
+                        if (isset($value->MaxVal) && $value->MaxVal != '') {
+                            $maxValue = 'app:maxValue="' . $value->MaxVal . '"';
+                            $maxLength_o = 'android:maxLength="' . strlen($value->MaxVal) . '"';
+                        }
+                        if (isset($value->MinVal) && $value->MinVal != '') {
+                            $minValue = 'app:minValue="' . $value->MinVal . '"';
+                        }
+
+                        $xml .= '<com.edittextpicker.aliazaz.EditTextPicker
+                                    android:id="@+id/' . strtolower($value->variable_name) . '"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" 
+                                    android:hint="@string/' . strtolower($value->variable_name) . '" 
+                                    android:inputType="number" 
+                                   ' . $maxLength_o . '
+                                   ' . $maxValue . '
+                                   ' . $minValue . '
+                                    app:type="range"
+                                    android:text="@={form.' . strtolower($value->variable_name) . '}" />';
+                    } elseif ($value->nature == 'Input') {
+                        $xml .= '<EditText
+                                    android:id="@+id/' . strtolower($value->variable_name) . '" 
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" 
+                                    android:hint="@string/' . strtolower($value->variable_name) . '"
+                                    android:text="@={form.' . strtolower($value->variable_name) . '}" />';
+                    } elseif ($value->nature == 'Title') {
+
+                    }
+                }
+                $xml .= ' </LinearLayout>
+            </androidx.cardview.widget.CardView>';
+            }
+            $xml .= '<!--EndButton LinearLayout-->
+           <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal">
+                   <Button
+                        android:id="@+id/btn_End"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:onClick="@{() -> callback.BtnEnd()}"
+                        android:background="@color/red_overlay"
+                        android:textColor="@color/white"
+                        android:text="Cancel" />
+                   <Button
+                        android:id="@+id/btn_Continue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:onClick="@{() -> callback.BtnContinue()}"
+                        android:background="@color/green_overlay"
+                        android:textColor="@color/white"
+                        android:text="Save" /> 
+            </LinearLayout>';
+            $xml .= '</LinearLayout>
+    </ScrollView>
+</layout>';
+            $file = "assets/uploads/myfiles/myactivity.xml";
+            $txt = fopen($file, "w") or die("Unable to open file!");
+            fwrite($txt, $xml);
+            fclose($txt);
+            header('Content-Description: File Transfer');
+            header('Content-Disposition: attachment; filename=' . basename($file));
+            header('Expires: 0');
+            header('Cache-Control: must-revalidate');
+            header('Pragma: public');
+            header('Content-Length: ' . filesize($file));
+            header("Content-Type: text/xml");
+            readfile($file);
+        } else {
+            echo 'Invalid Project, Please select project';
+        }
+    }
+
     function getXml()
     {
         ob_end_clean();

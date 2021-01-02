@@ -92,38 +92,42 @@
 
                                                 if (isset($getdata->l1) && $getdata->l1 != '') {
                                                     $l1 = $getdata->l1;
-                                                    echo '<input type="hidden" id="l1" name="l1" value="' . $getdata->l1 . '">';
+                                                    echo '<input type="hidden" id="l1" autocomplete="l1" name="l1" value="' . $getdata->l1 . '">';
                                                     $totallanguages++;
                                                 }
                                                 if (isset($getdata->l2) && $getdata->l2 != '') {
                                                     $l2 = $getdata->l2;
-                                                    echo '<input type="hidden" id="l2" name="l2" value="' . $getdata->l2 . '">';
+                                                    echo '<input type="hidden" id="l2" autocomplete="l2" name="l2" value="' . $getdata->l2 . '">';
                                                     $totallanguages++;
                                                 }
                                                 if (isset($getdata->l3) && $getdata->l3 != '') {
                                                     $l3 = $getdata->l3;
-                                                    echo '<input type="hidden" id="l3" name="l3" value="' . $getdata->l3 . '">';
+                                                    echo '<input type="hidden" id="l3" autocomplete="l3" name="l3" value="' . $getdata->l3 . '">';
                                                     $totallanguages++;
                                                 }
                                                 if (isset($getdata->l4) && $getdata->l4 != '') {
                                                     $l4 = $getdata->l4;
-                                                    echo '<input type="hidden" id="l4" name="l4" value="' . $getdata->l4 . '">';
+                                                    echo '<input type="hidden" id="l4" autocomplete="l4" name="l4" value="' . $getdata->l4 . '">';
                                                     $totallanguages++;
                                                 }
                                                 if (isset($getdata->l5) && $getdata->l5 != '') {
                                                     $l5 = $getdata->l5;
-                                                    echo '<input type="hidden" id="l5" name="l5" value="' . $getdata->l5 . '">';
+                                                    echo '<input type="hidden" id="l5" autocomplete="l5" name="l5" value="' . $getdata->l5 . '">';
                                                     $totallanguages++;
                                                 }
                                                 ?>
-                                                <input type="hidden" id="module_variable" name="module_variable"
+                                                <input type="hidden" id="module_variable" autocomplete="module_variable"
+                                                       name="module_variable"
                                                        value="<?php echo $Module_variable ?>">
-                                                <input type="hidden" id="section_variable" name="section_variable"
+                                                <input type="hidden" id="section_variable"
+                                                       autocomplete="section_variable" name="section_variable"
                                                        value="<?php echo $section_variable ?>">
-                                                <input type="hidden" id="lastvariable_name" name="lastvariable_name"
+                                                <input type="hidden" id="lastvariable_name"
+                                                       autocomplete="lastvariable_name" name="lastvariable_name"
                                                        value="<?php echo((int)$lastvariable_name) ?>">
 
-                                                <input type="hidden" id="totallanguages" name="totallanguages"
+                                                <input type="hidden" id="totallanguages" autocomplete="totallanguages"
+                                                       name="totallanguages"
                                                        value="<?php echo((int)$totallanguages) ?>">
 
                                                 <div class="row">
@@ -131,10 +135,11 @@
                                                         <div class="form-group">
                                                             <label for="project_name">Project</label>
                                                             <input type="text" readonly disabled id="project_name"
-                                                                   class="form-control"
+                                                                   class="form-control" autocomplete="project_name"
                                                                    value="<?php echo(isset($getdata->project_name) && $getdata->project_name != '' ? $getdata->project_name : '0') ?>"
                                                                    placeholder="Project" name="project_name">
                                                             <input type="hidden" id="idProjects" name="idProjects"
+                                                                   autocomplete="idProjects"
                                                                    value="<?php echo(isset($getdata->idProjects) && $getdata->idProjects != '' ? $getdata->idProjects : '0') ?>">
                                                         </div>
                                                     </div>
@@ -142,11 +147,12 @@
                                                         <div class="form-group">
                                                             <label for="crf_name">CRF</label>
                                                             <input type="text" id="crf_name" class="form-control"
-                                                                   readonly
+                                                                   readonly autocomplete="crf_name"
                                                                    disabled
                                                                    value="<?php echo(isset($getdata->crf_name) && $getdata->crf_name != '' ? $getdata->crf_name : '0') ?>"
                                                                    placeholder="CRF" name="crf_name">
                                                             <input type="hidden" id="id_crf" name="id_crf"
+                                                                   autocomplete="id_crf"
                                                                    value="<?php echo(isset($getdata->id_crf) && $getdata->id_crf != '' ? $getdata->id_crf : '0') ?>">
                                                         </div>
                                                     </div>
@@ -156,10 +162,11 @@
                                                         <div class="form-group">
                                                             <label for="module_name_l1">Module</label>
                                                             <input type="text" id="module_name_l1" class="form-control"
-                                                                   readonly disabled
+                                                                   readonly disabled autocomplete="module_name_l1"
                                                                    value="<?php echo(isset($getdata->module_name_l1) && $getdata->module_name_l1 != '' ? $getdata->module_name_l1 : '0') ?>"
                                                                    placeholder="Module" name="module_name_l1">
                                                             <input type="hidden" id="idModule" name="idModule"
+                                                                   autocomplete="idModule"
                                                                    value="<?php echo(isset($getdata->idModule) && $getdata->idModule != '' ? $getdata->idModule : '0') ?>">
                                                         </div>
                                                     </div>
@@ -167,11 +174,12 @@
                                                         <div class="form-group">
                                                             <label for="section_title">Section</label>
                                                             <input type="text" id="section_title" class="form-control"
-                                                                   readonly disabled
+                                                                   readonly disabled autocomplete="section_title"
                                                                    value="<?php echo(isset($getdata->section_title) && $getdata->section_title != '' ? $getdata->section_title : '0') ?>"
                                                                    placeholder="Section" name="section_title">
 
                                                             <input type="hidden" id="idSection" name="idSection"
+                                                                   autocomplete="idSection"
                                                                    value="<?php echo(isset($getdata->idSection) && $getdata->idSection != '' ? $getdata->idSection : '0') ?>">
                                                         </div>
                                                     </div>
@@ -297,12 +305,14 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
             <div class="modal-body">
                 <div class="form-group">
                     <label for="variable_name_clone">Do you want to copy variable:</label>
-                    <input type="text" class="form-control" readonly disabled="disabled" id="variable_name_clone"
+                    <input type="text" class="form-control" autocomplete="variable_name_clone" readonly
+                           disabled="disabled" id="variable_name_clone"
                            name="variable_name_clone">
                 </div>
                 <div class="form-group">
                     <label for="newSectionVariable">New Question Variable:</label>
-                    <input type="text" class="form-control" id="newSectionVariable" name="newSectionVariable">
+                    <input type="text" class="form-control" autocomplete="newSectionVariable" id="newSectionVariable"
+                           name="newSectionVariable">
                 </div>
             </div>
             <div class="modal-footer">
@@ -524,8 +534,8 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                         '</ul>';
                                     if (locked_status == 'N') {
                                         subhtml += '<ul class="list-inline text-right">' +
-                                        '<li onclick="getEdit(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-edit"></span></li>' +
-                                        '<li onclick="deleterow(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-trash"></span></li>' +
+                                            '<li onclick="getEdit(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-edit"></span></li>' +
+                                            '<li onclick="deleterow(this)" data-idSectionDetail="' + vv.idSectionDetail + '"><span class="la la-trash"></span></li>' +
                                             '</ul>';
                                     }
                                     subhtml += '</div>' +
@@ -1039,12 +1049,13 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                             '<input type="hidden" id="edit_idSectionDetail" name="edit_idSectionDetail" value="' + response[0].idSectionDetail + '">' +
                             '<label for="edit_variable">Variable:</label>' +
                             '<input type="text" class="form-control" id="edit_variable" name="edit_variable"' +
-                            ' value="' + response[0].variable_name + '" readonly disabled>' +
+                            ' value="' + response[0].variable_name + '" data-oldvar="' + response[0].variable_name + '"' +
+                            ' autocomplete="edit_variable" >' +
                             '</div>';
 
                         html += '<div class="form-group">' +
                             '<label for="edit_nature">Type:</label>' +
-                            '<select id="edit_nature" name="edit_nature" class="form-control" onchange="showEditDbStructure()"> ' +
+                            '<select id="edit_nature" name="edit_nature" class="form-control" autocomplete="edit_nature" onchange="showEditDbStructure()"> ' +
                             '<option value="0" disabled="" readonly="readonly">Select Type</option>' +
                             '<option value="Title" ' + (response[0].nature == 'Title' ? 'selected' : '') + '>Title</option>' +
                             '<option value="Input" ' + (response[0].nature == 'Input' ? 'selected' : '') + '>Input</option>' +
@@ -1064,35 +1075,35 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                         if (l1 != '' && l1 != undefined) {
                             html += '<div class="form-group">' +
                                 '<label for="edit_label_l1">Title ' + l1 + ':</label>' +
-                                '<input type="text" class="form-control" id="edit_label_l1" name="edit_label_l1"' +
+                                '<input type="text" class="form-control" id="edit_label_l1" autocomplete="edit_label_l1" name="edit_label_l1"' +
                                 ' value="' + response[0].label_l1 + '">' +
                                 '</div>';
                         }
                         if (l2 != '' && l2 != undefined) {
                             html += '<div class="form-group">' +
                                 '<label for="edit_label_l2">Title ' + l2 + ':</label>' +
-                                '<input type="text" class="form-control" id="edit_label_l2" name="edit_label_l2"' +
+                                '<input type="text" class="form-control" id="edit_label_l2" autocomplete="edit_label_l2" name="edit_label_l2"' +
                                 ' value="' + response[0].label_l2 + '">' +
                                 '</div>';
                         }
                         if (l3 != '' && l3 != undefined) {
                             html += '<div class="form-group">' +
                                 '<label for="edit_label_l3">Title ' + l3 + ':</label>' +
-                                '<input type="text" class="form-control" id="edit_label_l3" name="edit_label_l3"' +
+                                '<input type="text" class="form-control" id="edit_label_l3" autocomplete="edit_label_l3" name="edit_label_l3"' +
                                 ' value="' + response[0].label_l3 + '">' +
                                 '</div>';
                         }
                         if (l4 != '' && l4 != undefined) {
                             html += '<div class="form-group">' +
                                 '<label for="edit_label_l4">Title ' + l4 + ':</label>' +
-                                '<input type="text" class="form-control" id="edit_label_l4" name="edit_label_l4"' +
+                                '<input type="text" class="form-control" id="edit_label_l4" autocomplete="edit_label_l4" name="edit_label_l4"' +
                                 ' value="' + response[0].label_l4 + '">' +
                                 '</div>';
                         }
                         if (l5 != '' && l5 != undefined) {
                             html += '<div class="form-group">' +
                                 '<label for="edit_label_l5">Title ' + l5 + ':</label>' +
-                                '<input type="text" class="form-control" id="edit_label_l5" name="edit_label_l5"' +
+                                '<input type="text" class="form-control" id="edit_label_l5" autocomplete="edit_label_l5" name="edit_label_l5"' +
                                 ' value="' + response[0].label_l5 + '">' +
                                 '</div>';
                         }
@@ -1100,7 +1111,7 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
 
                         html += '<div class="form-group">' +
                             '<label for="edit_option_value">Value:</label>' +
-                            '<input type="text" class="form-control" id="edit_option_value" name="edit_option_value"' +
+                            '<input type="text" class="form-control" id="edit_option_value" autocomplete="edit_option_value" name="edit_option_value"' +
                             ' value="' + (response[0].option_value != null && response[0].option_value != 'undefined' && response[0].option_value != '' ? response[0].option_value : '') + '">' +
                             '</div>';
 
@@ -1113,7 +1124,7 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                             '<label class="form-check-label" for="edit_Required">Required</label> ' +
                             '</div>' +
                             '<div class="form-check form-check-inline"> ' +
-                            '<input class="form-check-input" type="checkbox" id="edit_ReadOnly"' +
+                            '<input class="form-check-input" autocomplete="edit_ReadOnly" type="checkbox" id="edit_ReadOnly"' +
                             ' name="edit_otheroptions" value="ReadOnly" ' + (response[0].readonly == "ReadOnly" ? " checked " : "") + '> ' +
                             '<label class="form-check-label" for="edit_ReadOnly">ReadOnly</label> ' +
                             '</div>' +
@@ -1122,27 +1133,27 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
 
                         html += '<div class="form-group">' +
                             '<label for="edit_idParentQuestion">Parent Question (variable only):</label>' +
-                            '<input type="text" class="form-control" id="edit_idParentQuestion" name="edit_idParentQuestion"' +
+                            '<input type="text" class="form-control" autocomplete="edit_idParentQuestion" id="edit_idParentQuestion" name="edit_idParentQuestion"' +
                             ' value="' + (response[0].idParentQuestion != "" && response[0].idParentQuestion != 'undefined' && response[0].idParentQuestion != null ? response[0].idParentQuestion : "") + '">' +
                             '</div>';
 
                         html += '<div class="form-group">' +
                             '<label for="edit_skipQuestion">Skip Question:</label>' +
-                            '<input type="text" class="form-control" id="edit_skipQuestion" name="edit_skipQuestion"' +
+                            '<input type="text" class="form-control" autocomplete="edit_skipQuestion" id="edit_skipQuestion" name="edit_skipQuestion"' +
                             ' value="' + response[0].skipQuestion + '">' +
                             '</div>';
 
                         html += '<div class="row"><div class="col-md-6">' +
                             '<div class="form-group">' +
                             '<label for="edit_MinVal">Min Range:</label>' +
-                            '<input type="text" class="form-control" id="edit_MinVal" name="edit_MinVal"' +
+                            '<input type="text" class="form-control" autocomplete="edit_MinVal" id="edit_MinVal" name="edit_MinVal"' +
                             ' value="' + response[0].MinVal + '">' +
                             '</div>' +
                             '</div> ' +
                             '<div class="col-md-6">' +
                             '<div class="form-group">' +
                             '<label for="edit_MaxVal">Max Range:</label>' +
-                            '<input type="text" class="form-control" id="edit_MaxVal" name="edit_MaxVal"' +
+                            '<input type="text" class="form-control" autocomplete="edit_MaxVal" id="edit_MaxVal" name="edit_MaxVal"' +
                             ' value="' + response[0].MaxVal + '">' +
                             '</div>' +
                             '</div>' +
@@ -1164,7 +1175,25 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
     function editData() {
         var flag = 0;
         var data = {};
+        data['idSection'] = $('#idSection').val();
+        if (data['idSection'] == '' || data['idSection'] == undefined) {
+            $('#section_title').css('border', '1px solid red');
+            toastMsg('Section', 'Invalid ID Section', 'error');
+            flag = 1;
+        } else {
+            $('#section_title').css('border', '1px solid #babfc7');
+        }
         data['edit_idSectionDetail'] = $('#edit_idSectionDetail').val();
+        data['edit_oldVar'] = $('#edit_variable').attr('data-oldvar');
+        data['edit_variable'] = $('#edit_variable').val();
+        if (data['edit_variable'] == '' || data['edit_variable'] == undefined) {
+            $('#edit_variable').css('border', '1px solid red');
+            toastMsg('Type', 'Invalid Variable', 'error');
+            flag = 1;
+        } else {
+            $('#edit_variable').css('border', '1px solid #babfc7');
+        }
+
         data['edit_nature'] = $('#edit_nature').val();
         if (data['edit_nature'] == '' || data['edit_nature'] == undefined) {
             $('#edit_nature').css('border', '1px solid red');
@@ -1210,6 +1239,8 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                     getData();
                 } else if (result === 3) {
                     toastMsg('Error', 'Invalid ID', 'error');
+                } else if (result === 4) {
+                    toastMsg('Warning', 'Variable edited but error in saving options', 'warning');
                 } else {
                     toastMsg('Error', 'Something went wrong', 'error');
                 }

@@ -181,6 +181,11 @@
 <script>
     $(document).ready(function () {
         $('#loader').hide();
+        var e = document.querySelectorAll('option');
+        e.forEach(x => {
+            if (x.textContent.length > 40)
+                x.textContent = x.textContent.substring(0, 40) + '...';
+        })
     });
     function changePassword() {
         var flag = 0;

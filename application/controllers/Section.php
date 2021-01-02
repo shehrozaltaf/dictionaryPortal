@@ -51,6 +51,16 @@ class Section extends CI_controller
         echo json_encode($result, true);
     }
 
+    function getSectionDetail()
+    {
+        $MSection = new MSection();
+        $searchData = array();
+        $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
+        $result = $MSection->getSectionDetailData($searchData);
+        $data = $this->questionArr($result);
+        echo json_encode($data, true);
+    }
+
     function questionArr($dataarr)
     {
         $myresult = array();
@@ -68,16 +78,6 @@ class Section extends CI_controller
             $data[] = $val;
         }
         return $data;
-    }
-
-    function getSectionDetail()
-    {
-        $MSection = new MSection();
-        $searchData = array();
-        $searchData['idSection'] = (isset($_REQUEST['idSection']) && $_REQUEST['idSection'] != '' && $_REQUEST['idSection'] != 0 ? $_REQUEST['idSection'] : 0);
-        $result = $MSection->getSectionDetailData($searchData);
-        $data = $this->questionArr($result);
-        echo json_encode($data, true);
     }
 
     function add_section()
@@ -650,7 +650,8 @@ class Section extends CI_controller
 
     function editSectionDetail()
     {
-        if (isset($_POST['edit_idSectionDetail']) && $_POST['edit_idSectionDetail'] != '') {
+        if (isset($_POST['edit_idSectionDetail']) && $_POST['edit_idSectionDetail'] != ''
+            && isset($_POST['edit_variable']) && $_POST['edit_variable'] != '') {
             $Custom = new Custom();
             $idSectionDetail = $_POST['edit_idSectionDetail'];
             $editArr = array();
@@ -672,6 +673,7 @@ class Section extends CI_controller
             } else {
                 $editArr['nature_var'] = '';
             }
+            $editArr['variable_name'] = (isset($_POST['edit_variable']) && $_POST['edit_variable'] != '' ? $_POST['edit_variable'] : '');
             $editArr['MinVal'] = (isset($_POST['edit_MinVal']) && $_POST['edit_MinVal'] != '' ? $_POST['edit_MinVal'] : '');
             $editArr['MaxVal'] = (isset($_POST['edit_MaxVal']) && $_POST['edit_MaxVal'] != '' ? $_POST['edit_MaxVal'] : '');
             $editArr['skipQuestion'] = (isset($_POST['edit_skipQuestion']) && $_POST['edit_skipQuestion'] != '' ? $_POST['edit_skipQuestion'] : '');
@@ -688,11 +690,34 @@ class Section extends CI_controller
             $editArr['dbType'] = (isset($_POST['edit_dbType']) && $_POST['edit_dbType'] != '' ? $_POST['edit_dbType'] : '');
             $editArr['dbLength'] = (isset($_POST['edit_dbLength']) && $_POST['edit_dbLength'] != '' ? $_POST['edit_dbLength'] : '');
             $editArr['dbDecimal'] = (isset($_POST['edit_dbDecimal']) && $_POST['edit_dbDecimal'] != '' ? $_POST['edit_dbDecimal'] : '');
-            $formArray['updateDateTime'] = date('Y-m-d H:i:s');
-            $formArray['updatedBy'] = $_SESSION['login']['idUser'];
+            $editArr['updateDateTime'] = date('Y-m-d H:i:s');
+            $editArr['updatedBy'] = $_SESSION['login']['idUser'];
             $editData = $Custom->Edit($editArr, 'idSectionDetail', $idSectionDetail, 'section_detail');
             if ($editData) {
-                $result = 1;
+                $searchdata_c = array();
+                $searchdata_c['idParentQuestion'] = (isset($_POST['edit_oldVar']) && $_POST['edit_oldVar'] != '' ? $_POST['edit_oldVar'] : '');
+                $searchdata_c['idSection'] = (isset($_POST['idSection']) && $_POST['idSection'] != '' ? $_POST['idSection'] : '');
+                $MSection = new MSection();
+                $chkQchild = $MSection->chkQchild($searchdata_c);
+                if (isset($chkQchild) && $chkQchild != '' && count($chkQchild) >= 1) {
+
+                    foreach ($chkQchild as $c) {
+                        $idSectionDetail_c = $c->idSectionDetail;
+                        $editArr_c = array();
+                        $editArr_c['idParentQuestion'] = $editArr['variable_name'];
+                        $editArr_c['updatedBy'] = $_SESSION['login']['idUser'];
+                        $editArr_c['updateDateTime'] = date('Y-m-d H:i:s');
+                        $editData_c = $Custom->Edit($editArr_c, 'idSectionDetail', $idSectionDetail_c, 'section_detail');
+                        if ($editData_c) {
+                            $result = 1;
+                        } else {
+                            $result = 4;
+                        }
+                    }
+                } else {
+                    $result = 1;
+                }
+
             } else {
                 $result = 2;
             }

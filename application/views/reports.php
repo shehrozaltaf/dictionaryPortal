@@ -121,7 +121,8 @@
                                                                 class="form-control">
                                                             <option value="1" selected>Export PDF</option>
                                                             <!--                                                            <option value="2">Export XML</option>-->
-                                                            <option value="10">Export XML</option>
+                                                            <option value="10">Export Layout</option>
+                                                            <option value="15">Export Data Binding Layout</option>
                                                             <option value="3">Export Strings</option>
                                                             <option value="4">Export Save Draft</option>
                                                             <option value="5">Export Code Book</option>
@@ -195,6 +196,9 @@
         } else if (data['action_type'] == 10) {
             chkSec = 1;
             url += 'getXmlSajid?';
+        } else if (data['action_type'] == 15) {
+            chkSec = 1;
+            url += 'getXmlDataBinding?';
         } else if (data['action_type'] == 11) {
             chkSec = 1;
             url += 'getNewSaveDraft?';

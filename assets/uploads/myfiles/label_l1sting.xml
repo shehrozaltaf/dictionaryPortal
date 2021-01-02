@@ -1,34 +1,27 @@
-<string name="section2socioeconomicstatus_mainheading">Section 2. Socio-Economic Status : SocioEconomic Status</string>
-<string name="section3handwashing_mainheading">Section 3: HAND-WASHING : HANDWASHING</string>
-<string name="section4exposuretointerventions_mainheading">Section 4: Exposure to Interventions: Exposure to
-Interventions
+<string name="sectionaidentificationinformationhh_mainheading">Section A: Identification Information (HH): Section A:
+    Identification Information (HH)
 </string>
-<string name="section5householdfoodinsecurityaccessscalehfias_mainheading">Section 5: Household Food Insecurity Access
-Scale (HFIAS) : Household Food Insecurity Access Scale (HFIAS)
+<string name="sectioncbchildbasicinformation_mainheading">Section CB: Child Basic Information: INSTRUCTION
+Complete Section CB for all children in household 59 months and under (if more than one child, then use another sheet)
 </string>
-<string name="section6anthropometryandhbofpregnantandlactatingwomenplw_mainheading">Section 6: Anthropometry and Hb of
-pregnant and lactating women (PLW) : Anthropometry and Hb of pregnant and lactating women (PLW)
+<string name="sectioncshealthcareseekingbehaviors_mainheading">Section CS: Health &amp; Care-seeking Behaviors:
+INSTRUCTION : Complete Section CS for all children in household 059 months (if more than one child, then use another
+sheet)
 </string>
-<string name="section7minimumdietarydiversityforpregnantandlactatingwomanplw_mainheading">Section 7: Minimum Dietary
-Diversity for Pregnant and Lactating Woman (PLW): Minimum Dietary Diversity for Pregnant and Lactating Woman (PLW)
+<string name="sectionimchildimmunization_mainheading">Section IM: Child Immunization: Section IM: Child Immunization
 </string>
-<string name="section8antenatalandpostnatalcareforplw_mainheading">Section 8: Antenatal and Postnatal Care for PLW :
-Antenatal and Postnatal Care for PLW
+<string name="sectionpdcareseekingduringpregnancyanddelivery_mainheading">Section PD: Care seeking during pregnancy and
+delivery : Section PD: Care seeking during pregnancy and delivery
 </string>
-<string name="section9childanthropometryhemoglobin_mainheading">Section 9: Child Anthropometry &amp; Hemoglobin: Child
-Anthropometry &amp; Hemoglobin
+<string name="sectionbfbreastfeedinghealthcareseekingbehaviors_mainheading">Section BF Breastfeeding, Health &amp;
+Care-seeking Behaviors: Breastfeeding, Health &amp; Careseeking Behaviors
 </string>
-<string name="section10initiationofbreastfeeding_mainheading">Section 10: Initiation of Breastfeeding : Initiation of
-Breastfeeding
+<string name="sectiong5covidtobeadministeredtothemotheroftheyoungestunderfivechildinthehousehold_mainheading">Section
+G5: COVID (To be administered to the mother of the youngest under-five child in the household): COVID (To be
+administered to the mother of the youngest underfive child in the household)
 </string>
-<string name="section11infantyoungchildfeedingiycfpractices_mainheading">Section 11: Infant &amp; Young Child Feeding
-(IYCF) Practices : Infant &amp; Young Child Feeding (IYCF) Practices
-</string>
-<string name="section12childimmunizationmorbidityandcareseeking_mainheading">Section 12: Child Immunization, Morbidity
-and Care Seeking: Child Immunization, Morbidity and Care Seeking
-</string>
-<string name="section13knowledgeaboutiycf_mainheading">Section 13: Knowledge about IYCF : Knowledge about IYCF</string>
-<string name="section1generalinformation_mainheading">Section 1: General Information : Section 1: General Information
+<string name="sectionsehouseholdcharacteristics_mainheading">Section SE: Household Characteristics: Section SE:
+Household Characteristics
 </string>
 <string name="app_name"> </string>
 <string name="btnSync">Download Data</string>
@@ -74,1077 +67,1151 @@ and Care Seeking: Child Immunization, Morbidity and Care Seeking
 <string name="contactnum">Contact Number</string>
 <string name="checkHHpresent">The name of head of the household corresponds to the line listing data.</string>
 <string name="newHHheadname">Name of new head of the household</string>
-<string name="s2q1">What is your mother tongue?</string>
-<string name="s2q101">Dari</string>
-<string name="s2q102">Persian</string>
-<string name="s2q103">Pashto</string>
-<string name="s2q104">Shughni</string>
-<string name="s2q105">Tajiki</string>
-<string name="s2q106">Wakhi</string>
-<string name="s2q107">Uzbaki</string>
-<string name="s2q196">Other (Specify)</string>
-<string name="s2q2">What is ownership status of household?</string>
-<string name="s2q201">Own</string>
-<string name="s2q202">Rented</string>
-<string name="s2q296">Others specify</string>
-<string name="s2q3">What is the main source of drinking water in your house hold?</string>
-<string name="s2q301">Piped into dwelling</string>
-<string name="s2q302">Piped to yard/plot</string>
-<string name="s2q303">Piped to neighbor</string>
-<string name="s2q304">Public tap/standpipe</string>
-<string name="s2q305">Tube well or borehole or suction pump</string>
-<string name="s2q306">Hand pump</string>
-<string name="s2q307">Protected Well</string>
-<string name="s2q308">Unprotected Well</string>
-<string name="s2q309">Protected Spring</string>
-<string name="s2q310">Unprotected Spring</string>
-<string name="s2q311">Rainwater</string>
-<string name="s2q312">Tanker truck</string>
-<string name="s2q313">Cart with small tank</string>
-<string name="s2q314">Surface water (river/dam/lake/pond/canal/ Irrigation channel)</string>
-<string name="s2q315">Filtration plant</string>
-<string name="s2q316">Bottled water</string>
-<string name="s2q396">Other specify</string>
-<string name="s2q4">Do you do anything to the water to make it safer to drink?</string>
-<string name="s2q401">Yes</string>
-<string name="s2q402">No</string>
-<string name="s2q5">What do you usually do to make the water safe to drink?</string>
-<string name="s2q501">Boil</string>
-<string name="s2q502">Add bleach/chlorine</string>
-<string name="s2q503">Strain through a cloth</string>
-<string name="s2q504">Use water filter</string>
-<string name="s2q505">Solar disinfection</string>
-<string name="s2q506">Let it stand and settle</string>
-<string name="s2q596">Other specify</string>
-<string name="s2q6">What kind of toilet facility do members of your household usually use? If ‘Flush’ or ‘Pour’, probe:
-Where does it flush to? If not possible to determine, ask permission to observe the facility.
+<string name="hh01">Date of interview</string>
+<string name="hh02">Time of Interview</string>
+<string name="hh0201">Hours</string>
+<string name="hh0202">Minutes</string>
+<string name="hh03">Code of Interviewer</string>
+<string name="hh04">Name of Interviewer</string>
+<string name="hh05">Name of District</string>
+<string name="hh0501">Peshawar</string>
+<string name="hh0502">Lakki Marwat</string>
+<string name="hh0503">Quetta</string>
+<string name="hh06">Union Council</string>
+<string name="hh07">Block, Street, Colony, Village Name</string>
+<string name="hh08">Cluster Number</string>
+<string name="hh09">Household number</string>
+<string name="hh10">Complete Address including landmark</string>
+<string name="hh11">Before progressing, take consent; did you get permission? If permission was not granted, stop
+interviewing and proceed to the next household.
 </string>
-<string name="s2q6title1">Flush or Pour Flush Toilet</string>
-<string name="s2q601">Flush to piped sewer system</string>
-<string name="s2q602">Flush to septic tank</string>
-<string name="s2q603">Flush to pit latrine</string>
-<string name="s2q604">Flush to somewhere else</string>
-<string name="s2q6title2">PIT Latrine</string>
-<string name="s2q605">Ventilated improved PIT latrine</string>
-<string name="s2q606">PIT latrine with slab</string>
-<string name="s2q607">PIT latrine without slab/open pit</string>
-<string name="s2q608">Bucket toilet</string>
-<string name="s2q609">No facility/bush/field</string>
-<string name="s2q696">Other specify</string>
-<string name="s2q7">Do you share this toilet facility with other households?</string>
-<string name="s2q701">Yes</string>
-<string name="s2q702">No</string>
-<string name="s2q8">If yes, how many other households use this toilet facility?</string>
-<string name="s2q801">No. of households</string>
-<string name="s2q811">Ten or more households</string>
-<string name="s2q898">Don’t Know</string>
-<string name="s2q9">Does your household have</string>
-<string name="s2q9a">Electricity Connection</string>
-<string name="s2q9a01">YES</string>
-<string name="s2q9a02">NO</string>
-<string name="s2q9b">Radio</string>
-<string name="s2q9b01">YES</string>
-<string name="s2q9b02">NO</string>
-<string name="s2q9c">Television</string>
-<string name="s2q9c01">YES</string>
-<string name="s2q9c02">NO</string>
-<string name="s2q9d">Landline phone</string>
-<string name="s2q9d01">YES</string>
-<string name="s2q9d02">NO</string>
-<string name="s2q9e">Refrigerator</string>
-<string name="s2q9e01">YES</string>
-<string name="s2q9e02">NO</string>
-<string name="s2q9f">Almirah/Cabinet</string>
-<string name="s2q9f01">YES</string>
-<string name="s2q9f02">NO</string>
-<string name="s2q9g">Chair</string>
-<string name="s2q9g01">YES</string>
-<string name="s2q9g02">NO</string>
-<string name="s2q9h">Room Cooler</string>
-<string name="s2q9h01">YES</string>
-<string name="s2q9h02">NO</string>
-<string name="s2q9i">Air conditioner</string>
-<string name="s2q9i01">YES</string>
-<string name="s2q9i02">NO</string>
-<string name="s2q9j">Washing machine</string>
-<string name="s2q9j01">YES</string>
-<string name="s2q9j02">NO</string>
-<string name="s2q9k">Water Pump</string>
-<string name="s2q9k01">YES</string>
-<string name="s2q9k02">NO</string>
-<string name="s2q9l">Bed</string>
-<string name="s2q9l01">YES</string>
-<string name="s2q9l02">NO</string>
-<string name="s2q9m">Clock</string>
-<string name="s2q9m01">YES</string>
-<string name="s2q9m02">NO</string>
-<string name="s2q9n">Sofa</string>
-<string name="s2q9n01">YES</string>
-<string name="s2q9n02">NO</string>
-<string name="s2q9o">Camera</string>
-<string name="s2q9o01">YES</string>
-<string name="s2q9o02">NO</string>
-<string name="s2q9p">Sewing machine</string>
-<string name="s2q9p01">YES</string>
-<string name="s2q9p02">NO</string>
-<string name="s2q9q">Computer/laptop</string>
-<string name="s2q9q01">YES</string>
-<string name="s2q9q02">NO</string>
-<string name="s2q9r">Internet connection</string>
-<string name="s2q9r01">YES</string>
-<string name="s2q9r02">NO</string>
-<string name="s2q9s">Dish/Cable Network</string>
-<string name="s2q9s01">YES</string>
-<string name="s2q9s02">NO</string>
-<string name="s2q10">Does any member of this household own: Ask/probe for each [Multiple responses]</string>
-<string name="s2q10a">Watch</string>
-<string name="s2q10a01">YES</string>
-<string name="s2q10a02">NO</string>
-<string name="s2q10b">Mobile Phone</string>
-<string name="s2q10b01">YES</string>
-<string name="s2q10b02">NO</string>
-<string name="s2q10c">Bicycle</string>
-<string name="s2q10c01">YES</string>
-<string name="s2q10c02">NO</string>
-<string name="s2q10d">Motorcycle or scooter</string>
-<string name="s2q10d01">YES</string>
-<string name="s2q10d02">NO</string>
-<string name="s2q10e">Animal-drawn cart</string>
-<string name="s2q10e01">YES</string>
-<string name="s2q10e02">NO</string>
-<string name="s2q10f">Car or truck or bus</string>
-<string name="s2q10f01">YES</string>
-<string name="s2q10f02">NO</string>
-<string name="s2q10g">Tractor</string>
-<string name="s2q10g01">YES</string>
-<string name="s2q10g02">NO</string>
-<string name="s2q10h">Boat with a motor</string>
-<string name="s2q10h01">YES</string>
-<string name="s2q10h02">NO</string>
-<string name="s2q10i">Boat without a motor</string>
-<string name="s2q10i01">YES</string>
-<string name="s2q10i02">NO</string>
-<string name="s2q11">What type of fuel do you usually use for cooking in your household?</string>
-<string name="s2q1101">Electricity</string>
-<string name="s2q1102">LPG</string>
-<string name="s2q1103">Natural Gas</string>
-<string name="s2q1104">Biogas</string>
-<string name="s2q1105">Kerosene</string>
-<string name="s2q1106">Coal/Lignite</string>
-<string name="s2q1107">Charcoal</string>
-<string name="s2q1108">Wood</string>
-<string name="s2q1109">Straw/Shrubs/Grass</string>
-<string name="s2q1110">Animal Dung</string>
-<string name="s2q1111">No food cooked in household</string>
-<string name="s2q1196">Other specify</string>
-<string name="s2q12">Main material of the dwelling floor:</string>
-<string name="s2q12title1">Natural Floor</string>
-<string name="s2q1211">Mud/Clay/Earth/Sand</string>
-<string name="s2q1212">Dung</string>
-<string name="s2q12title2">Rudimentary/Floor</string>
-<string name="s2q1221">Wood planks</string>
-<string name="s2q1222">Palm/Bamboo</string>
-<string name="s2q12title3">Finished Floor</string>
-<string name="s2q1231">Parquet or polished wood</string>
-<string name="s2q1232">Vinyl or asphalt strips</string>
-<string name="s2q1233">Ceramic tiles</string>
-<string name="s2q1234">Cement</string>
-<string name="s2q1235">Carpet</string>
-<string name="s2q1236">Bricks</string>
-<string name="s2q1237">Lime</string>
-<string name="s2q1296">Other specify</string>
-<string name="s2q13">Main material of the ROOF</string>
-<string name="s2q13title1">Natural Roofing</string>
-<string name="s2q1311">No roof</string>
-<string name="s2q1312">Thatch/palm leaf</string>
-<string name="s2q1313">Sod</string>
-<string name="s2q13title2">Rudimentary Roofing</string>
-<string name="s2q1321">Rustic mat</string>
-<string name="s2q1322">Palm/Bamboo</string>
-<string name="s2q1323">Wood planks</string>
-<string name="s2q1324">Cardboard</string>
-<string name="s2q13title3">Finished Roofing</string>
-<string name="s2q1331">Metal/Tin/CGI</string>
-<string name="s2q1332">Wood</string>
-<string name="s2q1333">Calamine / Cement fiber</string>
-<string name="s2q1334">Ceramic tiles</string>
-<string name="s2q1335">Cement RCC</string>
-<string name="s2q1336">Roofing shingles</string>
-<string name="s2q1337">Bricks</string>
-<string name="s2q1396">Other specify</string>
-<string name="s2q14">Main material of the exterior walls</string>
-<string name="s2q14title1">Natural walls</string>
-<string name="s2q1411">No walls</string>
-<string name="s2q1412">Cane/Palm/Trunks</string>
-<string name="s2q1413">Mud/Dirt</string>
-<string name="s2q14title2">Rudimentary walls</string>
-<string name="s2q1421">Bamboo with mud</string>
-<string name="s2q1422">Stone with mud</string>
-<string name="s2q1423">Uncovered adobe</string>
-<string name="s2q1424">Plywood</string>
-<string name="s2q1425">Cardboard</string>
-<string name="s2q1426">Reused wood</string>
-<string name="s2q1427">Cloth/Curtain/Tent</string>
-<string name="s2q14title3">Finished walls</string>
-<string name="s2q1431">Cement</string>
-<string name="s2q1432">Stone with cement/lime</string>
-<string name="s2q1433">Bricks</string>
-<string name="s2q1434">Cement blocks</string>
-<string name="s2q1435">Covered adobe</string>
-<string name="s2q1436">Wood planks/shingles/</string>
-<string name="s2q1496">Other specify</string>
-<string name="s2q15">How many rooms in your household are used for sleeping? (Rooms)</string>
-<string name="s2q16">Does any member of this household own any agricultural land?</string>
-<string name="s2q1601">Yes</string>
-<string name="s2q1602">No</string>
-<string name="s2q17">If yes, how many acres or canals of agricultural land do members of this household own?</string>
-<string name="s2q1701">Jerib</string>
-<string name="s2q1702">Acres</string>
-<string name="s2q1703">Kanals</string>
-<string name="s2q1798">Don’t know</string>
-<string name="s2q18">Do you have your own livestock, animals or poultry?</string>
-<string name="s2q1801">Yes</string>
-<string name="s2q1802">No</string>
-<string name="s2q19">If yes, how many livestock, animals or poultry does your household own?
-Ask for each listed animals, one by one and observation by enumerator Insert 000 if none. Record 999 for &gt;999
+<string name="hh1101">Yes, permission is granted</string>
+<string name="hh1102">No, permission is denied</string>
+<string name="hh12">Name of respondent</string>
+<string name="hh13">Age of respondent (In Years) (Minimum age: 18 years)</string>
+<string name="hh14">Gender of respondent</string>
+<string name="hh1401">Male</string>
+<string name="hh1402">Female</string>
+<string name="hh15">Literacy level of respondent: Now I would like you to read this sentence to me. SHOW CARD TO
+RESPONDENT If respondent cannot read whole sentence, PROBE: Can you read any part of the sentence to me?
 </string>
-<string name="s2q1901">Cows, Bulls</string>
-<string name="s2q1902">Horses/Donkeys/ Mules</string>
-<string name="s2q1903">Goats</string>
-<string name="s2q1904">Sheep</string>
-<string name="s2q1905">Chickens /Poultry</string>
-<string name="s2q1906">Buffalo</string>
-<string name="s2q1907">Camels</string>
-<string name="s2q20">Does any member of this household have a bank account?</string>
-<string name="s2q201">Yes</string>
-<string name="s2q202">No</string>
-<string name="s2q2098">Don’t know</string>
-<string name="s3title">HAND-WASHING</string>
-<string name="s3q1">Please show us where you and members of your household most often wash their hands</string>
-<string name="s3q101">Observed</string>
-<string name="s3q1title1">Not observed</string>
-<string name="s3q102">Not in dwelling/plot/yard</string>
-<string name="s3q103">No permission to see</string>
-<string name="s3q104">Other reason</string>
-<string name="s3q2">Observe presence of water at the specific place for hand washing</string>
-<string name="s3q201">Water is available</string>
-<string name="s3q202">Water is not available</string>
-<string name="s3q3">Record if soap or detergent is present at the specific place for hand washing [Multiple responses]
+<string name="hh1501">Cannot Read at All</string>
+<string name="hh1502">Able to Read Only Part of The Sentence</string>
+<string name="hh1503">Able to Read Whole Sentence</string>
+<string name="hh1504">No Card With required language</string>
+<string name="hh1505">Blind/Visually Impaired</string>
+<string name="hh16">Qualification of respondent Mention completed years of education; Code: 55 for uneducated, 17 for
+Professional and 22 for only religious studies
 </string>
-<string name="s3q301">Bar soap</string>
-<string name="s3q302">Detergent (powder/liquid/paste)</string>
-<string name="s3q303">Liquid soap</string>
-<string name="s3q304">Ash/mud/sand</string>
-<string name="s3q305">None</string>
-<string name="s3q4">Do you have any soap or detergent in your household for hand washing?</string>
-<string name="s3q401">Yes</string>
-<string name="s3q402">No</string>
-<string name="s3q5">If yes, can you please show it to me? [Multiple responses]</string>
-<string name="s3q501">Bar soap</string>
-<string name="s3q502">Detergent (powder/liquid/paste)</string>
-<string name="s3q503">Liquid soap</string>
-<string name="s3q504">Ash/mud/sand</string>
-<string name="s3q505">None</string>
-<string name="s3q6">In what situations do you wash your hands with soap? [This is an open-ended question. Do not read
-the answer choices] [prob]
+<string name="hh17">Profession of Respondent (Use Below Codes)</string>
+<string name="hh1701">Professional/technical/managerial</string>
+<string name="hh1702">Clerical</string>
+<string name="hh1703">Business</string>
+<string name="hh1704">Sales and services</string>
+<string name="hh1705">Skilled manual</string>
+<string name="hh1706">Unskilled manual</string>
+<string name="hh1707">Domestic service</string>
+<string name="hh1708">Agriculture</string>
+<string name="hh1709">Student</string>
+<string name="hh1710">Unemployed</string>
+<string name="hh1711">Homemaker</string>
+<string name="hh1712">Retired</string>
+<string name="hh1713">Housewife</string>
+<string name="hh1796">Others Please Specify</string>
+<string name="hh18">Is respondent the head of household?</string>
+<string name="hh1801">Yes, Head of household</string>
+<string name="hh1802">No, Other Member</string>
+<string name="hh19">Name of Head of Household</string>
+<string name="hh20">Profession of head of household (Use Below codes)</string>
+<string name="hh2001">Professional/technical/managerial</string>
+<string name="hh2002">Clerical</string>
+<string name="hh2003">Business</string>
+<string name="hh2004">Sales and services</string>
+<string name="hh2005">Skilled manual</string>
+<string name="hh2006">Unskilled manual</string>
+<string name="hh2007">Domestic service</string>
+<string name="hh2008">Agriculture</string>
+<string name="hh2009">Student</string>
+<string name="hh2010">Unemployed</string>
+<string name="hh2011">Homemaker</string>
+<string name="hh2012">Retired</string>
+<string name="hh2013">Housewife</string>
+<string name="hh2096">Others Please Specify</string>
+<string name="hh21">Total members</string>
+<string name="hh22">Male members including male children of all ages</string>
+<string name="hh23">Female members including female children of all ages</string>
+<string name="hh24">Number of under-five children - Male</string>
+<string name="hh25">Number of under-five children - Female</string>
+<string name="hh26">Result of Interview</string>
+<string name="hh2601">Completed</string>
+<string name="hh2602">Partially completed</string>
+<string name="hh2603">Refused</string>
+<string name="hh2604">No eligible respondent available</string>
+<string name="hh2605">Locked</string>
+<string name="hh2606">Household not found</string>
+<string name="hh2696">Other specify</string>
+<string name="cb01">Line no</string>
+<string name="cb02">Name</string>
+<string name="cb03">Gender</string>
+<string name="cb0301">Male</string>
+<string name="cb0302">Female</string>
+<string name="cb04">Date of Birth</string>
+<string name="cb04dd">Days</string>
+<string name="cb04mm">Months</string>
+<string name="cb04yy">Year</string>
+<string name="cb05">Age</string>
+<string name="cb0501">Year</string>
+<string name="cb0502">Months</string>
+<string name="cb06">Relationship with respondent</string>
+<string name="cb0601">Mother</string>
+<string name="cb0602">Father</string>
+<string name="cb0603">Primary Caretaker (not parents)</string>
+<string name="cb0696">Other family member</string>
+<string name="cb07">Name of Mother</string>
+<string name="cb08">Age</string>
+<string name="cb09">Education</string>
+<string name="cb10">Profession</string>
+<string name="cb11">Mother is Available?</string>
+<string name="cb1101">Yes</string>
+<string name="cb1102">No</string>
+<string name="cb12">Name of father</string>
+<string name="cb13">Education</string>
+<string name="cb14">Profession</string>
+<string name="cb15">Birth weight (kg)</string>
+<string name="cb16">Was this birth registered? If yes with?</string>
+<string name="cb1601">Not registered</string>
+<string name="cb1602">NADRA</string>
+<string name="cb1603">LHW</string>
+<string name="cs01">Child’s Line No</string>
+<string name="cs02">Name of Child</string>
+<string name="cs03">Has the child had diarrhea in the last two weeks?</string>
+<string name="cs0301">Yes</string>
+<string name="cs0302">No</string>
+<string name="cs04">How much was given to drink to the child during the diarrhoea episode?</string>
+<string name="cs0401">Much Less</string>
+<string name="cs0402">Somewhat Less</string>
+<string name="cs0403">About The Same</string>
+<string name="cs0404">More</string>
+<string name="cs0405">Nothing To Drink</string>
+<string name="cs0498">Don't Know</string>
+<string name="cs05">How much was given to eat to the child during the diarrhoea episode?</string>
+<string name="cs0501">Much Less</string>
+<string name="cs0502">Somewhat Less</string>
+<string name="cs0503">About The Same</string>
+<string name="cs0504">More</string>
+<string name="cs0505">Never Gave Food</string>
+<string name="cs0598">Don't Know</string>
+<string name="cs06">Did you seek advice or treatment for the diarrhoea from any source?</string>
+<string name="cs0601">Yes</string>
+<string name="cs0602">No</string>
+<string name="cs07">Where did you seek advice or treatment for diarrhoea?</string>
+<string name="title1">Public Sector</string>
+<string name="cs0701">Govt. Hospital</string>
+<string name="cs0702">RHC/MCH</string>
+<string name="cs0703">BHU</string>
+<string name="cs0704">Lady Health Worker</string>
+<string name="cs0706">Hospital/Clinic</string>
+<string name="cs07961">Other Public Sector</string>
+<string name="titel2">Private Sector</string>
+<string name="cs0707">Medical Store</string>
+<string name="cs0708">Pvt. Doctor</string>
+<string name="cs0709">Homeopath</string>
+<string name="cs0710">Dispenser / Compounder</string>
+<string name="cs0711">Hakim</string>
+<string name="cs0712">Dai, TBA</string>
+<string name="cs0713">CMW</string>
+<string name="cs07962">Other Private</string>
+<string name="cs08">What Was Given to Treat Diarrhea?</string>
+<string name="cs0801">ORS</string>
+<string name="cs0802">Antibiotic</string>
+<string name="cs0803">Antimotility (anti-diarrhoea)</string>
+<string name="cs0804">Zinc</string>
+<string name="cs0805">Unknown pill or syrup</string>
+<string name="cs0806">Antibiotic</string>
+<string name="cs0807">Non-antibiotic</string>
+<string name="cs0808">Unknown injection</string>
+<string name="cs0809">Intravenous (iv)</string>
+<string name="cs0810">Home remedy /herbal medicine</string>
+<string name="cs0896">Others Please Specify</string>
+<string name="cs09">Why did you not seek treatment?</string>
+<string name="cs0901">Fear of COVID-19</string>
+<string name="cs0902">Confidence that child will get better himself</string>
+<string name="cs0903">Someone you knew advised treatment</string>
+<string name="cs0904">Family knew management themselves</string>
+<string name="cs0905">Financial reasons</string>
+<string name="cs0906">Limitations of transport</string>
+<string name="cs0996">Others Please Specify</string>
+<string name="cs10">Was the child given ORS?</string>
+<string name="cs1001">Yes</string>
+<string name="cs1002">No</string>
+<string name="cs11">Was the child given Zinc supplements?</string>
+<string name="cs1101">Yes</string>
+<string name="cs1102">No</string>
+<string name="cs12">Has the child been sick with cough in the past two weeks?</string>
+<string name="cs1201">Yes</string>
+<string name="cs1202">No</string>
+<string name="cs13">Has the child been sick with fever in the past two weeks?</string>
+<string name="cs1301">Yes</string>
+<string name="cs1302">No</string>
+<string name="cs14">Has (NAME) had fast, short, rapid breaths or difficulty breathing at any time in the last 2 weeks?
 </string>
-<string name="s3q6a">Before preparing food</string>
-<string name="s3q6b">Before eating</string>
-<string name="s3q6c">Before feeding a child</string>
-<string name="s3q6d">After handling feces/diapers -</string>
-<string name="s3q6e">After defecate or using the latrine</string>
-<string name="s3q696">Other (specify)</string>
-<string name="s4title1">Exposure to Interventions</string>
-<string name="s4title2">Interviewer will show the Food Products during the interview</string>
-<string name="s4title3">In past 30 days, did anyone in your household receive the following assistance?</string>
-<string name="s4q1">LNS for children</string>
-<string name="s4q1a01">Yes</string>
-<string name="s4q1a02">No</string>
-<string name="s4q1b">Number of Beneficiaries</string>
-<string name="s4q1c">Source/ NGO</string>
-<string name="s4q2">RUTF for children</string>
-<string name="s4q2aa">Yes</string>
-<string name="s4q2ab">No</string>
-<string name="s4q2b">Number of Beneficiaries</string>
-<string name="s4q2c">Source/ NGO</string>
-<string name="s4q3">Micronutrient powders for children (MNP)</string>
-<string name="s4q3aa">Yes</string>
-<string name="s4q3ab">No</string>
-<string name="s4q3b">Number of Beneficiaries</string>
-<string name="s4q3c">Source/ NGO</string>
-<string name="s4q4">Super cereal, Wheat Soya Blend for women</string>
-<string name="s4q4aa">Yes</string>
-<string name="s4q4ab">No</string>
-<string name="s4q4b">Number of Beneficiaries</string>
-<string name="s4q4c">Source/ NGO</string>
-<string name="s4q5">Other (Specify):</string>
-<string name="s5title">5: Household Food Insecurity Access Scale (HFIAS)</string>
-<string name="s5q1">In the past four weeks, did you worry that your household would not have enough food?</string>
-<string name="s5q101">Yes</string>
-<string name="s5q102">No</string>
-<string name="s5q1a">How often did this happen?</string>
-<string name="s5q1a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q1a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q1a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q2">In the past four weeks, were you or any household member not able to eat the kinds of foods you
-preferred because of a lack of resources?
+<string name="cs1401">Yes</string>
+<string name="cs1402">No</string>
+<string name="cs15">Was the fast or difficult breathing due to a problem in the chest or to a blocked or runny nose?
 </string>
-<string name="s5q201">Yes</string>
-<string name="s5q202">No</string>
-<string name="s5q2a">How often did this happen?</string>
-<string name="s5q2a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q2a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q2a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q3">In the past four weeks, did you or any household member have to eat a limited variety of foods due
-to a lack of resources?
+<string name="cs1501">Chest only</string>
+<string name="cs1502">Nose only</string>
+<string name="cs1503">Both</string>
+<string name="cs1596">Others Please Specify</string>
+<string name="cs16">Did you seek treatment from any source?</string>
+<string name="cs1601">Yes</string>
+<string name="cs1602">No</string>
+<string name="cs17">Where did you seek advice or treatment for cough, fever or difficulty breathing?</string>
+<string name="cs1701">Govt. Hospital</string>
+<string name="cs1702">RHC/MCH</string>
+<string name="cs1703">BHU</string>
+<string name="cs1704">Lady Health Worker</string>
+<string name="cs17961">Other Public Sector</string>
+<string name="title2">Private Sector</string>
+<string name="cs1706">Hospital/Clinic</string>
+<string name="cs1707">Medical Store</string>
+<string name="cs1708">Pvt. Doctor</string>
+<string name="cs1709">Homeopath</string>
+<string name="cs1710">Dispenser / Compounder</string>
+<string name="cs1711">Hakim</string>
+<string name="cs1712">Dai, TBA</string>
+<string name="cs1713">CMW</string>
+<string name="cs17962">Other Private</string>
+<string name="cs18">What Was Given to Treat cough, fever or difficulty breathing?</string>
+<string name="cs1802">antibiotic</string>
+<string name="cs1803">unknown pill or syrup</string>
+<string name="cs1804">antibiotic</string>
+<string name="cs1805">non-antibiotic</string>
+<string name="cs1806">unknown injection</string>
+<string name="cs1807">Intravenous (iv)</string>
+<string name="cs1808">Home remedy/herbal medicine</string>
+<string name="cs1896">Others Please Specify</string>
+<string name="cs19">Why did you not seek treatment?</string>
+<string name="cs1901">Fear of COVID-19</string>
+<string name="cs1902">Confidence that child will get better himself</string>
+<string name="cs1903">Someone you knew advised treatment</string>
+<string name="cs1904">Family knew management themselves</string>
+<string name="cs1905">Financial reasons</string>
+<string name="cs1906">Limitations of transport</string>
+<string name="cs1996">Others Please Specify</string>
+<string name="im1_title1">Section IM: Child Immunization INSTRUCTION Complete Section IM for all children in household
+35 months and under (if more than one child, then use another sheet)
 </string>
-<string name="s5q301">Yes</string>
-<string name="s5q302">No</string>
-<string name="s5q3a">How often did this happen?</string>
-<string name="s5q3a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q3a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q3a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q4">In the past four weeks, did you or any household member have to eat some foods that you really did
-not want to eat because of a lack of resources to obtain other types of food?
+<string name="im02">Did you ever have a vaccination card from a Government or private health provider where (name)’s
+vaccinations are written down?
 </string>
-<string name="s5q401">Yes</string>
-<string name="s5q402">No</string>
-<string name="s5q4a">How often did this happen?</string>
-<string name="s5q4a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q4a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q4a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q5">In the past four weeks, did you or any household member have to eat a smaller meal than you felt you
-needed because there was not enough food?
+<string name="im02_1">Yes</string>
+<string name="im02_2">No</string>
+<string name="im01">If yes: may I see it please? The respondent should already have brought the card when you got
+permission to begin the interview.
 </string>
-<string name="s5q501">Yes</string>
-<string name="s5q502">No</string>
-<string name="s5q5a">How often did this happen?</string>
-<string name="s5q5a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q5a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q5a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q6">In the past four weeks, did you or any other household member have to eat fewer meals in a day
-because there was not enough food?
+<string name="im01_1">Seen</string>
+<string name="im01_2">Not seen</string>
+<string name="im03">If not, why you didn’t receive any vaccination card?</string>
+<string name="im03_1">Don’t think it’s important</string>
+<string name="im03_2">Never visited a facility</string>
+<string name="im03_3">Could not visit a facility because of COVID-19</string>
+<string name="im03_4">Card was not available with the health provider</string>
+<string name="im03_5">The vaccinator/ facility didn’t provide the card</string>
+<string name="im03_6">Not aware of such cards</string>
+<string name="im03_96">Other specify</string>
+<string name="im04">Check and copy Date of Birth recorded on card:</string>
+<string name="im04_dd">Day</string>
+<string name="im04_mm">Month</string>
+<string name="im04_yy">Year</string>
+<string name="im05_title1">INSTRUCTION Please record the date of immunization for each antigen from the card 1. If the
+date is recorded but not readable, record 44 in day column 2. If the date is not recorded but a tick () mark is
+present, record 88 in day column 3. If neither date is recorded nor a tick () mark is present, prompt the mother for
+each such antigen and record 66 if she confirms the receipt of respective antigen by recall otherwise record 97.
 </string>
-<string name="s5q601">Yes</string>
-<string name="s5q602">No</string>
-<string name="s5q6a">How often did this happen?</string>
-<string name="s5q6a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q6a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q6a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q7">In the past four weeks, was there ever no food to eat of any kind in your household because of lack
-of resources to get food?
+<string name="im05_01">At Birth -BCG</string>
+<string name="im05_01_dd">Day</string>
+<string name="im05_01_mm">Month</string>
+<string name="im05_01_yy">Year</string>
+<string name="im05_02">Polio (at birth) (OPV 0)</string>
+<string name="im05_02_dd">Day</string>
+<string name="im05_02_mm">Month</string>
+<string name="im05_02_yy">Year</string>
+<string name="im05_03">Polio (OPV1)</string>
+<string name="im05_03_dd">Day</string>
+<string name="im05_03_mm">Month</string>
+<string name="im05_03_yy">Year</string>
+<string name="im05_04">Pentavalent1 (DPTHibHepB) (Penta1)</string>
+<string name="im05_04_dd">Day</string>
+<string name="im05_04_mm">Month</string>
+<string name="im05_04_yy">Year</string>
+<string name="im05_05">Pneumococcal 1 (Conjugate) (PCV1)</string>
+<string name="im05_05_dd">Day</string>
+<string name="im05_05_mm">Month</string>
+<string name="im05_05_yy">Year</string>
+<string name="im05_06">Rotavirus vaccine1 (RV1)</string>
+<string name="im05_06_dd">Day</string>
+<string name="im05_06_mm">Month</string>
+<string name="im05_06_yy">Year</string>
+<string name="im05_07">Polio (OPV2)</string>
+<string name="im05_07_dd">Day</string>
+<string name="im05_07_mm">Month</string>
+<string name="im05_07_yy">Year</string>
+<string name="im05_08">Pentavalent2 (DPTHibHepB) (Penta 2)</string>
+<string name="im05_08_dd">Day</string>
+<string name="im05_08_mm">Month</string>
+<string name="im05_08_yy">Year</string>
+<string name="im05_09">Pneumococcal2 (Conjugate) (PCV2)</string>
+<string name="im05_09_dd">Day</string>
+<string name="im05_09_mm">Month</string>
+<string name="im05_09_yy">Year</string>
+<string name="im05_10">Rotavirus vaccine2 (RV2)</string>
+<string name="im05_10_dd">Day</string>
+<string name="im05_10_mm">Month</string>
+<string name="im05_10_yy">Year</string>
+<string name="im05_11">Polio (OPV3)</string>
+<string name="im05_11_dd">Day</string>
+<string name="im05_11_mm">Month</string>
+<string name="im05_11_yy">Year</string>
+<string name="im05_12">Pentavalent3 (DPTHibHepB) (Penta 3)</string>
+<string name="im05_12_dd">Day</string>
+<string name="im05_12_mm">Month</string>
+<string name="im05_12_yy">Year</string>
+<string name="im05_13">Pneumococcal3 (Conjugate) (PCV3)</string>
+<string name="im05_13_dd">Day</string>
+<string name="im05_13_mm">Month</string>
+<string name="im05_13_yy">Year</string>
+<string name="im05_14">Polio (IPV)</string>
+<string name="im05_14_dd">Day</string>
+<string name="im05_14_mm">Month</string>
+<string name="im05_14_yy">Year</string>
+<string name="im05_15">Measles-1</string>
+<string name="im05_15_dd">Day</string>
+<string name="im05_15_mm">Month</string>
+<string name="im05_15_yy">Year</string>
+<string name="im05_16">Measles-2</string>
+<string name="im05_16_dd">Day</string>
+<string name="im05_16_mm">Month</string>
+<string name="im05_16_yy">Year</string>
+<string name="im07">Check IM0501-IM0516: Are all vaccines (BCG to Measles-2) recorded?</string>
+<string name="im07_1">Yes</string>
+<string name="im07_2">No</string>
+<string name="im08">Has (name) ever received any vaccinations to prevent (him/her) from getting diseases, including
+vaccinations received in a campaign, immunization day or child health day?
 </string>
-<string name="s5q701">Yes</string>
-<string name="s5q702">No</string>
-<string name="s5q7a">How often did this happen?</string>
-<string name="s5q7a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q7a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q7a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q8">In the past four weeks, did you or any household member go to sleep at night hungry because there
-was not enough food?
+<string name="im08_1">Yes</string>
+<string name="im08a">Did (name) receive polio drops during the last campaign</string>
+<string name="im08a_1">Yes</string>
+<string name="im08a_2">No</string>
+<string name="im08a_3">Dont know</string>
+<string name="im08_2">No</string>
+<string name="im08b">How many times has (name) polio drops been given during the national polio campaigns?</string>
+<string name="im08_3">Dont Know</string>
+<string name="im09">. Has (name) ever received a BCG vaccination against tuberculosis – that is, an injection in the arm
+or shoulder that usually causes a scar?
 </string>
-<string name="s5q801">Yes</string>
-<string name="s5q802">No</string>
-<string name="s5q8a">How often did this happen?</string>
-<string name="s5q8a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q8a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q8a03">Often (more than ten times in the past four weeks)</string>
-<string name="s5q9">In the past four weeks, did you or any household member go a whole day and night without eating
-anything because there was not enough food
+<string name="im09_1">Yes</string>
+<string name="im09_2">No</string>
+<string name="im09_3">Dont know</string>
+<string name="im10">. Has (name) ever received any vaccination drops in the mouth to protect (him/her) from polio? Probe
+by indicating that the first drop is usually given at birth and later at the same time as injections to prevent other
+diseases.
 </string>
-<string name="s5q901">Yes</string>
-<string name="s5q902">No</string>
-<string name="s5q9a">How often did this happen?</string>
-<string name="s5q9a01">Rarely (once or twice in the past four weeks)</string>
-<string name="s5q9a02">Sometimes (3-10 times in the past four weeks)</string>
-<string name="s5q9a03">Often (more than ten times in the past four weeks)</string>
-<string name="s6title">Anthropometry and Hb of pregnant and lactating women (PLW)</string>
-<string name="s6q1">Weight in k.g</string>
-<string name="s6q1a">Measurer-1 Code: Weight in k.g</string>
-<string name="s6q1b">Measurer-2 Code: Weight in k.g</string>
-<string name="s6q2">Height in CM</string>
-<string name="s6q2a">Measurer-1 Code: Height in CM</string>
-<string name="s6q2b">Measurer-2 Code: Height in CM</string>
-<string name="s6q3">Measurer-1 Code: Hb resulte</string>
-<string name="s7title1">Minimum Dietary Diversity for Pregnant and Lactating Woman (PLW)</string>
-<string name="s7title2">Please describe the foods (meals and snacks) that you ate or drank yesterday during the day and
-night, whether at home or outside the home. Start with the first food or drink eaten in the morning.
-Write down all food and drinks mentioned. When composite dishes are mentioned, ask for the list of ingredients. When the
-respondent has finished, probe for meals and snacks not mentioned.
+<string name="im10_1">Yes</string>
+<string name="im10_2">No</string>
+<string name="im10_3">Dont know</string>
+<string name="im11">Were the first polio drops received in the first two weeks after birth?</string>
+<string name="im11_1">Yes</string>
+<string name="im11_2">No</string>
+<string name="im11_3">Dont know</string>
+<string name="im12">How many times were the polio drops received at Govt or Private Health Facility or from Govt
+Outreach services? Number of times
 </string>
-<string name="s7qa">Foods made from grains: Porridge, bread, rice, pasta/noodles or other foods made from grains e.g
-corn/maize, wheat, sorghum, millet or any other grains or foods made from these (e.g. bread, noodles, porridge or
-siwayoon, double roti, chapati, geeh wara paratha)
+<string name="im12_1">Number of times</string>
+<string name="im12a">How many times was Polio vaccine received during a large campaign?</string>
+<string name="im12a1">Number of times</string>
+<string name="im12_98">Don’t know</string>
+<string name="im1298">Don't Know</string>
+<string name="im13">The last time (name) received the polio drops, did (he/she) also get an injection to protect against
+polio? Probe to ensure that both were given, drops and injection
 </string>
-<string name="s7qa01">Yes</string>
-<string name="s7qa02">No</string>
-<string name="s7qb">Foods made from grains: White roots, tubers and plantains White potatoes, white yams,
-manioc/cassava/yucca, cocoyam, taro or other foods made from white-fleshed roots or tubers or plantains.
+<string name="im13_1">Yes</string>
+<string name="im13_2">No</string>
+<string name="im13_3">Dont know</string>
+<string name="im14">Has (name) ever received a Pentavalent vaccination – that is, an injection in the thigh to prevent
+(him/her) from getting tetanus, whooping cough, diphtheria, Hepatitis B disease, and Haemophilus influenza type B? Probe
+by indicating that Pentavalent vaccination is sometimes given at the same time as the Polio drops
 </string>
-<string name="s7qb01">Yes</string>
-<string name="s7qb02">No</string>
-<string name="s7qc">Foods made from grains: Pulses (beans, peas and lentils) Mature beans or peas (fresh or dried seed),
-lentils or bean/pea products, including hummus, tofu and tempeh
+<string name="im14_1">Yes</string>
+<string name="im14_2">No</string>
+<string name="im14_3">Dont know</string>
+<string name="im15">How many times was the Pentavalent vaccine received? Number of times</string>
+<string name="im15_1">Number of times</string>
+<string name="im15_98">Don't know</string>
+<string name="im16">Has (name) ever received a Pneumococcal Conjugate vaccination – that is, an injection to prevent
+(him/her) from getting pneumococcal disease, including ear infections and meningitis caused by pneumococcus? Probe by
+indicating that Pneumococcal Conjugate vaccination is sometimes given at the same time as the Pentavalent vaccination.
 </string>
-<string name="s7qc01">Yes</string>
-<string name="s7qc02">No</string>
-<string name="s7qd">Foods made from grains: Nuts and seeds Any tree nut, groundnut/peanut or certain seeds, or
-nuts/seeds “butters” or pastes
+<string name="im16_1">Yes</string>
+<string name="im16_2">No</string>
+<string name="im16_3">Dont know</string>
+<string name="im17">How many times was the pneumococcal vaccine received? Number of times</string>
+<string name="im17_1">Number of times</string>
+<string name="im17_98">Don't know</string>
+<string name="im18">Has (name) ever received drops for Rotavirus vaccine (RV) vaccination- A vaccine given orally soon
+after 6 weeks birth to protect against rotavirus infections, which are the leading cause of severe diarrhea among young
+children.
 </string>
-<string name="s7qd01">Yes</string>
-<string name="s7qd02">No</string>
-<string name="s7qe">Foods made from grains: Milk and milk products Milk, cheese, yogurt or other milk products but NOT
-including butter, ice cream, cream or sour cream
+<string name="im18_1">Yes</string>
+<string name="im18_2">No</string>
+<string name="im18_3">Dont know</string>
+<string name="im19">How many times were the drops received? Number of times</string>
+<string name="im19_1">Number of times</string>
+<string name="im19_98">Don't know</string>
+<string name="im20">Has (name) ever received an inactivated polio vaccine (IPV) – that is, a shot in the thigh at the
+age of 14 weeks or older - to prevent (him/her) from getting polio?
 </string>
-<string name="s7qe01">Yes</string>
-<string name="s7qe02">No</string>
-<string name="s7qf">Foods made from grains: Organ meat Liver, kidney, heart or other organ meats or blood-based foods
+<string name="im20_1">Yes</string>
+<string name="im20_2">No</string>
+<string name="im20_3">Dont know</string>
+<string name="im21">Has (name) ever received a Measles Injection – that is, a shot in the arm at the age of 9 months or
+older - to prevent (him/her) from getting measles?
 </string>
-<string name="s7qf01">Yes</string>
-<string name="s7qf02">No</string>
-<string name="s7qg">Foods made from grains: Meat and poultry Beef, lamb, goat, rabbit, deer, chicken, duck, or other
-birds (i.e. partridge, quail, houbara bustard and mallard etc)
+<string name="im21_1">Yes</string>
+<string name="im21_2">No</string>
+<string name="im21_3">Dont know</string>
+<string name="im22">How many times was a Measles Injection vaccine received? Number of times</string>
+<string name="im22_1">Number of times</string>
+<string name="im22_98">Don't know</string>
+<string name="im23">Where from (name) is usually vaccinated? If the child is vaccinated from multiple sources, mention
+the usual source with higher frequency of vaccine doses.
 </string>
-<string name="s7qg01">Yes</string>
-<string name="s7qg02">No</string>
-<string name="s7qh">Foods made from grains: Fish and seafood Fish or dried fish or shellfish or prawns</string>
-<string name="s7qh01">Yes</string>
-<string name="s7qh02">No</string>
-<string name="s7qi">Foods made from grains: Eggs Eggs from poultry or any other bird (chicken, duck, guinea fowl etc)
+<string name="im23a">Can you please specify where is this facility located?</string>
+<string name="im23a_1">Within Catchment area 10km</string>
+<string name="im23a_2">Within District/ city</string>
+<string name="im23a_3">Out of District/city</string>
+<string name="im23a_96">Other Specify</string>
+<string name="im23_1">Govt. Health facility</string>
+<string name="im23b">What is the time taken to reach this facility where vaccination was received?</string>
+<string name="im23b_1">Hours</string>
+<string name="im23b_2">Minutes</string>
+<string name="im23_2">Private health facility</string>
+<string name="im23_3">Government outreach service</string>
+<string name="im23_6">Other (specify)</string>
+<string name="im24">Why (name) is not vaccinated? If the child has not received all their vaccinations, ask the
+mother/caretaker Record all the reasons mentioned but do not prompt by asking specific. Encourage the mother to provide
+all reasons.
 </string>
-<string name="s7qi01">Yes</string>
-<string name="s7qi02">No</string>
-<string name="s7qj">Dark green leafy vegetables Dark green/leafy vegetables, including wild/foraged leaves (such as
-kale, spinach mustered leaves, cauliflower, Mareero, green garlic, field Foods made from grains: mint, chiber, mitera,
-etc).
+<string name="im24_1">Place of immunization too far</string>
+<string name="im25">Observe BCG Scar</string>
+<string name="im25_1">Scar Present</string>
+<string name="im25_2">Scar Absent</string>
+<string name="im25_3">Child Not Available</string>
+<string name="im25_4">Not Observed</string>
+<string name="im24_2">Time of immunization not convenient</string>
+<string name="im24_3">Mother too busy</string>
+<string name="im24_4">Family problem including mother ill</string>
+<string name="im24_5">Child ill, not brought</string>
+<string name="im24_6">Child ill, brought but not vaccinated</string>
+<string name="im24_7">Long wait</string>
+<string name="im24_8">Rumors</string>
+<string name="im24_9">No faith in immunization</string>
+<string name="im24_10">Fear of side reaction</string>
+<string name="im24_11">Time or Place of immunization not Known</string>
+<string name="im24_12">Took child but no vaccine available</string>
+<string name="im24_13">Took child but no vaccinator</string>
+<string name="im24_14">Took child facility closed</string>
+<string name="im24_15">Child was sick</string>
+<string name="im24_16">Took child but not vaccination day</string>
+<string name="im24_17">COVID-19-related (fear of going out, sickness in family)</string>
+<string name="im24_98">Don’t Know</string>
+<string name="im24_96">Others Please Specify</string>
+<string name="pd_title1">Section PD: Care seeking during pregnancy and delivery (To be administered to the mother of the
+youngest under-five child in the household)
 </string>
-<string name="s7qj01">Yes</string>
-<string name="s7qj02">No</string>
-<string name="s7qk">Foods made from grains: Vitamin A rich vegetables, roots and tubers Pumpkin, carrots, squash, or
-sweet potatoes that are orange inside + other locally available vitamin A rich vegetables (e.g. red sweet pepper,
-colocasia leaves, coriander leaves, onion leaves, fenugreek leaves, capsicum, cabbage, cucumber, okra, turnip, beet root
-etc)
+<string name="pd01">Child’s Line Number (youngest under 5)</string>
+<string name="pd02">WRA’s Name</string>
+<string name="pd03">When was your last pregnancy?</string>
+<string name="pd0301">0-5.9 months back</string>
+<string name="pd0302">6-11.9 months back</string>
+<string name="pd0303">12-23.9 months back</string>
+<string name="pd0304">24 months back or longer</string>
+<string name="pd04">Did you seek antenatal care during your last pregnancy?</string>
+<string name="pd0401">Yes</string>
+<string name="pd0402">No</string>
+<string name="pd0498">Don’t know</string>
+<string name="pd05">From whom did you seek antenatal care?</string>
+<string name="pd05_title1">HEALTH PERSONNEL</string>
+<string name="pd0501">Doctor</string>
+<string name="pd0502">Nurse</string>
+<string name="pd0503">Midwife</string>
+<string name="pd0504">LHV</string>
+<string name="pd05_title2">OTHER PERSON</string>
+<string name="pd0505">Dai-TBA</string>
+<string name="pd0506">Lady Health Worker</string>
+<string name="pd0507">Homeopath</string>
+<string name="pd0508">Hakim</string>
+<string name="pd0509">Dispenser/Compounder</string>
+<string name="pd0596">Others Please Specify</string>
+<string name="pd06">Where did you seek antenatal care?</string>
+<string name="pd06_title1">Home</string>
+<string name="pd0601">Respondent’s home</string>
+<string name="pd0602">Other home</string>
+<string name="pd06_title2">Public medical sector</string>
+<string name="pd0603">Government hospital</string>
+<string name="pd0604">Government clinic</string>
+<string name="pd0605">Mother &amp; child health centre</string>
+<string name="pd06961">Other public Please Specify</string>
+<string name="pd06_title3">Private medical sector</string>
+<string name="pd0607">Private hospital</string>
+<string name="pd0608">Private clinic</string>
+<string name="pd0609">Private maternity home</string>
+<string name="pd06962">Other private Please Specify</string>
+<string name="pd07">How many times did you receive antenatal care during last pregnancy? Probe to identify the number of
+times antenatal care was received. If a range is given, record the minimum number of times antenatal care received.
 </string>
-<string name="s7qk01">Yes</string>
-<string name="s7qk02">No</string>
-<string name="s7ql">Foods made from grains: Vitamin A rich fruits Ripe mangoes, ripe papaya, cantaloupe, apricots (fresh
-or dried), peaches + other locally available vitamin A rich fruits (e.g. fruiter, oranges, water melon, plum, figs,
-sapota, pear, strawberry, blue berries, guava, pomegranate, peaches etc)
+<string name="pd0701">Number of times</string>
+<string name="pd0798">Don’t Know</string>
+<string name="pd08">Why did you not seek antenatal care?</string>
+<string name="pd0801">Fear of COVID-19</string>
+<string name="pd0802">Assumption that care is not needed during pregnancy</string>
+<string name="pd0803">On the advice of a relative or friend</string>
+<string name="pd0804">Family knew how to care for you themselves</string>
+<string name="pd0805">Financial reasons</string>
+<string name="pd0806">Limitations of transport</string>
+<string name="pd09">Have you ever taken any iron folic acid (IFA) while you were pregnant?</string>
+<string name="pd0901">Yes</string>
+<string name="pd0902">No</string>
+<string name="pd10">How often did you take IFA during pregnancy?</string>
+<string name="pd1001">Daily</string>
+<string name="pd1002">Once a week</string>
+<string name="pd1003">Biweekly</string>
+<string name="pd1004">Monthly</string>
+<string name="pd1005">Rarely</string>
+<string name="pd11">How many months or days did you take IFA?</string>
+<string name="pd1101">Months</string>
+<string name="pd1102">Days</string>
+<string name="pd12">Who conducted the delivery?</string>
+<string name="pd12_title1">HEALTH PERSONNEL</string>
+<string name="pd1201">Doctor</string>
+<string name="pd1202">Nurse</string>
+<string name="pd1203">Midwife</string>
+<string name="pd1204">LHV</string>
+<string name="pd1205">سی ایم ڈبلیو</string>
+<string name="pd12_title2">OTHER PERSON</string>
+<string name="pd1206">Dai-TBA</string>
+<string name="pd1207">Lady Health Worker</string>
+<string name="pd1296">Others Please Specify</string>
+<string name="pd13">During you last birth, where was the baby born?</string>
+<string name="pd1301">Own home</string>
+<string name="pd1302">Other home</string>
+<string name="pd1303">Government Hospital</string>
+<string name="pd1304">RHC</string>
+<string name="pd1305">BHU</string>
+<string name="pd1306">birth station</string>
+<string name="pd13961">Other Public Facility Please Specify</string>
+<string name="pd1307">Private Hospital/Clinic</string>
+<string name="pd13962">Other Private Facility Specify</string>
+<string name="pd14">If at home, why was the delivery not in a facility?</string>
+<string name="pd1401">Fear of COVID-19</string>
+<string name="pd1402">All my deliveries have been at home</string>
+<string name="pd1403">My family did not want me to go to a facility</string>
+<string name="pd1404">Financial reasons</string>
+<string name="pd1405">Limitations of transport</string>
+<string name="pd1496">Others Please Specify</string>
+<string name="pd15">Did anyone check on your health after delivery?</string>
+<string name="pd1501">Yes</string>
+<string name="pd1502">No</string>
+<string name="pd16">Who checked your health after delivery? [MULTIPLE RESPONSES]</string>
+<string name="pd1601">Gynaecologist</string>
+<string name="pd1602">Other doctor</string>
+<string name="pd1603">Nurse</string>
+<string name="pd1604">CMW</string>
+<string name="pd1605">LHW</string>
+<string name="pd1606">LHV</string>
+<string name="pd1607">TBA</string>
+<string name="pd1696">Others Please Specify</string>
+<string name="pd17">How long after delivery did the first of these checks happen? If less than one day, record hours. If
+less than one week, record days. OTHERWISE, RECORD WEEKS.
 </string>
-<string name="s7ql01">Yes</string>
-<string name="s7ql02">No</string>
-<string name="s7qm">Foods made from grains: Other vegetables Other vegetables (e.g. tomato, onion, eggplant, cucurbit,
-ridge, gourd, broccoli, etc), including wild vegetables
+<string name="pd1701">Hours</string>
+<string name="pd1702">Days</string>
+<string name="pd1703">Weeks</string>
+<string name="pd1798">Don’t know/ don’t remember</string>
+<string name="pd18">How many times such check happen? Times</string>
+<string name="pd19">Did anyone check on (name of child) health?</string>
+<string name="pd1901">Yes</string>
+<string name="pd1902">No</string>
+<string name="pd1998">Don’t know</string>
+<string name="pd20">Who checked the child’s health after delivery? [Multiple responses]</string>
+<string name="pd2001">Paediatrician</string>
+<string name="pd2002">Other doctor</string>
+<string name="pd2003">Nurse</string>
+<string name="pd2004">CMW</string>
+<string name="pd2005">LHW</string>
+<string name="pd2006">LHV</string>
+<string name="pd2007">TBA</string>
+<string name="pd2096">Others Please Specify</string>
+<string name="pd21">How long after delivery did the first of these checks happen? If less than one day, record hours. If
+less than one week, record days. Otherwise, record weeks.
 </string>
-<string name="s7qm01">Yes</string>
-<string name="s7qm02">No</string>
-<string name="s7qn">Foods made from grains: Other fruits Other fruits, including wild fruits (i.e. dates, black berry,
-mulberry, banana, apple, grapes and Lesoona etc).
+<string name="pd2101">Hours</string>
+<string name="pd2102">Days</string>
+<string name="pd2103">Weeks</string>
+<string name="pd2198">Don’t know/ don’t remember</string>
+<string name="pd22">How many times such check happen? Times</string>
+<string name="bf_title1">Section BF: Breastfeeding, Health &amp; Care-seeking Behaviors Instruction: To be administered
+to the mother of the youngest child in the household, between 0-23 months of age
 </string>
-<string name="s7qn01">Yes</string>
-<string name="s7qn02">No</string>
-<string name="s7qo">Foods made from grains: Condiments, spices and seasonings Ingredients used in small quantities for
-flavour, such as chilies, spices, herbs, fish powder, tomato paste, flavour cubes or seeds, black pepper, condiments
-(soy sauce, hot sauce).
-</string>
-<string name="s7qo01">Yes</string>
-<string name="s7qo02">No</string>
-<string name="s7qp">Foods made from grains: Other beverages and foods Tea or coffe if not sweetened, clear broth,
-alcohol
-</string>
-<string name="s7qp01">Yes</string>
-<string name="s7qp02">No</string>
-<string name="s7qq">Foods made from grains: Oils and fats Oil, fats or butter added to food or used for cooking,
-including extracted oils from nuts, fruits and seeds; and all animal fat
-</string>
-<string name="s7qq01">Yes</string>
-<string name="s7qq02">No</string>
-<string name="s7qr">Foods made from grains: Sweets Sugary foods such as chocolates, candies, cookies and cakes/sweet
-biscuits and cakes, sweet pastries or ice cream
-</string>
-<string name="s7qr01">Yes</string>
-<string name="s7qr02">No</string>
-<string name="s8title">Antenatal and Postnatal Care for PLW</string>
-<string name="s8q1">Are you pregnant now?</string>
-<string name="s8q101">Yes</string>
-<string name="s8q102">No</string>
-<string name="s8q103">Unsure</string>
-<string name="s8q1a">How many months pregnant are you? RECORD NUMBER OF COMPLETED MONTHS</string>
-<string name="s8q2">Did you see anyone for antenatal care during your current/last pregnancy?</string>
-<string name="s8q201">Yes</string>
-<string name="s8q202">No</string>
-<string name="s8q2a">How many times did you seek antenatal care during your current/last pregnancy?</string>
-<string name="s8q2b">Whom did you visit for antenatal care during your current/last pregnancy? Anyone else? PROBE TO
-IDENTIFY EACH TYPE OF PERSON AND RECORD ALL MENTIONED.
-</string>
-<string name="s8q2btitle1">HEALTH PERSONNEL</string>
-<string name="s8q2b01">Doctor</string>
-<string name="s8q2b02">Nurse/Midwife</string>
-<string name="s8q2b03">Auxiliary Midwife</string>
-<string name="s8q2btitle2">OTHER PERSON</string>
-<string name="s8q2b04">Traditional Birth Attendant</string>
-<string name="s8q2b05">Community Health Worker</string>
-<string name="s8q2b96">Other (Specify):</string>
-<string name="s8q2c">Where did you receive antenatal care during your current/last pregnancy? Anywhere else?</string>
-<string name="s8q2c01">Home</string>
-<string name="s8q2c02">Govt. Health Facility</string>
-<string name="s8q2c03">Private Health Facility</string>
-<string name="s8q2c04">NGO Sector</string>
-<string name="s8q2c96">Other (Specify)</string>
-<string name="s8q3">During your current/last pregnancy, were you given an injection in the buttocks or your arm to
-prevent the baby from getting tetanus, that is, convulsions after birth?
-</string>
-<string name="s8q301">Yes</string>
-<string name="s8q302">No</string>
-<string name="s8q3a">How many times did you get a tetanus injection?</string>
-<string name="s8q3a01">Times</string>
-<string name="s8q3a98">Don’t know</string>
-<string name="s8q4">During your current/last pregnancy, were you given or did you buy any iron tablets or iron syrup?
-SHOW TABLETS/SYRUP (TAQWAI KHON PILLS).
-</string>
-<string name="s8q401">Yes</string>
-<string name="s8q402">No</string>
-<string name="s8q4a">If yes, for how many days did you take the tablets or syrup during the whole pregnancy? IF ANSWER
-IS NOT NUMERIC, PROBE FOR APPROXIMATE NUMBER OF DAYS.
-</string>
-<string name="s8q4a01">Days</string>
-<string name="s8q4a98">Don’t know</string>
-<string name="s8q5">During your current/last pregnancy, did you take any drug for intestinal worms?</string>
-<string name="s8q501">Yes</string>
-<string name="s8q502">No</string>
-<string name="s8q6">When (NAME) was born, was
-he/she very large, larger than
-average, average, smaller than
-average, or very small?
-</string>
-<string name="s8q601">Very large</string>
-<string name="s8q602">Larger than average</string>
-<string name="s8q603">Average</string>
-<string name="s8q604">Smaller than average</string>
-<string name="s8q605">Very small</string>
-<string name="s8q698">Don’t know</string>
-<string name="s8q7">Was (NAME) weighed at birth?</string>
-<string name="s8q701">Yes</string>
-<string name="s8q702">No</string>
-<string name="s8q798">Don’t know</string>
-<string name="s8q7a">How much did (NAME) weigh? RECORD WEIGHT IN KILOGRAMS FROM HEALTH CARD, IF AVAILABLE.</string>
-<string name="s8q7a01">KG from card</string>
-<string name="s8q7a02">KG from recall</string>
-<string name="s8q7a98">Don’t know</string>
-<string name="s8q8">Who assisted with the delivery of (NAME)?Anyone else?Probe for the type(s) of person(s) and record
-all mentioned. If respondent says no one assisted, probe to determine whether any adult(s) were present at the delivery.
-</string>
-<string name="s8q8title1">HEALTH PERSONNEL</string>
-<string name="s8q801">Doctor</string>
-<string name="s8q802">Nurse/Midwife</string>
-<string name="s8q803">Auxiliary Midwife</string>
-<string name="s8q8title2">OTHER PERSON</string>
-<string name="s8q804">Traditional Birth Attendant</string>
-<string name="s8q805">Community Health Worker</string>
-<string name="s8q806">Relative/Friend</string>
-<string name="s8q896">Other (Specify):</string>
-<string name="s8q899">No one assisted</string>
-<string name="s8q9">Where did you give birth to (NAME)? Probe to identify the type of source.
-If unable to determine if public or private sector, write the name of place.
-
-
-</string>
-<string name="s8q901">Home</string>
-<string name="s8q902">Govt. Health Facility</string>
-<string name="s8q903">Private Health Facility</string>
-<string name="s8q904">NGO Sector</string>
-<string name="s8q996">Other (Specify</string>
-<string name="s8q10">How many times did you receive postnatal care during current/last pregnancy?</string>
-<string name="s8q1001">Times</string>
-<string name="s8q1098">Don’t know</string>
-<string name="s8q11">How many hours, days or weeks after the birth of (NAME) did the first check take place?
-If less than one day, record hours.
-If less than one week, record days.
-</string>
-<string name="s8q1101">Hours after birth</string>
-<string name="s8q1102">Days after birth</string>
-<string name="s8q1103">Weeks after birth</string>
-<string name="s8q1198">Don’t know</string>
-<string name="s8q12">Who checked on (NAME)'s health at that time? PROBE FOR MOST QUALIFIED PERSON</string>
-<string name="s8q12title1">HEALTH PERSONNEL</string>
-<string name="s8q1201">Doctor</string>
-<string name="s8q1202">Nurse/Midwife</string>
-<string name="s8q1203">Auxiliary Midwife</string>
-<string name="s8q12title2">OTHER PERSON</string>
-<string name="s8q1204">Traditional Birth Attendant</string>
-<string name="s8q1205">Community Health Worker</string>
-<string name="s8q1296">Other (Specify):</string>
-<string name="s8q13">Where did this first check of (NAME) take place?
-Probe to identify the type of source.
-If unable to determine if public or private sector, write the name of place
-</string>
-<string name="s8q1301">Home</string>
-<string name="s8q1302">Govt. Health Facility</string>
-<string name="s8q1303">Private Health Facility</string>
-<string name="s8q1304">NGO Sector</string>
-<string name="s8q1396">Other (Specify</string>
-<string name="s9title">Child Anthropometry &amp; Hemoglobin:</string>
-<string name="s9q1">Name of child?</string>
-<string name="s9q2">Age of child? months</string>
-<string name="s9q3">Gender of child?</string>
-<string name="s9q301">Male</string>
-<string name="s9q302">Female</string>
-<string name="s9q4">Length</string>
-<string name="s9q401">Measurer-1 Code Length</string>
-<string name="s9q402">Measurer-2 Code: Length</string>
-<string name="s9q5">Weight</string>
-<string name="s9q501">Measurer-1 Code Weight</string>
-<string name="s9q502">Measurer-2 Code: Weight</string>
-<string name="s9q6">Measurer-1 Code: Hb resulte</string>
-<string name="s10title">Initiation of Breastfeeding</string>
-<string name="s10q1">Has (NAME) ever been breastfed?</string>
-<string name="s10q101">Yes</string>
-<string name="s10q102">No</string>
-<string name="s10q198">Don’t know</string>
-<string name="s10q2">How long after birth did you first put (NAME) to the breast?</string>
-<string name="s10q201">Immediately</string>
-<string name="s10q202">Hours</string>
-<string name="s10q203">Days</string>
-<string name="s10q3">Did you feed first milk (colostrum) to the child?</string>
-<string name="s10q301">Yes</string>
-<string name="s10q302">No</string>
-<string name="s10q398">Don’t know</string>
-<string name="s10q4">Why you did not feed colostrum to (name)?</string>
-<string name="s10q401">Bad milk</string>
-<string name="s10q402">Fear of child illness</string>
-<string name="s10q403">Thickness</string>
-<string name="s10q496">Others (specify)</string>
-<string name="s10q5">Was (NAME) given anything to drink before breast milk?</string>
-<string name="s10q501">Yes</string>
-<string name="s10q502">No</string>
-<string name="s10q6">What was (name) given to drink? Probe: Anything else? ‘Not given anything to drink’ (99) can only
-be recorded if no other response category is recorded. [Multiple responses]
-</string>
-<string name="s10q601">Milk (other than breast milk)</string>
-<string name="s10q602">Plain water</string>
-<string name="s10q603">Sugar or glucose water</string>
-<string name="s10q604">Gripe water</string>
-<string name="s10q605">Sugar-salt-water solution</string>
-<string name="s10q606">Fruit juice</string>
-<string name="s10q607">Infant formula</string>
-<string name="s10q608">Tea/Infusions /Traditional herbal preparations</string>
-<string name="s10q609">Honey</string>
-<string name="s10q610">Prescribed medicine</string>
-<string name="s10q696">Other (specify)</string>
-<string name="s10q699">Not given anything to rink</string>
-<string name="s11title">Infant &amp; Young Child Feeding (IYCF) Practices</string>
-<string name="s11q7">Was (NAME) breastfed yesterday during the day or at night?</string>
-<string name="s11q701">Yes</string>
-<string name="s11q702">No</string>
-<string name="s11q798">Don’t know</string>
-<string name="s11q7a">Sometimes babies are fed breast milk in different ways, for example by spoon, cup or bottle. This
+<string name="bf01">Child’s Line Number (youngest under 2)</string>
+<string name="bf02">WRA’s Name</string>
+<string name="bf03">What is (NAME) birthday?</string>
+<string name="bf3y">Year</string>
+<string name="bf03m">Month</string>
+<string name="bf3d">Date</string>
+<string name="bf04">Has (NAME) ever been breastfed?</string>
+<string name="bf0401">Yes</string>
+<string name="bf0402">No</string>
+<string name="bf0498">Don’t know</string>
+<string name="bf05">How long after birth did you first put (NAME) to the breast?</string>
+<string name="bf0501">Immediately</string>
+<string name="bf0502">Hours</string>
+<string name="bf0503">Days</string>
+<string name="bf0504">Never</string>
+<string name="bf06">Did you feed first milk (colostrum) to the child?</string>
+<string name="bf0601">Yes</string>
+<string name="bf0602">No</string>
+<string name="bf0698">Don’t know</string>
+<string name="bf07">Why did you not feed colostrum to (NAME)?</string>
+<string name="bf0701">Bad milk</string>
+<string name="bf0702">Harmful for child</string>
+<string name="bf0703">Thickness</string>
+<string name="bf0796">Others Please Specify</string>
+<string name="bf08">Was (NAME) given anything to drink before breast milk?</string>
+<string name="bf0801">Yes</string>
+<string name="bf0802">No</string>
+<string name="bf0898">Don’t know</string>
+<string name="bf09">What was (NAME) given to drink?</string>
+<string name="bf0901">Milk (other than breast milk)</string>
+<string name="bf0902">Plain water</string>
+<string name="bf0903">Sugar or glucose water</string>
+<string name="bf0904">Gripe water</string>
+<string name="bf0905">Sugar-salt-water solution</string>
+<string name="bf0906">Fruit juice</string>
+<string name="bf0907">Infant formula</string>
+<string name="bf0908">Tea / Infusions / Traditional herbal preparations</string>
+<string name="bf0909">Honey</string>
+<string name="bf0910">Prescribed medicine</string>
+<string name="bf0999">Not given anything to drink</string>
+<string name="bf0996">Others Please Specify</string>
+<string name="bf10">Was (NAME) breastfed yesterday during the day or at night?</string>
+<string name="bf1001">Yes</string>
+<string name="bf1002">No</string>
+<string name="bf1096">Don’t know</string>
+<string name="bf11">Sometimes babies are fed breast milk in different ways, for example by spoon, cup, or bottle. This
 can happen when the mother cannot always be with her baby. Sometimes babies are breastfed by another woman, or given
 breast milk from another woman by spoon, cup or bottle or some other way. This can happen if a mother cannot breastfeed
-her own baby.
-Did (NAME) consume breast milk in any of these ways yesterday during the day or at night?
+her own baby. Did (NAME) consume breast milk in any of these ways yesterday during the day or at night?
 </string>
-<string name="s11q7a01">Yes</string>
-<string name="s11q7a02">No</string>
-<string name="s11q7a98">Don’t know</string>
-<string name="s11q8">Now I would like to ask you about some medicines and vitamins that are sometimes given to infants
-was (NAME) given any vitamin drops or other medicines as drops yesterday during the day or at night?
+<string name="bf1101">Yes</string>
+<string name="bf1102">No</string>
+<string name="bf1198">Don’t know</string>
+<string name="bf12">Now I would like to ask you about some medicines and vitamins that are sometimes given to infants.
+Was (NAME) given any vitamin drops or other medicines as drops yesterday during the day or at night?
 </string>
-<string name="s11q801">Yes</string>
-<string name="s11q802">No</string>
-<string name="s11q898">Don’t know</string>
-<string name="s11q9">Was (NAME) given [LOCAL NAME FOR ORS] yesterday during the day or at night?</string>
-<string name="s11q901">Yes</string>
-<string name="s11q902">No</string>
-<string name="s11q998">Don’t know</string>
-<string name="s11title1">Read the questions below. Read the list of liquids one by one and mark yes or no, ACCORDINGLY.
-After you have completed the list, continue by asking question 11 (see far right hand column) for those ITEMS (10B, 10C,
-And/or 10F) where the respondent replied ‘Yes’.
+<string name="bf1201">Yes</string>
+<string name="bf1202">No</string>
+<string name="bf1298">Don’t know</string>
+<string name="bf13">Was (NAME) given ORS/NIMKOL yesterday during the day or at night?</string>
+<string name="bf1301">Yes</string>
+<string name="bf1302">No</string>
+<string name="bf1398">Don’t know</string>
+<string name="cv_title1">Section G5: COVID (To be administered to the mother of the youngest under-five child in the
+household)
 </string>
-<string name="s11q10">Next I would like to ask you about some liquids that (NAME) may have had yesterday during the day
-or at night.
-Did (NAME) have any (ITEM FORM LIST)?
-READ THE LIST OF LIQUIDS STARTING WITH ‘PLAN WATER’
-READ QUESTION FOR ITEMS B,C, AND F IF CHILD CONSUMED THE ITEM
-RECORD ‘98’ FOR DON’T KNOW.
+<string name="cv01">Have you heard of COVID-19?</string>
+<string name="cv0101">Yes</string>
+<string name="cv0102">No</string>
+<string name="cv0198">Don’t know</string>
+<string name="cv02">How concerned are you about COVID-19?</string>
+<string name="cv0201">Not Worried</string>
+<string name="cv0202">A Little Worried</string>
+<string name="cv0203">Somewhat Worried</string>
+<string name="cv0204">Very Worried</string>
+<string name="cv0205">Extremely Worried</string>
+<string name="cv03">Do you think COVID-19 exists?</string>
+<string name="cv0301">Yes, it exists</string>
+<string name="cv0302">No, it doesn’t</string>
+<string name="cv0303">Don’t know</string>
+<string name="cv04">How deadly do you think COVID-19 is?</string>
+<string name="cv0401">Not At All Deadly</string>
+<string name="cv0402">Not Very Deadly</string>
+<string name="cv0403">Not Deadly</string>
+<string name="cv0404">Somewhat Deadly</string>
+<string name="cv0405">Extremely Deadly</string>
+<string name="cv05">Do you know which group of people are most at risk of COVID?</string>
+<string name="cv0501">Everyone</string>
+<string name="cv0502">Elderly</string>
+<string name="cv0503">Adults</string>
+<string name="cv0504">Children</string>
+<string name="cv0505">Pregnant/Lactating Women</string>
+<string name="cv0506">Health Workers</string>
+<string name="cv0507">Person With Pre-Existing Conditions</string>
+<string name="cv0596">Others Please Specify</string>
+<string name="cv06">Who do you trust for information around COVID? (Choose all that apply. Do not read the answers, let
+the respondent answer spontaneously)
 </string>
-<string name="s11q10a">Plain water?</string>
-<string name="s11q10a01">Yes</string>
-<string name="s11q10a02">No</string>
-<string name="s11q10a98">DK</string>
-<string name="s11q10b">Infant formula? (If Yes Number of times)</string>
-<string name="s11q10b01">Yes</string>
-<string name="s11q10b02">No</string>
-<string name="s11q10b98">DK</string>
-<string name="s11q10c">Milk such as tinned, powdered, or fresh animal milk? (If Yes Number of times)</string>
-<string name="s11q10c01">Yes</string>
-<string name="s11q10c02">No</string>
-<string name="s11q10c98">DK</string>
-<string name="s11q10d">Juice or juice drinks?</string>
-<string name="s11q10d01">Yes</string>
-<string name="s11q10d02">No</string>
-<string name="s11q10d98">DK</string>
-<string name="s11q10e">Clear broth?</string>
-<string name="s11q10e01">Yes</string>
-<string name="s11q10e02">No</string>
-<string name="s11q10e98">DK</string>
-<string name="s11q10f">Yogurt? (If Yes Number of times)</string>
-<string name="s11q10f01">Yes</string>
-<string name="s11q10f02">No</string>
-<string name="s11q10f98">DK</string>
-<string name="s11q10g">Thin porridge?</string>
-<string name="s11q10g01">Yes</string>
-<string name="s11q10g02">No</string>
-<string name="s11q10g98">DK</string>
-<string name="s11q10h">Any other liquids such as [list other water based liquids available in the local setting]?
+<string name="cv0601">Community Leader</string>
+<string name="cv0602">Religious Leader</string>
+<string name="cv0603">Relatives</string>
+<string name="cv0604">Friends</string>
+<string name="cv0605">Health Worker At Health Facility</string>
+<string name="cv0606">Health Worker Via Door To Door</string>
+<string name="cv0607">Campaign</string>
+<string name="cv0608">Newspaper</string>
+<string name="cv0609">Radio</string>
+<string name="cv0610">Television</string>
+<string name="cv0611">Social Media</string>
+<string name="cv0696">Others Please Specify</string>
+<string name="cv07">Will all people with COVID-19 show symptoms?</string>
+<string name="cv0701">Yes</string>
+<string name="cv0702">No</string>
+<string name="cv0798">Don’t know</string>
+<string name="cv08">What symptoms are most commonly reported with COVID-19 (check all that apply)</string>
+<string name="cv0801">Fever</string>
+<string name="cv0802">Cough</string>
+<string name="cv0803">Flu</string>
+<string name="cv0804">Sore throat</string>
+<string name="cv0805">Chest congestion/Difficulty in breathing</string>
+<string name="cv0806">Losing sense of smell &amp; taste</string>
+<string name="cv0807">Diarrhea</string>
+<string name="cv0898">Don’t know</string>
+<string name="cv0899">Others Please Specify</string>
+<string name="cv09">What do you think are the different modes of transmission of COVID-19? (Choose all that apply. Do
+not read the answers, let the respondent answer spontaneously)
 </string>
-<string name="s11q10h01">Yes</string>
-<string name="s11q10h02">No</string>
-<string name="s11q10h98">DK</string>
-<string name="s11q10i">Any other liquids?</string>
-<string name="s11q10i01">Yes</string>
-<string name="s11q10i02">No</string>
-<string name="s11q10i98">DK</string>
-<string name="s11q12">Please describe everything that (NAME) ate yesterday during the day or night, whether at home or
-outside the home. If all ‘No’  go to 13
-If at least one ‘yes’ or all ‘DK’  go to 14
+<string name="cv0901">Touching surfaces contaminated with the virus</string>
+<string name="cv0902">Shaking hands</string>
+<string name="cv0903">Directly coming in contact with an infected person’s body fluids such as blood, vomit, or sweat
 </string>
-<string name="s11q12a">Porridge, bread, rice, noodles, or other foods made from grains</string>
-<string name="s11q12a01">Yes</string>
-<string name="s11q12a02">No</string>
-<string name="s11q12a98">DK</string>
-<string name="s11q12b">Pumpkin, carrots , squash, or sweet potatoes that are yellow or orange inside</string>
-<string name="s11q12b01">Yes</string>
-<string name="s11q12b02">No</string>
-<string name="s11q12b98">DK</string>
-<string name="s11q12c">White potatoes, white yams manioc, cassava, or any other food made from roots</string>
-<string name="s11q12c01">Yes</string>
-<string name="s11q12c02">No</string>
-<string name="s11q12c98">DK</string>
-<string name="s11q12d">Any dark green leafy vegetables</string>
-<string name="s11q12d01">Yes</string>
-<string name="s11q12d02">No</string>
-<string name="s11q12d98">DK</string>
-<string name="s11q12e">Ripe mangoes, ripe papayas</string>
-<string name="s11q12e01">Yes</string>
-<string name="s11q12e02">No</string>
-<string name="s11q12e98">DK</string>
-<string name="s11q12f">Any other fruits or vegetables</string>
-<string name="s11q12f01">Yes</string>
-<string name="s11q12f02">No</string>
-<string name="s11q12f98">DK</string>
-<string name="s11q12g">Liver, kidney , heart, or other organ meats</string>
-<string name="s11q12g01">Yes</string>
-<string name="s11q12g02">No</string>
-<string name="s11q12g98">DK</string>
-<string name="s11q12h">Any meat, such as beef, lamb , goat chicken, or duck</string>
-<string name="s11q12h01">Yes</string>
-<string name="s11q12h02">No</string>
-<string name="s11q12h98">DK</string>
-<string name="s11q12i">Eggs</string>
-<string name="s11q12i01">Yes</string>
-<string name="s11q12i02">No</string>
-<string name="s11q12i98">DK</string>
-<string name="s11q12j">Fresh or dried fish, shellfish, or seafood</string>
-<string name="s11q12j01">Yes</string>
-<string name="s11q12j02">No</string>
-<string name="s11q12j98">DK</string>
-<string name="s11q12k">Any food made from beans, peas lentils, nuts, or seeds</string>
-<string name="s11q12k01">Yes</string>
-<string name="s11q12k02">No</string>
-<string name="s11q12k98">DK</string>
-<string name="s11q12l">Cheese, yogurt, or other milk products</string>
-<string name="s11q12l01">Yes</string>
-<string name="s11q12l02">No</string>
-<string name="s11q12l98">DK</string>
-<string name="s11q12m">Any oil, fats, or butter , or foods made with any of these</string>
-<string name="s11q12m01">Yes</string>
-<string name="s11q12m02">No</string>
-<string name="s11q12m98">DK</string>
-<string name="s11q12n">Any sugary foods such as chocolates, sweets candies, pastries cakes, or biscuits</string>
-<string name="s11q12n01">Yes</string>
-<string name="s11q12n02">No</string>
-<string name="s11q12n98">DK</string>
-<string name="s11q12o">Condiments for flavor ,such as chilies, spices, herbs, or fish powder</string>
-<string name="s11q12o01">Yes</string>
-<string name="s11q12o02">No</string>
-<string name="s11q12o98">DK</string>
-<string name="s11q12p">Grubs, snails, or insects</string>
-<string name="s11q12p01">Yes</string>
-<string name="s11q12p02">No</string>
-<string name="s11q12p98">DK</string>
-<string name="s11q12q">Foods made with red palm oil, red palm nut, or red palm nut pulp sauce</string>
-<string name="s11q12q01">Yes</string>
-<string name="s11q12q02">No</string>
-<string name="s11q12q98">DK</string>
-<string name="s11q13">Did (NAME) eat any solid, semi- solid, or soft foods yesterday during the day or at night? Go back
-to Q.12 and record foods eaten. Then continue with Q.14
-IF ‘YES’ PROBE: what kind of solid, semi-solid, or soft foods did (NAME) eat?
+<string name="cv0904">Via droplets entering through mouth or nose when an infected person sneezes or coughs</string>
+<string name="cv0905">Unhygienic food preparation</string>
+<string name="cv0906">Radio waves such as mobile networks</string>
+<string name="cv0907">Mosquito bite</string>
+<string name="cv0998">Don’t know</string>
+<string name="cv0999">Others Please Specify</string>
+<string name="cv10">What according to you are effective methods of preventing infection from COVID-19? (Choose all that
+apply. Do not read the answers, let the respondent answer spontaneously)
 </string>
-<string name="s11q1301">Yes</string>
-<string name="s11q1302">No</string>
-<string name="s11q1398">Don’t know</string>
-<string name="s11q14">How many times did (NAME) eat solid, semi-solid, or soft foods other than liquids yesterday during
-the day or at night?
+<string name="cv1001">Frequently washing hands using soap and water for 20 seconds</string>
+<string name="cv1002">Cleaning hands with hand sanitizer</string>
+<string name="cv1003">Covering mouth and nose using a tissue or flexed elbow while coughing or sneezing</string>
+<string name="cv1004">Maintain social distancing</string>
+<string name="cv1005">Avoiding contact with sick people showing signs of COVID-19</string>
+<string name="cv1006">Wearing a mask in public places</string>
+<string name="cv1007">Keep oneself isolated</string>
+<string name="cv1008">Praying to God</string>
+<string name="cv1098">Don’t know</string>
+<string name="cv1099">Others Please Specify</string>
+<string name="cv11">Has COVID-19, the subsequent lockdown &amp; restrictions and fear affected the nutrition and feeding
+of your child?
 </string>
-<string name="s11q1401">Number of times</string>
-<string name="s11q1402">Don’t know</string>
-<string name="s11q15">Did (NAME) drink anything from a bottle with a nipple yesterday during the day or night?</string>
-<string name="s11q1501">Yes</string>
-<string name="s11q1502">No</string>
-<string name="s11q1598">Don’t know</string>
-<string name="s11q16">What did (name) drink from the bottle with a nipple?</string>
-<string name="s11q1601">Top feed (formula milk)</string>
-<string name="s11q1602">Animal milk</string>
-<string name="s11q1603">Expressed milk</string>
-<string name="s11q1696">Others (specify)</string>
-<string name="s11q17">Who advised you to use infant formula milk?</string>
-<string name="s11q1701">Practitioner</string>
-<string name="s11q1702">Pharmacy/Pharmacist</string>
-<string name="s11q1703">Relatives</string>
-<string name="s11q1796">Others (Specify)</string>
-<string name="s11q18">Did (name) drink or eat vitamin or mineral supplements or any medicines yesterday, during the day
-or night?
-Note: Please show samples of vitamins and medicines to respondent.
+<string name="cv1101">Yes</string>
+<string name="cv1102">No</string>
+<string name="cv12">How has it affected breastfeeding and/or feeding of the child? (Choose all that apply. Do not read
+the answers, let the respondent answer spontaneously)
 </string>
-<string name="s11q1801">Yes</string>
-<string name="s11q1802">No</string>
-<string name="s11q1898">Don’t know</string>
-<string name="s12title">Child Immunization, Morbidity and Care Seeking</string>
-<string name="s12q1">Do you have a card where (NAME)'s vaccinations are written down?
-If yes, may I see it please?
+<string name="cv1201">I have reduced the frequency and amount I feed my child</string>
+<string name="cv1202">I have increased the frequency and amount I feed my child</string>
+<string name="cv1203">I cannot afford same food for child</string>
+<string name="cv1204">I cannot travel to markets to purchase food 4 The foods I feed my child are no longer</string>
+<string name="cv1205">available in the market</string>
+<string name="cv1296">Others Please Specify</string>
+<string name="cv13">Has COVID-19, the subsequent lockdown &amp; restrictions and fear disrupted your child’s
+immunization?
 </string>
-<string name="s12q101">Yes, seen</string>
-<string name="s12q102">Yes, not seen</string>
-<string name="s12q103">No card</string>
-<string name="s12q2">Did (NAME) ever have any vaccinations to prevent him/her from getting diseases, including
-vaccinations received in a national immunization day campaign?
-
-COPY DATES FROM THE CARD.
-WRITE ‘44' IN ‘DAY' COLUMN IF CARD SHOWS THAT A DOSE WAS GIVEN, BUT NO DATE IS RECORDED.
-
-Dates are not applicable if the source of vaccination is from maternal recall, and in response of card not seen or No
-card in Q.1
+<string name="cv1301">Yes</string>
+<string name="cv1302">No</string>
+<string name="cv14">Has your child (under-5) received oral polio vaccine in the past 10 months?</string>
+<string name="cv1401">Yes</string>
+<string name="cv1402">No</string>
+<string name="cv15">Has your child received all vaccinations in the past 10 months that were due as per EPI schedule?
 </string>
-<string name="s12q2a">BCG against tuberculosis in the arm or shoulder</string>
-<string name="s12q2a01">Yes</string>
-<string name="s12q2a02">No</string>
-<string name="s12q2a98">Don’t know</string>
-<string name="s12q2ad">BCG DATE</string>
-<string name="s12q2b">Hepatitis B -0 (given at birth):</string>
-<string name="s12q2b01">Yes</string>
-<string name="s12q2b02">No</string>
-<string name="s12q2b98">Don’t know</string>
-<string name="s12q2bd">Hepatitis DATE</string>
-<string name="s12q2c">POLIO 0 (At birth), drops in the mouth</string>
-<string name="s12q2c01">Yes</string>
-<string name="s12q2c02">No</string>
-<string name="s12q2d">POLIO 1, first two weeks after birth</string>
-<string name="s12q2d01">Yes</string>
-<string name="s12q2d02">No</string>
-<string name="s12q2c98">Don’t know</string>
-<string name="s12q2d98">Don’t know</string>
-<string name="s12q2cd">POLIO 0 DATE</string>
-<string name="s12q2dd">POLIO 1 DATE</string>
-<string name="s12q2e">POLIO 2, at 10 weeks:</string>
-<string name="s12q2e01">Yes</string>
-<string name="s12q2e02">No</string>
-<string name="s12qe98">Don’t know</string>
-<string name="s12q2ed">POLIO 2 DATE</string>
-<string name="s12q2f">POLIO 3, at 14 weeks</string>
-<string name="s12q2f01">Yes</string>
-<string name="s12q2f02">No</string>
-<string name="s12q2f98">Don’t know</string>
-<string name="s12q2fd">POLIO 3 DATE</string>
-<string name="s12q2g">DPT/PENTA 1, an injection given in the thigh at 6 weeks:</string>
-<string name="s12q2g01">Yes</string>
-<string name="s12q2g02">No</string>
-<string name="s12q2g98">Don’t know</string>
-<string name="s12q2gd">DPT/PENTA 1 DATE</string>
-<string name="s12q2h">DPT/PENTA 2, an injection given in the thigh at 10 weeks:</string>
-<string name="s12q2h01">Yes</string>
-<string name="s12q2h02">No</string>
-<string name="s12q2h98">Don’t know</string>
-<string name="s12q2hd">DPT/PENTA 2 DATE</string>
-<string name="s12q2i">DPT/PENTA 3, an injection given in the thigh at 14 weeks</string>
-<string name="s12q2i01">Yes</string>
-<string name="s12q2i02">No</string>
-<string name="s12q2i98">Don’t know</string>
-<string name="s12q2id">DPT/PENTA 3 DATE</string>
-<string name="s12q2j">PCV 1: an injection in the thigh to prevent from pneumonia at 6 wks</string>
-<string name="s12q2j01">Yes</string>
-<string name="s12q2j02">No</string>
-<string name="s12q2j98">Don’t know</string>
-<string name="s12q2jd">PCV 1 DATE</string>
-<string name="s12q2k">PCV 2: an injection in the thigh to prevent from pneumonia at 10 wks</string>
-<string name="s12q2k01">Yes</string>
-<string name="s12q2k02">No</string>
-<string name="s12q2k98">Don’t know</string>
-<string name="s12q2kd">PCV 2 DATE</string>
-<string name="s12q2l">PCV 3: an injection in the thigh to prevent from pneumonia at 14 wks:</string>
-<string name="s12q2l01">Yes</string>
-<string name="s12q2l02">No</string>
-<string name="s12q2l98">Don’t know</string>
-<string name="s12q2ld">PCV 3 DATE</string>
-<string name="s12q2m">MEASLES 1: a shot in the arm at 9 months</string>
-<string name="s12q2m01">Yes</string>
-<string name="s12q2m02">No</string>
-<string name="s12q2m98">Don’t know</string>
-<string name="s12q2md">MEASLES 1 DATE</string>
-<string name="s12q2n">MEASLES 2: a shot in the arm at 15 months</string>
-<string name="s12q2n01">Yes</string>
-<string name="s12q2n02">No</string>
-<string name="s12q2n98">Don’t know</string>
-<string name="s12q2nd">MEASLES 2 DATE</string>
-<string name="s12q2o">VITAMIN A: given within the last six months</string>
-<string name="s12q2o01">Yes</string>
-<string name="s12q2o02">No</string>
-<string name="s12q2o98">Don’t know</string>
-<string name="s12q2od">VITAMIN A DATE</string>
-<string name="s12q3">Did the child (NAME) have any of the following illnesses during the last two weeks?
-
-[PROMT FOR EACH AND RECORD]
-Any other illnesses?
+<string name="cv1501">Yes</string>
+<string name="cv1502">No</string>
+<string name="cv16">If not, why was the child not taken for vaccination?</string>
+<string name="cv1601">Fear of COVID-19</string>
+<string name="cv1602">Financial reasons</string>
+<string name="cv1603">Limitations of transport</string>
+<string name="cv1604">Vaccinations can be delayed</string>
+<string name="cv1605">Forgot that there was a vaccine due</string>
+<string name="cv1606">Interrupted services</string>
+<string name="cv1696">Others Please Specify</string>
+<string name="cv17">Has the number of times you visit health facilities reduced during COVID-19?</string>
+<string name="cv1701">Yes</string>
+<string name="cv1702">No</string>
+<string name="cv18">Why has it decreased?</string>
+<string name="cv1801">Fear of COVID-19</string>
+<string name="cv1802">Financial reasons</string>
+<string name="cv1803">Limitations of transport</string>
+<string name="cv1804">Vaccinations can be delayed</string>
+<string name="cv1805">Forgot that there was a vaccine due</string>
+<string name="cv1806">Interrupted services</string>
+<string name="cv1896">Others Please Specify</string>
+<string name="cv19">For what conditions have you decided to not go to the doctor?</string>
+<string name="cv1901">My child had diarrhea</string>
+<string name="cv1902">My child had fever or cough</string>
+<string name="cv1903">My/my wife’s pregnancy and/or childbirth</string>
+<string name="cv1904">My child’s health issue, prefer not specify</string>
+<string name="cv1905">My health, prefer not to specify</string>
+<string name="cv1906">Other, prefer not to say</string>
+<string name="cv1996">Others Please Specify</string>
+<string name="se_title1">Section SE: Household Characteristics</string>
+<string name="se01">What is the mother tongue of the head of the household?</string>
+<string name="se0101">Urdu</string>
+<string name="se0102">Punjabi</string>
+<string name="se0103">Sindhi</string>
+<string name="se0104">Pushtu</string>
+<string name="se0105">Baluchi</string>
+<string name="se0106">Siraiki</string>
+<string name="se0107">Hindko</string>
+<string name="se0196">Others Please Specify</string>
+<string name="se02">Main material of the dwelling floor</string>
+<string name="title01">Natural Floor</string>
+<string name="se0211">Mud/Clay/Earth/Sand</string>
+<string name="se0212">Dung</string>
+<string name="title02">Rudimentary/Floor</string>
+<string name="se0221">Wood planks</string>
+<string name="se0222">Palm/Bamboo</string>
+<string name="title03">Finished Floor</string>
+<string name="se0231">Parquet or polished wood</string>
+<string name="se0232">Vinyl or asphalt strips</string>
+<string name="se0233">Ceramic tiles</string>
+<string name="se0234">Cement</string>
+<string name="se0235">Carpet</string>
+<string name="se0236">Bricks</string>
+<string name="se0237">Lime</string>
+<string name="se0296">Others Please Specify</string>
+<string name="se03">What is the primary construction material used to build the house (by observation)?</string>
+<string name="se03title1">NATURAL WALLS</string>
+<string name="se0301">No Walls</string>
+<string name="se0302">Cane/Palm/Trunks</string>
+<string name="se0303">Dirt</string>
+<string name="se0304">Mud/Stones</string>
+<string name="se0305">Bamboo/Sticks/Mud</string>
+<string name="se03title2">RUDIMENTARY WALLS</string>
+<string name="se0306">Unbaked Bricks/Mud</string>
+<string name="se0307">Bamboo With Mud</string>
+<string name="se0308">Stone With Mud</string>
+<string name="se0309">Uncovered Adobe</string>
+<string name="se0310">Plywood</string>
+<string name="se0311">Reused Wood</string>
+<string name="se03title3">FINISHED WALLS</string>
+<string name="se0312">Cement</string>
+<string name="se0313">Stone With Lime/Cement</string>
+<string name="se0314">Bricks</string>
+<string name="se0315">Cement Blocks</string>
+<string name="se0316">Covered Adobe</string>
+<string name="se0317">Wood Planks/Shingles</string>
+<string name="se0396">Others Please Specify</string>
+<string name="se04">Observe the primary construction material Used to build the roof?</string>
+<string name="se04title1">NATURAL ROOFING</string>
+<string name="se0401">No Roof</string>
+<string name="se0402">Thatch/Palm Leaf</string>
+<string name="se0403">Sod/Grass</string>
+<string name="se04title02">RUDIMENTARY ROOFING</string>
+<string name="se0404">Rustic Mat</string>
+<string name="se0405">Palm/Bamboo</string>
+<string name="se0406">Wood Planks</string>
+<string name="se0407">Cardboard</string>
+<string name="se04title03">FINISHED ROOFING</string>
+<string name="se0408">Asbestos</string>
+<string name="se0409">Reinforced Brick Cement/R</string>
+<string name="se0410">Metal</string>
+<string name="se0411">Wood</string>
+<string name="se0412">Calamine/Cement Fiber</string>
+<string name="se0413">Ceramic Tiles</string>
+<string name="se0414">Cement/RCC</string>
+<string name="se0415">Roofing Shingles</string>
+<string name="se0496">Others Please Specify</string>
+<string name="se05">What is the ownership status of this house?</string>
+<string name="se0501">Owned</string>
+<string name="se0502">Rented</string>
+<string name="se0503">Living without paying rent</string>
+<string name="se0596">Others Please Specify</string>
+<string name="se06">If this house is rental, what is the monthly rent of this house? (Rupees)</string>
+<string name="se07">How many rooms in this HH are used for sleeping?(number)</string>
+<string name="se08">What is the main source of drinking water In this HH?</string>
+<string name="se08title1">PIPED WATER</string>
+<string name="se0801">Piped Into Dwelling</string>
+<string name="se0802">Piped To Yard/Plot</string>
+<string name="se0803">Piped To Neighbor</string>
+<string name="se0804">Public Tap/Standpipe</string>
+<string name="se0805">Tube Well Or Borehole</string>
+<string name="se08title2">DUG WELL</string>
+<string name="se0806">Protected Well</string>
+<string name="se0807">Unprotected Well</string>
+<string name="se08title3">WATER FROM SPRING</string>
+<string name="se0808">Protected Spring</string>
+<string name="se0809">Unprotected Spring</string>
+<string name="se0810">Rainwater</string>
+<string name="se0811">Tanker Truck</string>
+<string name="se0812">Cart With Small Tank</string>
+<string name="se0813">Surface Water (River/Dam/ Lake/Pond/Stream/Canal/ Irrigation Channel)</string>
+<string name="se0814">Bottled Water</string>
+<string name="se0896">Others Please Specify</string>
+<string name="se09">Do you do anything to the water to make it safer to drink?</string>
+<string name="se0901">Yes</string>
+<string name="se0902">No</string>
+<string name="se0998">Don’t know</string>
+<string name="se10">What do you usually do to make the water safer to drink? Anything else? RECORD ALL MENTIONED
 </string>
-<string name="s12q301">High grade fever</string>
-<string name="s12q301a">Yes</string>
-<string name="s12q301b">No</string>
-<string name="s12q302">Diarrhea</string>
-<string name="s12q302a">Yes</string>
-<string name="s12q302b">No</string>
-<string name="s12q303">Cough/Flu</string>
-<string name="s12q303a">Yes</string>
-<string name="s12q303b">No</string>
-<string name="s12q304">Difficult/Fast breathing</string>
-<string name="s12q304a">Yes</string>
-<string name="s12q304b">No</string>
-<string name="s12q305">Chest in drawing</string>
-<string name="s12q305a">Yes</string>
-<string name="s12q305b">No</string>
-<string name="s12q306">Skin infection</string>
-<string name="s12q306a">Yes</string>
-<string name="s12q306b">No</string>
-<string name="s12q307">Worms in stool</string>
-<string name="s12q307a">Yes</string>
-<string name="s12q307b">No</string>
-<string name="s12q308">Rashes</string>
-<string name="s12q308a">Yes</string>
-<string name="s12q308b">No</string>
-<string name="s12q396">Other (Specify</string>
-<string name="s12q4">Did you seek any care for these illnesses during the last two weeks?</string>
-<string name="s12q401">Yes</string>
-<string name="s12q402">No</string>
-<string name="s12q498">Don’t know</string>
-<string name="s12q5">Whom did you see for the illness (s) in the last two weeks? Anyone else? [PROBE TO IDENTIFY EACH
-TYPE OF PERSON AND RECORD ALL MENTIONED]
+<string name="se1001">Boil</string>
+<string name="se1002">Add Bleach/Chlorine</string>
+<string name="se1003">Strain Through A Cloth</string>
+<string name="se1004">Use Water Filter (Ceramic/ Sand/Composite/Etc)</string>
+<string name="se1005">Solar Disinfection</string>
+<string name="se1006">Let It Stand And Settle</string>
+<string name="se1098">Don't Know</string>
+<string name="se1099">Other Pleas Specify</string>
+<string name="se11">What kind of toilet facility do members of your HH usually use?</string>
+<string name="se11title1">FLUSH OR POUR FLUSH TOILET</string>
+<string name="se1101">Flush To Piped Sewer System</string>
+<string name="se1102">Flush To Septic Tank</string>
+<string name="se1103">Flush To Pit Latrine</string>
+<string name="se1104">Flush To Somewhere Else</string>
+<string name="se1105">Flush, Don't Know Where</string>
+<string name="se11title2">PIT LATRINE</string>
+<string name="se1106">Ventilated Improved Pit Latrine</string>
+<string name="se1107">Pit Latrine With Slab</string>
+<string name="se1108">Pit Latrine Without Slab/Open Pit</string>
+<string name="se1109">Composting Toilet</string>
+<string name="se1110">Bucket Toilet</string>
+<string name="se1111">Hanging Toilet/Hanging Latrine</string>
+<string name="se1112">No Facility/Bush/Field</string>
+<string name="se1196">Others Please Specify</string>
+<string name="se12">What is the drainage system of this HH? (Through observation)</string>
+<string name="se1201">Underground sewerage lines</string>
+<string name="se1202">Open sewerage line</string>
+<string name="se1203">Unattached sewerage lines</string>
+<string name="se1296">Others Please Specify</string>
+<string name="se13">We would like to learn about the places that households use to wash their hands. Can you please show
+me where members of your household most often wash their hands?
 </string>
-<string name="s12q5title1">HEALTH PERSONNEL</string>
-<string name="s12q501">Doctor</string>
-<string name="s12q502">Nurse/Midwife</string>
-<string name="s12q503">Auxiliary Midwife</string>
-<string name="s12q5title2">OTHER PERSON</string>
-<string name="s12q504">Traditional Birth Attendant</string>
-<string name="s12q505">Community Health Worker</string>
-<string name="s12q596">Other (Specify):</string>
-<string name="s12q6">Where did you receive care for your child during the last two weeks?Anywhere else?</string>
-<string name="s12q601">Home</string>
-<string name="s12q602">Govt. Health Facility</string>
-<string name="s12q603">Private Health Facility</string>
-<string name="s12q604">NGO Sector</string>
-<string name="s12q696">Other (Specify)</string>
-<string name="s13title">Knowledge about IYCF</string>
-<string name="s13q1">What is the first food a newborn baby should receive?</string>
-<string name="s13q101">Only breastmilk</string>
-<string name="s13q196">Other (Specify)</string>
-<string name="s13q198">Don’t know</string>
-<string name="s13q2">When a child should ideally be initiated breastfeeding after birth?</string>
-<string name="s13q201">Immediately</string>
-<string name="s13q202">Hours</string>
-<string name="s13q203">Days</string>
-<string name="s13q3">Have you heard about exclusive breastfeeding?</string>
-<string name="s13q301">Yes</string>
-<string name="s13q302">No</string>
-<string name="s13q398">Don’t know</string>
-<string name="s13q4">What do you mean by exclusive breastfeeding?</string>
-<string name="s13q401">It means that the infant gets only breastmilk and no other liquids or foods</string>
-<string name="s13q496">Other (Specify)</string>
-<string name="s13q498">Don’t know</string>
-<string name="s13q5">How long should a child receive nothing more than breastmilk?</string>
-<string name="s13q501">From birth to 6 months</string>
-<string name="s13q596">Other (Specify)</string>
-<string name="s13q598">Don’t know</string>
-<string name="s13q6">What are the benefits for a child if he or she receives only breastmilk during the first six months
-of life?
+<string name="se1301">Observed, Fixed Place</string>
+<string name="se1302">Observed, Mobile</string>
+<string name="se13title1">NOT OBSERVED</string>
+<string name="se1303">Not in Dwelling/Yard/Plot</string>
+<string name="se1304">Not Observed, No Permission to See</string>
+<string name="se1305">Not Observed, Other Reason</string>
+<string name="se14">Observe presence of water at the place of washing RECORD OBSERVATION</string>
+<string name="se1401">Water Is Available</string>
+<string name="se1402">Water Is Not Available</string>
+<string name="se15">Observe presence of soap, detergent, or other cleansing agent at the place for handwashing. RECORD
+OBSERVATION
 </string>
-<string name="s13q601">He/she grows healthily</string>
-<string name="s13q602">Protection from diarrhea and other infections</string>
-<string name="s13q603">Protection against obesity and chronic diseases in adulthood</string>
-<string name="s13q696">Other (Specify)</string>
-<string name="s13q698">Don’t know</string>
-<string name="s13q7">How long is it recommended that a woman breastfeeds her child?</string>
-<string name="s13q701">6 months or less</string>
-<string name="s13q702">6-11 months</string>
-<string name="s13q703">12-23 months</string>
-<string name="s13q704">24 months and more (correct response)</string>
-<string name="s13q796">Other (Specify)</string>
-<string name="s13q798">Don’t know</string>
-<string name="s13q8">How long after birth a child should start to receive solid, semi-solid or soft foods in addition to
-breastmilk?
+<string name="se1501">Soap or Detergent (Bar, Liquid, Powder, Paste)</string>
+<string name="se1502">Ash, Mud, Sand</string>
+<string name="se1503">None</string>
+<string name="se16">Do you have any soap or detergent in your household for hand washing?</string>
+<string name="se1601">Yes</string>
+<string name="se1602">No</string>
+<string name="se17">If yes, can you please show it to me? [Multiple responses]</string>
+<string name="se1701">Bar soap</string>
+<string name="se1702">Detergent (powder/liquid/paste)</string>
+<string name="se1703">Liquid soap</string>
+<string name="se1704">Ash/mud/sand</string>
+<string name="se1705">None</string>
+<string name="se18">In what situations do you wash your hands with soap? This is an open-ended question. Do not read the
+answer choices.
 </string>
-<string name="s13q801">At 6 months</string>
-<string name="s13q896">Other (Specify)</string>
-<string name="s13q898">Don’t know</string>
-<string name="s13q9">How many times a child should receive solid, semi-solid or soft foods in one day (day or at
-night)?
+<string name="se1801">Before preparing food</string>
+<string name="se180101">Yes</string>
+<string name="se180102">No</string>
+<string name="se1802">Before eating</string>
+<string name="se180201">Yes</string>
+<string name="se180202">No</string>
+<string name="se1803">Before feeding a child</string>
+<string name="se180301">Yes</string>
+<string name="se180302">No</string>
+<string name="se1804">After handling feces/diapers</string>
+<string name="se180401">Yes</string>
+<string name="se180402">No</string>
+<string name="se1805">After defecating or using the latrine</string>
+<string name="se180501">Yes</string>
+<string name="se180502">No</string>
+<string name="se1896">Others Please Specify</string>
+<string name="se189601">Yes</string>
+<string name="se189602">No</string>
+<string name="se19">What fuel does your HH use for cooking?</string>
+<string name="se1901">Electricity</string>
+<string name="se1902">LPG</string>
+<string name="se1903">Natural Gas</string>
+<string name="se1904">Biogas</string>
+<string name="se1905">Kerosene</string>
+<string name="se1906">Coal, Lignite</string>
+<string name="se1907">Charcoal</string>
+<string name="se1908">Wood</string>
+<string name="se1909">Straw/Shrubs/Grass</string>
+<string name="se1910">Agricultural Crop</string>
+<string name="se1911">Animal Dung</string>
+<string name="se1912">No Food Cooked In Household</string>
+<string name="se1996">Others Please Specify</string>
+<string name="se20">What transport does most of the family members of this HH usually use? (select all that apply)
 </string>
-<string name="s13q901">2-3 times for breastfed infants 6-8 months</string>
-<string name="s13q902">3-4 times for breastfed infants 9-23 months</string>
-<string name="s13q903">4 times for non-breastfed infants 6-23 months</string>
-<string name="s13q996">Other (Specify)</string>
-<string name="s13q998">Don’t know</string>
-<string name="s13q10">Which type of foods or food groups should a child eat on daily basis during 6-23 months of age?
+<string name="se2001">Private car</string>
+<string name="se2002">Company car</string>
+<string name="se2003">Motorcycle Public transport</string>
+<string name="se2004">By walk</string>
+<string name="se2005">Cycle</string>
+<string name="se2096">Others Please Specify</string>
+<string name="se21">What technique do you use to stop the breeding of flies and mosquitos? [Multiple responses]</string>
+<string name="se2101">Spray</string>
+<string name="se2102">Mat</string>
+<string name="se2103">Mosquito net</string>
+<string name="se2104">Globe</string>
+<string name="se2105">Smoke Or frankincense</string>
+<string name="se2196">Others Please Specify</string>
+<string name="se22">Does your household have</string>
+<string name="se2201">Electricity</string>
+<string name="se220101">YES</string>
+<string name="se220102">NO</string>
+<string name="se2202">Radio</string>
+<string name="se220201">YES</string>
+<string name="se220202">NO</string>
+<string name="se2203">Television</string>
+<string name="se220301">YES</string>
+<string name="se220302">NO</string>
+<string name="se2204">Non-Mobile Telephone</string>
+<string name="se220401">YES</string>
+<string name="se220402">NO</string>
+<string name="se2205">Refrigerator</string>
+<string name="se220501">YES</string>
+<string name="se220502">NO</string>
+<string name="se2206">Almirah/Cabinet</string>
+<string name="se220601">YES</string>
+<string name="se220602">NO</string>
+<string name="se2207">Chair</string>
+<string name="se220701">YES</string>
+<string name="se220702">NO</string>
+<string name="se2208">Room Cooler</string>
+<string name="se220801">YES</string>
+<string name="se220802">NO</string>
+<string name="se2209">Air conditioner</string>
+<string name="se220901">YES</string>
+<string name="se220902">NO</string>
+<string name="se2210">Washing Machine</string>
+<string name="se221001">YES</string>
+<string name="se221002">NO</string>
+<string name="se2211">Water Pump</string>
+<string name="se221101">YES</string>
+<string name="se221102">NO</string>
+<string name="se2212">Bed</string>
+<string name="se221201">YES</string>
+<string name="se221202">NO</string>
+<string name="se2213">Clock</string>
+<string name="se221301">YES</string>
+<string name="se221302">NO</string>
+<string name="se2214">Sofa</string>
+<string name="se221401">YES</string>
+<string name="se221402">NO</string>
+<string name="se2215">Camera</string>
+<string name="se221501">YES</string>
+<string name="se221502">NO</string>
+<string name="se2216">Sewing Machine</string>
+<string name="se221601">YES</string>
+<string name="se221602">NO</string>
+<string name="se2217">Computer</string>
+<string name="se221701">YES</string>
+<string name="se221702">NO</string>
+<string name="se2218">Internet Connection</string>
+<string name="se221801">YES</string>
+<string name="se221802">NO</string>
+<string name="se23">Does anyone in your household own a mobile phone?</string>
+<string name="se2301">YES</string>
+<string name="se2302">NO</string>
+<string name="se24">How many mobile phones are there in your household?</string>
+<string name="se25">How many of these are smartphones?</string>
+<string name="se26">How many of these smartphones are Android-based?</string>
+<string name="se27">Which mobile service provider is the Android-based smartphone connected to? [Multiple responses]
 </string>
-<string name="s13q1001">Grains, roots and tubers</string>
-<string name="s13q1002">Legumes and nuts</string>
-<string name="s13q1003">Dairy products (milk, yogurt, cheese)</string>
-<string name="s13q1004">Flesh foods (meat, fish, poultry and liver/organ meats)</string>
-<string name="s13q1005">Eggs</string>
-<string name="s13q1006">Vitamin-A rich fruits and vegetables</string>
-<string name="s13q1007">Other fruits and vegetables</string>
-<string name="s1_title1">1. The respondent of this survey should be a pregnant and lactating women with children 0-23
-months of age in each selected household, 2. Introduce yourself and explain the purpose of study, 3. Consent should be
-obtained from the respondent before the interview, 4. In response of “No” or “Don’t know” follow the skip section.
+<string name="se2701">Ufone</string>
+<string name="se2702">Jazz</string>
+<string name="se2703">Zong</string>
+<string name="se2704">Telenor</string>
+<string name="se28">What connectivity speed does the Android-based smartphone have? [Multiple responses]</string>
+<string name="se2801">2G</string>
+<string name="se2802">3G</string>
+<string name="se2803">4G</string>
+<string name="se29">Does the caregiver of a young child in the household have access to the Android smartphone or not?
 </string>
-<string name="s1qno">Questionnaire Number:</string>
-<string name="s1q1">Type of Study Arm:</string>
-<string name="s1q101">Intervention</string>
-<string name="s1q102">Control</string>
-<string name="s1q2">  Interviewer´s name:</string>
-<string name="s1q4">Date of interview</string>
-<string name="s1q6">Province name:</string>
-<string name="s1q8">District name:</string>
-<string name="s1q9">Village/Area code:</string>
-<string name="s1q10">Village/Area name:</string>
-<string name="s1q11">Household number</string>
-<string name="s1q12">Name of the household head:</string>
-<string name="s1q13">Sex of the household head:</string>
-<string name="s1q1301">Male</string>
-<string name="s1q1302">Female</string>
-<string name="s1q14">Respondent´s name:</string>
-<string name="s1q15">Age of Respondent</string>
-<string name="s1q16">Years of schooling of respondent</string>
-<string name="s1q17">Occupation of Respondent</string>
-<string name="s1q1701">Housewife</string>
-<string name="s1q1702">Working woman</string>
-<string name="s1q18">Type of respondent?</string>
-<string name="s1_consent">Respondent agree to participate in the study?</string>
-<string name="s1_consent01">Yes</string>
-<string name="s1_consent02">No</string>
-<string name="s1q1801">Pregnant Woman</string>
-<string name="s1q1802">Lactating mother</string>
-<string name="s1q19et">Interview Finish Date and time</string>
-<string name="s1q20">Household Size and Study Participants</string>
-<string name="s1q20a">Children ˂6 months</string>
-<string name="s1q20b">Children 6-23 months</string>
-<string name="s1q20c">Pregnant Women</string>
-<string name="s1q20d">Lactating Women</string>
-<string name="s1q20e">Total family member</string>
+<string name="se2901">Yes</string>
+<string name="se2902">NO</string>
+<string name="se30">Who owns their own Android smart phone? [Multiple responses]</string>
+<string name="se3001">Myself My mother-in-law/mother</string>
+<string name="se3002">My husband/wife My father-in-law/father</string>
+<string name="se3003">Children</string>
+<string name="se3096">Others Please Specify</string>
+<string name="se31">Where do your family members usually go to seek care?</string>
+<string name="se3101">Govt. Health care facility</string>
+<string name="se3102">Private health care facility</string>
+<string name="se3196">Others Please Specify</string>
+<string name="se32">From whom do your family members usually seek care?</string>
+<string name="se32title1">HEALTH PERSONNEL</string>
+<string name="se3201">Doctor</string>
+<string name="se3202">Nurse</string>
+<string name="se3203">Midwife</string>
+<string name="se3204">LHV</string>
+<string name="se32title2">OTHER PERSON</string>
+<string name="se3205">Dai-TBA</string>
+<string name="se3206">Lady Health Worker</string>
+<string name="se3207">Homeopath</string>
+<string name="se3208">Hakim</string>
+<string name="se3209">Dispenser/Compounder</string>
+<string name="se33">How much time does it take to reach any govt or private health care facility near your house by
+walking?
+</string>
+<string name="se3302">Hours</string>
+<string name="se3301">Minutes</string>
+<string name="se34">For how long you had been living in this house?</string>
+<string name="se3401">Months</string>
+<string name="se3402">Years</string>
+<string name="se35">Do you have any plans to shift somewhere else next year?</string>
+<string name="se3501">Yes</string>
+<string name="se3502">No</string>
+<string name="se3598">Don’t know</string>
+<string name="se36">Has your household or anyone in your household received financial assistance in last 12 months?
+</string>
+<string name="se3601">Yes</string>
+<string name="se3602">No</string>
+<string name="se3698">Don’t know</string>
+<string name="se37">If yes, then please identify which program they are registered with? [Multiple Responses]</string>
+<string name="se3701">Unconditional Cash Transfer</string>
+<string name="se3702">Waseela-e-Haq</string>
+<string name="se3703">Waseela-e-Taleem</string>
+<string name="se3704">Waseela-e-Rozgar</string>
+<string name="se3705">Waseela-e-Sehat Bait ul Mal</string>
+<string name="se3706">EOBI</string>
+<string name="se3707">BISP</string>
+<string name="se3708">Workers Welfare Funds</string>
+<string name="se3709">National Income Support Program</string>
+<string name="se3796">Others Please Specify</string>
+<string name="se38">When was the last payment received from this program?</string>
+<string name="se3801">In the last one month</string>
+<string name="se3802">In the last 03 months</string>
+<string name="se3803">In the last 06 months</string>
+<string name="se3804">More than one year ago</string>
+<string name="se3805">More than two years ago</string>
+<string name="se3898">Don’t know</string>
+<string name="se39">Is a financial assistance program receipt available? Observed by surveyor. RECORD OBSERVATION
+</string>
+<string name="se3901">Available and observed</string>
+<string name="se3902">Not observed</string>
+<string name="se40">Have you or anyone in the household received a food supplement from an organization in the past 12
+months?
+</string>
+<string name="se4001">Yes</string>
+<string name="se4002">No</string>
+<string name="se4098">Don’t know</string>
+<string name="se06a">Rupees</string>
+<string name="se07a">Numbers of Rooms</string>

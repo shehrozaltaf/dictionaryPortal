@@ -1,0 +1,15 @@
+UserIPAddress: 10.1.42.90 - December-30-2020 10:42 am
+idUser: 17, UserName: hamza.amir
+Action: Login Success
+Result: User hamza.amir: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - December-30-2020 10:42 am
+idUser: 17, UserName: hamza.amir
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - December-30-2020 10:43 am
+idUser: 17, UserName: hamza.amir
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

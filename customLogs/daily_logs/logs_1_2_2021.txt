@@ -1,0 +1,55 @@
+UserIPAddress: 10.1.42.84 - January-2-2021 2:19 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:19 pm
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:19 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:33 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:35 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:36 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:36 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:48 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:49 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:50 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - January-2-2021 2:50 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
