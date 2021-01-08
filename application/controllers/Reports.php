@@ -351,25 +351,23 @@ class Reports extends CI_controller
                         android:layout_height="wrap_content"
                         android:text="@string/' . strtolower($value->variable_name) . '" />';
                 } else {
-                    $rl = '  <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bottom">
+                    $rl = ' <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/qtxt_' . strtolower($value->variable_name) . '"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/q_' . strtolower($value->variable_name) . '"
-                        android:text="@string/' . strtolower($value->variable_name) . '" />
-                    <TextView
-                        android:id="@+id/q_' . strtolower($value->variable_name) . '"
                         style="@style/quesNum"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/qtxt_' . strtolower($value->variable_name) . '"
-                        android:layout_alignBottom="@id/qtxt_' . strtolower($value->variable_name) . '"
-                        android:text="@string/Q_' . strtolower($value->variable_name) . '" />    
-                </RelativeLayout>';
+                        android:layout_height="match_parent"
+                        android:text="@string/Q_' . strtolower($value->variable_name) . '"  />
+                        
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/' . strtolower($value->variable_name) . '" />    
+                </LinearLayout>';
                 }
 
                 $xml .= $rl;
@@ -706,25 +704,23 @@ class Reports extends CI_controller
                         android:layout_height="wrap_content"
                         android:text="@string/' . strtolower($value->variable_name) . '" />';
                 } else {
-                    $rl = '  <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bottom">
+                    $rl = '<LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
                     <TextView
-                        android:id="@+id/qtxt_' . strtolower($value->variable_name) . '"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@id/q_' . strtolower($value->variable_name) . '"
-                        android:text="@string/' . strtolower($value->variable_name) . '" />
-                    <TextView
-                        android:id="@+id/q_' . strtolower($value->variable_name) . '"
                         style="@style/quesNum"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignTop="@id/qtxt_' . strtolower($value->variable_name) . '"
-                        android:layout_alignBottom="@id/qtxt_' . strtolower($value->variable_name) . '"
-                        android:text="@string/Q_' . strtolower($value->variable_name) . '" />    
-                </RelativeLayout>';
+                        android:layout_height="match_parent"
+                        android:text="@string/Q_' . strtolower($value->variable_name) . '"  />
+                        
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="@string/' . strtolower($value->variable_name) . '" />    
+                </LinearLayout>';
                 }
 
                 $xml .= $rl;
