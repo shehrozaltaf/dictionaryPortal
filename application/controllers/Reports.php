@@ -401,7 +401,7 @@ class Reports extends CI_controller
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:hint="@string/' . strtolower($options->variable_name) . '"
-                                            android:digits="AaBaCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
+                                            android:digits="AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789,. "
                                             android:tag="' . strtolower($options->variable_name) . '"
                                             android:text=\'@{' . strtolower($options->variable_name) . '.checked ? ' . strtolower($options->variable_name) . 'x.getText().toString() : ""}\'
                                             android:visibility=\'@{' . strtolower($options->variable_name) . '.checked? View.VISIBLE : View.GONE}\' />';
