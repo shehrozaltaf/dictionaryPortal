@@ -17,6 +17,7 @@ class Project extends CI_controller
         $this->load->library('session');
         $this->load->library('tcpdf');
         $this->load->helper('string');
+
         if (!isset($_SESSION['login']['idUser'])) {
             redirect(base_url());
         }
