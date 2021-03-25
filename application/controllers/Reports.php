@@ -1999,7 +1999,7 @@ class Reports extends CI_controller
         }
     }
 
-    function getExcel($slug)
+    function getExcel()
     {
         ob_end_clean();
         $this->load->model('msection');
