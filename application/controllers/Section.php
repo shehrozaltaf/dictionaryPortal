@@ -685,6 +685,13 @@ class Section extends CI_controller
             $editArr['label_l3'] = (isset($_POST['edit_label_l3']) && $_POST['edit_label_l3'] != '' ? $_POST['edit_label_l3'] : '');
             $editArr['label_l4'] = (isset($_POST['edit_label_l4']) && $_POST['edit_label_l4'] != '' ? $_POST['edit_label_l4'] : '');
             $editArr['label_l5'] = (isset($_POST['edit_label_l5']) && $_POST['edit_label_l5'] != '' ? $_POST['edit_label_l5'] : '');
+
+            $editArr['instruction_l1'] = (isset($_POST['edit_instruction_l1']) && $_POST['edit_instruction_l1'] != '' ? $_POST['edit_instruction_l1'] : '');
+            $editArr['instruction_l2'] = (isset($_POST['edit_instruction_l2']) && $_POST['edit_instruction_l2'] != '' ? $_POST['edit_instruction_l2'] : '');
+            $editArr['instruction_l3'] = (isset($_POST['edit_instruction_l3']) && $_POST['edit_instruction_l3'] != '' ? $_POST['edit_instruction_l3'] : '');
+            $editArr['instruction_l4'] = (isset($_POST['edit_instruction_l4']) && $_POST['edit_instruction_l4'] != '' ? $_POST['edit_instruction_l4'] : '');
+            $editArr['instruction_l5'] = (isset($_POST['edit_instruction_l5']) && $_POST['edit_instruction_l5'] != '' ? $_POST['edit_instruction_l5'] : '');
+
             $editArr['option_value'] = (isset($_POST['edit_option_value']) && $_POST['edit_option_value'] != '' ? $_POST['edit_option_value'] : '');
             $editArr['insertDB'] = (isset($_POST['edit_insertDB']) && $_POST['edit_insertDB'] != '' ? $_POST['edit_insertDB'] : '');
             $editArr['dbType'] = (isset($_POST['edit_dbType']) && $_POST['edit_dbType'] != '' ? $_POST['edit_dbType'] : '');
@@ -791,6 +798,13 @@ class Section extends CI_controller
                             $formArray_Detail['label_l3'] = (isset($data->label_l3) && $data->label_l3 != '' ? $data->label_l3 : '');
                             $formArray_Detail['label_l4'] = (isset($data->label_l4) && $data->label_l4 != '' ? $data->label_l4 : '');
                             $formArray_Detail['label_l5'] = (isset($data->label_l5) && $data->label_l5 != '' ? $data->label_l5 : '');
+
+                            $formArray_Detail['instruction_l1'] = (isset($data->instruction_l1) && $data->instruction_l1 != '' ? $data->instruction_l1 : '');
+                            $formArray_Detail['instruction_l2'] = (isset($data->instruction_l2) && $data->instruction_l2 != '' ? $data->instruction_l2 : '');
+                            $formArray_Detail['instruction_l3'] = (isset($data->instruction_l3) && $data->instruction_l3 != '' ? $data->instruction_l3 : '');
+                            $formArray_Detail['instruction_l4'] = (isset($data->instruction_l4) && $data->instruction_l4 != '' ? $data->instruction_l4 : '');
+                            $formArray_Detail['instruction_l5'] = (isset($data->instruction_l5) && $data->instruction_l5 != '' ? $data->instruction_l5 : '');
+
                             $formArray_Detail['option_value'] = (isset($data->option_value) && $data->option_value != '' ? $data->option_value : '');
                             $formArray_Detail['insertDB'] = (isset($data->insertDB) && $data->insertDB != '' ? $data->insertDB : '');
                             $formArray_Detail['dbType'] = (isset($data->dbType) && $data->dbType != '' ? $data->dbType : '');
@@ -863,6 +877,12 @@ class Section extends CI_controller
             $formArray['label_l3'] = (isset($data->label_l3) && $data->label_l3 != '' ? $data->label_l3 : '');
             $formArray['label_l4'] = (isset($data->label_l4) && $data->label_l4 != '' ? $data->label_l4 : '');
             $formArray['label_l5'] = (isset($data->label_l5) && $data->label_l5 != '' ? $data->label_l5 : '');
+            $formArray['instruction_l1'] = (isset($data->instruction_l1) && $data->instruction_l1 != '' ? $data->instruction_l1 : '');
+            $formArray['instruction_l2'] = (isset($data->instruction_l2) && $data->instruction_l2 != '' ? $data->instruction_l2 : '');
+            $formArray['instruction_l3'] = (isset($data->instruction_l3) && $data->instruction_l3 != '' ? $data->instruction_l3 : '');
+            $formArray['instruction_l4'] = (isset($data->instruction_l4) && $data->instruction_l4 != '' ? $data->instruction_l4 : '');
+            $formArray['instruction_l5'] = (isset($data->instruction_l5) && $data->instruction_l5 != '' ? $data->instruction_l5 : '');
+
             $formArray['option_value'] = (isset($data->option_value) && $data->option_value != '' ? $data->option_value : '');
             $formArray['insertDB'] = (isset($data->insertDB) && $data->insertDB != '' ? $data->insertDB : '');
             $formArray['dbType'] = (isset($data->dbType) && $data->dbType != '' ? $data->dbType : '');

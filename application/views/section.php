@@ -58,7 +58,7 @@
                         <option value="0" disabled readonly="readonly" selected>Select Project</option>
                         <?php
                         foreach ($projects as $key => $values) {
-                            echo '<option value="' . $values->idProjects . '">' . strtoupper($values->short_title) . ': '. $values->project_name . '</option>';
+                            echo '<option value="' . $values->idProjects . '">' . strtoupper($values->short_title) . ': ' . $values->project_name . '</option>';
                         }
                         ?>
                     </select>
@@ -115,7 +115,7 @@
                         <option value="0" disabled readonly="readonly" selected>Select Project</option>
                         <?php
                         foreach ($projects as $key => $values) {
-                            echo '<option value="' . $values->idProjects . '">'  . strtoupper($values->short_title) . ': ' . $values->project_name . '</option>';
+                            echo '<option value="' . $values->idProjects . '">' . strtoupper($values->short_title) . ': ' . $values->project_name . '</option>';
                         }
                         ?>
                     </select>
@@ -228,7 +228,7 @@
             toastMsg('Module', 'Invalid Module', 'error');
             flag = 1;
             return false;
-        } 
+        }
 
 
         if (flag == 0) {
@@ -417,7 +417,6 @@
                                 '<a href="javascript:void(0)" onclick="cloneModal(this)" data-idSection="' + v.idSection + '"><span class="la la-clone"></span></a>' +
                                 '<a href="<?php echo base_url() ?>index.php/edit_section/' + v.idSection + '"><span class="la la-edit"></span></a>' +
                                 '<a href="javascript:void(0)" onclick="getDelete(this)" data-id="' + v.idSection + '"><span class="la la-trash"></span></a>' +
-
                                 '</h5>' +
                                 '</div>' +
                                 ' <div id="collapseA' + a + '" class="collapse ' + show + '" aria-labelledby="headingA' + a + '">' +
@@ -513,25 +512,44 @@
                 var response = JSON.parse(res);
                 try {
                     $.each(response, function (i, v) {
+                        var l1 = '';
+                        if (v.label_l1 != '' && v.label_l1 != undefined) {
+                            l1 = v.label_l1;
+                            if (v.instruction_l1 != '' && v.instruction_l1 != undefined) {
+                                l1 += '<br><span class="text-danger"><small>Instruction: ' + v.instruction_l1 + '</small></span>';
+                            }
+                        }
                         var l2 = '';
                         if (v.label_l2 != '' && v.label_l2 != undefined) {
                             l2 = '<br class="Urdu">' + v.label_l2;
+                            if (v.instruction_l2 != '' && v.instruction_l2 != undefined) {
+                                l2 += '<br><span class="text-danger"><small>Instruction: ' + v.instruction_l2 + '</small></span>';
+                            }
                         }
                         var l3 = '';
                         if (v.label_l3 != '' && v.label_l3 != undefined) {
                             l3 = '<br class="Sindhi">' + v.label_l3;
+                            if (v.instruction_l3 != '' && v.instruction_l3 != undefined) {
+                                l3 += '<br><span class="text-danger"><small>Instruction: ' + v.instruction_l3 + '</small></span>';
+                            }
                         }
                         var l4 = '';
                         if (v.label_l4 != '' && v.label_l4 != undefined) {
                             l4 = '<br>' + v.label_l4;
+                            if (v.instruction_l4 != '' && v.instruction_l4 != undefined) {
+                                l4 += '<br><span class="text-danger"><small>Instruction: ' + v.instruction_l4 + '</small></span>';
+                            }
                         }
                         var l5 = '';
                         if (v.label_l5 != '' && v.label_l5 != undefined) {
                             l5 = '<br>' + v.label_l5;
+                            if (v.instruction_l5 != '' && v.instruction_l5 != undefined) {
+                                l5 += '<br><span class="text-danger"><small>Instruction: ' + v.instruction_l5 + '</small></span>';
+                            }
                         }
                         html += '<tr>' +
                             '<td>' + v.variable_name + '</td>' +
-                            '<td >' + v.label_l1 + l2 + l3 + l4 + l5 + '</td>';
+                            '<td >' + l1 + l2 + l3 + l4 + l5 + '</td>';
 
 
                         /*Options Start*/
@@ -573,9 +591,9 @@
                         if (v.MaxVal != '' && v.MaxVal != undefined) {
                             html += '<small>, Max</small>: ' + v.MaxVal + '';
                         }
-                        html += '</td>' ;
-                        html += '<td>Sort No</td>' ;
-                        html +=  '</tr>';
+                        html += '</td>';
+                        html += '<td>Sort No</td>';
+                        html += '</tr>';
                     })
                 } catch (e) {
                 }

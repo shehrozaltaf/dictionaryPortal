@@ -203,3 +203,38 @@ idUser: 2, UserName: dmu@aku
 Action: View Section Page
 Result: View Section page. Fucntion: index()
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:43 am
+idUser: 2, UserName: dmu@aku
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:44 am
+idUser: 2, UserName: dmu@aku
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:44 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:49 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:51 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:52 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 11:54 am
+idUser: 2, UserName: dmu@aku
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
+-------------------------------------------------
