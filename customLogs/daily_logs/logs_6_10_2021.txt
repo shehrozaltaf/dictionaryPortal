@@ -1,0 +1,5 @@
+UserIPAddress: 10.1.42.84 - June-10-2021 12:03 pm
+idUser: 2, UserName: dmu@aku
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------

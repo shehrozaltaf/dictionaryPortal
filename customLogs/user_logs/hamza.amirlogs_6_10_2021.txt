@@ -1,0 +1,35 @@
+UserIPAddress: 10.1.42.90 - June-10-2021 11:56 am
+idUser: 17, UserName: hamza.amir
+Action: Login Success
+Result: User hamza.amir: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - June-10-2021 11:56 am
+idUser: 17, UserName: hamza.amir
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - June-10-2021 11:57 am
+idUser: 17, UserName: hamza.amir
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - June-10-2021 11:57 am
+idUser: 17, UserName: hamza.amir
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 646
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - June-10-2021 11:57 am
+idUser: 17, UserName: hamza.amir
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - June-10-2021 11:57 am
+idUser: 17, UserName: hamza.amir
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
+-------------------------------------------------
+UserIPAddress: 10.1.42.90 - June-10-2021 11:58 am
+idUser: 17, UserName: hamza.amir
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

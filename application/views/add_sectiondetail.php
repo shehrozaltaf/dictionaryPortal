@@ -1097,13 +1097,11 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                 '<input type="text" class="form-control" id="edit_label_l1" autocomplete="edit_label_l1" name="edit_label_l1"' +
                                 ' value="' + response[0].label_l1 + '">' +
                                 '</div>';
-                            if (response[0].instruction_l1 != '' && response[0].instruction_l1 != undefined) {
-                                instruction += '<div class="form-group">' +
-                                    '<label for="edit_instruction_l1">Instruction ' + l1 + ':</label>' +
-                                    '<input type="text" class="form-control" id="edit_instruction_l1" autocomplete="edit_instruction_l1" name="edit_instruction_l1"' +
-                                    ' value="' + response[0].instruction_l1 + '">' +
-                                    '</div>';
-                            }
+                            instruction += '<div class="form-group">' +
+                                '<label for="edit_instruction_l1">Instruction ' + l1 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_instruction_l1" autocomplete="edit_instruction_l1" name="edit_instruction_l1"' +
+                                ' value="' + (response[0].instruction_l1 != '' && response[0].instruction_l1 != undefined ? response[0].instruction_l1 : '') + '">' +
+                                '</div>';
                         }
                         if (l2 != '' && l2 != undefined) {
                             html += '<div class="form-group">' +
@@ -1111,13 +1109,11 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                 '<input type="text" class="form-control" id="edit_label_l2" autocomplete="edit_label_l2" name="edit_label_l2"' +
                                 ' value="' + response[0].label_l2 + '">' +
                                 '</div>';
-                            if (response[0].instruction_l2 != '' && response[0].instruction_l2 != undefined) {
-                                instruction += '<div class="form-group">' +
-                                    '<label for="edit_instruction_l2">Instruction ' + l1 + ':</label>' +
-                                    '<input type="text" class="form-control" id="edit_instruction_l2" autocomplete="edit_instruction_l2" name="edit_instruction_l2"' +
-                                    ' value="' + response[0].instruction_l2 + '">' +
-                                    '</div>';
-                            }
+                            instruction += '<div class="form-group">' +
+                                '<label for="edit_instruction_l2">Instruction ' + l1 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_instruction_l2" autocomplete="edit_instruction_l2" name="edit_instruction_l2"' +
+                                ' value="' + (response[0].instruction_l2 != '' && response[0].instruction_l2 != undefined ? response[0].instruction_l2 : '') + '">' +
+                                '</div>';
                         }
                         if (l3 != '' && l3 != undefined) {
                             html += '<div class="form-group">' +
@@ -1125,13 +1121,11 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                                 '<input type="text" class="form-control" id="edit_label_l3" autocomplete="edit_label_l3" name="edit_label_l3"' +
                                 ' value="' + response[0].label_l3 + '">' +
                                 '</div>';
-                            if (response[0].instruction_l3 != '' && response[0].instruction_l3 != undefined) {
-                                instruction += '<div class="form-group">' +
-                                    '<label for="edit_instruction_l3">Instruction ' + l1 + ':</label>' +
-                                    '<input type="text" class="form-control" id="edit_instruction_l3" autocomplete="edit_instruction_l3" name="edit_instruction_l3"' +
-                                    ' value="' + response[0].instruction_l3 + '">' +
-                                    '</div>';
-                            }
+                            instruction += '<div class="form-group">' +
+                                '<label for="edit_instruction_l3">Instruction ' + l1 + ':</label>' +
+                                '<input type="text" class="form-control" id="edit_instruction_l3" autocomplete="edit_instruction_l3" name="edit_instruction_l3"' +
+                                ' value="' + (response[0].instruction_l3 != '' && response[0].instruction_l3 != undefined ? response[0].instruction_l3 : '') + '">' +
+                                '</div>';
                         }
                         if (l4 != '' && l4 != undefined) {
                             html += '<div class="form-group">' +
@@ -1172,11 +1166,6 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
 
                         html += '<div class="col-md-12">' +
                             '<div class="mb-2">' +
-                            '<div class="form-check form-check-inline"> ' +
-                            '<input class="form-check-input" type="checkbox"  ' + (response[0].instruction_l1 != '' && response[0].instruction_l1 != undefined ? " checked " : "") +
-                            ' id="edit_Instruction" name="edit_otheroptions" value="Instruction"> ' +
-                            '<label class="form-check-label" for="edit_Instruction">Instruction</label> ' +
-                            '</div>' +
                             '<div class="form-check form-check-inline"> ' +
                             '<input class="form-check-input" type="checkbox"  ' + (response[0].required == "Required" ? " checked " : "") +
                             ' id="edit_Required" name="edit_otheroptions" value="Required"> ' +
