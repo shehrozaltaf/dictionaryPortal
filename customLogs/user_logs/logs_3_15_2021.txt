@@ -1,0 +1,10 @@
+UserIPAddress: 10.1.42.69 - March-15-2021 11:46 am
+idUser: , UserName: 
+Action: Invalid Password
+Result: User amjad.hussain: incorrect password
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - March-15-2021 11:46 am
+idUser: , UserName: 
+Action: Invalid Password
+Result: User amjad.hussain: incorrect password
+-------------------------------------------------

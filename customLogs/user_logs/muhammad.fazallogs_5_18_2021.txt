@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.81 - May-18-2021 9:48 am
+idUser: 13, UserName: muhammad.fazal
+Action: Login Success
+Result: User muhammad.fazal: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - May-18-2021 9:48 am
+idUser: 13, UserName: muhammad.fazal
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - May-18-2021 9:48 am
+idUser: 13, UserName: muhammad.fazal
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - May-18-2021 11:09 am
+idUser: 13, UserName: muhammad.fazal
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

@@ -1,0 +1,1285 @@
+UserIPAddress: 10.1.42.81 - April-12-2021 11:20 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Project Page
+Result: User muhammad.fazal: add project page data. Result: 1 Project: INCK
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:21 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add CRF Data
+Result: View Add CRF page Data. Function: addData() Result: 1 CRF: iNCK Form 1: Baseline
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:23 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Module Data
+Result: View Add Module page Data. Fucntion: addData() Result: 1 ModuleName : Baseline Questionnaire
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:26 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:27 am
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Module
+Result: Edit Module page Data. Fucntion: editData() Result: 1 idModule: 161
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:28 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:31 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:32 am
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:32 am
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:32 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:33 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:34 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:37 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:38 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:39 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:40 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:42 am
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67129
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:43 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:48 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:50 am
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67131
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:51 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 11:56 am
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:02 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67134
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:02 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67135
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:02 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:05 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:08 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:11 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:11 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:13 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:16 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:19 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:21 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:21 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:21 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:21 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 12:22 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:33 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:35 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:36 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:38 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:48 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:49 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:49 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:51 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:55 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:56 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 2:59 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:05 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:06 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:08 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:10 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:12 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:16 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:21 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:22 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:23 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:27 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:30 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:33 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:37 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:37 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:40 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:40 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:41 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:41 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:41 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:42 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67166
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:43 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:44 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:44 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 3:59 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:03 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:05 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:06 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:12 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:13 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:14 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:14 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section  Page (delete page)
+Result: Delete Section Page. Fucntion: deleteSection() . Result: 1 idSection: 623
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:17 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:18 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:19 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:19 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:20 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:23 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:24 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:29 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:30 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:32 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:34 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Page
+Result: Add Section data. Fucntion: addData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:36 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:42 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:42 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:43 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:43 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:43 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:44 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:44 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:44 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:45 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:45 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:46 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:48 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:49 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:49 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:49 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:50 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:50 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67192
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:50 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:50 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67193
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:51 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:51 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67194
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:51 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:57 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:58 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 4:59 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:03 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:04 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:04 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:04 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:04 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:05 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:06 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:07 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:07 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:10 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:14 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:15 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:16 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:16 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:16 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:16 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67215
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:17 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:17 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:17 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:18 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:18 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:19 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:19 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:19 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:21 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:22 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:22 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:23 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:24 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:24 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67220
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:24 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:24 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:26 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:26 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67222
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:27 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:28 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:29 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:39 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:39 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:39 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:40 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:43 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:45 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:46 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:46 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:46 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:46 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:47 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:48 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:51 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:52 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:53 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:53 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:53 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:54 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:55 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:55 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Delete Section Detail Page (delete section page)
+Result: Delete Section Detail Page. Fucntion: deleteSectionDetail() . Result: 1 idSectionDetail: 67240
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:55 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:56 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:56 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:56 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Add Section Detail Data Page (add questions)
+Result: Add Section Detail Questions. Fucntion: add_sectiondetail_data() 
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 5:59 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:00 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:01 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:01 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:01 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:02 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:02 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:05 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:09 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:09 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:09 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:09 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:09 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:10 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:10 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:10 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:10 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:12 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:12 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:12 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:13 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:29 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:30 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:30 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:30 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:30 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:31 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:34 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:34 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:34 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:35 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:35 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:40 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:40 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:40 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:41 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Clone Section
+Result: Clone Section with Questions. Fucntion: cloneData() . Result: 1
+-------------------------------------------------
+UserIPAddress: 10.1.42.81 - April-12-2021 6:41 pm
+idUser: 13, UserName: muhammad.fazal
+Action: Edit Section Detail Question (edit question)
+Result: Edit Section Detail Questions. Fucntion: editSectionDetail() . Result: 1
+-------------------------------------------------

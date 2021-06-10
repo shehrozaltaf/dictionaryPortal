@@ -165,9 +165,24 @@ class Reports extends CI_controller
                 'title_l4' => $value->section_title_l4,
                 'desc_l4' => $value->section_desc_l4,
                 'title_l5' => $value->section_title_l5,
-                'desc_l5' => $value->section_desc_l5,
+                'desc_l5' => $value->section_desc_l5
             );
             $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '">' . htmlspecialchars($value->$lang) . '</string>' . "\n";
+            if (isset($value->instruction_l1) && $value->instruction_l1 != '' && $lang == 'label_l1') {
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '_info">' . htmlspecialchars($value->instruction_l1) . '</string>' . "\n";
+            }
+            if (isset($value->instruction_l2) && $value->instruction_l2 != '' && $lang == 'label_l2') {
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '_info">' . htmlspecialchars($value->instruction_l2) . '</string>' . "\n";
+            }
+            if (isset($value->instruction_l3) && $value->instruction_l3 != '' && $lang == 'label_l3') {
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '_info">' . htmlspecialchars($value->instruction_l3) . '</string>' . "\n";
+            }
+            if (isset($value->instruction_l4) && $value->instruction_l4 != '' && $lang == 'label_l4') {
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '_info">' . htmlspecialchars($value->instruction_l4) . '</string>' . "\n";
+            }
+            if (isset($value->instruction_l5) && $value->instruction_l5 != '' && $lang == 'label_l5') {
+                $fileEngSting .= '<string name="' . strtolower($value->variable_name) . '_info">' . htmlspecialchars($value->instruction_l5) . '</string>' . "\n";
+            }
         }
 
         $fileHeadSting = '';
@@ -1321,7 +1336,6 @@ class Reports extends CI_controller
         readfile($file);
     }
 
-
     function getSaveDraftData()
     {
         ob_end_clean();
@@ -1689,7 +1703,6 @@ class Reports extends CI_controller
         }
     }
 
-
     function hydrate2_old()
     {
         ob_end_clean();
@@ -1770,7 +1783,6 @@ class Reports extends CI_controller
             echo 'Invalid Project, Please select Section';
         }
     }
-
 
     function hydrateJson()
     {
@@ -2005,7 +2017,6 @@ class Reports extends CI_controller
         $this->load->model('msection');
         $fileName = 'data_dictionaryportal_' . time() . '.xlsx';
         $this->load->library('excel');
-
         if (isset($_GET['project']) && $_GET['project'] != '' && $_GET['project'] != 0) {
             $MSection = new MSection();
             $searchData = array();
@@ -2030,6 +2041,11 @@ class Reports extends CI_controller
             $objPHPExcel->getActiveSheet()->SetCellValue('J1', 'Parent');
             $objPHPExcel->getActiveSheet()->SetCellValue('K1', 'Min Range');
             $objPHPExcel->getActiveSheet()->SetCellValue('L1', 'Max Range');
+            $objPHPExcel->getActiveSheet()->SetCellValue('M1', 'Instruction 1');
+            $objPHPExcel->getActiveSheet()->SetCellValue('N1', 'Instruction 2');
+            $objPHPExcel->getActiveSheet()->SetCellValue('O1', 'Instruction 3');
+            $objPHPExcel->getActiveSheet()->SetCellValue('P1', 'Instruction 4');
+            $objPHPExcel->getActiveSheet()->SetCellValue('Q1', 'Instruction 5');
             $objPHPExcel->getActiveSheet()->getStyle("A1:Z1")->getFont()->setBold(true);
             $rowCount = 1;
             foreach ($data as $list) {
@@ -2046,6 +2062,11 @@ class Reports extends CI_controller
                 $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $list->idParentQuestion);
                 $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $list->MinVal);
                 $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $list->MaxVal);
+                $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, $list->instruction_l1);
+                $objPHPExcel->getActiveSheet()->SetCellValue('N' . $rowCount, $list->instruction_l2);
+                $objPHPExcel->getActiveSheet()->SetCellValue('O' . $rowCount, $list->instruction_l3);
+                $objPHPExcel->getActiveSheet()->SetCellValue('P' . $rowCount, $list->instruction_l4);
+                $objPHPExcel->getActiveSheet()->SetCellValue('Q' . $rowCount, $list->instruction_l5);
                 if (isset($list->myrow_options) && $list->myrow_options != '') {
                     foreach ($list->myrow_options as $options) {
                         $rowCount++;
@@ -2061,6 +2082,11 @@ class Reports extends CI_controller
                         $objPHPExcel->getActiveSheet()->SetCellValue('J' . $rowCount, $options->idParentQuestion);
                         $objPHPExcel->getActiveSheet()->SetCellValue('K' . $rowCount, $options->MinVal);
                         $objPHPExcel->getActiveSheet()->SetCellValue('L' . $rowCount, $options->MaxVal);
+                        $objPHPExcel->getActiveSheet()->SetCellValue('M' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('N' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('O' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('P' . $rowCount, '');
+                        $objPHPExcel->getActiveSheet()->SetCellValue('Q' . $rowCount, '');
 
                     }
                 }
@@ -2076,8 +2102,6 @@ class Reports extends CI_controller
         }
 
     }
-
-    /*Not working*/
 
     function getPDF()
     {
@@ -2246,22 +2270,43 @@ class Reports extends CI_controller
                                 $ol5sec = '';
                                 if ($displaylanguagel1 == 'on') {
                                     $l1sec = htmlspecialchars($valueSectionDetail->label_l1);
+                                    if (isset($valueSectionDetail->instruction_l1) && $valueSectionDetail->instruction_l1 != '') {
+                                        $l1sec .= ' <br><small>Instructions: ' . htmlspecialchars($valueSectionDetail->instruction_l1) . '</small> ';
+                                    }
+
                                 }
                                 if (isset($valueSectionDetail->label_l2) && $valueSectionDetail->label_l2 != '' &&
                                     $displaylanguagel2 == 'on') {
-                                    $l2sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l2);
+                                    $l2sec = ' <br>' . htmlspecialchars($valueSectionDetail->label_l2);
+                                    if (isset($valueSectionDetail->instruction_l2) && $valueSectionDetail->instruction_l2 != '' &&
+                                        $displaylanguagel2 == 'on') {
+                                        $l2sec .= ' <br><small>Instructions: ' . htmlspecialchars($valueSectionDetail->instruction_l2) . '</small> ';
+                                    }
+
                                 }
                                 if (isset($valueSectionDetail->label_l3) && $valueSectionDetail->label_l3 != '' &&
                                     $displaylanguagel3 == 'on') {
                                     $l3sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l3);
+                                    if (isset($valueSectionDetail->instruction_l3) && $valueSectionDetail->instruction_l3 != '' &&
+                                        $displaylanguagel3 == 'on') {
+                                        $l3sec .= ' <br><small>Instructions: ' . htmlspecialchars($valueSectionDetail->instruction_l3) . '</small> ';
+                                    }
                                 }
                                 if (isset($valueSectionDetail->label_l4) && $valueSectionDetail->label_l4 != '' &&
                                     $displaylanguagel4 == 'on') {
                                     $l4sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l4);
+                                    if (isset($valueSectionDetail->instruction_l4) && $valueSectionDetail->instruction_l4 != '' &&
+                                        $displaylanguagel4 == 'on') {
+                                        $l4sec .= ' <br><small>Instructions: ' . htmlspecialchars($valueSectionDetail->instruction_l4) . '</small> ';
+                                    }
                                 }
                                 if (isset($valueSectionDetail->label_l5) && $valueSectionDetail->label_l5 != '' &&
                                     $displaylanguagel5 == 'on') {
                                     $l5sec = ' <br> ' . htmlspecialchars($valueSectionDetail->label_l5);
+                                    if (isset($valueSectionDetail->instruction_l5) && $valueSectionDetail->instruction_l5 != '' &&
+                                        $displaylanguagel5 == 'on') {
+                                        $l5sec .= ' <br><small>Instructions: ' . htmlspecialchars($valueSectionDetail->instruction_l5) . '</small> ';
+                                    }
                                 }
                                 $optionsubhtml .= ' <tr>
                                        <td  width="12%"  align="center"><strong> ' . strtolower($valueSectionDetail->variable_name) . '</strong><br>

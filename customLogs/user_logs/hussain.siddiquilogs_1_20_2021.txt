@@ -1,0 +1,20 @@
+UserIPAddress: 10.1.42.73 - January-20-2021 2:28 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: Login Success
+Result: User hussain.siddiqui: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-20-2021 2:28 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: Login Success
+Result: User hussain.siddiqui: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-20-2021 2:28 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-20-2021 2:28 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

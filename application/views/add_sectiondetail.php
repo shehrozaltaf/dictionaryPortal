@@ -501,6 +501,24 @@ if (isset($getdata->locked) && $getdata->locked == 'N') { ?>
                             if (v.label_l5 != '' && v.label_l5 != undefined) {
                                 html += '<span class="' + classl5 + ' "> ' + v.label_l5 + '</span> <br>';
                             }
+
+                            if (v.instruction_l1 != '' && v.instruction_l1 != undefined) {
+                                html += '<span class="text-danger"><small>Instruction: ' + v.instruction_l1 + '</small></span><br>';
+                            }
+                            if (v.instruction_l2 != '' && v.instruction_l2 != undefined) {
+                                html += '<span class="text-danger"><small>Instruction: ' + v.instruction_l2 + '</small></span><br>';
+                            }
+                            if (v.instruction_l3 != '' && v.instruction_l3 != undefined) {
+                                html += '<span class="text-danger"><small>Instruction: ' + v.instruction_l3 + '</small></span><br>';
+                            }
+                            if (v.instruction_l4 != '' && v.instruction_l4 != undefined) {
+                                html += '<span class="text-danger"><small>Instruction: ' + v.instruction_l4 + '</small></span><br>';
+                            }
+                            if (v.instruction_l5 != '' && v.instruction_l5 != undefined) {
+                                html += '<span class="text-danger"><small>Instruction: ' + v.instruction_l5 + '</small></span><br>';
+                            }
+
+
                             if (v.option_value != '' && v.option_value != undefined) {
                                 html += '<div class="badge badge-secondary"><a href="javascript:void(0);">Value: ' + v.option_value + '</a></div> ';
                             }

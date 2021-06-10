@@ -1,0 +1,55 @@
+UserIPAddress: 10.1.42.73 - January-16-2021 12:44 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: Login Success
+Result: User hussain.siddiqui: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:44 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:44 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:57 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:57 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:57 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: Edit Section Page
+Result: View edit Section page. Fucntion: edit_section()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:57 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:57 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Module Page
+Result: View Module page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:58 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: Edit Module Page
+Result: View Edit Module page. Fucntion: edit_module() idModuleSlug: 148
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:58 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: View Section Page
+Result: View Section page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.73 - January-16-2021 12:58 pm
+idUser: 27, UserName: hussain.siddiqui
+Action: Add Section Detail Page
+Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 581
+-------------------------------------------------

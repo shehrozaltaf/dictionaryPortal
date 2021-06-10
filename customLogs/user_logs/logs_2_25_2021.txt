@@ -1,0 +1,5 @@
+UserIPAddress: 10.1.42.152 - February-25-2021 10:50 am
+idUser: , UserName: 
+Action: Invalid Password
+Result: User dmu@aku: incorrect password
+-------------------------------------------------

@@ -256,6 +256,16 @@
             pageLength: 25,
             iDisplayLength: 25,
             dom: 'Bfrtip',
+
+            oSearch: {"sSearch": " "},
+            autoFill: false,
+            attr: {
+                autocomplete: 'off'
+            },
+            initComplete: function () {
+                $(this.api().table().container()).find('input[type="search"]').parent().wrap('<form>').parent().attr('autocomplete', 'off').css('overflow', 'hidden').css('margin', 'auto');
+            },
+
             ajax: {
                 "url": "<?php echo base_url() . 'index.php/Project/getProjects' ?>",
                 "method": "POST",

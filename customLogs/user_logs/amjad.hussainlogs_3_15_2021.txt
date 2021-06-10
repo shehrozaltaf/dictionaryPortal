@@ -1,0 +1,15 @@
+UserIPAddress: 10.1.42.69 - March-15-2021 11:46 am
+idUser: 24, UserName: amjad.hussain
+Action: Login Success
+Result: User amjad.hussain: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - March-15-2021 11:46 am
+idUser: 24, UserName: amjad.hussain
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.69 - March-15-2021 11:46 am
+idUser: 24, UserName: amjad.hussain
+Action: View Reports Page
+Result: View Reports page. Fucntion: index()
+-------------------------------------------------

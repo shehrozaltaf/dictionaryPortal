@@ -1052,6 +1052,11 @@ class Section extends CI_controller
                         $formArray_Detail['dbDecimal'] = (isset($val[$r[15]]) && $val[$r[15]] != '' ? $val[$r[15]] : '');
                         $formArray_Detail['seq_no'] = (isset($val[$r[17]]) && $val[$r[17]] != '' ? $val[$r[17]] : $key);
                         $formArray_Detail['child_seq_no'] = (isset($val[$r[18]]) && $val[$r[18]] != '' ? $val[$r[18]] : 0);
+                        $formArray_Detail['instruction_l1'] = (isset($val[$r[19]]) && $val[$r[19]] != '' ? $val[$r[19]] : 0);
+                        $formArray_Detail['instruction_l2'] = (isset($val[$r[20]]) && $val[$r[20]] != '' ? $val[$r[20]] : 0);
+                        $formArray_Detail['instruction_l3'] = (isset($val[$r[21]]) && $val[$r[21]] != '' ? $val[$r[21]] : 0);
+                        $formArray_Detail['instruction_l4'] = (isset($val[$r[22]]) && $val[$r[22]] != '' ? $val[$r[22]] : 0);
+                        $formArray_Detail['instruction_l5'] = (isset($val[$r[23]]) && $val[$r[23]] != '' ? $val[$r[23]] : 0);
                         $formArray_Detail['isActive'] = 1;
                         $formArray['createdDateTime'] = date('Y-m-d H:i:s');
                         $formArray['createdBy'] = $_SESSION['login']['idUser'];

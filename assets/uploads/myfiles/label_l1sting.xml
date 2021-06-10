@@ -1,15 +1,4 @@
-<string name="section1identicalinformation_mainheading">Section 1 Identical Information: Identical Information</string>
-<string name="section2outcomeofvisit_mainheading">Section 2. OUTCOME OF VISIT: OUTCOME OF VISIT</string>
-<string name="section3morbidityhistory_mainheading">Section.3 MORBIDITY HISTORY : MORBIDITY HISTORY</string>
-<string name="section4historyofcontactwithacovid19case_mainheading">Section 4 HISTORY OF CONTACT WITH A COVID-19 CASE:
-HISTORY OF CONTACT WITH A COVID19 CASE
-</string>
-<string name="section5careseekingforillness_mainheading">Section 5 CARE SEEKING FOR ILLNESS: CARE SEEKING FOR ILLNESS
-</string>
-<string name="section6referralforcovid19symptomsthissectiontobefilledbytheinterviewer_mainheading">Section 6 REFERRAL
-FOR COVID-19 SYMPTOMS (THIS SECTION TO BE FILLED BY THE INTERVIEWER): REFERRAL FOR COVID19 SYMPTOMS (THIS SECTION TO BE
-FILLED BY THE INTERVIEWER)
-</string>
+<string name="sectiona_mainheading">Section A: Sewage Sample Collection</string>
 <string name="app_name"> </string>
 <string name="btnSync">Download Data</string>
 <string name="btnUpload">Upload Data</string>
@@ -54,310 +43,33 @@ FILLED BY THE INTERVIEWER)
 <string name="contactnum">Contact Number</string>
 <string name="checkHHpresent">The name of head of the household corresponds to the line listing data.</string>
 <string name="newHHheadname">Name of new head of the household</string>
-<string name="mm01title">یہ فارم آمنہی اسٹیڈی کی تمام ایکٹو خواتین کے لیےپورے مطالعے میں ہر ہفتے فون کے ذریعے/ ہوم وزٹ
-بھرا جائیں گا
+<string name="f1a01">Date field sample collected (dd:mm:yy)</string>
+<string name="f1a02">Time of arrival at site (24 Hour Clock)</string>
+<string name="f1a03">Location (street, locality, landmark)</string>
+<string name="f1a04">Collected by</string>
+<string name="f1a05">Did it rain yesterday</string>
+<string name="f1a05_1">Yes</string>
+<string name="f1a05_2">No</string>
+<string name="f1a05_2_info">test test test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test test test
 </string>
-<string name="mmsid">Study ID</string>
-<string name="mm0101">Country,Study Site,Para Code,Block No,Structure,Family No</string>
-<string name="mm0102">INTERVIEWER NAME</string>
-<string name="mm0102a">INTERVIEWER CODE</string>
-<string name="mm0103">DATE OF VISIT</string>
-<string name="mm0104">Study (Follow-up) Week (mandatory)</string>
-<string name="mm0105">AMANHI Woman ID (unique for every woman)</string>
-<string name="mm0106">Woman’s Pregnancy ID – 1 (Mandatory)</string>
-<string name="mm0107">Woman’s Pregnancy ID – 2 (if applicable)</string>
-<string name="mm0108">Woman’s Pregnancy ID – 3 (if applicable)</string>
-<string name="mm0108a">Woman Name</string>
-<string name="mm0108b">Husband Name</string>
-<string name="mm0201">Was the visit successful</string>
-<string name="mm0201011">Yes</string>
-<string name="mm0201012">NO</string>
-<string name="mm202">If visit is not successful, what was the reason</string>
-<string name="mm202011">Died (Complete a censorship form)</string>
-<string name="mm202012">Permanently moved (Complete a censorship form)</string>
-<string name="mm202013">Withdrawal of participation (Complete a censorship form)</string>
-<string name="mm202014">Could not be contacted despite trying 3 times</string>
-<string name="mm202015">Refused of this visit</string>
-<string name="mm202077">Other</string>
-<string name="mm0301">Have you had any illness in the past 7 days or since the last time we contacted or visited you?
+<string name="f1a06">Did it rain today</string>
+<string name="f1a06_info">test test test test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test test
 </string>
-<string name="mm030101">Yes</string>
-<string name="mm030102">No</string>
-<string name="mm030103">DK</string>
-<string name="mm0302title">If yes, have you had any of the following symptoms since the last time we contacted you? (If
-it is the first interview, ask if women had any of the following symptoms in the past 7 days)
+<string name="f1a07">Air temperature (°C) at collection</string>
+<string name="f1a07_info">test test test test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test test
 </string>
-<string name="mm0302">Fever</string>
-<string name="mm030201">YES</string>
-<string name="mm030202">NO</string>
-<string name="mm030208">DK</string>
-<string name="mm030209">NA</string>
-<string name="mm0303">If yes, number of days of fever (xx, 88=DK, 99=NA)</string>
-<string name="mm0304">Headache</string>
-<string name="mm030401">YES</string>
-<string name="mm030402">NO</string>
-<string name="mm030408">DK</string>
-<string name="mm030409">NA</string>
-<string name="mm0305">YES If yes, number of days of headache (xx, 88=DK, 99=NA)</string>
-<string name="mm0306">Chills</string>
-<string name="mm030601">YES</string>
-<string name="mm030602">NO</string>
-<string name="mm030608">DK</string>
-<string name="mm030609">NA</string>
-<string name="mm0307">If yes, number of days of Chills (xx, 88=DK, 99=NA)</string>
-<string name="mm0308">Cough</string>
-<string name="mm030801">YES</string>
-<string name="mm030802">NO</string>
-<string name="mm030808">DK</string>
-<string name="mm030809">NA</string>
-<string name="mm0309">If yes, number of days of Cough (xx, 88=DK, 99=NA)</string>
-<string name="mm03010">Sore throat</string>
-<string name="mm0301001">YES</string>
-<string name="mm0301002">NO</string>
-<string name="mm0301008">DK</string>
-<string name="mm0301009">NA</string>
-<string name="mm03011">If yes, number of days of Sore throat (xx, 88=DK, 99=NA)</string>
-<string name="mm03012">Sneezing</string>
-<string name="mm0301201">YES</string>
-<string name="mm0301202">NO</string>
-<string name="mm0301208">DK</string>
-<string name="mm0301209">NA</string>
-<string name="mm03013">If yes, number of days of Sneezing (xx, 88=DK, 99=NA</string>
-<string name="mm03014">Runny/stuffy nose</string>
-<string name="mm0301401">YES</string>
-<string name="mm0301402">NO</string>
-<string name="mm0301408">DK</string>
-<string name="mm0301409">NA</string>
-<string name="mm03015">If yes, number of days of Runny/stuffy nose (xx, 88=DK, 99=NA</string>
-<string name="mm03016">Fast breathing or difficulty breathing</string>
-<string name="mm0301601">YES</string>
-<string name="mm0301602">NO</string>
-<string name="mm0301608">DK</string>
-<string name="mm0301609">NA</string>
-<string name="mm03017">If yes, number of days of Fast breathing or difficulty breathing (xx, 88=DK, 99=NA</string>
-<string name="mm03018">Chest pain</string>
-<string name="mm0301801">YES</string>
-<string name="mm0301802">NO</string>
-<string name="mm0301808">DK</string>
-<string name="mm0301809">NA</string>
-<string name="mm03019">If yes, number of days of Chest pain (xx, 88=DK, 99=NA</string>
-<string name="mm03020">Fatigue</string>
-<string name="mm0302001">YES</string>
-<string name="mm0302002">NO</string>
-<string name="mm0302008">DK</string>
-<string name="mm0302009">NA</string>
-<string name="mm03021">If yes, number of days of Fatigue (xx, 88=DK, 99=NA)</string>
-<string name="mm03022">Muscle aches</string>
-<string name="mm0302201">YES</string>
-<string name="mm0302202">NO</string>
-<string name="mm0302208">DK</string>
-<string name="mm0302209">NA</string>
-<string name="mm03023">If yes, number of days of Muscle aches (xx, 88=DK, 99=NA)</string>
-<string name="mm03024">Nausea/ vomiting</string>
-<string name="mm0302401">YES</string>
-<string name="mm0302402">NO</string>
-<string name="mm0302408">DK</string>
-<string name="mm0302409">NA</string>
-<string name="mm03025">If yes, number of days of Nausea/ vomiting (xx, 88=DK, 99=NA)</string>
-<string name="mm03026">Diarrhoea</string>
-<string name="mm0302601">YES</string>
-<string name="mm0302602">NO</string>
-<string name="mm0302608">DK</string>
-<string name="mm0302609">NA</string>
-<string name="mm03027">If yes, number of days of Diarrhoea (xx, 88=DK, 99=NA)</string>
-<string name="mm03028">Abdominal cramps or pain</string>
-<string name="mm0302801">YES</string>
-<string name="mm0302802">NO</string>
-<string name="mm0302808">DK</string>
-<string name="mm0302809">NA</string>
-<string name="mm03029">If yes, number of days ofAbdominal cramps or pain (xx, 88=DK, 99=NA)</string>
-<string name="mm03030">Anosmia (loss of smell)</string>
-<string name="mm0303001">YES</string>
-<string name="mm0303002">NO</string>
-<string name="mm0303008">DK</string>
-<string name="mm0303009">NA</string>
-<string name="mm03031">If yes, number of days of Anosmia (loss of smell) (xx, 88=DK, 99=NA)</string>
-<string name="mm03032">Loss of sense of taste/ageusia</string>
-<string name="mm0303201">YES</string>
-<string name="mm0303202">NO</string>
-<string name="mm0303208">DK</string>
-<string name="mm0303209">NA</string>
-<string name="mm03033">If yes, number of days of Loss of sense of taste/ageusia (xx, 88=DK, 99=NA)</string>
-<string name="mm03034">Delirium/confusion</string>
-<string name="mm0303401">YES</string>
-<string name="mm0303402">NO</string>
-<string name="mm0303408">DK</string>
-<string name="mm0303409">NA</string>
-<string name="mm03035">If yes, number of days of Delirium/confusion (xx, 88=DK, 99=NA)</string>
-<string name="mm03036">Hallucinations</string>
-<string name="mm0303601">YES</string>
-<string name="mm0303602">NO</string>
-<string name="mm0303608">DK</string>
-<string name="mm0303609">NA</string>
-<string name="mm03037">Skin rashes</string>
-<string name="mm03037">If yes, number of days of Hallucinations (xx, 88=DK, 99=NA</string>
-<string name="mm03038">Skin rashes</string>
-<string name="mm0303801">YES</string>
-<string name="mm0303802">NO</string>
-<string name="mm0303808">DK</string>
-<string name="mm0303809">NA</string>
-<string name="mm03039">If yes, number of days of skin rashes</string>
-<string name="mm03040">Dizziness or fainting</string>
-<string name="mm0304001">YES</string>
-<string name="mm0304002">NO</string>
-<string name="mm0304008">DK</string>
-<string name="mm0304009">NA</string>
-<string name="mm03041">If yes, number of days of Dizziness or fainting (xx, 88=DK, 99=NA)</string>
-<string name="mm03042">Body aches</string>
-<string name="mm0304201">YES</string>
-<string name="mm0304202">NO</string>
-<string name="mm0304208">DK</string>
-<string name="mm0304209">NA</string>
-<string name="mm03043">If yes, number of days of Body aches (xx, 88=DK, 99=NA</string>
-<string name="mm03044">Other symptoms1</string>
-<string name="mm0304401">YES</string>
-<string name="mm0304402">NO</string>
-<string name="mm0304408">DK</string>
-<string name="mm0304409">NA</string>
-<string name="mm03045">Other1 (specify):</string>
-<string name="mm03046">If yes for OTHER symptoms 1 number of days</string>
-<string name="mm03047">Other symptoms2</string>
-<string name="mm0304701">YES</string>
-<string name="mm0304702">NO</string>
-<string name="mm0304708">DK</string>
-<string name="mm0304709">NA</string>
-<string name="mm03048">IF YES Other (specify):</string>
-<string name="mm03049">If yes for OTHER symptoms 2 number of days</string>
-<string name="mm0401">Has any member of the household returned from abroad/travel since the last time we contacted
-you?
+<string name="f1a06_1">Yes</string>
+<string name="f1a06_1_info">test test test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test test test
 </string>
-<string name="mm040101">Yes</string>
-<string name="mm040102">No</string>
-<string name="mm040108">DK</string>
-<string name="mm040109">NA</string>
-<string name="mm0402">Has any of the household members who lives somewhere else (for work or other) come back since the
-last time we contacted you?
+<string name="f1a06_2">No</string>
+<string name="f1a06_2_info">test test test test test test test test test test test test test test test test test test
+test test test test test test test test test test test test test test test test test test
 </string>
-<string name="mm040201">Yes</string>
-<string name="mm040202">NO</string>
-<string name="mm040208">DK</string>
-<string name="mm040209">NA</string>
-<string name="mm0403">Have you had contact with someone who has been suspected or confirmed with coronavirus infection
-since we last contacted you?
-</string>
-<string name="mm040301">YES</string>
-<string name="mm040302">NO</string>
-<string name="mm040308">DK</string>
-<string name="mm040309">NA</string>
-<string name="mm0404">If yes, type of contact</string>
-<string name="mm0404011">Close contact</string>
-<string name="mm0404012">Causal contact</string>
-<string name="mm040408">DK</string>
-<string name="mm040409">NA</string>
-<string name="mm0405">If yes, date of last contact</string>
-<string name="mm0406">Was the person confirmed for coronavirus through a lab-based test?</string>
-<string name="mm040601">Yes</string>
-<string name="mm040602">No</string>
-<string name="mm040608">DK</string>
-<string name="mm040609">NA</string>
-<string name="mm0407">Was the person admitted to a hospital due to illness caused by coronavirus?</string>
-<string name="mm040701">YES</string>
-<string name="mm040702">NO</string>
-<string name="mm040708">DK</string>
-<string name="mm040709">NA</string>
-<string name="mm0408">What was the duration of hospitalization?</string>
-<string name="mm0409">Was the person admitted to Intensive Care Unit (ICU)?</string>
-<string name="mm040901">YES</string>
-<string name="mm040902">NO</string>
-<string name="mm040908">DK</string>
-<string name="mm040909">NA</string>
-<string name="mm04010">Did the person require any support to breath such as Oxygen mask, CPAP/BiPAP, mechanical
-ventilation, etc.?
-</string>
-<string name="mm0401001">YES</string>
-<string name="mm0401002">NO</string>
-<string name="mm0401008">DK</string>
-<string name="mm0401009">NA</string>
-<string name="mm04011">What was the outcome of the admission of this contact (person)?</string>
-<string name="mm0401101">Recovered</string>
-<string name="mm0401102">Still in hospital</string>
-<string name="mm0401103">Died</string>
-<string name="mm0401108">DK</string>
-<string name="mm0401109">NA</string>
-<string name="mm04012">Do you know people in your immediate social environment who are or have been infected with the
-coronavirus?
-</string>
-<string name="mm0401201">YES</string>
-<string name="mm0401202">NO</string>
-<string name="mm0401208">DK</string>
-<string name="mm0401209">NA</string>
-<string name="mm0501">If you have any of the above symptoms in section 3, then did any of these symptoms require you to
-miss work?
-</string>
-<string name="mm050101">YES</string>
-<string name="mm050102">NO</string>
-<string name="mm050108">DK</string>
-<string name="mm050109">NA</string>
-<string name="mm0502">Did you seek medical care for any of the above symptoms ?</string>
-<string name="mm050201">YES</string>
-<string name="mm050202">NO</string>
-<string name="mm050208">DK</string>
-<string name="mm050209">NA</string>
-<string name="mm0503">Where did you go? (name of the hospital/health facility or the CODE of the facility
-pre-prepared)?
-</string>
-<string name="mm0504">Were you advised admission to a hospital or health facility?</string>
-<string name="mm050401">YES</string>
-<string name="mm050402">NO</string>
-<string name="mm050408">DK</string>
-<string name="mm050409">NA</string>
-<string name="mm0505">Were you admitted to hospital/health facility (If yes, hospitalization form needs to be filled)
-?
-</string>
-<string name="mm050501">YES</string>
-<string name="mm050502">NO</string>
-<string name="mm050508">DK</string>
-<string name="mm050509">NA</string>
-<string name="mm0506">If you were not admitted, what did you do?</string>
-<string name="mm050601">did not seek care</string>
-<string name="mm050602">sought care elsewhere</string>
-<string name="mm050609">NA</string>
-<string name="mm0507">If you did not go to a hospital/health facility, did you seek care from other sources?</string>
-<string name="mm050701">YES</string>
-<string name="mm050702">NO</string>
-<string name="mm050708">DK</string>
-<string name="mm050709">NA</string>
-<string name="mm0508">What was the source? please specify</string>
-<string name="mm0508011">community health worker</string>
-<string name="mm0508012">traditional healer</string>
-<string name="mm0508013">pharmacy/druggist</string>
-<string name="mm0508099">NA</string>
-<string name="mm0508015">other</string>
-<string name="mm05010">Did you/your family call the national coronavirus hotline number since the last time we contacted
-you?
-</string>
-<string name="mm0501001">Yes</string>
-<string name="mm0501002">NO</string>
-<string name="mm0501008">DK</string>
-<string name="mm0501009">NA</string>
-<string name="mm05011">Were you tested for coronavirus since the last time we contacted you? (If YES, then also fill
-test report form)
-</string>
-<string name="mm0501101">YES</string>
-<string name="mm0501102">NO</string>
-<string name="mm0501108">DK</string>
-<string name="mm0501109">NA</string>
-<string name="mm05012">If yes, date of testing for coronavirus</string>
-<string name="mm05013">Were you tested positive for coronavirus?</string>
-<string name="mm0501301">YES</string>
-<string name="mm0501302">NO</string>
-<string name="mm0501308">DK</string>
-<string name="mm0501309">NA</string>
-<string name="mm0601">Did the woman have one or more of the COVID-19 symptoms?</string>
-<string name="mm060101">YES</string>
-<string name="mm060102">NO</string>
-<string name="mm0602">Was the woman referred and facilitated to go for the testing?</string>
-<string name="mm060201">YES</string>
-<string name="mm060202">NO</string>
-<string name="mm060208">DK</string>
-<string name="mm060209">NA</string>
+<string name="f1a08">Sample water pH</string>
+<string name="f1a09">Time collected</string>
+<string name="f1a10">Collection volume (L)</string>
+<string name="f1a11">Notes (flowing/stagnant water, brief around the sample collection area)</string>
