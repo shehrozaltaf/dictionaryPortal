@@ -263,3 +263,23 @@ idUser: 2, UserName: dmu@aku
 Action: Add Section Detail Page
 Result: View Section Detail add page. Fucntion: add_sectiondetail(). idSection: 675
 -------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 12:11 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 12:11 pm
+idUser: 2, UserName: dmu@aku
+Action: Logout
+Result: User dmu@aku: Logout
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 12:11 pm
+idUser: 2, UserName: dmu@aku
+Action: Login Success
+Result: User dmu@aku: Login Success
+-------------------------------------------------
+UserIPAddress: 10.1.42.84 - June-10-2021 12:11 pm
+idUser: 2, UserName: dmu@aku
+Action: View Dashboard
+Result: View Dashboard page. Fucntion: index()
+-------------------------------------------------
